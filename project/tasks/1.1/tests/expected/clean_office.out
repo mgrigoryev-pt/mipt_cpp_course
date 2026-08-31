@@ -1,0 +1,1 @@
+[DETECT] строка 39, признак wscript.exe: ts=1730500006400 type=process_start pid=1850 ppid=880 image=C:\Windows\System32\wscript.exe cmdline="wscript.exe C:\corp\tools\map_drives.vbs" user=DESKTOP\max

@@ -1,0 +1,67 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "занятие",
+      "detail": "выбрать номер занятия и пресет, сконфигурировать проект",
+      "dependsOrder": "sequence",
+      "dependsOn": ["занятие: номер", "занятие: перечитать проект"],
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "занятие: номер",
+      "hide": true,
+      "command": "cmake",
+      "options": { "cwd": "${workspaceFolder}/project" },
+      "windows": {
+        "args": ["-D", "NANO_EDR_LESSON=${input:lesson}",
+                 "--preset", "${input:preset-windows}"]
+      },
+      "linux": {
+        "args": ["-D", "NANO_EDR_LESSON=${input:lesson}",
+                 "--preset", "${input:preset-linux}"]
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "cmake",
+      "label": "занятие: перечитать проект",
+      "hide": true,
+      "command": "configure",
+      "problemMatcher": []
+    },
+    {
+      "type": "cmake",
+      "label": "сборка перед запуском",
+      "detail": "то же, что F7; вызывается сама по F5, отдельно нажимать не нужно",
+      "command": "build",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": ["$gcc"]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "lesson",
+      "type": "pickString",
+      "description": "Номер занятия",
+      "default": "1.1",
+      "options": ["1.1", "1.2", "1.3", "2.1", "2.2", "2.3",
+                  "3.1", "3.2", "3.3", "4.1", "4.2", "4.3"]
+    },
+    {
+      "id": "preset-windows",
+      "type": "pickString",
+      "description": "Пресет: обычная работа, санитайзеры или строгая сборка",
+      "default": "windows",
+      "options": ["windows", "asan-windows", "strict-windows"]
+    },
+    {
+      "id": "preset-linux",
+      "type": "pickString",
+      "description": "Пресет: обычная работа, отладка, санитайзеры или строгая сборка",
+      "default": "linux",
+      "options": ["linux", "debug", "asan", "strict"]
+    }
+  ]
+}

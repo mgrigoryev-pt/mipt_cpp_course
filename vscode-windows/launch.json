@@ -1,0 +1,37 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "nano-edr на сценарии (Windows)",
+      "type": "cppvsdbg",
+      "request": "launch",
+      "preLaunchTask": "сборка перед запуском",
+      "program": "${command:cmake.launchTargetPath}",
+      "args": ["${input:scenario}"],
+      "cwd": "${workspaceFolder}/project",
+      "console": "externalTerminal"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "scenario",
+      "type": "pickString",
+      "description": "Сценарий: .log читается как журнал, .cfg — как мир для os.h",
+      "default": "scenarios/phishing_macro.log",
+      "options": ["scenarios/phishing_macro.log",
+                  "scenarios/ransomware.log",
+                  "scenarios/lolbin_download.log",
+                  "scenarios/persistence.log",
+                  "scenarios/pid_reuse.log",
+                  "scenarios/clean_office.log",
+                  "scenarios/clean_build.log",
+                  "scenarios/phishing_macro.cfg",
+                  "scenarios/ransomware.cfg",
+                  "scenarios/lolbin_download.cfg",
+                  "scenarios/persistence.cfg",
+                  "scenarios/pid_reuse.cfg",
+                  "scenarios/clean_office.cfg",
+                  "scenarios/clean_build.cfg"]
+    }
+  ]
+}

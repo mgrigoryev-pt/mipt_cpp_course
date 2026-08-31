@@ -1,0 +1,53 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "nano-edr на сценарии (Linux)",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/project/build/${input:preset-linux}/nano-edr",
+      "args": ["${input:scenario}"],
+      "cwd": "${workspaceFolder}/project",
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "environment": [],
+      "stopAtEntry": false,
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "scenario",
+      "type": "pickString",
+      "description": "Сценарий: .log читается как журнал, .cfg — как мир для os.h",
+      "default": "scenarios/phishing_macro.log",
+      "options": ["scenarios/phishing_macro.log",
+                  "scenarios/ransomware.log",
+                  "scenarios/lolbin_download.log",
+                  "scenarios/persistence.log",
+                  "scenarios/pid_reuse.log",
+                  "scenarios/clean_office.log",
+                  "scenarios/clean_build.log",
+                  "scenarios/phishing_macro.cfg",
+                  "scenarios/ransomware.cfg",
+                  "scenarios/lolbin_download.cfg",
+                  "scenarios/persistence.cfg",
+                  "scenarios/pid_reuse.cfg",
+                  "scenarios/clean_office.cfg",
+                  "scenarios/clean_build.cfg"]
+    },
+    {
+      "id": "preset-linux",
+      "type": "pickString",
+      "description": "Пресет: обычная работа, отладка, санитайзеры или строгая сборка",
+      "default": "linux",
+      "options": ["linux", "debug", "asan", "strict"]
+    }
+  ]
+}
