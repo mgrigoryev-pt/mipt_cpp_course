@@ -1,0 +1,93 @@
+# ransomware: процесс из Temp за шесть секунд перезаписывает и переименовывает
+# сорок документов пользователя, дописывая расширение .locked. По ходу дела
+# кладёт записку о выкупе и стучит наружу.
+#
+# Парный сценарий — clean_build: сборка делает столько же переименований
+# за то же время и обязана не срабатывать. Отличать надо не по количеству.
+ts=1730100000000 type=process_start pid=2210 ppid=880 image=C:\Users\max\AppData\Local\Temp\svchost.exe cmdline="svchost.exe -e -q" user=DESKTOP\max
+ts=1730100000400 type=net_connect pid=2210 raddr=45.9.7.11 rport=443 domain=pay.example
+ts=1730100001000 type=file_write pid=2210 path=C:\Users\max\Documents\quarterly.xlsx size=4096
+ts=1730100001060 type=file_move pid=2210 from=C:\Users\max\Documents\quarterly.xlsx to=C:\Users\max\Documents\quarterly.xlsx.locked
+ts=1730100001150 type=file_write pid=2210 path=C:\Users\max\Documents\contract.docx size=4193
+ts=1730100001210 type=file_move pid=2210 from=C:\Users\max\Documents\contract.docx to=C:\Users\max\Documents\contract.docx.locked
+ts=1730100001300 type=file_write pid=2210 path=C:\Users\max\Documents\budget.xlsx size=4290
+ts=1730100001360 type=file_move pid=2210 from=C:\Users\max\Documents\budget.xlsx to=C:\Users\max\Documents\budget.xlsx.locked
+ts=1730100001450 type=file_write pid=2210 path=C:\Users\max\Documents\notes.docx size=4387
+ts=1730100001510 type=file_move pid=2210 from=C:\Users\max\Documents\notes.docx to=C:\Users\max\Documents\notes.docx.locked
+ts=1730100001600 type=file_write pid=2210 path=C:\Users\max\Documents\plan.pptx size=4484
+ts=1730100001660 type=file_move pid=2210 from=C:\Users\max\Documents\plan.pptx to=C:\Users\max\Documents\plan.pptx.locked
+ts=1730100001750 type=file_write pid=2210 path=C:\Users\max\Documents\invoice_11.pdf size=4581
+ts=1730100001810 type=file_move pid=2210 from=C:\Users\max\Documents\invoice_11.pdf to=C:\Users\max\Documents\invoice_11.pdf.locked
+ts=1730100001900 type=file_write pid=2210 path=C:\Users\max\Documents\invoice_12.pdf size=4678
+ts=1730100001960 type=file_move pid=2210 from=C:\Users\max\Documents\invoice_12.pdf to=C:\Users\max\Documents\invoice_12.pdf.locked
+ts=1730100002050 type=file_write pid=2210 path=C:\Users\max\Documents\photo_01.jpg size=4775
+ts=1730100002110 type=file_move pid=2210 from=C:\Users\max\Documents\photo_01.jpg to=C:\Users\max\Documents\photo_01.jpg.locked
+ts=1730100002200 type=file_write pid=2210 path=C:\Users\max\Documents\photo_02.jpg size=4872
+ts=1730100002260 type=file_move pid=2210 from=C:\Users\max\Documents\photo_02.jpg to=C:\Users\max\Documents\photo_02.jpg.locked
+ts=1730100002350 type=file_write pid=2210 path=C:\Users\max\Documents\photo_03.jpg size=4969
+ts=1730100002410 type=file_move pid=2210 from=C:\Users\max\Documents\photo_03.jpg to=C:\Users\max\Documents\photo_03.jpg.locked
+ts=1730100002500 type=file_write pid=2210 path=C:\Users\max\Documents\backup.zip size=5066
+ts=1730100002560 type=file_move pid=2210 from=C:\Users\max\Documents\backup.zip to=C:\Users\max\Documents\backup.zip.locked
+ts=1730100002650 type=file_write pid=2210 path=C:\Users\max\Documents\salary.xlsx size=5163
+ts=1730100002710 type=file_move pid=2210 from=C:\Users\max\Documents\salary.xlsx to=C:\Users\max\Documents\salary.xlsx.locked
+ts=1730100002800 type=file_write pid=2210 path=C:\Users\max\Documents\report_final.docx size=5260
+ts=1730100002860 type=file_move pid=2210 from=C:\Users\max\Documents\report_final.docx to=C:\Users\max\Documents\report_final.docx.locked
+ts=1730100002950 type=file_write pid=2210 path=C:\Users\max\Documents\readme.txt size=5357
+ts=1730100003010 type=file_move pid=2210 from=C:\Users\max\Documents\readme.txt to=C:\Users\max\Documents\readme.txt.locked
+ts=1730100003100 type=file_write pid=2210 path=C:\Users\max\Documents\scan_001.pdf size=5454
+ts=1730100003160 type=file_move pid=2210 from=C:\Users\max\Documents\scan_001.pdf to=C:\Users\max\Documents\scan_001.pdf.locked
+ts=1730100003250 type=file_write pid=2210 path=C:\Users\max\Documents\scan_002.pdf size=5551
+ts=1730100003310 type=file_move pid=2210 from=C:\Users\max\Documents\scan_002.pdf to=C:\Users\max\Documents\scan_002.pdf.locked
+ts=1730100003400 type=file_write pid=2210 path=C:\Users\max\Documents\audit.docx size=5648
+ts=1730100003460 type=file_move pid=2210 from=C:\Users\max\Documents\audit.docx to=C:\Users\max\Documents\audit.docx.locked
+ts=1730100003550 type=file_write pid=2210 path=C:\Users\max\Documents\audit_2025.xlsx size=5745
+ts=1730100003610 type=file_move pid=2210 from=C:\Users\max\Documents\audit_2025.xlsx to=C:\Users\max\Documents\audit_2025.xlsx.locked
+ts=1730100003700 type=file_write pid=2210 path=C:\Users\max\Documents\diagram.vsdx size=5842
+ts=1730100003760 type=file_move pid=2210 from=C:\Users\max\Documents\diagram.vsdx to=C:\Users\max\Documents\diagram.vsdx.locked
+ts=1730100003850 type=file_write pid=2210 path=C:\Users\max\Documents\team.pptx size=5939
+ts=1730100003910 type=file_move pid=2210 from=C:\Users\max\Documents\team.pptx to=C:\Users\max\Documents\team.pptx.locked
+ts=1730100003940 type=file_create pid=2210 path=C:\Users\max\Documents\README_RESTORE.txt
+ts=1730100003960 type=file_write pid=2210 path=C:\Users\max\Documents\README_RESTORE.txt size=1417
+ts=1730100004000 type=file_write pid=2210 path=C:\Users\max\Documents\prices.csv size=6036
+ts=1730100004060 type=file_move pid=2210 from=C:\Users\max\Documents\prices.csv to=C:\Users\max\Documents\prices.csv.locked
+ts=1730100004150 type=file_write pid=2210 path=C:\Users\max\Documents\clients.csv size=6133
+ts=1730100004210 type=file_move pid=2210 from=C:\Users\max\Documents\clients.csv to=C:\Users\max\Documents\clients.csv.locked
+ts=1730100004300 type=file_write pid=2210 path=C:\Users\max\Documents\keys.txt size=6230
+ts=1730100004360 type=file_move pid=2210 from=C:\Users\max\Documents\keys.txt to=C:\Users\max\Documents\keys.txt.locked
+ts=1730100004450 type=file_write pid=2210 path=C:\Users\max\Documents\letter.docx size=6327
+ts=1730100004510 type=file_move pid=2210 from=C:\Users\max\Documents\letter.docx to=C:\Users\max\Documents\letter.docx.locked
+ts=1730100004600 type=file_write pid=2210 path=C:\Users\max\Documents\letter_2.docx size=6424
+ts=1730100004660 type=file_move pid=2210 from=C:\Users\max\Documents\letter_2.docx to=C:\Users\max\Documents\letter_2.docx.locked
+ts=1730100004750 type=file_write pid=2210 path=C:\Users\max\Documents\family_01.jpg size=6521
+ts=1730100004810 type=file_move pid=2210 from=C:\Users\max\Documents\family_01.jpg to=C:\Users\max\Documents\family_01.jpg.locked
+ts=1730100004900 type=file_write pid=2210 path=C:\Users\max\Documents\family_02.jpg size=6618
+ts=1730100004960 type=file_move pid=2210 from=C:\Users\max\Documents\family_02.jpg to=C:\Users\max\Documents\family_02.jpg.locked
+ts=1730100005050 type=file_write pid=2210 path=C:\Users\max\Documents\video.mp4 size=6715
+ts=1730100005110 type=file_move pid=2210 from=C:\Users\max\Documents\video.mp4 to=C:\Users\max\Documents\video.mp4.locked
+ts=1730100005200 type=file_write pid=2210 path=C:\Users\max\Documents\thesis.docx size=6812
+ts=1730100005260 type=file_move pid=2210 from=C:\Users\max\Documents\thesis.docx to=C:\Users\max\Documents\thesis.docx.locked
+ts=1730100005350 type=file_write pid=2210 path=C:\Users\max\Documents\thesis_v2.docx size=6909
+ts=1730100005410 type=file_move pid=2210 from=C:\Users\max\Documents\thesis_v2.docx to=C:\Users\max\Documents\thesis_v2.docx.locked
+ts=1730100005500 type=file_write pid=2210 path=C:\Users\max\Documents\tax_2024.pdf size=7006
+ts=1730100005560 type=file_move pid=2210 from=C:\Users\max\Documents\tax_2024.pdf to=C:\Users\max\Documents\tax_2024.pdf.locked
+ts=1730100005650 type=file_write pid=2210 path=C:\Users\max\Documents\tax_2025.pdf size=7103
+ts=1730100005710 type=file_move pid=2210 from=C:\Users\max\Documents\tax_2025.pdf to=C:\Users\max\Documents\tax_2025.pdf.locked
+ts=1730100005800 type=file_write pid=2210 path=C:\Users\max\Documents\cv.docx size=7200
+ts=1730100005860 type=file_move pid=2210 from=C:\Users\max\Documents\cv.docx to=C:\Users\max\Documents\cv.docx.locked
+ts=1730100005950 type=file_write pid=2210 path=C:\Users\max\Documents\cover.docx size=7297
+ts=1730100006010 type=file_move pid=2210 from=C:\Users\max\Documents\cover.docx to=C:\Users\max\Documents\cover.docx.locked
+ts=1730100006100 type=file_write pid=2210 path=C:\Users\max\Documents\roadmap.pptx size=7394
+ts=1730100006160 type=file_move pid=2210 from=C:\Users\max\Documents\roadmap.pptx to=C:\Users\max\Documents\roadmap.pptx.locked
+ts=1730100006250 type=file_write pid=2210 path=C:\Users\max\Documents\metrics.xlsx size=7491
+ts=1730100006310 type=file_move pid=2210 from=C:\Users\max\Documents\metrics.xlsx to=C:\Users\max\Documents\metrics.xlsx.locked
+ts=1730100006400 type=file_write pid=2210 path=C:\Users\max\Documents\notes_old.txt size=7588
+ts=1730100006460 type=file_move pid=2210 from=C:\Users\max\Documents\notes_old.txt to=C:\Users\max\Documents\notes_old.txt.locked
+ts=1730100006550 type=file_write pid=2210 path=C:\Users\max\Documents\archive.7z size=7685
+ts=1730100006610 type=file_move pid=2210 from=C:\Users\max\Documents\archive.7z to=C:\Users\max\Documents\archive.7z.locked
+ts=1730100006700 type=file_write pid=2210 path=C:\Users\max\Documents\logo.png size=7782
+ts=1730100006760 type=file_move pid=2210 from=C:\Users\max\Documents\logo.png to=C:\Users\max\Documents\logo.png.locked
+ts=1730100006850 type=file_write pid=2210 path=C:\Users\max\Documents\draft.docx size=7879
+ts=1730100006910 type=file_move pid=2210 from=C:\Users\max\Documents\draft.docx to=C:\Users\max\Documents\draft.docx.locked
+ts=1730100007200 type=file_create pid=2210 path=C:\Users\max\Desktop\README_RESTORE.txt
+ts=1730100007260 type=file_write pid=2210 path=C:\Users\max\Desktop\README_RESTORE.txt size=1417
+ts=1730100007800 type=net_connect pid=2210 raddr=45.9.7.11 rport=443 domain=pay.example

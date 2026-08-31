@@ -1,0 +1,85 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": { "major": 3, "minor": 21, "patch": 0 },
+
+  "configurePresets": [
+    {
+      "name": "windows",
+      "displayName": "Windows, MSVC x64",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build/windows",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" }
+    },
+    {
+      "name": "linux",
+      "displayName": "Linux, g++-14",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build/linux",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "g++-14",
+        "CMAKE_BUILD_TYPE": "Release"
+      },
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Linux" }
+    },
+    {
+      "name": "asan",
+      "inherits": "linux",
+      "displayName": "Linux, g++-14, ASan + UBSan",
+      "binaryDir": "${sourceDir}/build/asan",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "NANO_EDR_SANITIZE": "ON"
+      }
+    },
+    {
+      "name": "asan-windows",
+      "inherits": "windows",
+      "displayName": "Windows, ASan",
+      "binaryDir": "${sourceDir}/build/asan-windows",
+      "cacheVariables": { "NANO_EDR_SANITIZE": "ON" }
+    },
+    {
+      "name": "strict",
+      "inherits": "linux",
+      "displayName": "Linux, предупреждения как ошибки",
+      "binaryDir": "${sourceDir}/build/strict",
+      "cacheVariables": { "NANO_EDR_WERROR": "ON" }
+    },
+    {
+      "name": "strict-windows",
+      "inherits": "windows",
+      "displayName": "Windows, предупреждения как ошибки",
+      "binaryDir": "${sourceDir}/build/strict-windows",
+      "cacheVariables": { "NANO_EDR_WERROR": "ON" }
+    }
+  ],
+
+  "buildPresets": [
+    { "name": "windows", "configurePreset": "windows", "configuration": "Release" },
+    { "name": "linux",   "configurePreset": "linux" },
+    { "name": "asan",    "configurePreset": "asan" },
+    { "name": "strict",  "configurePreset": "strict" },
+    { "name": "asan-windows",   "configurePreset": "asan-windows",
+      "configuration": "RelWithDebInfo" },
+    { "name": "strict-windows", "configurePreset": "strict-windows",
+      "configuration": "Release" }
+  ],
+
+  "testPresets": [
+    { "name": "windows", "configurePreset": "windows", "configuration": "Release",
+      "output": { "outputOnFailure": true } },
+    { "name": "linux",   "configurePreset": "linux",
+      "output": { "outputOnFailure": true } },
+    { "name": "asan",    "configurePreset": "asan",
+      "output": { "outputOnFailure": true } },
+    { "name": "strict",  "configurePreset": "strict",
+      "output": { "outputOnFailure": true } },
+    { "name": "asan-windows",   "configurePreset": "asan-windows",
+      "configuration": "RelWithDebInfo",
+      "output": { "outputOnFailure": true } },
+    { "name": "strict-windows", "configurePreset": "strict-windows",
+      "configuration": "Release",
+      "output": { "outputOnFailure": true } }
+  ]
+}

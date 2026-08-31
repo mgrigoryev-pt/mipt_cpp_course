@@ -1,0 +1,19 @@
+# pid_reuse: скриптовый хост запускает дочерний процесс и завершается сам.
+# Освободившийся номер 1042 достаётся безобидному notepad.exe, и только
+# после этого набирается достаточно улик, чтобы сработало правило.
+#
+# Агент, который реагирует на цепочку предков по одному номеру процесса,
+# завершит notepad. Правильный помнит, что личность процесса — это пара
+# (pid, start_time), и передаёт expected_start_time в os_process_kill:
+# симулятор ответит OS_PID_REUSED, а пользователь не потеряет заметки.
+ts=1730400000000 type=process_start pid=1042 ppid=880 image=C:\Windows\System32\wscript.exe cmdline="wscript.exe C:\Users\max\AppData\Local\Temp\b.js" user=DESKTOP\max
+ts=1730400000600 type=process_start pid=1180 ppid=1042 image=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe cmdline="powershell -w hidden -enc SQBFAFgA" user=DESKTOP\max
+ts=1730400001100 type=net_connect pid=1042 raddr=45.9.7.11 rport=443 domain=c2.example
+ts=1730400001800 type=process_end pid=1042 exit=0
+ts=1730400002000 type=process_start pid=1042 ppid=880 image=C:\Windows\System32\notepad.exe cmdline="notepad.exe C:\Users\max\notes.txt" user=DESKTOP\max
+ts=1730400002500 type=net_connect pid=1180 raddr=45.9.7.11 rport=443 domain=c2.example
+ts=1730400003000 type=file_create pid=1180 path=C:\Users\max\AppData\Local\Temp\stage2.bin
+ts=1730400003300 type=file_write pid=1180 path=C:\Users\max\AppData\Local\Temp\stage2.bin size=48128
+ts=1730400003600 type=net_connect pid=1180 raddr=45.9.7.11 rport=8443 domain=c2.example
+ts=1730400004200 type=file_write pid=1042 path=C:\Users\max\notes.txt size=1240
+ts=1730400004900 type=file_write pid=1042 path=C:\Users\max\notes.txt size=1502

@@ -1,0 +1,16 @@
+# persistence: тело кладётся в профиль пользователя, ярлык на него — в папку
+# автозапуска, а затем оно запускается оттуда. Два разных признака: запись
+# в автозапуск и запуск из необычного пути.
+#
+# Реестра в os.h нет и не будет: автозапуск здесь — это путь в Startup.
+# Заводить целую подсистему ради одного признака смысла нет.
+ts=1730300000000 type=process_start pid=4410 ppid=880 image=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe cmdline="powershell -w hidden -c Copy-Item $env:TEMP\s.bin $env:APPDATA\Sync\sync.exe" user=DESKTOP\max
+ts=1730300000600 type=file_create pid=4410 path=C:\Users\max\AppData\Roaming\Sync\sync.exe
+ts=1730300001000 type=file_write pid=4410 path=C:\Users\max\AppData\Roaming\Sync\sync.exe size=98304
+ts=1730300001600 type=file_create pid=4410 path="C:\Users\max\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Sync.lnk"
+ts=1730300001900 type=file_write pid=4410 path="C:\Users\max\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Sync.lnk" size=1246
+ts=1730300002400 type=process_end pid=4410 exit=0
+ts=1730300003000 type=process_start pid=4455 ppid=880 image=C:\Users\max\AppData\Roaming\Sync\sync.exe cmdline="sync.exe --service" user=DESKTOP\max
+ts=1730300003600 type=net_connect pid=4455 raddr=45.9.7.11 rport=443 domain=c2.example
+ts=1730300004400 type=file_create pid=4455 path=C:\Users\max\AppData\Roaming\Sync\queue.dat
+ts=1730300005200 type=net_connect pid=4455 raddr=45.9.7.11 rport=443 domain=c2.example
