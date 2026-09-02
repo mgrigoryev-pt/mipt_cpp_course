@@ -178,7 +178,7 @@ EDR, если у конструкции нет естественного мес
 | сценарии | [`scenarios/`](../project/scenarios) | мир, поток событий, приёмочная секция |
 | проверка | `tools/<платформа>/sim_verify` | сверяет отчёт симулятора с ожиданиями |
 | нагрузочный журнал | `tools/<платформа>/gen_stress` | два миллиона событий для замеров |
-| пример | [`examples/minimal_agent.cpp`](../project/examples/minimal_agent.cpp) | тридцать семь строк, полный цикл |
+| пример | [`examples/minimal_agent.cpp`](../project/examples/minimal_agent.cpp) | полный цикл работы с границей |
 
 Что установить, как собрать, что делает CMake и как прогнать тесты —
 в [`project/README.md`](../project/README.md).
