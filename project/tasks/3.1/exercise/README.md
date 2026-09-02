@@ -14,6 +14,14 @@ g++ -std=c++23 -O2 -Wall -Wextra -o window window.cpp
 ./window
 ```
 
+На Windows — из «x64 Native Tools Command Prompt for VS 2022», чтобы `cl` был
+на `PATH`:
+
+```
+cl /std:c++latest /O2 /W4 /EHsc window.cpp
+window.exe
+```
+
 **Только Release.** В отладочной сборке ничего не встроено, и сравнение
 измеряет работу отладочных проверок, а не структур данных.
 

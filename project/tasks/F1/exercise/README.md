@@ -16,8 +16,12 @@ g++ -std=c++23 -O2 -Wall -Wextra -o containers containers.cpp
 ./containers
 ```
 
+На Windows — из «x64 Native Tools Command Prompt for VS 2022», чтобы `cl` был
+на `PATH`:
+
 ```
 cl /std:c++latest /O2 /W4 /EHsc containers.cpp
+containers.exe
 ```
 
 **Только Release.** В отладочной сборке измеряются проверки стандартной

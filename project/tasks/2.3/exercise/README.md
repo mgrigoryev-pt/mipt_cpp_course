@@ -14,6 +14,14 @@ g++ -std=c++23 -O2 -Wall -Wextra -o dispatch dispatch.cpp
 ./dispatch
 ```
 
+На Windows — из «x64 Native Tools Command Prompt for VS 2022», чтобы `cl` был
+на `PATH`:
+
+```
+cl /std:c++latest /O2 /W4 /EHsc dispatch.cpp
+dispatch.exe
+```
+
 **Замер имеет смысл только в Release.** В отладочной сборке ничего не встроено,
 и обе версии одинаково медленные — сравнивать будет нечего.
 

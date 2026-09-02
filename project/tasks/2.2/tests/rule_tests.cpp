@@ -144,7 +144,7 @@ TEST_CASE("все условия должны выполниться") {
     CHECK_FALSE(rule.Check(MakeFileWrite()));
 }
 
-TEST_CASE("одно невыполненное условие отменяет сработку") {
+TEST_CASE("одно невыполненное условие отменяет детект") {
     MatchRule rule("почти", Severity::kLow);
     rule.AddCondition(Condition::Equals("type", {"process_start"}));
     rule.AddCondition(Condition::EndsWith("image", {"cmd.exe"}));
@@ -161,7 +161,7 @@ TEST_CASE("правило без условий срабатывает на вс
     CHECK(rule.Check(MakeFileWrite()));
 }
 
-TEST_CASE("счётчик считает только сработки") {
+TEST_CASE("счётчик считает только детекты") {
     MatchRule rule("script_host", Severity::kHigh);
     rule.AddCondition(Condition::Equals("type", {"process_start"}));
 

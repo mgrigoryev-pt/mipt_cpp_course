@@ -49,7 +49,7 @@ class RuleBase {
     // неверно, и увидеть это дешевле, чем узнать на разборе.
     std::size_t hits() const { return hits_; }
 
-    // Что делать по сработке. Пока просто имена — "kill_process",
+    // Что делать по детекту. Пока просто имена — "kill_process",
     // "quarantine_file". Настоящие действия появятся на занятии 3.3, когда
     // будет чем их выполнять: реагирование идёт через границу os.h.
     const std::vector<std::string>& actions() const { return actions_; }
