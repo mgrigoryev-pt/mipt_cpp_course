@@ -244,13 +244,13 @@ TEST_CASE("двадцать за одиннадцать секунд не сра
 }
 
 TEST_CASE("порог считается по ключу, а не по всему хосту") {
-    // Иначе десять безобидных процессов сложились бы в одну сработку.
+    // Иначе десять безобидных процессов сложились бы в один детект.
     ThresholdRule<64> rule("mass_write", Severity::kHigh, 5, 10000, "pid");
     rule.SetCondition(std::make_unique<EventTypeIs>(
         std::vector<EventType>{EventType::kFileWrite}));
 
     // По четыре события от каждого из трёх процессов — двенадцать всего,
-    // и ни одной сработки.
+    // и ни одного детекта.
     for (int i = 0; i < 4; ++i) {
         for (const char* pid : {"1", "2", "3"}) {
             rule.Check(MakeWrite(pid, 1000 + static_cast<std::uint64_t>(i) * 100,
@@ -260,13 +260,13 @@ TEST_CASE("порог считается по ключу, а не по всем�
     CHECK(rule.hits() == 0);
     CHECK(rule.bucket_count() == 3);
 
-    // Пятое от первого — сработка.
+    // Пятое от первого — детект.
     CHECK(rule.Check(MakeWrite("1", 1500, "a")));
     CHECK(rule.hits() == 1);
 }
 
-TEST_CASE("после сработки счёт начинается заново") {
-    // Иначе одно превышение порога давало бы сработку на каждом следующем
+TEST_CASE("после детекта счёт начинается заново") {
+    // Иначе одно превышение порога давало бы детект на каждом следующем
     // событии, и на потоке это стало бы шумом.
     ThresholdRule<64> rule("mass_write", Severity::kHigh, 3, 10000, "pid");
     rule.SetCondition(std::make_unique<EventTypeIs>(
@@ -274,7 +274,7 @@ TEST_CASE("после сработки счёт начинается занов�
 
     rule.Check(MakeWrite("42", 1000, "a"));
     rule.Check(MakeWrite("42", 1100, "a"));
-    CHECK(rule.Check(MakeWrite("42", 1200, "a")));   // третье — сработка
+    CHECK(rule.Check(MakeWrite("42", 1200, "a")));   // третье — детект
     CHECK_FALSE(rule.Check(MakeWrite("42", 1300, "a")));  // счёт начат заново
     CHECK(rule.hits() == 1);
 }
