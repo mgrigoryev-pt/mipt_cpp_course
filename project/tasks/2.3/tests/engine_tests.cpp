@@ -220,11 +220,11 @@ TEST_CASE("последовательность срабатывает на вт
     rule.SetSecond(std::make_unique<EventTypeIs>(
         std::vector<EventType>{EventType::kNetConnect}));
 
-    // Первый шаг сам по себе не сработка.
+    // Первый шаг сам по себе не детект.
     CHECK_FALSE(rule.Check(MakeEvent("process_start", "42", 1000)));
     CHECK(rule.pending() == 1);
 
-    // Второй шаг того же процесса в пределах окна — сработка.
+    // Второй шаг того же процесса в пределах окна — детект.
     CHECK(rule.Check(MakeEvent("net_connect", "42", 2000)));
     CHECK(rule.hits() == 1);
 }
