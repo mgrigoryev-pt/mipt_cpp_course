@@ -701,4 +701,4 @@ if (ec) {
 - Всё это опирается на RAII (basic guarantee из этой лекции) и на move-семантику из лекции 11
 - `std::thread`, `std::jthread`, `std::mutex` и RAII-локи
 - `std::condition_variable`, `std::future` / `std::promise` / `std::async`
-- Для углубления на семинаре: `std::expected` с монадическими операциями, `std::error_code` в `std::filesystem`
+- За рамками курса: `std::expected` с монадическими операциями, `std::error_code` в `std::filesystem`

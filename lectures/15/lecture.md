@@ -105,7 +105,7 @@ std::unique_ptr<FILE, decltype(close_file)> file(std::fopen("x", "r"), close_fil
 
 Это та же RAII-идея, но deleter знает, **как** освобождать. Для файлов это `fclose`, для сетевых хэндлов — `close`, для GPU-объектов — соответствующее API. Идея — превратить любой ресурс в RAII-управляемый.
 
-В прикладном коде часто пишут собственные wrapper-классы поверх `unique_ptr` с предзаданным deleter'ом — это даёт чистый интерфейс. Подробности по custom-deleter — на семинаре или в элективной части (там же будет про type erasure deleter'а в `shared_ptr`).
+В прикладном коде часто пишут собственные wrapper-классы поверх `unique_ptr` с предзаданным deleter'ом — это даёт чистый интерфейс. Подробности по custom-deleter, включая type erasure deleter'а в `shared_ptr`, в курс не входят.
 
 ## 2. `shared_ptr` и control block
 
