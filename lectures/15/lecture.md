@@ -706,7 +706,7 @@ void f() {
 - **Концепты** (C++20) — полностью.
 - **Ranges** — глубоко, реализация views.
 - **Аллокаторы** — кастомные, `allocator_traits`, propagation.
-- **Move-семантика deep:** universal references, perfect forwarding, reference qualifiers.
+- **Move-семантика deep:** reference qualifiers методов, полная классификация value categories.
 - **Модель памяти C++:** atomics, memory orderings, lock-free структуры.
 - **`constexpr` deep:** `consteval`, `constinit`, виртуальные в compile-time.
 - **Бонусы:** alignment и object model, observability, обзор корутин и модулей.
