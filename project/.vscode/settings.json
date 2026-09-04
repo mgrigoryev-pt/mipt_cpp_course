@@ -1,0 +1,14 @@
+{
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "cmake.options.statusBarVisibility": "visible",
+  // Рабочий каталог и сценарий для запусков через CMake Tools (Shift+F5
+  // и Ctrl+Shift+F5): launch.json они не читают. Ключей консоли два, потому
+  // что отладчики разные: console понимает только cppvsdbg на Windows,
+  // externalConsole — cppdbg на Linux.
+  "cmake.debugConfig": {
+    "cwd": "${workspaceFolder}",
+    "args": ["scenarios/phishing_macro.log"],
+    "console": "externalTerminal",
+    "externalConsole": true
+  }
+}

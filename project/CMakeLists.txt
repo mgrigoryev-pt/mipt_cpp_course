@@ -221,8 +221,52 @@ if(NANO_EDR_TASKS)
     message(STATUS "выданные тесты: ${NANO_EDR_TASKS}")
 endif()
 
+# ---------------------------------------------------------------------------
+# Чем собираем
+# ---------------------------------------------------------------------------
+#
+# Строка печатается дважды: при конфигурации и в начале каждой сборки.
+# Второе не дублирование. Конфигурация была когда-то, а сборка идёт сейчас,
+# и генератор с компилятором помнит каталог сборки, а не команда: `cmake
+# --build` на каталоге от прежнего пресета молча собирает тем, чем собирал
+# раньше — например MSBuild и MSVC там, где ожидались Ninja и clang.
+# Со строкой в выводе это видно сразу, а не после разбирательств.
+
+set(NANO_EDR_TOOLCHAIN
+    "${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}, ${CMAKE_GENERATOR}")
+
+# Сообщение идёт через COMMENT, а не через `cmake -E echo`: у echo генератор
+# сначала печатает саму команду со всеми путями, и одна полезная строка
+# приезжает в обёртке на пол-экрана.
+#
+# Заодно этой же целью в корень проекта копируется compile_commands.json —
+# список того, чем и с какими флагами собран каждый файл. Его читает clangd,
+# и ищет он рядом с исходниками, а CMake пишет его в каталог сборки, имя
+# которого зависит от пресета (build/windows, build/linux, build/asan). Копия
+# снимает вопрос: навигация в редакторе работает без единой настройки
+# и одинаково на обеих системах.
+#
+# Копия делается при сборке, а не при конфигурации: сам файл появляется
+# на шаге генерации, то есть уже после того, как этот CMakeLists прочитан.
+# И только там, где он вообще бывает: генератор Visual Studio ключ
+# CMAKE_EXPORT_COMPILE_COMMANDS игнорирует, файла не будет, копировать нечего.
+
+if(CMAKE_EXPORT_COMPILE_COMMANDS AND CMAKE_GENERATOR MATCHES "Ninja|Makefiles")
+    add_custom_target(toolchain ALL
+        COMMAND "${CMAKE_COMMAND}" -E copy_if_different
+                "${CMAKE_BINARY_DIR}/compile_commands.json"
+                "${CMAKE_SOURCE_DIR}/compile_commands.json"
+        COMMENT "собираю: ${NANO_EDR_TOOLCHAIN}")
+else()
+    add_custom_target(toolchain ALL
+        COMMAND "${CMAKE_COMMAND}" -E true
+        COMMENT "собираю: ${NANO_EDR_TOOLCHAIN}")
+endif()
+add_dependencies(nano-edr toolchain)
+
 if(NANO_EDR_LESSON)
     message(STATUS "занятие: ${NANO_EDR_LESSON}")
 endif()
 message(STATUS "комплект занятия: ${NANO_EDR_KIT}")
+message(STATUS "компилятор: ${NANO_EDR_TOOLCHAIN}")
 message(STATUS "границы: ${NANO_EDR_PLATFORM}, готовые библиотеки из lib/${NANO_EDR_PLATFORM}")
