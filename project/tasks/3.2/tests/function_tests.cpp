@@ -175,7 +175,7 @@ TEST_CASE("константный Function зовёт неконстантный
 // Detection
 // ---------------------------------------------------------------------------
 
-TEST_CASE("строка сработки без цепочки") {
+TEST_CASE("строка детекта без цепочки") {
     const Detection detection = MakeDetection("test_rule", "1042", 1000);
 
     const std::string text = nano_edr::ToString(detection);
@@ -188,7 +188,7 @@ TEST_CASE("строка сработки без цепочки") {
     CHECK(text.find("chain=") == std::string::npos);
 }
 
-TEST_CASE("строка сработки с цепочкой") {
+TEST_CASE("строка детекта с цепочкой") {
     Detection detection = MakeDetection("test_rule", "1042", 1000);
     detection.chain = "880>1042(cmd.exe)";
 
@@ -274,9 +274,9 @@ TEST_CASE("повтор в пределах окна подавлен") {
     CHECK(suppressed == 2);
 }
 
-TEST_CASE("после окна сработка проходит снова") {
-    // Окно считается от ПЕРВОЙ сработки. Иначе непрерывный поток одинаковых
-    // сработок молчал бы вечно, и про длящуюся атаку агент перестал бы
+TEST_CASE("после окна детект проходит снова") {
+    // Окно считается от ПЕРВОГО детекта. Иначе непрерывный поток одинаковых
+    // детектов молчал бы вечно, и про длящуюся атаку агент перестал бы
     // докладывать.
     AlertCounter counter;
     std::size_t suppressed = 0;
@@ -345,7 +345,7 @@ TEST_CASE("движок без получателей работает") {
           1);
 }
 
-TEST_CASE("сработка уходит получателю") {
+TEST_CASE("детект уходит получателю") {
     AlertCounter counter;
     RuleEngine engine;
     auto rule = std::make_unique<MatchRule>("any_start", Severity::kHigh);
