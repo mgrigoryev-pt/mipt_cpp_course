@@ -40,6 +40,8 @@
 #include "event.h"
 #include "fields.h"
 #include "function.h"
+// Кольцевой буфер студент пишет сам на занятии 3.1 и кладёт в src/ —
+// этот каталог стоит на include-пути раньше комплекта.
 #include "ring_buffer.h"
 #include "rules.h"
 
@@ -320,24 +322,6 @@ class ThresholdRule : public RuleBase {
     std::string key_;
     std::vector<Bucket> buckets_;
 };
-
-// Фабрика правил.
-//
-// Смысл не в экономии букв, а в одном месте, где правило создаётся: если
-// завтра правила начнут регистрироваться в реестре или получать общий
-// префикс идентификатора, править придётся здесь, а не в каждом вызове.
-//
-// Аргументы берутся по значению и передаются дальше копией. Лишняя копия
-// здесь есть, и она видна: `args...` — lvalue, поэтому конструктор правила
-// получает копию, а не тот объект, который ему передали. Убирается это
-// на занятии 3.3 одним словом — `std::move(args)...`, — и тогда фабрика
-// начинает принимать в том числе то, что копировать нельзя вообще
-// (см. LambdaRule выше).
-template <typename Rule, typename... Args>
-std::unique_ptr<Rule> MakeRule(const std::string& id, Severity severity,
-                               Args... args) {
-    return std::make_unique<Rule>(id, severity, args...);
-}
 
 }  // namespace nano_edr
 

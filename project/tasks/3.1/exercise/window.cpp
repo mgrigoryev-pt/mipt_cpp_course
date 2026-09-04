@@ -1,32 +1,34 @@
-// Упражнение занятия 3.1: кольцевой буфер против односвязного списка.
+// Стенд занятия 3.1: ваш кольцевой буфер против вашего односвязного списка.
 //
-// Сорок минут. Замена своего примитива своим же, более подходящим — и первый
-// случай, когда «стало лучше» надо подтвердить числами, а не словами.
-//
-// Список — тот же, что вы писали на занятии 1.2: узел владеет следующим через
-// unique_ptr, деструктор разбирает цепочку явным циклом. Кольцевой буфер
-// выдан комплектом, в kit/include/l3.1/ring_buffer.h, и здесь повторён, чтобы
-// файл собирался сам по себе. Писать ничего не надо: оба контейнера готовы.
+// Программа ничего не реализует — она меряет. Обе структуры здесь ваши: список
+// написан на занятии 1.2 и повторён ниже, чтобы стенд собирался сам по себе,
+// а кольцевой буфер берётся из src/ring_buffer.h, то есть из того, что вы
+// написали час назад. Пока этого файла нет, стенд не соберётся.
 //
 // Порядок работы:
-//   1. Прочитать оба и предсказать на бумаге: во сколько раз кольцевой буфер
-//      быстрее на миллионе вставок? И сколько аллокаций сделает каждый?
-//   2. Запустить, сверить.
-//   3. Объяснить разницу. Двух причин достаточно, и обе называются словами.
+//   1. Написать примитив. Интерфейс задан выданными тестами — восемью случаями
+//      в tasks/3.1/tests/template_tests.cpp; прочитать их как спецификацию
+//      это часть задания.
+//   2. Предсказать на бумаге: во сколько раз кольцевой буфер быстрее
+//      на миллионе вставок? И сколько аллокаций сделает каждый?
+//   3. Запустить, сверить.
+//   4. Объяснить разницу. Двух причин достаточно, и обе называются словами.
 //
 // Замеров два, вставка и обход, и объяснения у них разные. Числа на вставке
 // расходятся между платформами в разы, а время списка на обходе двумодально —
 // один и тот же прогон даёт то одно, то вдвое большее, смотря как легли узлы
 // в куче. Время буфера не меняется, и это тоже результат.
 //
-// Сборка:
-//   g++ -std=c++23 -O2 -Wall -Wextra -o window window.cpp
-//   cl /nologo /std:c++latest /O2 /W4 /EHsc window.cpp
+// Сборка — из каталога, где лежит этот файл:
+//   g++ -std=c++23 -O2 -Wall -Wextra -I ../../../src -o window window.cpp
+//   cl /nologo /std:c++latest /O2 /W4 /EHsc /I ..\..\..\src window.cpp
+//
+// Ключ -I (у cl это /I) указывает, где искать ring_buffer.h: путь ведёт
+// в src/ вашего проекта.
 //
 // Только Release: в отладочной сборке ничего не встроено, и сравнение
 // измеряет работу отладочных проверок, а не структур данных.
 
-#include <array>
 #include <chrono>
 #include <cstddef>
 #include <cstdint>
@@ -35,6 +37,10 @@
 #include <new>
 #include <print>
 #include <utility>
+
+#include "ring_buffer.h"
+
+using nano_edr::RingBuffer;
 
 // ---------------------------------------------------------------------------
 // Счётчик аллокаций
@@ -133,61 +139,21 @@ class SimpleList {
 };
 
 // ---------------------------------------------------------------------------
-// Кольцевой буфер
+// Сумма по кольцевому буферу
 // ---------------------------------------------------------------------------
+//
+// У списка сумма своим методом — он тут же, в этом файле. У буфера её нет
+// и заводить незачем: стенду хватает того, что по буферу можно пройти
+// range-based for, а это и есть весь его интерфейс обхода.
 
-template <typename T, std::size_t N>
-class RingBuffer {
- public:
-    void PushBack(const T& value) {
-        storage_[(begin_ + size_) % N] = value;
-        if (size_ < N) {
-            ++size_;
-        } else {
-            begin_ = (begin_ + 1) % N;
-        }
+template <typename Ring>
+std::uint64_t SumOf(const Ring& ring) {
+    std::uint64_t total = 0;
+    for (const std::uint64_t value : ring) {
+        total += value;
     }
-
-    class Iterator {
-     public:
-        Iterator(const RingBuffer* owner, std::size_t offset)
-            : owner_(owner), offset_(offset) {}
-        const T& operator*() const { return owner_->At(offset_); }
-        Iterator& operator++() {
-            ++offset_;
-            return *this;
-        }
-        bool operator!=(const Iterator& other) const {
-            return offset_ != other.offset_;
-        }
-
-     private:
-        const RingBuffer* owner_;
-        std::size_t offset_;
-    };
-
-    Iterator begin() const { return Iterator(this, 0); }
-    Iterator end() const { return Iterator(this, size_); }
-
-    std::uint64_t Sum() const {
-        std::uint64_t total = 0;
-        for (const T& value : *this) {
-            total += value;
-        }
-        return total;
-    }
-
-    std::size_t size() const { return size_; }
-
- private:
-    const T& At(std::size_t offset) const {
-        return storage_[(begin_ + offset) % N];
-    }
-
-    std::array<T, N> storage_{};
-    std::size_t begin_ = 0;
-    std::size_t size_ = 0;
-};
+    return total;
+}
 
 int main() {
     constexpr std::size_t kWindow = 64;
@@ -229,7 +195,7 @@ int main() {
         const auto elapsed = std::chrono::steady_clock::now() - start;
         counting = false;
 
-        checksum += ring.Sum();
+        checksum += SumOf(ring);
         std::print("  кольцевой буфер: {:>8.1f} нс на вставку, аллокаций {}\n",
                    static_cast<double>(
                        std::chrono::duration_cast<std::chrono::nanoseconds>(
@@ -265,7 +231,7 @@ int main() {
         const auto start = std::chrono::steady_clock::now();
         std::uint64_t total = 0;
         for (int i = 0; i < kInsertions / 100; ++i) {
-            total += ring.Sum();
+            total += SumOf(ring);
         }
         const auto elapsed = std::chrono::steady_clock::now() - start;
         checksum += total;

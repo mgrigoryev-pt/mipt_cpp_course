@@ -20,6 +20,7 @@
 #include "doctest.h"
 #include "event.h"
 #include "field_traits.h"
+#include "make_rule.h"
 #include "ring_buffer.h"
 #include "rule.h"
 #include "rules.h"
@@ -183,16 +184,23 @@ TEST_CASE("кольцевой буфер не аллоцирует вообще"
     // Критерий занятия дословно. Проверяется на типе без собственных
     // аллокаций: у Event внутри строки, и они аллоцируют сами по себе —
     // проверять на нём было бы бессмысленно.
-    RingBuffer<Timestamp, 64> ring;
+    //
+    // Создание буфера — внутри окна счёта, а не до него. «Не аллоцирует
+    // вообще» значит в том числе «не аллоцирует при создании»: реализация
+    // на std::vector с одним выделением в конструкторе тоже не выделяет
+    // на вставку, но памятью в объекте уже не является.
+    std::uint64_t sum = 0;
 
     allocation_count = 0;
     counting_allocations = true;
-    for (int i = 0; i < 10000; ++i) {
-        ring.PushBack(Timestamp{static_cast<std::uint64_t>(i)});
-    }
-    std::uint64_t sum = 0;
-    for (const Timestamp& stamp : ring) {
-        sum += stamp.ms;
+    {
+        RingBuffer<Timestamp, 64> ring;
+        for (int i = 0; i < 10000; ++i) {
+            ring.PushBack(Timestamp{static_cast<std::uint64_t>(i)});
+        }
+        for (const Timestamp& stamp : ring) {
+            sum += stamp.ms;
+        }
     }
     counting_allocations = false;
 
