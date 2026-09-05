@@ -34,14 +34,6 @@ target_include_directories(task4_2_tests PRIVATE
 target_compile_definitions(task4_2_tests PRIVATE
     NANO_EDR_SCENARIOS="${NANO_EDR_KIT_ROOT}/scenarios")
 
-# Два случая загрузчика — про виды правил sequence и threshold, то есть
-# про продвинутую часть занятия. Базовая часть читает из файла только match,
-# поэтому по умолчанию они не собираются: тест, требующий несделанного,
-# сообщает о нём как о сломанном, и студент чинит не то.
-if(NANO_EDR_RULE_KINDS)
-    target_compile_definitions(task4_2_tests PRIVATE NANO_EDR_RULE_KINDS)
-endif()
-
 target_link_libraries(task4_2_tests PRIVATE ${NANO_EDR_CORE})
 
 # doctest — сторонний заголовок, предупреждения в нём не ваши.
