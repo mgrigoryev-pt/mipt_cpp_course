@@ -66,13 +66,9 @@
 #include <vector>
 
 #include "rule.h"
+#include "rule_engine.h"
 
 namespace nano_edr {
-
-// Движок пишет студент (`src/rule_engine.h`, занятие 2.3), и здесь он нужен
-// только указателем в MoveInto — значит хватает предобъявления, а полный
-// тип подключает тот, кто MoveInto зовёт.
-class RuleEngine;
 
 class EntityModel;
 

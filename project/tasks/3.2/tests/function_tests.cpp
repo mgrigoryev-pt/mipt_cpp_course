@@ -18,8 +18,6 @@
 #include "doctest.h"
 #include "event.h"
 #include "function.h"
-#include "lambda_rule.h"
-#include "match_rule.h"
 #include "rule.h"
 #include "rule_engine.h"
 #include "rules.h"

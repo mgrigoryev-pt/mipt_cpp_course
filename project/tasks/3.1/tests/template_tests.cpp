@@ -21,11 +21,9 @@
 #include "event.h"
 #include "field_traits.h"
 #include "make_rule.h"
-#include "match_rule.h"
 #include "ring_buffer.h"
 #include "rule.h"
 #include "rules.h"
-#include "threshold_rule.h"
 
 using nano_edr::AllOfStatic;
 using nano_edr::AnyOfStatic;

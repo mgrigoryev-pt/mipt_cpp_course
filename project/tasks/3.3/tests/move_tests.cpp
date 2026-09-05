@@ -28,7 +28,6 @@
 #include "doctest.h"
 #include "event.h"
 #include "function.h"
-#include "lambda_rule.h"
 #include "make_rule.h"
 #include "ring_buffer.h"
 #include "rule.h"
