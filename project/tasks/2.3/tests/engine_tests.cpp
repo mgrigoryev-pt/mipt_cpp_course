@@ -18,9 +18,11 @@
 #include "doctest.h"
 #include "event.h"
 #include "event_source.h"
+#include "match_rule.h"
 #include "rule.h"
 #include "rule_engine.h"
 #include "rules.h"
+#include "sequence_rule.h"
 
 using nano_edr::Event;
 using nano_edr::EventParts;

@@ -5,7 +5,6 @@
 
 #include "conditions.h"
 #include "event.h"
-#include "event_list.h"
 #include "fields.h"
 #include "os_handle.h"
 #include "parse.h"

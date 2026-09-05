@@ -12,7 +12,8 @@
 #include "conditions.h"
 #include "doctest.h"
 #include "event.h"
-#include "rule.h"
+#include "match_rule.h"
+#include "rule_base.h"
 #include "rules.h"
 
 using nano_edr::Condition;

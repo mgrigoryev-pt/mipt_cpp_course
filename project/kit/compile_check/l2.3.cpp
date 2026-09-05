@@ -5,11 +5,9 @@
 
 #include "conditions.h"
 #include "event.h"
-#include "event_list.h"
 #include "event_source.h"
 #include "fields.h"
 #include "os_handle.h"
 #include "parse.h"
 #include "rule.h"
-#include "rule_engine.h"
 #include "rules.h"

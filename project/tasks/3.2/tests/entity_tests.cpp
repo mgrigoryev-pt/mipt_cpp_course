@@ -15,6 +15,7 @@
 #include "event.h"
 #include "rule.h"
 #include "rules.h"
+#include "sequence_rule.h"
 
 using nano_edr::EntityModel;
 using nano_edr::Event;
