@@ -1,0 +1,80 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "занятие",
+      "detail": "выбрать номер занятия и пресет, сконфигурировать проект",
+      "dependsOrder": "sequence",
+      "dependsOn": ["занятие: номер"],
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "занятие: номер",
+      "hide": true,
+      "command": "cmake",
+      "args": ["-D", "NANO_EDR_LESSON=${input:lesson}",
+                "--preset", "${input:preset-linux}"],
+      "options": {
+          "cwd": "${workspaceFolder}/project"
+      },
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "сборка проекта",
+      "command": "cmake --build --preset ${input:preset-linux} --parallel",
+      "args": [],
+      "options": {
+          "cwd": "${workspaceFolder}/project",
+          "env": {
+          }
+      },
+      "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared",
+          "showReuseMessage": true,
+          "clear": true
+      },
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "clean",
+      "type": "shell",
+      "command": "cmake --build --preset ${input:preset-linux} --target clean",
+      "options": {
+          "cwd": "${workspaceFolder}/project"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "clean-all",
+      "type": "shell",
+      "command": "rm -rf ${workspaceFolder}/project/build",
+      "options": {
+          "cwd": "${workspaceFolder}/project"
+      },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "lesson",
+      "type": "pickString",
+      "description": "Номер занятия",
+      "default": "1.1",
+      "options": ["1.1", "1.2", "1.3", "2.1", "2.2", "2.3",
+                  "3.1", "3.2", "3.3", "4.1", "4.2", "4.3"]
+    },
+    {
+      "id": "preset-linux",
+      "type": "pickString",
+      "description": "Пресет: обычная работа, отладка, санитайзеры или строгая сборка",
+      "default": "linux",
+      "options": ["linux", "debug", "asan", "strict"]
+    }
+  ]
+}

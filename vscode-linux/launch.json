@@ -2,25 +2,23 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "nano-edr на сценарии (Windows)",
-      "type": "cppvsdbg",
-      "request": "launch",
-      "preLaunchTask": "сборка перед запуском",
-      "program": "${command:cmake.launchTargetPath}",
-      "args": ["${input:scenario}"],
-      "cwd": "${workspaceFolder}/project",
-      "console": "externalTerminal"
-    },
-    {
       "name": "nano-edr на сценарии (Linux)",
       "type": "cppdbg",
       "request": "launch",
-      "preLaunchTask": "сборка перед запуском",
-      "program": "${command:cmake.launchTargetPath}",
+      "program": "${workspaceFolder}/project/build/${input:preset-linux}/nano-edr",
       "args": ["${input:scenario}"],
       "cwd": "${workspaceFolder}/project",
-      "externalConsole": true,
-      "MIMode": "gdb"
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "environment": [],
+      "stopAtEntry": false,
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
     }
   ],
   "inputs": [
@@ -43,6 +41,13 @@
                   "scenarios/pid_reuse.cfg",
                   "scenarios/clean_office.cfg",
                   "scenarios/clean_build.cfg"]
+    },
+    {
+      "id": "preset-linux",
+      "type": "pickString",
+      "description": "Пресет: обычная работа, отладка, санитайзеры или строгая сборка",
+      "default": "linux",
+      "options": ["linux", "debug", "asan", "strict"]
     }
   ]
 }
