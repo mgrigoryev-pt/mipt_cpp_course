@@ -122,7 +122,7 @@ class Condition {
 
     // Фабрики вместо публичного конструктора: `Condition::EndsWith("image",
     // {"wscript.exe"})` читается, а `Condition(Match::kEndsWith, "image", ...)`
-    // — нет. Приём тот же, что появится на Ф2 у типов-результатов.
+    // — нет. Приём тот же, что появится на 4.2 у типов-результатов.
     static Condition Equals(const std::string& key,
                             const std::vector<std::string>& values);
     static Condition Contains(const std::string& key,

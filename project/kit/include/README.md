@@ -46,21 +46,21 @@ cmake --preset windows -D NANO_EDR_LESSON=1.3
 | `l3.1` | `combinators.h`, `field_traits.h`, `ring_buffer.h` | `rule.h` |
 | `l3.2` | `alert_sink.h`, `detection.h`, `edr_handle.h`, `entity_model.h`, `function.h` | `rule.h`, `rule_engine.h` |
 | `l3.3` | `copy_stats.h`, `response.h`, `window_entry.h` | девять файлов, включая `os_handle.h` и `entity_model.h` |
-| `lF1` | — | `entity_model.h`, `response.h`, `ring_buffer.h`, `rule.h`, `rule_engine.h` |
-| `lF2` | `os_error.h`, `rule_loader.h` | `event.h`, `os_handle.h`, `parse.h` |
-| `lF3` | `reporter.h` | `copy_stats.h`, `detection.h`, `entity_model.h`, `event_source.h` |
+| `l4.1` | — | `entity_model.h`, `response.h`, `ring_buffer.h`, `rule.h`, `rule_engine.h` |
+| `l4.2` | `os_error.h`, `rule_loader.h` | `event.h`, `os_handle.h`, `parse.h` |
+| `l4.3` | `reporter.h` | `copy_stats.h`, `detection.h`, `entity_model.h`, `event_source.h` |
 
 Две строки таблицы стоит заметить заранее.
 
-**`event_list.h` в `lF1` отсутствует.** Рукописный список к финальной части
-заменяется стандартным контейнером — это и есть занятие Ф1, и заготовка
+**`event_list.h` в `l4.1` отсутствует.** Рукописный список к части 4
+заменяется стандартным контейнером — это и есть занятие 4.1, и заготовка
 исчезает вместе с надобностью в ней.
 
-**На `lF2` уходит `os_status`.** Обёртка над границей меняет канал отказа
+**На `l4.2` уходит `os_status`.** Обёртка над границей меняет канал отказа
 на `std::expected`, и вместе с ним меняется её конструктор: он становится
 приватным, а рядом встаёт фабрика. Тест `os_handle_tests.cpp` из набора 2.1
 проверял прежний контракт и на этом занятии из набора выпадает — замена
-приезжает в наборе Ф2.
+приезжает в наборе 4.2.
 
 ## Чего в заготовках нет
 
@@ -76,7 +76,7 @@ cmake --preset windows -D NANO_EDR_LESSON=1.3
 У агрегата поля **и есть** интерфейс. `EventNode` в `l1.2` — это `Event`
 и `unique_ptr<EventNode> next`, и выданные тесты 1.2 ходят по этой цепочке
 руками: устройство списка задано, а не оставлено на ваше усмотрение. То же
-с `ProcessKey` в `lF1` — пара «номер и время старта» напечатана прямо
+с `ProcessKey` в `l4.1` — пара «номер и время старта» напечатана прямо
 в постановке занятия.
 
 Дальше этого не происходит: с занятия 2.2 выданные тесты проверяют поведение,
