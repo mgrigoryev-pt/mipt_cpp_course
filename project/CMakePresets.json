@@ -5,27 +5,39 @@
   "configurePresets": [
     {
       "name": "windows",
-      "displayName": "Windows, MSVC x64",
-      "generator": "Visual Studio 17 2022",
-      "architecture": "x64",
+      "displayName": "windows — clang x64, профиль Release",
+      "generator": "Ninja Multi-Config",
       "binaryDir": "${sourceDir}/build/windows",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "clang++",
+        "CMAKE_CONFIGURATION_TYPES": "Release;RelWithDebInfo;Debug",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      },
       "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" }
     },
     {
       "name": "linux",
-      "displayName": "Linux, g++-14",
-      "generator": "Unix Makefiles",
+      "displayName": "linux — clang, профиль Release",
+      "generator": "Ninja",
       "binaryDir": "${sourceDir}/build/linux",
       "cacheVariables": {
-        "CMAKE_CXX_COMPILER": "g++-14",
-        "CMAKE_BUILD_TYPE": "Release"
+        "CMAKE_CXX_COMPILER": "clang++-19",
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
       },
       "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Linux" }
     },
     {
+      "name": "debug",
+      "inherits": "linux",
+      "displayName": "debug — clang, профиль Debug",
+      "binaryDir": "${sourceDir}/build/debug",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
+    },
+    {
       "name": "asan",
       "inherits": "linux",
-      "displayName": "Linux, g++-14, ASan + UBSan",
+      "displayName": "asan — clang, ASan и UBSan",
       "binaryDir": "${sourceDir}/build/asan",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
@@ -35,41 +47,73 @@
     {
       "name": "asan-windows",
       "inherits": "windows",
-      "displayName": "Windows, ASan",
+      "displayName": "asan-windows — clang, ASan и UBSan",
       "binaryDir": "${sourceDir}/build/asan-windows",
-      "cacheVariables": { "NANO_EDR_SANITIZE": "ON" }
+      "cacheVariables": {
+        "NANO_EDR_SANITIZE": "ON",
+        "CMAKE_MSVC_RUNTIME_LIBRARY": "MultiThreaded"
+      }
     },
     {
       "name": "strict",
       "inherits": "linux",
-      "displayName": "Linux, предупреждения как ошибки",
+      "displayName": "strict — предупреждения как ошибки",
       "binaryDir": "${sourceDir}/build/strict",
       "cacheVariables": { "NANO_EDR_WERROR": "ON" }
     },
     {
       "name": "strict-windows",
       "inherits": "windows",
-      "displayName": "Windows, предупреждения как ошибки",
+      "displayName": "strict-windows — предупреждения как ошибки",
       "binaryDir": "${sourceDir}/build/strict-windows",
       "cacheVariables": { "NANO_EDR_WERROR": "ON" }
+    },
+    {
+      "name": "msvc",
+      "displayName": "msvc — сверка компилятором MSVC",
+      "generator": "Visual Studio 17 2022",
+      "architecture": "x64",
+      "binaryDir": "${sourceDir}/build/msvc",
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Windows" }
+    },
+    {
+      "name": "gcc",
+      "displayName": "gcc — сверка компилятором g++-14",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build/gcc",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "g++-14",
+        "CMAKE_BUILD_TYPE": "Release"
+      },
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Linux" }
     }
   ],
 
   "buildPresets": [
     { "name": "windows", "configurePreset": "windows", "configuration": "Release" },
     { "name": "linux",   "configurePreset": "linux" },
+    { "name": "debug-windows", "configurePreset": "windows",
+      "configuration": "Debug" },
+    { "name": "debug",   "configurePreset": "debug" },
     { "name": "asan",    "configurePreset": "asan" },
     { "name": "strict",  "configurePreset": "strict" },
     { "name": "asan-windows",   "configurePreset": "asan-windows",
       "configuration": "RelWithDebInfo" },
     { "name": "strict-windows", "configurePreset": "strict-windows",
-      "configuration": "Release" }
+      "configuration": "Release" },
+    { "name": "msvc", "configurePreset": "msvc", "configuration": "Release" },
+    { "name": "gcc",  "configurePreset": "gcc" }
   ],
 
   "testPresets": [
     { "name": "windows", "configurePreset": "windows", "configuration": "Release",
       "output": { "outputOnFailure": true } },
     { "name": "linux",   "configurePreset": "linux",
+      "output": { "outputOnFailure": true } },
+    { "name": "debug-windows", "configurePreset": "windows",
+      "configuration": "Debug",
+      "output": { "outputOnFailure": true } },
+    { "name": "debug",   "configurePreset": "debug",
       "output": { "outputOnFailure": true } },
     { "name": "asan",    "configurePreset": "asan",
       "output": { "outputOnFailure": true } },
@@ -80,6 +124,10 @@
       "output": { "outputOnFailure": true } },
     { "name": "strict-windows", "configurePreset": "strict-windows",
       "configuration": "Release",
+      "output": { "outputOnFailure": true } },
+    { "name": "msvc", "configurePreset": "msvc", "configuration": "Release",
+      "output": { "outputOnFailure": true } },
+    { "name": "gcc",  "configurePreset": "gcc",
       "output": { "outputOnFailure": true } }
   ]
 }
