@@ -13,6 +13,7 @@
       "label": "занятие: номер",
       "hide": true,
       "command": "cmake",
+      "options": { "cwd": "${workspaceFolder}/project" },
       "windows": {
         "args": ["-D", "NANO_EDR_LESSON=${input:lesson}",
                  "--preset", "${input:preset-windows}"]

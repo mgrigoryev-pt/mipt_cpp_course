@@ -9,3 +9,7 @@ project/compile_commands.json
 # Личный файл пресетов, если кто-то его себе завёл: CMake читает его рядом
 # с CMakePresets.json, а версионировать чужие локальные настройки незачем.
 project/CMakeUserPresets.json
+# Индекс clangd: он кладёт его рядом с compile_commands.json, то есть
+# в project/. Каталог производный и вырастает до сотен мегабайт; окно
+# VS Code открывается на корне репозитория, и в git status он бы мозолил глаза.
+.cache/
