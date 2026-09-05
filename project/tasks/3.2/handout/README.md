@@ -8,7 +8,8 @@
 cp tasks/3.2/handout/entity_model.cpp src/
 ```
 
-На Windows в PowerShell — `Copy-Item tasks\3.2\handout\entity_model.cpp src\`.
+Строка работает и в bash, и в PowerShell: там `cp` — псевдоним `Copy-Item`,
+а прямые слэши в путях он понимает.
 
 Появление нового `.cpp` — изменение описания проекта, поэтому после копирования
 нужна **пере**конфигурация.
