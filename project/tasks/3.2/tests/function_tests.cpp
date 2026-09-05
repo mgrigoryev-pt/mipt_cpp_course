@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "alert_sink.h"
+#include "dedup_sink.h"
 #include "detection.h"
 #include "doctest.h"
 #include "event.h"

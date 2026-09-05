@@ -30,7 +30,6 @@
 #define NANO_EDR_KIT_ALERT_SINK_H
 
 #include <cstddef>
-#include <cstdint>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -135,9 +134,21 @@ class FanOutSink {
 };
 
 // --- получатель, подавляющий дубликаты ------------------------------------
-
-// Пропускает первый детект пары «правило + процесс» и молчит про остальные,
-// пока не выйдет окно.
+//
+// Этого получателя вы пишете сами — `src/dedup_sink.h`. Объявления здесь нет
+// намеренно: какое у него будет устройство, решать вам. Каталог `src/` стоит
+// на include-пути раньше комплекта, поэтому выданные тесты найдут ваш
+// заголовок.
+//
+// Что он должен делать: пропускать первый детект пары «правило + процесс»
+// и молчать про остальные, пока не выйдет окно. Форму пинают пять случаев
+// в `tasks/3.2/tests/function_tests.cpp`, и из них же видна подпись:
+//
+//     DedupSink(AlertSink inner, uint64_t window_ms, std::size_t* suppressed);
+//     void operator()(const Detection& detection);
+//
+// inner — куда пропускать; window_ms — на сколько замолкать; suppressed —
+// куда считать подавленные, может быть nullptr.
 //
 // Задача не косметическая. Сценарий ransomware даёт сорок детектов правила
 // `ransom_extension` на один и тот же процесс за шесть секунд — это одна
@@ -147,26 +158,6 @@ class FanOutSink {
 // Потеря при этом настоящая: по одной строке не видно, что зашифровано сорок
 // файлов. Поэтому подавленные считаются и попадают в сводку — молча терять
 // информацию хуже, чем терять её с отчётом.
-class DedupSink {
- public:
-    // inner — куда пропускать; window_ms — на сколько замолкать; suppressed —
-    // куда считать подавленные, может быть nullptr.
-    DedupSink(AlertSink inner, uint64_t window_ms, std::size_t* suppressed);
-
-    void operator()(const Detection& detection);
-
- private:
-    struct Seen {
-        std::string rule;
-        std::string pid;
-        Timestamp ts;
-    };
-
-    AlertSink inner_;
-    uint64_t window_ms_;
-    std::size_t* suppressed_;  // не владеет
-    std::vector<Seen> seen_;
-};
 
 }  // namespace nano_edr
 
