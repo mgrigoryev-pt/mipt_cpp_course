@@ -256,11 +256,10 @@ Ninja и gdb уже в образе, ставить внутри него нич
 
 ### 1. Docker Desktop
 
-Установить [Docker Desktop](https://www.docker.com/products/docker-desktop/),
-затем включить Settings → General → «Use Rosetta for x86/amd64 emulation
-on Apple Silicon». Образ курса — x86-64, на Apple Silicon он идёт через
-эмуляцию, и с Rosetta она в разы быстрее, чем стандартный qemu. На Intel Mac
-включать нечего: там образ идёт как есть.
+Установить [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+и **снять** галку Settings → General → «Use Rosetta for x86/amd64 emulation
+on Apple Silicon». На macOS 14.1 и новее она стоит по умолчанию, так что это
+не «оставить как есть», а именно выключить.
 
 ### 2. Открыть курс в контейнере
 

@@ -5,7 +5,8 @@
 # Архитектура выбрана x86-64 намеренно: собранные os и edr в комплекте есть
 # для win-x64 и linux-x64, и программа, собранная под arm64, с этими
 # библиотеками не слинкуется. На Apple Silicon образ идёт через эмуляцию,
-# и как её ускорить, написано в SETUP.md, раздел «macOS: работа в контейнере».
+# и вести её должен QEMU: Rosetta в Docker Desktop должна быть выключена,
+# см. SETUP.md, раздел «macOS: работа в контейнере».
 ARG NANO_EDR_PLATFORM=linux/amd64
 FROM --platform=${NANO_EDR_PLATFORM} ubuntu:26.04
 
