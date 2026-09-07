@@ -24,31 +24,6 @@ elseif(MSVC AND MSVC_VERSION LESS 1940)
     message(FATAL_ERROR "MSVC ${MSVC_VERSION} слишком старый. ${NANO_EDR_HINT}")
 endif()
 
-# ---------------------------------------------------------------------------
-# macOS: стандартная библиотека берётся у того же clang, что компилирует
-# ---------------------------------------------------------------------------
-#
-# clang из Homebrew подключает свои заголовки libc++, но линкуется по умолчанию
-# с системной libc++ от Apple — а та старее, и половины символов C++23 в ней
-# нет. Собирается такой код без единого замечания, а падает на компоновке:
-# «undefined symbol: std::__1::__print::__vprint_unicode_posix». Поэтому
-# компоновщику указывается та же libc++, чьи заголовки читал компилятор,
-# и её путь заодно зашивается в исполняемый файл, чтобы он запускался.
-#
-# Каталог не прописан буквой: он выводится из пути к самому компилятору,
-# и потому одинаково работает на Apple Silicon (/opt/homebrew) и на Intel
-# (/usr/local). Если рядом с clang своей libc++ нет — это clang от Apple,
-# и блок не делает ничего: проверку версии выше он всё равно не прошёл бы.
-
-if(APPLE AND CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    get_filename_component(NANO_EDR_LLVM_BIN  "${CMAKE_CXX_COMPILER}" DIRECTORY)
-    get_filename_component(NANO_EDR_LLVM_ROOT "${NANO_EDR_LLVM_BIN}"  DIRECTORY)
-    if(EXISTS "${NANO_EDR_LLVM_ROOT}/lib/c++/libc++.1.dylib")
-        add_link_options("-L${NANO_EDR_LLVM_ROOT}/lib/c++"
-                         "-Wl,-rpath,${NANO_EDR_LLVM_ROOT}/lib/c++")
-        if(EXISTS "${NANO_EDR_LLVM_ROOT}/lib/unwind")
-            add_link_options("-L${NANO_EDR_LLVM_ROOT}/lib/unwind" "-lunwind")
-        endif()
         message(STATUS "libc++: ${NANO_EDR_LLVM_ROOT}/lib/c++")
     endif()
 endif()

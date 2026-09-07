@@ -3,23 +3,28 @@
 # Библиотеки поставляются собранными; всё, что о них нужно знать, — в
 # include/os.h, include/edr.h и SPEC.md.
 
-# Каталог границ выбирается по системе, а на macOS ещё и по процессору:
-# Apple Silicon и Intel — разные двоичные архитектуры, и одна и та же dylib
-# на двух не работает.
+# Каталог границ выбирается по системе. Границы поставляются под две:
+# win-x64 и linux-x64.
+#
+# macOS проверяется отдельно и раньше UNIX, хотя своих границ у неё нет —
+# именно поэтому. macOS это тоже UNIX, и без этой ветви на macOS выбрался бы
+# linux-x64: библиотеки там лежат, конфигурация прошла бы успешно, а падало
+# бы потом на компоновке жалобой на формат файла. Отказ сразу и по делу
+# лучше успеха, который ничем не кончится.
 if(WIN32)
     set(NANO_EDR_PLATFORM win-x64)
 elseif(APPLE)
-    if(CMAKE_SYSTEM_PROCESSOR STREQUAL "arm64")
-        set(NANO_EDR_PLATFORM mac-arm64)
-    else()
-        set(NANO_EDR_PLATFORM mac-x64)
-    endif()
+    message(FATAL_ERROR
+        "На macOS проект не собирается: готовых os и edr под неё нет. "
+        "Работа на macOS идёт в Linux-контейнере, он описан каталогом "
+        ".devcontainer в репозитории курса — SETUP.md, раздел "
+        "«macOS: работа в контейнере».")
 elseif(UNIX)
     set(NANO_EDR_PLATFORM linux-x64)
 else()
     message(FATAL_ERROR
         "Готовых библиотек для этой системы (${CMAKE_SYSTEM_NAME}) в комплекте нет: "
-        "собираются win-x64, linux-x64 и mac. Напишите преподавателю — сборка "
+        "собираются win-x64 и linux-x64. Напишите преподавателю — сборка "
         "под вашу платформу это один прогон скрипта, а не переделка задания.")
 endif()
 
@@ -31,9 +36,6 @@ if(WIN32)
     set(NANO_EDR_OS_LINK "${NANO_EDR_LIB_DIR}/os.lib")
     set(NANO_EDR_EDR_BIN  "${NANO_EDR_LIB_DIR}/edr.dll")
     set(NANO_EDR_EDR_LINK "${NANO_EDR_LIB_DIR}/edr.lib")
-elseif(APPLE)
-    set(NANO_EDR_OS_BIN  "${NANO_EDR_LIB_DIR}/libos.dylib")
-    set(NANO_EDR_EDR_BIN "${NANO_EDR_LIB_DIR}/libedr.dylib")
 else()
     set(NANO_EDR_OS_BIN  "${NANO_EDR_LIB_DIR}/libos.so")
     set(NANO_EDR_EDR_BIN "${NANO_EDR_LIB_DIR}/libedr.so")
@@ -91,11 +93,6 @@ endif()
 # На Windows DLL ищется рядом с exe, поэтому её туда надо положить: этим
 # занимается nano_edr_copy_runtime() ниже. На ELF путь к библиотеке зашивается
 # в сам исполняемый файл через RPATH, и копировать ничего не нужно.
-#
-# На macOS работает та же строка, но по другой причине: dylib несёт внутри
-# себя имя, под которым её будут загружать, и у os и edr это «@rpath/libos.dylib».
-# То есть библиотека сама отсылает загрузчик к RPATH исполняемого файла —
-# к тому же, что задаётся здесь.
 #
 # Достаточно вызвать функцию для одной цели: все исполняемые файлы проекта,
 # включая программы выданных тестов, собираются в один каталог.
