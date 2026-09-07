@@ -19,6 +19,7 @@
 | CMake 3.21 и новее | проверить: `cmake --version` |
 | Windows | Visual Studio 2022, нагрузка «Разработка классических приложений на C++» |
 | Linux | `g++-14`, `make` |
+| macOS | `brew install llvm` — clang от Apple для C++23 не годится |
 
 Компилятор старее конфигурация отвергает сразу и с внятным сообщением,
 а не падает посреди сборки.
@@ -30,8 +31,8 @@
 
 **Шаг 1, конфигурация.** Читает `CMakeLists.txt` — описание проекта: какие
 файлы компилировать, с какими флагами, что с чем линковать, — и создаёт
-в `build/` файлы для настоящей сборочной системы: проект Visual Studio
-на Windows, `Makefile` на Linux. Ни один `.cpp` здесь ещё не компилируется.
+в `build/` файлы для настоящей сборочной системы — например сборку Ninja
+или `Makefile`. Ни один `.cpp` здесь ещё не компилируется.
 
 **Шаг 2, сборка.** Запускает эту сборочную систему: компилирует изменившееся
 и линкует результат.
@@ -41,8 +42,9 @@ cmake --preset windows -D NANO_EDR_LESSON=1.1
 cmake --build --preset windows
 ```
 
-На Linux вместо `windows` — `linux`. Результат:
-`build/windows/Release/nano-edr.exe` или `build/linux/nano-edr`.
+На Linux вместо `windows` — `linux`, на macOS — `macos`. Результат:
+`build/windows/Release/nano-edr.exe`, `build/linux/nano-edr`
+или `build/macos/nano-edr`.
 
 ```bash
 ./build/windows/Release/nano-edr scenarios/phishing_macro.log
@@ -122,7 +124,7 @@ cmake --preset strict-windows
 cmake --build --preset strict-windows
 ```
 
-На Linux — `strict`.
+На Linux — `strict`, на macOS — `strict-macos`.
 
 **Санитайзеры.** Половина ошибок с указателями видна только под ними:
 
@@ -132,10 +134,10 @@ cmake --build --preset asan-windows
 ctest --preset asan-windows
 ```
 
-На Linux — `asan`. Пресеты собирают clang, поэтому
-`-fsanitize=address,undefined` действует на обеих системах: и обращение
-к освобождённому, и неопределённое поведение вроде переполнения знакового
-или сдвига на слишком много ловятся везде.
+На Linux — `asan`, на macOS — `asan-macos`. Пресеты собирают clang,
+поэтому `-fsanitize=address,undefined` действует на всех трёх системах:
+и обращение к освобождённому, и неопределённое поведение вроде
+переполнения знакового или сдвига на слишком много ловятся везде.
 
 **Кроме утечек.** LeakSanitizer под Windows не работает, и невозвращённая
 память там проходит молча: зелёный `asan-windows` не значит, что вы всё
@@ -205,7 +207,8 @@ cmake --build --preset windows --target format-check
 cmake --build --preset windows --target format
 ```
 
-На Linux вместо `windows` — `linux`. Целей не будет, если `clang-format`
+На Linux вместо `windows` — `linux`, на macOS — `macos`. Целей не будет,
+если `clang-format`
 не установлен: для сборки проекта он не нужен.
 
 Одного `clang-format` не делает: переносы строк. В стиле стоит
@@ -368,7 +371,9 @@ cl /nologo /std:c++latest /O2 /W4 /EHsc /I ..\..\..\src window.cpp
 ./tools/win-x64/gen_stress.exe
 ```
 
-На Linux — `./tools/linux-x64/gen_stress`. По умолчанию журнал ложится
+На Linux — `./tools/linux-x64/gen_stress`, на macOS —
+`./tools/mac-arm64/gen_stress` или `./tools/mac-x64/gen_stress`
+по архитектуре машины. По умолчанию журнал ложится
 в `scenarios/stress.log`; атак в нём нет, он нужен только для замеров. Журнал
 воспроизводим: при одном зерне получается побайтово тот же файл на любой
 платформе.

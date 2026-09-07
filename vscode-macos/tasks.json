@@ -1,0 +1,61 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "занятие",
+      "detail": "выбрать номер занятия и пресет, сконфигурировать проект",
+      "dependsOrder": "sequence",
+      "dependsOn": ["занятие: номер", "занятие: перечитать проект"],
+      "problemMatcher": []
+    },
+    {
+      "type": "shell",
+      "label": "занятие: номер",
+      "hide": true,
+      "command": "cmake",
+      "args": ["-D", "NANO_EDR_LESSON=${input:lesson}",
+               "--preset", "${input:preset-macos}"],
+      "options": { "cwd": "${workspaceFolder}/project" },
+      "problemMatcher": []
+    },
+    {
+      "type": "cmake",
+      "label": "занятие: перечитать проект",
+      "hide": true,
+      "command": "configure",
+      "problemMatcher": []
+    },
+    {
+      "type": "cmake",
+      "label": "сборка перед запуском",
+      "detail": "то же, что F7; вызывается сама по F5, отдельно нажимать не нужно",
+      "command": "build",
+      "group": { "kind": "build", "isDefault": true },
+      "problemMatcher": ["$gcc"]
+    },
+    {
+      "label": "clean-all",
+      "type": "shell",
+      "command": "rm -rf ${workspaceFolder}/project/build",
+      "options": { "cwd": "${workspaceFolder}/project" },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "lesson",
+      "type": "pickString",
+      "description": "Номер занятия",
+      "default": "1.1",
+      "options": ["1.1", "1.2", "1.3", "2.1", "2.2", "2.3",
+                  "3.1", "3.2", "3.3", "4.1", "4.2", "4.3"]
+    },
+    {
+      "id": "preset-macos",
+      "type": "pickString",
+      "description": "Пресет: обычная работа, отладка, санитайзеры или строгая сборка",
+      "default": "macos",
+      "options": ["macos", "debug-macos", "asan-macos", "strict-macos"]
+    }
+  ]
+}

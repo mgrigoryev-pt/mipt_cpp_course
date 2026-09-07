@@ -28,10 +28,29 @@
       "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Linux" }
     },
     {
+      "name": "macos",
+      "displayName": "macos — clang из Homebrew, профиль Release",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/macos",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "clang++",
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      },
+      "condition": { "type": "equals", "lhs": "${hostSystemName}", "rhs": "Darwin" }
+    },
+    {
       "name": "debug",
       "inherits": "linux",
       "displayName": "debug — clang, профиль Debug",
       "binaryDir": "${sourceDir}/build/debug",
+      "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
+    },
+    {
+      "name": "debug-macos",
+      "inherits": "macos",
+      "displayName": "debug-macos — clang, профиль Debug",
+      "binaryDir": "${sourceDir}/build/debug-macos",
       "cacheVariables": { "CMAKE_BUILD_TYPE": "Debug" }
     },
     {
@@ -65,6 +84,16 @@
       }
     },
     {
+      "name": "asan-macos",
+      "inherits": "macos",
+      "displayName": "asan-macos — clang, ASan и UBSan",
+      "binaryDir": "${sourceDir}/build/asan-macos",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "NANO_EDR_SANITIZE": "ON"
+      }
+    },
+    {
       "name": "strict",
       "inherits": "linux",
       "displayName": "strict — предупреждения как ошибки",
@@ -76,6 +105,13 @@
       "inherits": "windows",
       "displayName": "strict-windows — предупреждения как ошибки",
       "binaryDir": "${sourceDir}/build/strict-windows",
+      "cacheVariables": { "NANO_EDR_WERROR": "ON" }
+    },
+    {
+      "name": "strict-macos",
+      "inherits": "macos",
+      "displayName": "strict-macos — предупреждения как ошибки",
+      "binaryDir": "${sourceDir}/build/strict-macos",
       "cacheVariables": { "NANO_EDR_WERROR": "ON" }
     },
     {
@@ -102,12 +138,16 @@
   "buildPresets": [
     { "name": "windows", "configurePreset": "windows", "configuration": "Release" },
     { "name": "linux",   "configurePreset": "linux" },
+    { "name": "macos",   "configurePreset": "macos" },
     { "name": "debug-windows", "configurePreset": "windows",
       "configuration": "Debug" },
     { "name": "debug",   "configurePreset": "debug" },
+    { "name": "debug-macos", "configurePreset": "debug-macos" },
     { "name": "asan",    "configurePreset": "asan" },
     { "name": "tsan",    "configurePreset": "tsan" },
+    { "name": "asan-macos", "configurePreset": "asan-macos" },
     { "name": "strict",  "configurePreset": "strict" },
+    { "name": "strict-macos", "configurePreset": "strict-macos" },
     { "name": "asan-windows",   "configurePreset": "asan-windows",
       "configuration": "RelWithDebInfo" },
     { "name": "strict-windows", "configurePreset": "strict-windows",
@@ -121,6 +161,8 @@
       "output": { "outputOnFailure": true } },
     { "name": "linux",   "configurePreset": "linux",
       "output": { "outputOnFailure": true } },
+    { "name": "macos",   "configurePreset": "macos",
+      "output": { "outputOnFailure": true } },
     { "name": "debug-windows", "configurePreset": "windows",
       "configuration": "Debug",
       "output": { "outputOnFailure": true } },
@@ -128,9 +170,15 @@
       "output": { "outputOnFailure": true } },
     { "name": "tsan",    "configurePreset": "tsan",
       "output": { "outputOnFailure": true } },
+    { "name": "debug-macos", "configurePreset": "debug-macos",
+      "output": { "outputOnFailure": true } },
     { "name": "asan",    "configurePreset": "asan",
       "output": { "outputOnFailure": true } },
+    { "name": "asan-macos", "configurePreset": "asan-macos",
+      "output": { "outputOnFailure": true } },
     { "name": "strict",  "configurePreset": "strict",
+      "output": { "outputOnFailure": true } },
+    { "name": "strict-macos", "configurePreset": "strict-macos",
       "output": { "outputOnFailure": true } },
     { "name": "asan-windows",   "configurePreset": "asan-windows",
       "configuration": "RelWithDebInfo",
