@@ -24,10 +24,6 @@ elseif(MSVC AND MSVC_VERSION LESS 1940)
     message(FATAL_ERROR "MSVC ${MSVC_VERSION} слишком старый. ${NANO_EDR_HINT}")
 endif()
 
-        message(STATUS "libc++: ${NANO_EDR_LLVM_ROOT}/lib/c++")
-    endif()
-endif()
-
 # ---------------------------------------------------------------------------
 # Настройки занятия
 # ---------------------------------------------------------------------------
