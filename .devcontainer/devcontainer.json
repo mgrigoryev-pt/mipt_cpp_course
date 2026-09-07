@@ -1,0 +1,31 @@
+{
+    // Linux-окружение курса для Маков: комплект пока не несёт готовых границ
+    // под macOS, а под linux-x64 несёт. Подробно — SETUP.md, раздел
+    // «macOS: Linux в контейнере».
+    "name": "nano-edr: Linux x86-64",
+
+    // Образ описан Dockerfile рядом, там же закреплена архитектура.
+    "build": { "dockerfile": "Dockerfile" },
+
+    // Для отладчика: без SYS_PTRACE и без снятого профиля seccomp gdb
+    // не может присоединиться к процессу внутри контейнера, и F5 срывается
+    // на «ptrace: Operation not permitted».
+    "runArgs": ["--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined"],
+
+    // Собирать из-под root незачем: пользователь с uid 1000 в образе есть.
+    "remoteUser": "ubuntu",
+
+    // Расширения ставятся внутрь контейнера, и список тот же, что
+    // в vscode-linux/extensions.json: разбор кода и отладчик здесь даёт C/C++.
+    "customizations": {
+        "vscode": {
+            "extensions": ["ms-vscode.cpptools"]
+        }
+    },
+
+    // Рабочие настройки редактора: в контейнере нужен linux-набор, задачи
+    // из macos-набора вызывают пресеты, которых здесь нет. Готовый .vscode
+    // не трогается — если он остался от macos-набора, удалите каталог
+    // и пересоздайте контейнер.
+    "postCreateCommand": "test -d .vscode || cp -r vscode-linux .vscode"
+}
