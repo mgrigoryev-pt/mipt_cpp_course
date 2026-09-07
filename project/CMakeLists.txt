@@ -58,6 +58,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}")
 
 option(NANO_EDR_WERROR   "Считать предупреждения ошибками" OFF)
 option(NANO_EDR_SANITIZE "Собрать с ASan и UBSan"          OFF)
+option(NANO_EDR_TSAN     "Собрать с ThreadSanitizer"       OFF)
 
 # ---------------------------------------------------------------------------
 # Выключатели устаревших проверок
@@ -120,6 +121,33 @@ if(NANO_EDR_SANITIZE)
         add_compile_options(-fsanitize=address,undefined -fno-omit-frame-pointer -g)
         add_link_options(-fsanitize=address,undefined)
     endif()
+endif()
+
+# ThreadSanitizer — отдельным ключом и отдельным каталогом сборки.
+# Понадобится на занятии 4.3, где колбэки начинают приходить из другого
+# потока.
+#
+# Вместе с ASan он не собирается: оба перехватывают одни и те же вызовы
+# среды выполнения. Отказ здесь громкий намеренно — сборка, в которой
+# один санитайзер молча вытеснил другой, даёт зелёный прогон без
+# гарантий.
+if(NANO_EDR_TSAN)
+    if(NANO_EDR_SANITIZE)
+        message(FATAL_ERROR
+            "NANO_EDR_TSAN и NANO_EDR_SANITIZE вместе не работают: ASan "
+            "и TSan не уживаются в одной сборке. Соберите два каталога "
+            "— пресетами asan и tsan.")
+    endif()
+    if(WIN32)
+        # ThreadSanitizer'а под Windows не существует: ни у MSVC,
+        # ни у clang нет среды выполнения для него. Это не наша
+        # особенность и не лечится флагами.
+        message(FATAL_ERROR
+            "ThreadSanitizer под Windows не существует. Прогон делается "
+            "на Linux или в WSL: cmake --preset tsan")
+    endif()
+    add_compile_options(-fsanitize=thread -fno-omit-frame-pointer -g)
+    add_link_options(-fsanitize=thread)
 endif()
 
 # ---------------------------------------------------------------------------

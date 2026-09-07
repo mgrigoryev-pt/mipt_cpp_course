@@ -45,6 +45,16 @@
       }
     },
     {
+      "name": "tsan",
+      "inherits": "linux",
+      "displayName": "tsan — clang, ThreadSanitizer (только Linux)",
+      "binaryDir": "${sourceDir}/build/tsan",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "NANO_EDR_TSAN": "ON"
+      }
+    },
+    {
       "name": "asan-windows",
       "inherits": "windows",
       "displayName": "asan-windows — clang, ASan и UBSan",
@@ -96,6 +106,7 @@
       "configuration": "Debug" },
     { "name": "debug",   "configurePreset": "debug" },
     { "name": "asan",    "configurePreset": "asan" },
+    { "name": "tsan",    "configurePreset": "tsan" },
     { "name": "strict",  "configurePreset": "strict" },
     { "name": "asan-windows",   "configurePreset": "asan-windows",
       "configuration": "RelWithDebInfo" },
@@ -114,6 +125,8 @@
       "configuration": "Debug",
       "output": { "outputOnFailure": true } },
     { "name": "debug",   "configurePreset": "debug",
+      "output": { "outputOnFailure": true } },
+    { "name": "tsan",    "configurePreset": "tsan",
       "output": { "outputOnFailure": true } },
     { "name": "asan",    "configurePreset": "asan",
       "output": { "outputOnFailure": true } },

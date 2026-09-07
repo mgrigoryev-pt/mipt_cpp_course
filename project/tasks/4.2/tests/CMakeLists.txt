@@ -1,8 +1,8 @@
 # Тесты, выдаваемые на занятии 4.2.
 #
-# Три группы: фабрика границы с std::expected, разбор на string_view
-# и загрузчик правил с номерами строк. Первая трогает границу — ей нужен
-# настоящий сценарий, путь передаётся сборкой. Подключение — см. README.md.
+# Две группы: фабрика границы с std::expected и загрузчик правил с номерами
+# строк. Первая трогает границу — ей нужен настоящий сценарий, путь
+# передаётся сборкой. Подключение — см. постановку занятия.
 #
 # Правьте этот файл, только если понимаете, зачем: он же прогоняется при сдаче.
 
@@ -23,7 +23,6 @@ get_filename_component(NANO_EDR_KIT_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../.." AB
 add_executable(task4_2_tests
     ${NANO_EDR_KIT_ROOT}/tests/doctest_main.cpp
     ${CMAKE_CURRENT_LIST_DIR}/os_handle_tests.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/parse_view_tests.cpp
     ${CMAKE_CURRENT_LIST_DIR}/rule_loader_tests.cpp)
 
 target_include_directories(task4_2_tests PRIVATE

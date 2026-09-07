@@ -23,4 +23,5 @@
 #include "rule.h"
 #include "rule_engine.h"
 #include "rule_loader.h"
+#include "rule_text.h"
 #include "rules.h"

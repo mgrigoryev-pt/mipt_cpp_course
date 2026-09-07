@@ -2,8 +2,9 @@
 #
 # Две части, и они разного рода.
 #
-# Первая — обычные тесты на doctest: поток отправки сработок, атомарный
-# счётчик, слабая ссылка на родителя, копия сработки без улик.
+# Первая — обычные тесты на doctest: разбор без владения, поток отправки
+# детектов, атомарный счётчик, слабая ссылка на родителя, копия детекта
+# без улик.
 #
 # Вторая — прогон каждого сценария в двух режимах доставки и сравнение
 # результата с самим собой. Это критерий занятия дословно, и эталон для него
@@ -29,6 +30,7 @@ get_filename_component(NANO_EDR_KIT_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../.." AB
 
 add_executable(task4_3_tests
     ${NANO_EDR_KIT_ROOT}/tests/doctest_main.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/parse_view_tests.cpp
     ${CMAKE_CURRENT_LIST_DIR}/reporter_tests.cpp
     ${CMAKE_CURRENT_LIST_DIR}/shared_tests.cpp)
 
@@ -48,19 +50,13 @@ add_test(NAME task4_3 COMMAND task4_3_tests)
 # Два режима доставки на одном сценарии
 # ---------------------------------------------------------------------------
 #
-# Цель агента ищется по имени. Если ваш исполняемый файл называется иначе,
-# передайте своё имя перед add_subdirectory:
+# Сравнение режимов запускает сам агент, а не библиотеку, поэтому здесь нужна
+# его цель. В комплекте она называется nano-edr; если у вас иначе, передайте
+# своё имя до подключения набора:
 #
 #     set(NANO_EDR_AGENT my_agent)
-#
-# Имён по умолчанию два, потому что и в скелете студента, и в решениях цель
-# называется по-своему: nano-edr там, nano_edr здесь.
 if(NOT DEFINED NANO_EDR_AGENT)
-    if(TARGET nano-edr)
-        set(NANO_EDR_AGENT nano-edr)
-    else()
-        set(NANO_EDR_AGENT nano_edr)
-    endif()
+    set(NANO_EDR_AGENT nano-edr)
 endif()
 
 if(TARGET ${NANO_EDR_AGENT})
@@ -93,7 +89,11 @@ if(TARGET ${NANO_EDR_AGENT})
                          -P ${CMAKE_CURRENT_LIST_DIR}/run_modes.cmake)
     endforeach()
 else()
-    message(STATUS
-        "task4_3: цель '${NANO_EDR_AGENT}' не найдена, сравнение режимов "
-        "доставки пропущено. Имя цели задаётся через NANO_EDR_AGENT.")
+    # Молча пропустить главную проверку занятия нельзя: студент увидит
+    # зелёный ctest и решит, что критерий выполнен.
+    message(FATAL_ERROR
+        "task4_3: цель '${NANO_EDR_AGENT}' не найдена, а на ней держится "
+        "главная проверка занятия — сравнение двух режимов доставки. "
+        "Если ваш исполняемый файл называется иначе, передайте имя: "
+        "set(NANO_EDR_AGENT my_agent)")
 endif()
