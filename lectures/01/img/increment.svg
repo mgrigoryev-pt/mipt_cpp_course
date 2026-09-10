@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 236" width="1060" height="236"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="light" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#dbdfe6"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="234" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="30" x2="530" y2="220" stroke="#26262b" stroke-width="1.5"/>
+
+  <text x="40" y="42" font-size="19" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">++x</text>
+  <text x="560" y="42" font-size="19" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">x++</text>
+
+  <!-- префиксный -->
+  <g text-anchor="middle" font-size="13" fill="#80828c">
+    <text x="115" y="76">было</text>
+    <text x="265" y="76">стало</text>
+    <text x="415" y="76">вернуло</text>
+  </g>
+  <g fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2">
+    <rect x="60" y="90" width="110" height="56"/>
+    <rect x="210" y="90" width="110" height="56"/>
+    <rect x="360" y="90" width="110" height="56"/>
+  </g>
+  <g text-anchor="middle" font-size="26" fill="#ffffff"
+     font-family="Consolas, Roboto Mono, monospace">
+    <text x="115" y="128">5</text>
+    <text x="265" y="128">6</text>
+    <text x="415" y="128">6</text>
+  </g>
+  <g stroke="#dbdfe6" stroke-width="2" marker-end="url(#light)">
+    <line x1="174" y1="118" x2="202" y2="118"/>
+    <line x1="324" y1="118" x2="352" y2="118"/>
+  </g>
+  <text x="60" y="212" font-size="14" fill="#80828c">меняет и возвращает одно и то же</text>
+
+  <!-- постфиксный -->
+  <text x="615" y="76" font-size="13" text-anchor="middle" fill="#80828c">было</text>
+  <rect x="560" y="90" width="110" height="56" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="615" y="128" font-size="26" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">5</text>
+  <g fill="none" stroke="#dbdfe6" stroke-width="2" marker-end="url(#light)">
+    <path d="M 676 116 L 712 94"/>
+    <path d="M 676 120 L 712 154"/>
+  </g>
+  <rect x="720" y="64" width="110" height="48" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="775" y="98" font-size="22" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">5</text>
+  <rect x="720" y="136" width="110" height="48" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="775" y="170" font-size="22" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">6</text>
+  <text x="846" y="94" font-size="14" fill="#80828c">копия — её и вернёт</text>
+  <text x="846" y="166" font-size="14" fill="#80828c">x стал 6</text>
+  <text x="560" y="212" font-size="14" fill="#80828c">старое значение приходится сохранить — отсюда и цена</text>
+</svg>
