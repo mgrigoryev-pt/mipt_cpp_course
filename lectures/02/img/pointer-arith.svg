@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 300" width="1060" height="300"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="298" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="40" y="52" font-size="17" fill="#80828c">
+    <tspan font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">int arr[5]</tspan>
+    <tspan> — пять элементов подряд, по 4 байта каждый</tspan>
+  </text>
+
+  <!-- ячейки -->
+  <g font-family="Consolas, Roboto Mono, monospace">
+    <rect x="60" y="90" width="170" height="66" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+    <text x="145" y="132" font-size="26" text-anchor="middle" fill="#ffffff">10</text>
+    <rect x="230" y="90" width="170" height="66" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+    <text x="315" y="132" font-size="26" text-anchor="middle" fill="#ffffff">20</text>
+    <rect x="400" y="90" width="170" height="66" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+    <text x="485" y="132" font-size="26" text-anchor="middle" fill="#ffffff">30</text>
+    <rect x="570" y="90" width="170" height="66" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+    <text x="655" y="132" font-size="26" text-anchor="middle" fill="#ffffff">40</text>
+    <rect x="740" y="90" width="170" height="66" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+    <text x="825" y="132" font-size="26" text-anchor="middle" fill="#ffffff">50</text>
+  </g>
+
+  <!-- адреса -->
+  <g font-size="15" fill="#5c5e66" text-anchor="middle"
+     font-family="Consolas, Roboto Mono, monospace">
+    <text x="145" y="80">0x1000</text>
+    <text x="315" y="80">0x1004</text>
+    <text x="485" y="80">0x1008</text>
+    <text x="655" y="80">0x100c</text>
+    <text x="825" y="80">0x1010</text>
+  </g>
+
+  <!-- указатели -->
+  <g font-family="Consolas, Roboto Mono, monospace" font-size="20" fill="#ff8a8a" text-anchor="middle">
+    <text x="145" y="212">p</text>
+    <text x="315" y="212">p + 1</text>
+    <text x="485" y="212">p + 2</text>
+  </g>
+  <g stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)">
+    <line x1="145" y1="190" x2="145" y2="164"/>
+    <line x1="315" y1="190" x2="315" y2="164"/>
+    <line x1="485" y1="190" x2="485" y2="164"/>
+  </g>
+
+  <!-- шаг -->
+  <path d="M 145 244 L 315 244" stroke="#80828c" stroke-width="1.5" marker-end="url(#pink)"/>
+  <text x="230" y="270" font-size="16" text-anchor="middle" fill="#80828c">+1 к указателю — это +4 байта</text>
+  <text x="620" y="244" font-size="16" fill="#80828c">шаг равен sizeof(T), а не одному байту</text>
+</svg>

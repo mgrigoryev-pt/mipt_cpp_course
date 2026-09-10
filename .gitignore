@@ -19,3 +19,10 @@ project/CMakeUserPresets.json
 # заготовки, а не копия — иначе правка сценария по умолчанию уезжала бы
 # в репозиторий и приходила конфликтом при обновлении курса.
 .vscode/
+
+# Собранные колоды: tools/render_lecture.py кладёт HTML, PNG и PDF рядом
+# со slides.md. Файлы производные — версионируется исходник и картинки
+# из lectures/NN/img/, а не результат сборки.
+lectures/*/lecture*.html
+lectures/*/lecture*.png
+lectures/*/lecture*.pdf

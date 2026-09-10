@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 340" width="1020" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="10" markerHeight="10" refX="9" refY="4"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1018" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- области -->
+  <rect x="20" y="50" width="200" height="250" rx="10" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="36" y="74" font-size="19" fill="#80828c">стек</text>
+  <rect x="245" y="50" width="735" height="250" rx="10" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="261" y="74" font-size="19" fill="#80828c">куча</text>
+
+  <!-- head -->
+  <text x="55" y="172" font-size="19" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">head</text>
+  <rect x="55" y="185" width="130" height="70" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+
+  <!-- узел 1 -->
+  <text x="355" y="172" font-size="16" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">0x1a40</text>
+  <rect x="270" y="185" width="90" height="70" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="360" y="185" width="80" height="70" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="315" y="228" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">10</text>
+  <text x="315" y="276" font-size="17" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">value</text>
+  <text x="400" y="276" font-size="17" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">next</text>
+
+  <!-- узел 2 -->
+  <text x="565" y="112" font-size="16" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">0x2c08</text>
+  <rect x="520" y="125" width="90" height="70" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="610" y="125" width="80" height="70" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="565" y="168" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">20</text>
+
+  <!-- узел 3 -->
+  <text x="815" y="192" font-size="16" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">0x1f90</text>
+  <rect x="770" y="205" width="90" height="70" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="860" y="205" width="90" height="70" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="815" y="248" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">30</text>
+  <text x="905" y="247" font-size="16" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">nullptr</text>
+
+  <!-- связи -->
+  <circle cx="165" cy="220" r="5" fill="#ff8a8a"/>
+  <line x1="165" y1="220" x2="262" y2="220" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+  <circle cx="400" cy="220" r="5" fill="#ff8a8a"/>
+  <path d="M 400 220 C 455 220, 465 160, 512 160" fill="none" stroke="#ff8a8a"
+        stroke-width="2.5" marker-end="url(#pink)"/>
+  <circle cx="650" cy="160" r="5" fill="#ff8a8a"/>
+  <path d="M 650 160 C 705 160, 715 240, 762 240" fill="none" stroke="#ff8a8a"
+        stroke-width="2.5" marker-end="url(#pink)"/>
+</svg>

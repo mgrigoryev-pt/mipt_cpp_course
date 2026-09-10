@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 320" width="1060" height="320"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="1" y="1" width="1058" height="318" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="360" y1="40" x2="360" y2="280" stroke="#26262b" stroke-width="1.5"/>
+  <line x1="710" y1="40" x2="710" y2="280" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- 1: только main -->
+  <text x="40" y="56" font-size="18" fill="#dbdfe6">вошли в main</text>
+  <rect x="70" y="180" width="230" height="70" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="185" y="222" font-size="21" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">main</text>
+  <text x="70" y="286" font-size="16" fill="#80828c">кадр main</text>
+
+  <!-- 2: main вызвал f -->
+  <text x="390" y="56" font-size="18" fill="#dbdfe6">main вызвал f</text>
+  <rect x="420" y="180" width="230" height="70" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="535" y="222" font-size="21" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">main</text>
+  <rect x="420" y="100" width="230" height="70" fill="rgba(255,138,138,0.08)"
+        stroke="#ff8a8a" stroke-width="2"/>
+  <text x="535" y="130" font-size="20" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">f</text>
+  <text x="535" y="156" font-size="16" text-anchor="middle" fill="#80828c">x, y — здесь</text>
+  <text x="390" y="286" font-size="16" fill="#80828c">кадр f лёг сверху</text>
+
+  <!-- 3: f вернулась -->
+  <text x="740" y="56" font-size="18" fill="#dbdfe6">f вернулась</text>
+  <rect x="770" y="180" width="230" height="70" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="885" y="222" font-size="21" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">main</text>
+  <rect x="770" y="100" width="230" height="70" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="885" y="142" font-size="16" text-anchor="middle" fill="#5c5e66">место снова свободно</text>
+  <text x="740" y="286" font-size="16" fill="#dbdfe6">
+    <tspan font-family="Consolas, Roboto Mono, monospace">x</tspan> и <tspan
+       font-family="Consolas, Roboto Mono, monospace">y</tspan> разрушены
+  </text>
+</svg>

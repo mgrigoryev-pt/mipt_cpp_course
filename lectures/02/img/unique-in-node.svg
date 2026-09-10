@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="mut" markerWidth="10" markerHeight="10" refX="9" refY="4"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 z" fill="#80828c"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="560" y1="40" x2="560" y2="300" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- unique_ptr в узле: разбор идёт рекурсией -->
+  <text x="40" y="58" font-size="18" fill="#dbdfe6">unique_ptr в поле next</text>
+  <g font-family="Consolas, Roboto Mono, monospace" font-size="16" fill="#dbdfe6">
+    <rect x="40" y="82" width="340" height="38" rx="6" fill="rgba(255,255,255,0.05)" stroke="#3a3a40"/>
+    <text x="56" y="107">~unique_ptr, delete узел 1</text>
+    <rect x="80" y="130" width="340" height="38" rx="6" fill="rgba(255,255,255,0.05)" stroke="#3a3a40"/>
+    <text x="96" y="155">~unique_ptr, delete узел 2</text>
+    <rect x="120" y="178" width="340" height="38" rx="6" fill="rgba(255,255,255,0.05)" stroke="#3a3a40"/>
+    <text x="136" y="203">~unique_ptr, delete узел 3</text>
+    <text x="176" y="243" font-size="22" fill="#80828c">...</text>
+  </g>
+  <text x="40" y="278" font-size="17" fill="#ff2020">глубина вложенности равна длине списка</text>
+  <text x="40" y="302" font-size="17" fill="#80828c">длинный список роняет стек в момент разрушения</text>
+
+  <!-- цикл в деструкторе -->
+  <text x="600" y="58" font-size="18" fill="#dbdfe6">цикл в деструкторе списка</text>
+  <rect x="600" y="110" width="400" height="60" rx="8" fill="rgba(255,138,138,0.08)"
+        stroke="#ff8a8a" stroke-width="2"/>
+  <text x="620" y="147" font-size="17" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">head = std::move(head-&gt;next);</text>
+  <path d="M 640 178 C 596 206, 600 236, 660 236 L 940 236 C 1002 236, 1002 206, 960 178"
+        fill="none" stroke="#80828c" stroke-width="2" marker-end="url(#mut)"/>
+  <text x="800" y="266" font-size="17" text-anchor="middle" fill="#80828c">пока список не опустеет</text>
+  <text x="600" y="302" font-size="17" fill="#dbdfe6">глубина всегда одна: узел отцепили и удалили</text>
+</svg>

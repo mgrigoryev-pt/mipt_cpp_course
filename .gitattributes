@@ -14,3 +14,4 @@
 *.exe  binary
 *.png  binary
 *.pdf  binary
+*.woff2 binary
