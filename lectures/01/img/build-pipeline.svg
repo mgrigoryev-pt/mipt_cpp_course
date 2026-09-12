@@ -39,7 +39,7 @@
   <g text-anchor="middle" font-size="15" fill="#dbdfe6">
     <text x="252" y="102">препроцессор</text>
     <text x="409" y="102">компилятор</text>
-    <text x="694" y="102">компоновщик</text>
+    <text x="694" y="102">линкер</text>
     <text x="962" y="102">запуск</text>
   </g>
 

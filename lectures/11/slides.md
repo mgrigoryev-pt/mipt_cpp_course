@@ -20,10 +20,10 @@ section {
 
 1. Проблема: лишнее копирование
 2. `std::move` как инструмент
-3. Value categories (lvalue / rvalue)
+3. Категории значения (lvalue / rvalue)
 4. Move-конструктор
 5. Move-`operator=`
-6. Правило пяти и автогенерация
+6. Правило пяти и специальные функции-члены
 7. `emplace_back` — конструирование на месте
 8. `std::forward` — отдать дальше тем же, чем получили
 9. Когда **не** надо писать `std::move`
@@ -73,7 +73,7 @@ pending.push_back(read_batch());   // копирование всей пачки
 
 # 2. `std::move` как инструмент
 
-C++11 ввёл **move-семантику** — способ передать «начинку» объекта без копирования:
+C++11 ввёл **move-семантику** (move semantics) — передачу ресурсов без копирования:
 
 ```cpp
 template <typename T>
@@ -101,14 +101,14 @@ std::cout << s.size();           // ok, легально (обычно 0)
 s = "new value";                 // ok, можно присваивать
 ```
 
-После `std::move(s)` объект `s` **валиден, но в неопределённом состоянии**. Использовать его до переприсваивания не стоит.
+После `std::move(s)` объект `s` в состоянии **valid but unspecified**: использовать его содержимое до переприсваивания не стоит.
 
 ---
-<!-- header: 3. Value categories -->
+<!-- header: 3. Категории значения -->
 
-# 3. Value categories (lvalue / rvalue)
+# 3. Категории значения (lvalue / rvalue)
 
-В C++ выражения делятся на две основные категории:
+Выражения делятся на две основные категории значения (value categories):
 
 - **lvalue** — то, у чего есть **имя** и **адрес**. Может стоять слева от `=`.
 - **rvalue** — временное значение. Литерал, результат функции, результат арифметики.
@@ -134,23 +134,23 @@ int&& r4 = x;          // CE: rvalue-ссылка не привязываетс�
 int&& r5 = std::move(x);  // ok: std::move превращает в rvalue
 ```
 
-`std::move(x)` ничего не двигает — оно **превращает lvalue в rvalue**, чтобы перегрузка выбрала move-версию.
+`std::move(x)` ничего не двигает — оно **превращает lvalue в rvalue**, чтобы перегрузка (overloading) выбрала move-версию.
 
 ---
 <!-- header: 4. Move-конструктор -->
 
 # 4. Move-конструктор
 
-Сигнатура — конструктор от **rvalue-ссылки** на свой тип:
+Move-конструктор (move constructor) — конструктор от **rvalue-ссылки** на свой тип:
 
 ```cpp
 class String {
     char* data_ = nullptr;
     size_t size_ = 0;
 public:
-    String(const String& other);     // copy ctor (как раньше)
+    String(const String& other);     // копирующий (как раньше)
 
-    String(String&& other) noexcept  // move ctor — новый
+    String(String&& other) noexcept  // move-конструктор — новый
         : data_(other.data_), size_(other.size_) {
         other.data_ = nullptr;
         other.size_ = 0;
@@ -166,12 +166,12 @@ public:
 
 ```cpp
 String a("hello");
-String b = a;             // copy ctor (a — lvalue)
-String c = std::move(a);  // move ctor (std::move делает a rvalue)
-String d = String("hi");  // move ctor (литерал — rvalue)
+String b = a;             // копирующий (a — lvalue)
+String c = std::move(a);  // move-конструктор (std::move делает a rvalue)
+String d = String("hi");  // move-конструктор (литерал — rvalue)
 ```
 
-Компилятор выбирает между `String(const String&)` и `String(String&&)` по тому, что **слева** от `=`: lvalue или rvalue.
+Компилятор выбирает между `String(const String&)` и `String(String&&)` по тому, что **справа** от `=`: lvalue или rvalue.
 
 ---
 
@@ -181,7 +181,7 @@ String d = String("hi");  // move ctor (литерал — rvalue)
 String(String&& other) noexcept { /*...*/ }
 ```
 
-Без `noexcept` `std::vector` при перевыделении будет **копировать** элементы вместо move. Причина — strong exception safety (разберём на лекции 14 про утилитарные типы).
+Без `noexcept` `std::vector` при перевыделении будет **копировать** элементы вместо move. Причина — strong exception safety (разберём на лекции 14).
 
 **Правило:** **всегда** помечайте move-конструктор `noexcept`, если он реально не бросает.
 
@@ -227,17 +227,17 @@ String& operator=(String other) noexcept {
 ---
 <!-- header: 6. Правило пяти -->
 
-# 6. Правило пяти и автогенерация
+# 6. Правило пяти и специальные функции-члены
 
-«Special member functions» — пять функций, которые компилятор генерирует за вас:
+Пять специальных функций-членов (special member functions) компилятор генерирует сам:
 
-1. Default constructor — `T()`
-2. Copy constructor — `T(const T&)`
-3. Copy assignment — `T& operator=(const T&)`
-4. Move constructor — `T(T&&)`
-5. Move assignment — `T& operator=(T&&)`
+1. Конструктор по умолчанию (default constructor) — `T()`
+2. Копирующий конструктор (copy constructor) — `T(const T&)`
+3. Копирующее присваивание (copy assignment) — `T& operator=(const T&)`
+4. Move-конструктор — `T(T&&)`
+5. Move-присваивание (move assignment) — `T& operator=(T&&)`
 
-Плюс деструктор (`~T()`).
+Плюс деструктор (`~T()`). Как с ними обращаться, говорит правило пяти (rule of five).
 
 ---
 
@@ -253,7 +253,7 @@ public:
     ~Buffer() { delete[] data_; }
     Buffer(Buffer&&) noexcept = default;
     Buffer& operator=(Buffer&&) noexcept = default;
-    // ... copy ctor / operator= руками
+    // ... копирующие конструктор и operator= руками
 };
 ```
 
@@ -261,9 +261,9 @@ public:
 
 ## Правило нуля
 
-**Самое важное правило:** если ваш класс **не владеет ресурсом напрямую**, не пишите **ничего из пятёрки**.
+**Самое важное правило:** если ваш класс **не владеет ресурсом напрямую** (ownership), не пишите **ничего из пятёрки**.
 
-Поля вроде `std::vector`, `std::string`, `std::unique_ptr` сами умеют правильно копироваться и муваться. Компилятор сгенерирует за вас правильное поведение.
+Поля вроде `std::vector`, `std::string`, `std::unique_ptr` сами умеют правильно копироваться и перемещаться. Компилятор сгенерирует за вас правильное поведение.
 
 ```cpp
 class Profile {
@@ -286,7 +286,7 @@ v.push_back("hello");          // создание временного string +
 v.emplace_back("hello");       // создание string прямо в векторе
 ```
 
-`emplace_back` принимает аргументы **конструктора** элемента и конструирует его **на месте**, без временного объекта.
+`emplace_back` принимает аргументы **конструктора** элемента и конструирует его **на месте**, без временного объекта (temporary object).
 
 ```cpp
 std::vector<Point> v;
@@ -331,7 +331,7 @@ rules.emplace_back(id, named);   // named опустошён
 
 ---
 
-## Условный cast
+## Условный каст (cast)
 
 ```cpp
 new (next_slot) T(std::forward<Args>(args)...);
@@ -354,7 +354,7 @@ new (next_slot) T(std::forward<Args>(args)...);
 | цель по значению, lvalue | 1 копия, 2 перем. | 1 копия, **1** |
 | цель по `const&`, lvalue | **2 копии** | **1 копия** |
 
-**Подвох:** на временном объекте выигрыша нет — copy elision из C++17 убирает материализацию параметра. Разница только на именованных аргументах.
+**Подвох:** на временном объекте выигрыша нет — copy elision из C++17 строит его прямо в параметре. Разница только на именованных аргументах.
 
 ---
 
@@ -408,7 +408,7 @@ std::string make() {
 
 - `return local_var;` — компилятор сделает RVO
 - `return expression;` — это уже rvalue
-- В `noexcept` move-ctor STL и так выберет move (см. `noexcept` выше)
+- При `noexcept` move-конструкторе STL и так выберет move (см. `noexcept` выше)
 
 **Привычка:** не пишите `std::move` на `return` локальной переменной. Если сомневаетесь — компилятор подскажет warning'ом (`-Wpessimizing-move`).
 
@@ -417,10 +417,10 @@ std::string make() {
 
 # Итоги лекции
 
-- **Move-семантика** даёт **переместить ресурс** вместо копировать. Для `vector` — `O(1)` вместо `O(n)`.
+- **Move-семантика** даёт **переместить ресурс** вместо копирования. Для `vector` — `O(1)` вместо `O(n)`.
 - **`std::move(x)`** превращает lvalue в rvalue: не двигает, а даёт **разрешение** забрать ресурс.
 - **lvalue** имеют имя и адрес. **rvalue** — временные, которые сейчас умрут.
-- **Move ctor / move=** принимают `T&&`, забирают ресурс, **зануляют** источник. `noexcept` на них обязателен: без него STL копирует.
+- **Move-конструктор и move-присваивание** принимают `T&&`, забирают ресурс, **зануляют** источник. `noexcept` на них обязателен: без него STL копирует.
 - **Правило пяти:** написали один — подумайте про остальные. **Правило нуля:** обычно не пишите ничего.
 - **`emplace_back`** конструирует на месте — экономит один move/copy.
 - **`std::forward<T>(x)`** — условный `std::move`: перемещает только то, что и снаружи было rvalue.
@@ -439,6 +439,6 @@ std::string make() {
 
 В курс не входит:
 
-- Reference qualifiers методов (`void m() &`, `void m() &&`)
-- Полная классификация value categories
+- Ref-qualifier у методов (`void m() &`, `void m() &&`)
+- Полная классификация категорий значения
 
