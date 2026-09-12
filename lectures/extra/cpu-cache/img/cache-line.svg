@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 330" width="1060" height="330"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Массив int, разбитый на кэш-линии по 64 байта, то есть по 16 int. При шаге 1, 4 и 16 обход трогает обе кэш-линии, и обе загружаются целиком — время 30,8, 22,4 и 18,6 мс почти не меняется, хотя обращений в 16 раз меньше. При шаге 32 вторая кэш-линия не нужна вовсе и не загружается — 15,4 мс, а дальше время падает пропорционально шагу">
+  <style>
+    .h{fill:#dbdfe6;font-size:16px}
+    .s{fill:#80828c;font-size:14px}
+    .lab{fill:#dbdfe6;font-size:16px;font-family:Consolas, Roboto Mono, monospace}
+    .ms{fill:#ffffff;font-size:15px;font-family:Consolas, Roboto Mono, monospace}
+    .c{fill:rgba(255,255,255,0.04);stroke:#3a3a40;stroke-width:1}
+    .hit{fill:#dbdfe6;stroke:none}
+    .line{fill:none;stroke:#dbdfe6;stroke-width:2}
+    .skip{fill:none;stroke:#5c5e66;stroke-width:1.5;stroke-dasharray:6 5}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="328" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text class="h" x="40" y="40">массив <tspan font-family="Consolas, Roboto Mono, monospace">int</tspan>: кэш-линия — 64 байта, это 16 элементов</text>
+  <text class="s" x="180" y="66">кэш-линия 1: a[0] … a[15]</text>
+  <text class="s" x="596" y="66">кэш-линия 2: a[16] … a[31]</text>
+
+  <defs>
+    <g id="row">
+      <rect class="c" x="0" y="0" width="26" height="34"/><rect class="c" x="26" y="0" width="26" height="34"/>
+      <rect class="c" x="52" y="0" width="26" height="34"/><rect class="c" x="78" y="0" width="26" height="34"/>
+      <rect class="c" x="104" y="0" width="26" height="34"/><rect class="c" x="130" y="0" width="26" height="34"/>
+      <rect class="c" x="156" y="0" width="26" height="34"/><rect class="c" x="182" y="0" width="26" height="34"/>
+      <rect class="c" x="208" y="0" width="26" height="34"/><rect class="c" x="234" y="0" width="26" height="34"/>
+      <rect class="c" x="260" y="0" width="26" height="34"/><rect class="c" x="286" y="0" width="26" height="34"/>
+      <rect class="c" x="312" y="0" width="26" height="34"/><rect class="c" x="338" y="0" width="26" height="34"/>
+      <rect class="c" x="364" y="0" width="26" height="34"/><rect class="c" x="390" y="0" width="26" height="34"/>
+    </g>
+  </defs>
+
+  <!-- шаг 1 -->
+  <text class="lab" x="40" y="100">шаг 1</text>
+  <text class="ms" x="40" y="120">30,8 мс</text>
+  <use href="#row" x="180" y="82"/><use href="#row" x="596" y="82"/>
+  <rect class="hit" x="184" y="86" width="408" height="26" opacity="0.55"/>
+  <rect class="hit" x="600" y="86" width="408" height="26" opacity="0.55"/>
+  <rect class="line" x="180" y="82" width="416" height="34"/>
+  <rect class="line" x="596" y="82" width="416" height="34"/>
+
+  <!-- шаг 4 -->
+  <text class="lab" x="40" y="160">шаг 4</text>
+  <text class="ms" x="40" y="180">22,4 мс</text>
+  <use href="#row" x="180" y="142"/><use href="#row" x="596" y="142"/>
+  <rect class="hit" x="184" y="146" width="18" height="26"/><rect class="hit" x="288" y="146" width="18" height="26"/>
+  <rect class="hit" x="392" y="146" width="18" height="26"/><rect class="hit" x="496" y="146" width="18" height="26"/>
+  <rect class="hit" x="600" y="146" width="18" height="26"/><rect class="hit" x="704" y="146" width="18" height="26"/>
+  <rect class="hit" x="808" y="146" width="18" height="26"/><rect class="hit" x="912" y="146" width="18" height="26"/>
+  <rect class="line" x="180" y="142" width="416" height="34"/>
+  <rect class="line" x="596" y="142" width="416" height="34"/>
+
+  <!-- шаг 16 -->
+  <text class="lab" x="40" y="220">шаг 16</text>
+  <text class="ms" x="40" y="240">18,6 мс</text>
+  <use href="#row" x="180" y="202"/><use href="#row" x="596" y="202"/>
+  <rect class="hit" x="184" y="206" width="18" height="26"/>
+  <rect class="hit" x="600" y="206" width="18" height="26"/>
+  <rect class="line" x="180" y="202" width="416" height="34"/>
+  <rect class="line" x="596" y="202" width="416" height="34"/>
+
+  <!-- шаг 32 -->
+  <text class="lab" x="40" y="280">шаг 32</text>
+  <text class="ms" x="40" y="300">15,4 мс</text>
+  <use href="#row" x="180" y="262"/><use href="#row" x="596" y="262"/>
+  <rect class="hit" x="184" y="266" width="18" height="26"/>
+  <rect class="line" x="180" y="262" width="416" height="34"/>
+  <rect class="skip" x="596" y="262" width="416" height="34"/>
+  <text class="s" x="804" y="316" text-anchor="middle">не нужна — не загружается</text>
+
+  <text class="s" x="388" y="316" text-anchor="middle">яркая рамка — кэш-линия загружена целиком</text>
+</svg>
