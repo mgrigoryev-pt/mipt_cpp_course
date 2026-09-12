@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 543" width="1060" height="543" role="img" aria-label="Линкер сводит таблицы символов: символ из стандартной библиотеки находится и его адрес вписывается в прочерк, а area(double) не находится, потому что geom.cpp не добавили в сборку и geom.o линкеру не передали — вместо исполняемого файла выдаётся undefined reference">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="mk" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="ar-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="mk-bad" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+  <style>
+    .t{fill:#dbdfe6;font-size:15px}
+    .t-s{fill:#80828c;font-size:13.5px}
+    .t-xs{fill:#5c5e66;font-size:12px}
+    .t-h{fill:#dbdfe6;font-size:14px;font-weight:600;letter-spacing:.07em}
+    .t-decl{fill:#dbdfe6;font-size:13.5px}
+    .t-def{fill:#ff8a8a;font-size:13.5px}
+    .t-bad{fill:#ff2020;font-size:13.5px}
+    .bx{fill:rgba(255,255,255,0.045);stroke:#3a3a40;stroke-width:1.5}
+    .bx-gone{fill:none;stroke:#5c5e66;stroke-width:1.5;stroke-dasharray:7 6}
+    .bx-def{fill:rgba(255,138,138,0.08);stroke:#ff8a8a;stroke-width:1.5}
+    .bx-lnk{fill:rgba(255,255,255,0.08);stroke:#80828c;stroke-width:1.5}
+    .bx-bad{fill:rgba(255,32,32,0.10);stroke:#ff2020;stroke-width:1.5}
+    .ln{stroke:#80828c;stroke-width:1.5;fill:none}
+    .ln-bad{stroke:#ff2020;stroke-width:1.5;fill:none}
+    .hair{stroke:#2b2b31;stroke-width:1;fill:none}
+    .mk{fill:#80828c}
+    .mk-bad{fill:#ff2020}
+    .mono{font-family:Consolas, Roboto Mono, monospace}
+    .sm{font-size:12px}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="541" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <g transform="translate(24,24) scale(1.124)" font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+    <rect class="bx" x="20" y="24" width="250" height="116" rx="2"/>
+    <text class="t mono" x="36" y="48">main.o</text>
+    <text class="t-h" x="36" y="72">НУЖНО</text>
+    <text class="t-decl mono" x="112" y="72">area(double)</text>
+    <text class="t-xs" x="112" y="90">+ 62 символа из libstdc++</text>
+    <text class="t-h" x="36" y="112">ДАЮ</text>
+    <text class="t-def mono" x="112" y="112">main</text>
+    <line class="hair" x1="36" y1="120" x2="254" y2="120"/>
+    <text class="t-xs mono" x="36" y="134">g++ -c main.cpp</text>
+
+    <rect class="bx-gone" x="325" y="24" width="250" height="116" rx="2"/>
+    <text class="t mono" x="341" y="48" fill="#5c5e66">geom.o</text>
+    <text class="t-h" x="341" y="72" fill="#5c5e66">ДАЮ</text>
+    <text class="t-decl mono" x="417" y="72" fill="#5c5e66">area(double)</text>
+    <text class="t-bad sm" x="341" y="98">geom.cpp не добавлен в сборку</text>
+    <text class="t-bad sm" x="341" y="114">линкеру этот файл не передали</text>
+    <line class="hair" x1="341" y1="120" x2="559" y2="120"/>
+    <text class="t-xs" x="341" y="134">символы есть — но не здесь</text>
+
+    <rect class="bx" x="630" y="24" width="250" height="116" rx="2"/>
+    <text class="t mono" x="646" y="48">libstdc++</text>
+    <text class="t-h" x="646" y="72">НУЖНО</text>
+    <text class="t-decl" x="722" y="72">—</text>
+    <text class="t-h" x="646" y="112">ДАЮ</text>
+    <text class="t-def" x="722" y="112">locale и ещё много</text>
+    <line class="hair" x1="646" y1="120" x2="864" y2="120"/>
+    <text class="t-xs" x="646" y="134">готовая, собрана давно</text>
+
+    <line class="ln" x1="145" y1="140" x2="145" y2="176" marker-end="url(#ar)"/>
+    <line class="ln-bad" x1="450" y1="140" x2="450" y2="176" stroke-dasharray="6 5" marker-end="url(#ar-bad)"/>
+    <line class="ln-bad" x1="440" y1="150" x2="460" y2="168"/>
+    <line class="ln-bad" x1="440" y1="168" x2="460" y2="150"/>
+    <line class="ln" x1="755" y1="140" x2="755" y2="176" marker-end="url(#ar)"/>
+
+    <rect class="bx-lnk" x="20" y="180" width="860" height="150" rx="2"/>
+    <text class="t" x="40" y="206">ЛИНКЕР: для каждого «нужно» найти ровно одно «даю»</text>
+    <line class="hair" x1="40" y1="218" x2="860" y2="218"/>
+
+    <text class="t-decl mono sm" x="40" y="244">std::locale::classic()</text>
+    <text class="t-s" x="230" y="244">→ нашлось в libstdc++</text>
+    <text class="t-def" x="470" y="244">адрес вписан в прочерк ✓</text>
+
+    <line class="hair" x1="40" y1="262" x2="860" y2="262"/>
+
+    <text class="t-bad mono" x="40" y="288">area(double)</text>
+    <text class="t-bad" x="230" y="288">→ не нашлось нигде</text>
+    <text class="t-bad mono sm" x="470" y="288">undefined reference to `area(double)'</text>
+    <text class="t-xs" x="230" y="308">объявление было, определения не дали</text>
+
+    <line class="ln-bad" x1="450" y1="330" x2="450" y2="366" marker-end="url(#ar-bad)"/>
+    <rect class="bx-bad" x="250" y="370" width="400" height="50" rx="2" stroke-dasharray="6 4"/>
+    <text class="t-bad" x="450" y="392" text-anchor="middle">исполняемого файла нет</text>
+    <text class="t-xs" x="450" y="412" text-anchor="middle">пока хоть один прочерк не закрыт — сборки не будет</text>
+  </g>
+</svg>

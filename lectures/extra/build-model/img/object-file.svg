@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 385" width="1060" height="385" role="img" aria-label="Компилятор превращает одну единицу трансляции в объектный файл main.o: в машинном коде на месте чужих адресов стоят прочерки, а рядом лежат две таблицы символов — что файл предоставляет и что ему нужно извне">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="mk" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+  <style>
+    .t{fill:#dbdfe6;font-size:15px}
+    .t-s{fill:#80828c;font-size:13.5px}
+    .t-xs{fill:#5c5e66;font-size:12px}
+    .t-h{fill:#dbdfe6;font-size:14px;font-weight:600;letter-spacing:.07em}
+    .t-decl{fill:#dbdfe6;font-size:13.5px}
+    .t-def{fill:#ff8a8a;font-size:13.5px}
+    .t-hole{fill:#dbdfe6;font-size:12px}
+    .bx{fill:rgba(255,255,255,0.045);stroke:#3a3a40;stroke-width:1.5}
+    .bx-plain{fill:none;stroke:#3a3a40;stroke-width:1.5}
+    .bx-decl{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .bx-def{fill:rgba(255,138,138,0.08);stroke:#ff8a8a;stroke-width:1.5}
+    .bx-lnk{fill:rgba(255,255,255,0.08);stroke:#80828c;stroke-width:1.5}
+    .bx-hole{fill:none;stroke:#5c5e66;stroke-width:1.5;stroke-dasharray:6 5}
+    .ln{stroke:#80828c;stroke-width:1.5;fill:none}
+    .hair{stroke:#2b2b31;stroke-width:1;fill:none}
+    .mk{fill:#80828c}
+    .mono{font-family:Consolas, Roboto Mono, monospace}
+    .sm{font-size:12px}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="383" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <g transform="translate(24,24) scale(1.124)" font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+    <rect class="bx" x="20" y="92" width="170" height="88" rx="2"/>
+    <text class="t" x="105" y="126" text-anchor="middle">единица</text>
+    <text class="t" x="105" y="146" text-anchor="middle">трансляции</text>
+    <text class="t-xs" x="105" y="166" text-anchor="middle">main.cpp + всё вклеенное</text>
+
+    <line class="ln" x1="190" y1="136" x2="238" y2="136" marker-end="url(#ar)"/>
+
+    <rect class="bx-lnk" x="242" y="92" width="150" height="88" rx="2"/>
+    <text class="t" x="317" y="126" text-anchor="middle">КОМПИЛЯТОР</text>
+    <text class="t-s" x="317" y="148" text-anchor="middle">видит только это</text>
+    <text class="t-s" x="317" y="166" text-anchor="middle">и ничего больше</text>
+
+    <line class="ln" x1="392" y1="136" x2="452" y2="136" marker-end="url(#ar)"/>
+    <text class="t-xs mono" x="400" y="126">g++ -c</text>
+
+    <rect class="bx-plain" x="456" y="24" width="420" height="252"/>
+    <text class="t-h" x="472" y="14">ОБЪЕКТНЫЙ ФАЙЛ <tspan class="mono">main.o</tspan></text>
+
+    <rect class="bx" x="472" y="44" width="166" height="216" rx="2"/>
+    <text class="t-s" x="555" y="68" text-anchor="middle">машинный код</text>
+    <line class="hair" x1="486" y1="84" x2="624" y2="84"/>
+    <line class="hair" x1="486" y1="100" x2="600" y2="100"/>
+    <rect class="bx-hole" x="486" y="110" width="138" height="22" rx="2"/>
+    <text class="t-hole mono" x="555" y="126" text-anchor="middle">call ???? (area)</text>
+    <line class="hair" x1="486" y1="148" x2="624" y2="148"/>
+    <line class="hair" x1="486" y1="164" x2="590" y2="164"/>
+    <rect class="bx-hole" x="486" y="174" width="138" height="22" rx="2"/>
+    <text class="t-hole mono" x="555" y="190" text-anchor="middle">call ???? (locale)</text>
+    <line class="hair" x1="486" y1="212" x2="624" y2="212"/>
+    <line class="hair" x1="486" y1="228" x2="610" y2="228"/>
+    <text class="t-xs" x="555" y="250" text-anchor="middle">адресов ещё нет</text>
+
+    <rect class="bx-def" x="652" y="44" width="208" height="98" rx="2"/>
+    <text class="t-h" x="668" y="70">ПРЕДОСТАВЛЯЮ</text>
+    <text class="t-def mono" x="668" y="94">main</text>
+    <text class="t-xs" x="668" y="118">то, что определено</text>
+    <text class="t-xs" x="668" y="132">в этом файле</text>
+
+    <rect class="bx-decl" x="652" y="162" width="208" height="98" rx="2"/>
+    <text class="t-h" x="668" y="188">МНЕ НУЖНО</text>
+    <text class="t-decl mono" x="668" y="212">area(double)</text>
+    <text class="t-decl mono sm" x="668" y="230">std::locale::classic()</text>
+    <text class="t-xs" x="668" y="252">и ещё 61 из libstdc++</text>
+  </g>
+</svg>

@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 408" width="1060" height="408" role="img" aria-label="Три варианта глобальной переменной: определение в заголовке даёт два одинаковых символа в таблицах и ошибку multiple definition; extern в заголовке с определением в одном cpp даёт одно «нужно» и одно «даю» и корректную линковку; static выкладывать символ вовсе не выкладывает, и в каждом файле получается своя отдельная переменная">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="mk" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+  <style>
+    .t{fill:#dbdfe6;font-size:15px}
+    .t-s{fill:#80828c;font-size:13.5px}
+    .t-xs{fill:#5c5e66;font-size:12px}
+    .t-h{fill:#dbdfe6;font-size:14px;font-weight:600;letter-spacing:.07em}
+    .t-decl{fill:#dbdfe6;font-size:13.5px}
+    .t-def{fill:#ff8a8a;font-size:13.5px}
+    .t-bad{fill:#ff2020;font-size:13.5px}
+    .bx{fill:rgba(255,255,255,0.045);stroke:#3a3a40;stroke-width:1.5}
+    .bx-plain{fill:none;stroke:#3a3a40;stroke-width:1.5}
+    .bx-def{fill:rgba(255,138,138,0.08);stroke:#ff8a8a;stroke-width:1.5}
+    .bx-bad{fill:rgba(255,32,32,0.10);stroke:#ff2020;stroke-width:1.5}
+    .ln{stroke:#80828c;stroke-width:1.5;fill:none}
+    .hair{stroke:#2b2b31;stroke-width:1;fill:none}
+    .mk{fill:#80828c}
+    .mono{font-family:Consolas, Roboto Mono, monospace}
+    .sm{font-size:12px}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="406" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <g transform="translate(24,24) scale(1.124)" font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+    <line class="hair" x1="295" y1="10" x2="295" y2="300"/>
+    <line class="hair" x1="595" y1="10" x2="595" y2="300"/>
+
+    <text class="t-h" x="16" y="20" fill="#ff2020">ТАК НЕЛЬЗЯ</text>
+    <line class="hair" x1="16" y1="30" x2="280" y2="30"/>
+    <rect class="bx-plain" x="16" y="44" width="264" height="66"/>
+    <text class="t-xs mono" x="28" y="62">counters.h:</text>
+    <text class="t-def mono" x="28" y="82">int counter;</text>
+    <text class="t-xs" x="28" y="100">включён в main.cpp и в data.cpp</text>
+    <line class="ln" x1="148" y1="110" x2="148" y2="124" marker-end="url(#ar)"/>
+    <rect class="bx" x="16" y="128" width="126" height="68" rx="2"/>
+    <text class="t-s mono" x="28" y="150">main.o</text>
+    <text class="t-def sm" x="28" y="174">ДАЮ counter</text>
+    <rect class="bx" x="154" y="128" width="126" height="68" rx="2"/>
+    <text class="t-s mono" x="166" y="150">data.o</text>
+    <text class="t-def sm" x="166" y="174">ДАЮ counter</text>
+    <line class="ln" x1="148" y1="196" x2="148" y2="212" marker-end="url(#ar)"/>
+    <rect class="bx-bad" x="16" y="216" width="264" height="50" rx="2"/>
+    <text class="t-bad mono" x="148" y="238" text-anchor="middle">multiple definition</text>
+    <text class="t-xs" x="148" y="257" text-anchor="middle">линкер не имеет права выбирать</text>
+    <text class="t-xs" x="16" y="288">Заголовок раздал определение всем, кто его</text>
+    <text class="t-xs" x="16" y="303">включил. Символов два — адрес нужен один.</text>
+
+    <text class="t-h" x="316" y="20">ТАК ПРАВИЛЬНО</text>
+    <line class="hair" x1="316" y1="30" x2="580" y2="30"/>
+    <rect class="bx-plain" x="316" y="44" width="264" height="66"/>
+    <text class="t-xs mono" x="328" y="62">counters.h:</text>
+    <text class="t-decl mono" x="328" y="82">extern int counter;</text>
+    <text class="t-def mono sm" x="328" y="100">data.cpp: int counter = 0;</text>
+    <line class="ln" x1="448" y1="110" x2="448" y2="124" marker-end="url(#ar)"/>
+    <rect class="bx" x="316" y="128" width="126" height="68" rx="2"/>
+    <text class="t-s mono" x="328" y="150">main.o</text>
+    <text class="t-decl sm" x="328" y="174">НУЖНО counter</text>
+    <rect class="bx" x="454" y="128" width="126" height="68" rx="2"/>
+    <text class="t-s mono" x="466" y="150">data.o</text>
+    <text class="t-def sm" x="466" y="174">ДАЮ counter</text>
+    <line class="ln" x1="448" y1="196" x2="448" y2="212" marker-end="url(#ar)"/>
+    <rect class="bx-def" x="316" y="216" width="264" height="50" rx="2"/>
+    <text class="t-def" x="448" y="238" text-anchor="middle">адрес вписан ✓</text>
+    <text class="t-xs" x="448" y="257" text-anchor="middle">одна переменная на всю программу</text>
+    <text class="t-xs" x="316" y="288">Обещание — в заголовке, место в памяти —</text>
+    <text class="t-xs" x="316" y="303">ровно в одном .cpp. Ровно как с функциями.</text>
+
+    <text class="t-h" x="616" y="20">STATIC — ЭТО ДРУГОЕ</text>
+    <line class="hair" x1="616" y1="30" x2="880" y2="30"/>
+    <rect class="bx-plain" x="616" y="44" width="264" height="66"/>
+    <text class="t-xs" x="628" y="62">в каждом .cpp по отдельности:</text>
+    <text class="t mono" x="628" y="82">static int counter;</text>
+    <text class="t-xs" x="628" y="100">в заголовок не выносится</text>
+    <line class="ln" x1="748" y1="110" x2="748" y2="124" marker-end="url(#ar)"/>
+    <rect class="bx" x="616" y="128" width="126" height="68" rx="2"/>
+    <text class="t-s mono" x="628" y="150">main.o</text>
+    <text class="t-xs" x="628" y="174">символа нет</text>
+    <rect class="bx" x="754" y="128" width="126" height="68" rx="2"/>
+    <text class="t-s mono" x="766" y="150">data.o</text>
+    <text class="t-xs" x="766" y="174">символа нет</text>
+    <line class="ln" x1="748" y1="196" x2="748" y2="212" marker-end="url(#ar)"/>
+    <rect class="bx" x="616" y="216" width="264" height="50" rx="2"/>
+    <text class="t" x="748" y="238" text-anchor="middle">две разные переменные</text>
+    <text class="t-xs" x="748" y="257" text-anchor="middle">ошибки нет — но и связи нет</text>
+    <text class="t-xs" x="616" y="288">Не ошибка, а другое намерение: символ</text>
+    <text class="t-xs" x="616" y="303">спрятан, у каждой комнаты свой счётчик.</text>
+  </g>
+</svg>
