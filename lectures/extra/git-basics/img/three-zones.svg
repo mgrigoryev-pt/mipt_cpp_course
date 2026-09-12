@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 378" width="1060" height="378" role="img" aria-label="Три зоны git. Рабочий каталог: файлы, которые вы правите, среди них изменённый main.cpp, изменённый rules.h и неотслеживаемый notes.txt. Команда git add переносит в индекс только main.cpp, остальное остаётся снаружи. Команда git commit собирает из индекса новый коммит и добавляет его к прежним. Ниже сказано, что git status показывает все три зоны, git diff — правки, ещё не добавленные, git diff --staged — то, что уже в индексе">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path fill="#80828c" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+  <style>
+    .t{fill:#dbdfe6;font-size:17px}
+    .t-s{fill:#80828c;font-size:14.5px}
+    .t-xs{fill:#5c5e66;font-size:13px}
+    .t-h{fill:#dbdfe6;font-size:16px;font-weight:600;letter-spacing:.07em}
+    .t-eye{fill:#ffffff;font-size:16px}
+    .bx{fill:rgba(255,255,255,0.045);stroke:#3a3a40;stroke-width:1.5}
+    .bx-eye{fill:rgba(255,255,255,0.10);stroke:#dbdfe6;stroke-width:1.5}
+    .bx-dash{fill:none;stroke:#3a3a40;stroke-width:1.5;stroke-dasharray:6 5}
+    .ln{stroke:#80828c;stroke-width:1.8;fill:none}
+    .hair{stroke:#26262b;stroke-width:1;fill:none}
+    .mono{font-family:Consolas, Roboto Mono, monospace}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="376" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <g font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+    <text class="t-h" x="40" y="52">РАБОЧИЙ КАТАЛОГ</text>
+    <line class="hair" x1="40" y1="62" x2="290" y2="62"/>
+    <text class="t-s" x="40" y="86">файлы, которые вы правите</text>
+    <rect class="bx-eye" x="40" y="100" width="250" height="38" rx="2"/>
+    <text class="t-eye mono" x="56" y="125">main.cpp</text>
+    <text class="t-xs" x="274" y="125" text-anchor="end">изменён</text>
+    <rect class="bx" x="40" y="146" width="250" height="38" rx="2"/>
+    <text class="t mono" x="56" y="171">rules.h</text>
+    <text class="t-xs" x="274" y="171" text-anchor="end">изменён</text>
+    <rect class="bx-dash" x="40" y="192" width="250" height="38" rx="2"/>
+    <text class="t-s mono" x="56" y="217">notes.txt</text>
+    <text class="t-xs" x="274" y="217" text-anchor="end">не отслеживается</text>
+
+    <text class="t-s mono" x="347" y="150" text-anchor="middle">git add</text>
+    <line class="ln" x1="298" y1="165" x2="397" y2="165" marker-end="url(#ar)"/>
+
+    <text class="t-h" x="405" y="52">ИНДЕКС</text>
+    <line class="hair" x1="405" y1="62" x2="655" y2="62"/>
+    <text class="t-s" x="405" y="86">что войдёт в следующий коммит</text>
+    <rect class="bx-eye" x="405" y="100" width="250" height="38" rx="2"/>
+    <text class="t-eye mono" x="421" y="125">main.cpp</text>
+    <text class="t-xs" x="639" y="125" text-anchor="end">войдёт в коммит</text>
+    <rect class="bx-dash" x="405" y="146" width="250" height="84" rx="2"/>
+    <text class="t-s" x="530" y="182" text-anchor="middle">пусто</text>
+    <text class="t-xs" x="530" y="204" text-anchor="middle">остальное осталось снаружи</text>
+
+    <text class="t-s mono" x="712" y="150" text-anchor="middle">git commit</text>
+    <line class="ln" x1="663" y1="165" x2="762" y2="165" marker-end="url(#ar)"/>
+
+    <text class="t-h" x="770" y="52">РЕПОЗИТОРИЙ</text>
+    <line class="hair" x1="770" y1="62" x2="1020" y2="62"/>
+    <text class="t-s" x="770" y="86">коммиты, сделанные раньше</text>
+    <rect class="bx-eye" x="770" y="100" width="250" height="38" rx="2"/>
+    <text class="t-eye mono" x="786" y="125">e05f19</text>
+    <text class="t-xs" x="1004" y="125" text-anchor="end">новый коммит</text>
+    <rect class="bx" x="770" y="146" width="250" height="38" rx="2"/>
+    <text class="t-s mono" x="786" y="171">b7c3aa</text>
+    <rect class="bx" x="770" y="192" width="250" height="38" rx="2"/>
+    <text class="t-s mono" x="786" y="217">4d81e0</text>
+
+    <line class="hair" x1="40" y1="264" x2="1020" y2="264"/>
+    <text class="t" x="40" y="292"><tspan class="mono">git status</tspan> — что сейчас лежит в каждой из трёх зон</text>
+    <text class="t" x="40" y="320"><tspan class="mono">git diff</tspan> — правки в файлах, которые вы ещё не добавили</text>
+    <text class="t" x="40" y="348"><tspan class="mono">git diff --staged</tspan> — то, что уже в индексе и попадёт в коммит</text>
+  </g>
+</svg>

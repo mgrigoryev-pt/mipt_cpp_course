@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 290" width="1060" height="290" role="img" aria-label="История как цепочка коммитов: четыре коммита подряд — каркас агента, разбор события, список событий и правило по расширению. От каждого коммита розовая стрелка ведёт назад, к его родителю. Над последним розовая метка main, на неё указывает розовая метка HEAD. Подписано: main — указатель на последний коммит ветки, HEAD — указатель на то, где вы находитесь сейчас">
+  <defs>
+    <marker id="pk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path fill="#ff8a8a" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+  <style>
+    .t{fill:#dbdfe6;font-size:17px}
+    .t-s{fill:#80828c;font-size:14.5px}
+    .t-xs{fill:#5c5e66;font-size:13px}
+    .t-eye{fill:#ffffff;font-size:17px}
+    .t-ref{fill:#ff8a8a;font-size:15px}
+    .bx{fill:rgba(255,255,255,0.045);stroke:#3a3a40;stroke-width:1.5}
+    .bx-eye{fill:rgba(255,255,255,0.10);stroke:#dbdfe6;stroke-width:1.5}
+    .bx-ref{fill:rgba(255,138,138,0.08);stroke:#ff8a8a;stroke-width:1.5}
+    .ln-pk{stroke:#ff8a8a;stroke-width:1.8;fill:none}
+    .hair{stroke:#26262b;stroke-width:1;fill:none}
+    .mono{font-family:Consolas, Roboto Mono, monospace}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="288" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <g font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+    <text class="t-s" x="118" y="134">…</text>
+
+    <rect class="bx" x="150" y="96" width="150" height="64" rx="2"/>
+    <text class="t mono" x="164" y="122">9f2c1a</text>
+    <text class="t-xs" x="164" y="145">каркас агента</text>
+
+    <rect class="bx" x="360" y="96" width="150" height="64" rx="2"/>
+    <text class="t mono" x="374" y="122">4d81e0</text>
+    <text class="t-xs" x="374" y="145">разбор события</text>
+
+    <rect class="bx" x="570" y="96" width="150" height="64" rx="2"/>
+    <text class="t mono" x="584" y="122">b7c3aa</text>
+    <text class="t-xs" x="584" y="145">список событий</text>
+
+    <rect class="bx-eye" x="780" y="96" width="150" height="64" rx="2"/>
+    <text class="t-eye mono" x="794" y="122">e05f19</text>
+    <text class="t-xs" x="794" y="145">правило по расширению</text>
+
+    <line class="ln-pk" x1="354" y1="128" x2="306" y2="128" marker-end="url(#pk)"/>
+    <line class="ln-pk" x1="564" y1="128" x2="516" y2="128" marker-end="url(#pk)"/>
+    <line class="ln-pk" x1="774" y1="128" x2="726" y2="128" marker-end="url(#pk)"/>
+
+    <rect class="bx-ref" x="800" y="36" width="110" height="30" rx="2"/>
+    <text class="t-ref mono" x="855" y="57" text-anchor="middle">main</text>
+    <line class="ln-pk" x1="855" y1="66" x2="855" y2="90" marker-end="url(#pk)"/>
+
+    <rect class="bx-ref" x="940" y="36" width="76" height="30" rx="2"/>
+    <text class="t-ref mono" x="978" y="57" text-anchor="middle">HEAD</text>
+    <line class="ln-pk" x1="936" y1="51" x2="914" y2="51" marker-end="url(#pk)"/>
+
+    <text class="t-s" x="40" y="188">Розовым — указатели. Каждый коммит помнит родителя, <tspan class="mono">main</tspan> помнит последний коммит ветки,</text>
+    <text class="t-s" x="40" y="210"><tspan class="mono">HEAD</tspan> помнит, где находитесь вы.</text>
+
+    <line class="hair" x1="40" y1="236" x2="1020" y2="236"/>
+    <text class="t" x="40" y="266">Ту же цепочку печатает <tspan class="mono">git log --oneline</tspan>; чтобы сослаться на коммит, хватает первых шести-семи символов.</text>
+  </g>
+</svg>
