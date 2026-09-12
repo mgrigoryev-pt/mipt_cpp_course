@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 360" width="1060" height="360"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Строка детект в UTF-8: шесть букв, двенадцать байт, по два на букву — d0 b4, d0 b5, d1 82, d0 b5, d0 ba, d1 82. Первый байт буквы начинается с битов 110, второй — с битов 10, это продолжение. Эмодзи — четыре байта f0 9f 99 82, первый начинается с 11110. substr(0, 5) режет строку после пятого байта, посреди третьей буквы: остаётся одинокий первый байт d1, и вместо буквы печатается символ замены">
+  <style>
+    .h{fill:#dbdfe6;font-size:16px}
+    .s{fill:#80828c;font-size:14px}
+    .ch{fill:rgba(255,255,255,0.04);stroke:#dbdfe6;stroke-width:1.5}
+    .lead{fill:rgba(255,255,255,0.10);stroke:none}
+    .b{fill:#ffffff;font-size:17px;font-family:Consolas, Roboto Mono, monospace;text-anchor:middle}
+    .l{fill:#dbdfe6;font-size:20px;text-anchor:middle}
+    .m{fill:#dbdfe6;font-size:14px;font-family:Consolas, Roboto Mono, monospace}
+    .bad{fill:#ff2020;font-size:15px}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="358" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text class="h" x="40" y="38"><tspan font-family="Consolas, Roboto Mono, monospace">"детект"</tspan>: 6 букв, <tspan font-family="Consolas, Roboto Mono, monospace">size() = 12</tspan></text>
+
+  <!-- буквы -->
+  <text class="l" x="100" y="72">д</text><text class="l" x="220" y="72">е</text>
+  <text class="l" x="340" y="72">т</text><text class="l" x="460" y="72">е</text>
+  <text class="l" x="580" y="72">к</text><text class="l" x="700" y="72">т</text>
+
+  <rect class="ch" x="40" y="84" width="120" height="44"/><rect class="lead" x="41" y="85" width="59" height="42"/>
+  <text class="b" x="70" y="113">d0</text><text class="b" x="130" y="113">b4</text>
+  <rect class="ch" x="160" y="84" width="120" height="44"/><rect class="lead" x="161" y="85" width="59" height="42"/>
+  <text class="b" x="190" y="113">d0</text><text class="b" x="250" y="113">b5</text>
+  <rect class="ch" x="280" y="84" width="120" height="44"/><rect class="lead" x="281" y="85" width="59" height="42"/>
+  <text class="b" x="310" y="113">d1</text><text class="b" x="370" y="113">82</text>
+  <rect class="ch" x="400" y="84" width="120" height="44"/><rect class="lead" x="401" y="85" width="59" height="42"/>
+  <text class="b" x="430" y="113">d0</text><text class="b" x="490" y="113">b5</text>
+  <rect class="ch" x="520" y="84" width="120" height="44"/><rect class="lead" x="521" y="85" width="59" height="42"/>
+  <text class="b" x="550" y="113">d0</text><text class="b" x="610" y="113">ba</text>
+  <rect class="ch" x="640" y="84" width="120" height="44"/><rect class="lead" x="641" y="85" width="59" height="42"/>
+  <text class="b" x="670" y="113">d1</text><text class="b" x="730" y="113">82</text>
+
+  <!-- обрезка -->
+  <line x1="340" y1="76" x2="340" y2="150" stroke="#ff2020" stroke-width="2" stroke-dasharray="6 5"/>
+  <text class="bad" x="350" y="150"><tspan font-family="Consolas, Roboto Mono, monospace">substr(0, 5)</tspan> режет здесь: остаётся одинокий <tspan font-family="Consolas, Roboto Mono, monospace">d1</tspan>, на экране <tspan font-family="Consolas, Roboto Mono, monospace">де�</tspan></text>
+
+  <!-- таблица форм -->
+  <line x1="40" y1="176" x2="1020" y2="176" stroke="#26262b" stroke-width="1.5"/>
+  <text class="h" x="40" y="206">как байт сообщает, чем он является</text>
+  <text class="m" x="40" y="236">0xxxxxxx</text>
+  <text class="s" x="330" y="236">1 байт: ASCII, 128 символов</text>
+  <text class="m" x="40" y="262">110xxxxx 10xxxxxx</text>
+  <text class="s" x="330" y="262">2 байта: кириллица, греческий, диакритика — <tspan font-family="Consolas, Roboto Mono, monospace">d0 b4</tspan></text>
+  <text class="m" x="40" y="288">1110xxxx 10xxxxxx 10xxxxxx</text>
+  <text class="s" x="330" y="288">3 байта: большинство остальных письменностей, CJK</text>
+  <text class="m" x="40" y="314">11110xxx 10xxxxxx ×3</text>
+  <text class="s" x="330" y="314">4 байта: всё прочее, в том числе эмодзи — <tspan font-family="Consolas, Roboto Mono, monospace">f0 9f 99 82</tspan></text>
+  <text class="s" x="40" y="342">светлая половина — первый байт буквы; байт вида <tspan font-family="Consolas, Roboto Mono, monospace">10xxxxxx</tspan> — всегда продолжение, с него буква не начинается</text>
+</svg>
