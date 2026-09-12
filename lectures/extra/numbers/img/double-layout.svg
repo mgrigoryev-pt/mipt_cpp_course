@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 330" width="1060" height="330"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Как лежит в памяти double 0.1, биты 0x3fb999999999999a. Знак — 1 бит, 0. Порядок — 11 бит, 01111111011, это 1019, минус смещение 1023 — степень минус 4. Мантисса — 52 бита, 1001 1001 … 1001 1010, с подразумеваемой единицей впереди это 1,6. Итого 1,6 умножить на 2 в степени минус 4. Но 1,6 в двоичной записи бесконечна — 1,1001 1001 1001 и так далее, — хвост отрезан и последние биты округлены вверх, поэтому хранится 0,1000000000000000055511151">
+  <style>
+    .h{fill:#dbdfe6;font-size:16px}
+    .s{fill:#80828c;font-size:14px}
+    .f{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .fl{fill:#80828c;font-size:14px}
+    .bits{fill:#ffffff;font-size:17px;font-family:Consolas, Roboto Mono, monospace;text-anchor:middle}
+    .m{fill:#dbdfe6;font-size:15px;font-family:Consolas, Roboto Mono, monospace}
+    .t{fill:#dbdfe6;font-size:15px}
+    .tail{fill:#ff8a8a;font-size:17px;font-family:Consolas, Roboto Mono, monospace}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="328" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text class="h" x="40" y="40"><tspan font-family="Consolas, Roboto Mono, monospace">double 0.1</tspan> — биты <tspan font-family="Consolas, Roboto Mono, monospace">0x3fb999999999999a</tspan></text>
+
+  <text class="fl" x="40" y="72">знак</text>
+  <text class="fl" x="110" y="72">порядок, 11 бит</text>
+  <text class="fl" x="330" y="72">мантисса, 52 бита</text>
+
+  <rect class="f" x="40" y="82" width="52" height="50"/>
+  <text class="bits" x="66" y="113">0</text>
+  <rect class="f" x="100" y="82" width="222" height="50"/>
+  <text class="bits" x="211" y="113">01111111011</text>
+  <rect class="f" x="330" y="82" width="690" height="50"/>
+  <text class="bits" x="620" y="113">1001 1001 1001 1001 … 1001 1001 1001</text>
+  <text class="tail" x="946" y="113">1010</text>
+
+  <text class="t" x="40" y="164">плюс</text>
+  <text class="t" x="100" y="164"><tspan class="m">1019 − 1023 = −4</tspan></text>
+  <text class="t" x="330" y="164">с единицей впереди: <tspan class="m">1,1001 1001 …</tspan> — это примерно <tspan class="m">1,6</tspan></text>
+
+  <line x1="40" y1="188" x2="1020" y2="188" stroke="#26262b" stroke-width="1.5"/>
+
+  <text class="t" x="40" y="220"><tspan class="m">0,1 = 1,6 × 2⁻⁴</tspan>, но <tspan class="m">1,6</tspan> в двоичной записи бесконечна: <tspan class="m">1,1001 1001 1001 1001 …</tspan></text>
+  <text class="t" x="40" y="248">в 52 бита помещается только начало; хвост отрезан, последние биты округлены вверх —</text>
+  <text class="t" x="40" y="272">вместо <tspan class="m">…1001 1001</tspan> получилось <tspan class="tail">…1010</tspan></text>
+  <text class="t" x="40" y="306">хранится <tspan class="m" fill="#ffffff">0,1000000000000000055511151…</tspan> — ближайшее к 0,1 число, которое помещается</text>
+</svg>
