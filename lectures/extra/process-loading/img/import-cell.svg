@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 360" width="1060" height="360"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Вызов функции из библиотеки идёт через ячейку с адресом. Windows: команда call берёт адрес из ячейки __imp_ в таблице импорта IAT, и ячейка указывает на area в geom.dll. Linux: call идёт в заглушку os_status_str@plt, заглушка прыгает по адресу из ячейки GOT, и ячейка указывает на os_status_str в libos.so. В обоих случаях ячейку при запуске заполняет загрузчик">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+  <style>
+    .h{fill:#dbdfe6;font-size:18px}
+    .bx{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .cellp{fill:rgba(255,138,138,0.08);stroke:#ff8a8a;stroke-width:1.5}
+    .code{fill:#ffffff;font-size:14px;font-family:Consolas, Roboto Mono, monospace}
+    .m{fill:#dbdfe6;font-size:14px;font-family:Consolas, Roboto Mono, monospace}
+    .s{fill:#80828c;font-size:14px}
+    .ln{stroke:#80828c;stroke-width:1.5;fill:none}
+    .pl{stroke:#ff8a8a;stroke-width:2;fill:none}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="358" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- Windows -->
+  <text class="h" x="40" y="46">Windows · PE</text>
+  <rect class="bx" x="40" y="66" width="300" height="64"/>
+  <text class="s" x="56" y="88">main в app.exe</text>
+  <text class="code" x="56" y="114">call [__imp_?area@@YANN@Z]</text>
+
+  <rect class="cellp" x="400" y="66" width="250" height="64"/>
+  <text class="s" x="416" y="88">ячейка в таблице импорта, IAT</text>
+  <text class="m" x="416" y="114">__imp_?area@@YANN@Z</text>
+
+  <rect class="bx" x="740" y="66" width="280" height="64"/>
+  <text class="s" x="756" y="88">geom.dll</text>
+  <text class="code" x="756" y="114">area(double)</text>
+
+  <line class="ln" x1="340" y1="98" x2="398" y2="98" marker-end="url(#grey)"/>
+  <line class="pl" x1="650" y1="98" x2="738" y2="98" marker-end="url(#pink)"/>
+  <text class="s" x="694" y="152" text-anchor="middle">вписывает загрузчик</text>
+
+  <line x1="40" y1="180" x2="1020" y2="180" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- Linux -->
+  <text class="h" x="40" y="220">Linux · ELF</text>
+  <rect class="bx" x="40" y="240" width="220" height="64"/>
+  <text class="s" x="56" y="262">main в app</text>
+  <text class="code" x="56" y="288">call os_status_str@plt</text>
+
+  <rect class="bx" x="300" y="240" width="200" height="64"/>
+  <text class="s" x="316" y="262">заглушка в .plt</text>
+  <text class="code" x="316" y="288">jmp *[ячейка]</text>
+
+  <rect class="cellp" x="540" y="240" width="170" height="64"/>
+  <text class="s" x="556" y="262">ячейка в .got.plt</text>
+  <text class="m" x="556" y="288">JUMP_SLOT</text>
+
+  <rect class="bx" x="780" y="240" width="240" height="64"/>
+  <text class="s" x="796" y="262">libos.so</text>
+  <text class="code" x="796" y="288">os_status_str</text>
+
+  <line class="ln" x1="260" y1="272" x2="298" y2="272" marker-end="url(#grey)"/>
+  <line class="ln" x1="500" y1="272" x2="538" y2="272" marker-end="url(#grey)"/>
+  <line class="pl" x1="710" y1="272" x2="778" y2="272" marker-end="url(#pink)"/>
+  <text class="s" x="745" y="326" text-anchor="middle">вписывает загрузчик</text>
+  <text class="s" x="745" y="344" text-anchor="middle">при запуске или при первом вызове</text>
+</svg>
