@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="red" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff2020"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="34" x2="530" y2="312" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- внутри bad() -->
+  <text x="40" y="54" font-size="19" fill="#dbdfe6">пока bad() выполняется</text>
+
+  <text x="150" y="96" font-size="15" fill="#80828c">кадр bad()</text>
+  <rect x="150" y="106" width="270" height="130" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="180" y="130" width="210" height="62" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="285" y="173" font-size="28" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">5</text>
+  <text x="285" y="220" font-size="15" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">int x</text>
+
+  <text x="40" y="272" font-size="17" fill="#dbdfe6">x живёт в кадре, пока функция работает</text>
+  <text x="40" y="300" font-size="17" fill="#80828c">return x; отдаёт ссылку на этот объект</text>
+
+  <!-- после возврата -->
+  <text x="570" y="54" font-size="19" fill="#dbdfe6">после int&amp; y = bad();</text>
+
+  <text x="730" y="96" font-size="15" fill="#80828c">кадр bad() снят</text>
+  <rect x="730" y="106" width="270" height="130" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <rect x="760" y="130" width="210" height="62" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <line x1="768" y1="186" x2="962" y2="136" stroke="#ff2020" stroke-width="2"/>
+  <line x1="768" y1="136" x2="962" y2="186" stroke="#ff2020" stroke-width="2"/>
+
+  <text x="590" y="156" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">int&amp; y</text>
+  <line x1="664" y1="161" x2="752" y2="161" stroke="#ff2020" stroke-width="2.5"
+        stroke-dasharray="7 5" marker-end="url(#red)"/>
+
+  <text x="570" y="272" font-size="17" fill="#dbdfe6">адрес тот же, но памяти под ним уже нет</text>
+  <text x="570" y="300" font-size="17" fill="#ff2020">любое обращение к y — UB</text>
+</svg>

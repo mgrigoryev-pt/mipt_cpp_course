@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="red" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff2020"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="34" x2="530" y2="312" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- прямая привязка -->
+  <text x="40" y="54" font-size="18" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">const std::string&amp; s = make();</text>
+  <text x="40" y="88" font-size="15" fill="#80828c">прямая привязка к const-ссылке</text>
+
+  <rect x="60" y="140" width="390" height="36" fill="rgba(255,138,138,0.08)"
+        stroke="#ff8a8a" stroke-width="2"/>
+  <text x="255" y="165" font-size="16" text-anchor="middle" fill="#ff8a8a">временный жив</text>
+
+  <line x1="60" y1="200" x2="490" y2="200" stroke="#26262b" stroke-width="1.5"/>
+  <line x1="180" y1="190" x2="180" y2="210" stroke="#80828c" stroke-width="1.5"/>
+  <line x1="450" y1="190" x2="450" y2="210" stroke="#80828c" stroke-width="1.5"/>
+  <text x="180" y="230" font-size="14" text-anchor="middle" fill="#5c5e66">конец выражения</text>
+  <text x="450" y="230" font-size="14" text-anchor="middle" fill="#5c5e66">конец блока</text>
+
+  <text x="40" y="278" font-size="17" fill="#dbdfe6">продление есть: временный живёт</text>
+  <text x="40" y="302" font-size="17" fill="#dbdfe6">столько же, сколько сама ссылка</text>
+
+  <!-- через поле -->
+  <text x="570" y="54" font-size="18" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">Wrapper w{ make() };</text>
+  <text x="570" y="88" font-size="15" fill="#80828c">ссылка попадает в поле через конструктор</text>
+
+  <rect x="590" y="140" width="120" height="36" fill="rgba(255,138,138,0.08)"
+        stroke="#ff8a8a" stroke-width="2"/>
+  <rect x="710" y="140" width="270" height="36" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="900" y="165" font-size="16" text-anchor="middle" fill="#ff2020">уже разрушен</text>
+
+  <text x="742" y="118" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">w.s</text>
+  <line x1="762" y1="126" x2="792" y2="146" stroke="#ff2020" stroke-width="2.5"
+        stroke-dasharray="7 5" marker-end="url(#red)"/>
+
+  <line x1="590" y1="200" x2="1020" y2="200" stroke="#26262b" stroke-width="1.5"/>
+  <line x1="710" y1="190" x2="710" y2="210" stroke="#80828c" stroke-width="1.5"/>
+  <line x1="980" y1="190" x2="980" y2="210" stroke="#80828c" stroke-width="1.5"/>
+  <text x="710" y="230" font-size="14" text-anchor="middle" fill="#5c5e66">конец выражения</text>
+  <text x="980" y="230" font-size="14" text-anchor="middle" fill="#5c5e66">конец блока</text>
+
+  <text x="570" y="278" font-size="17" fill="#dbdfe6">продления нет: временный умер</text>
+  <text x="570" y="302" font-size="17" fill="#ff2020">поле w.s висячее сразу после строки</text>
+</svg>
