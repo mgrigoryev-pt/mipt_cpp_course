@@ -26,3 +26,4 @@ project/CMakeUserPresets.json
 lectures/*/lecture*.html
 lectures/*/lecture*.png
 lectures/*/lecture*.pdf
+lectures/*/slides_export.html
