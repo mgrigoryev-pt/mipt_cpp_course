@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 400" width="1060" height="400"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Как выполняется вызов виртуальной функции. В регистре rdi лежит адрес объекта; первые восемь байт объекта — vptr, указатель на vtable его класса. Первая команда читает vptr из объекта, вторая читает из vtable адрес нужной функции по её номеру в таблице, третья переходит по этому адресу. Ниже объект другого класса со своим vptr и своей vtable: команды те же самые, а адрес функции получается другой">
+  <defs>
+    <marker id="red" markerWidth="10" markerHeight="10" refX="9" refY="4"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+  <style>
+    .h{fill:#dbdfe6;font-size:14px;font-weight:600;letter-spacing:.05em}
+    .s{fill:#80828c;font-size:13px}
+    .t{fill:#dbdfe6;font-size:14px}
+    .n{fill:#dbdfe6;font-size:14px;font-family:Consolas, Roboto Mono, monospace}
+    .pt{fill:#ff8a8a;font-size:13px;font-family:Consolas, Roboto Mono, monospace}
+    .c{fill:rgba(255,255,255,0.05);stroke:#3a3a40;stroke-width:1.5}
+    .k{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .p{fill:none;stroke:#ff8a8a;stroke-width:1.5}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="398" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text class="t" x="40" y="36"><tspan class="n">return rule.check(pid);</tspan>  — в <tspan class="n">%rdi</tspan> адрес объекта, в <tspan class="n">%esi</tspan> аргумент</text>
+
+  <!-- команды -->
+  <text class="n" x="40"  y="76">movq (%rdi), %rax</text>
+  <text class="n" x="360" y="76">movq (%rax), %rax</text>
+  <text class="n" x="700" y="76">jmpq *%rax</text>
+  <text class="s" x="40"  y="96">прочитать vptr из объекта</text>
+  <text class="s" x="360" y="96">взять адрес из таблицы</text>
+  <text class="s" x="700" y="96">перейти по нему</text>
+
+  <!-- объект A -->
+  <text class="h" x="40" y="132">ОБЪЕКТ ProcessRule</text>
+  <rect class="k" x="40" y="144" width="200" height="34"/>
+  <text class="n" x="140" y="167" text-anchor="middle">vptr</text>
+  <rect class="c" x="40" y="178" width="200" height="30"/>
+  <text class="s" x="140" y="198" text-anchor="middle">поля объекта</text>
+
+  <!-- vtable A -->
+  <text class="h" x="360" y="132">VTABLE ProcessRule</text>
+  <rect class="k" x="360" y="144" width="240" height="34"/>
+  <text class="n" x="380" y="167">[0] check</text>
+  <rect class="c" x="360" y="178" width="240" height="30"/>
+  <text class="s" x="380" y="198">[1] деструктор</text>
+
+  <!-- код A -->
+  <rect class="c" x="700" y="144" width="290" height="64"/>
+  <text class="n" x="720" y="170">ProcessRule::check</text>
+  <text class="s" x="720" y="192">тело функции этого класса</text>
+
+  <path class="p" d="M 244 161 L 356 161" marker-end="url(#red)"/>
+  <path class="p" d="M 604 161 L 696 161" marker-end="url(#red)"/>
+
+  <!-- объект B -->
+  <text class="h" x="40" y="264">ОБЪЕКТ FileRule</text>
+  <rect class="k" x="40" y="276" width="200" height="34"/>
+  <text class="n" x="140" y="299" text-anchor="middle">vptr</text>
+  <rect class="c" x="40" y="310" width="200" height="30"/>
+  <text class="s" x="140" y="330" text-anchor="middle">поля объекта</text>
+
+  <text class="h" x="360" y="264">VTABLE FileRule</text>
+  <rect class="k" x="360" y="276" width="240" height="34"/>
+  <text class="n" x="380" y="299">[0] check</text>
+  <rect class="c" x="360" y="310" width="240" height="30"/>
+  <text class="s" x="380" y="330">[1] деструктор</text>
+
+  <rect class="c" x="700" y="276" width="290" height="64"/>
+  <text class="n" x="720" y="302">FileRule::check</text>
+  <text class="s" x="720" y="324">тело функции этого класса</text>
+
+  <path class="p" d="M 244 293 L 356 293" marker-end="url(#red)"/>
+  <path class="p" d="M 604 293 L 696 293" marker-end="url(#red)"/>
+
+  <text class="s" x="40" y="372">Команды те же — разный только vptr в объекте. Номер функции компилятор знает заранее: у второй виртуальной функции было бы <tspan class="pt">0x8(%rax)</tspan></text>
+</svg>

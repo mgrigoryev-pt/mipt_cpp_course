@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 400" width="1060" height="400"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Стек при вызове функции, три состояния подряд. До команды call на стеке лежит кадр main, и rsp указывает на его вершину. После call на стек положен адрес возврата — адрес команды, следующей за call, — и rsp опустился на восемь байт вниз. После пролога вызванной функции на стеке лежат сохранённый прежний rbp и локальные переменные; rbp указывает на сохранённое значение, rsp — на нижний край, и всё между адресом возврата и rsp составляет кадр вызванной функции. Стек растёт вниз, в сторону меньших адресов; ret снимает адрес возврата обратно">
+  <defs>
+    <marker id="red" markerWidth="10" markerHeight="10" refX="9" refY="4"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 z" fill="#ff8a8a"/>
+    </marker>
+    <marker id="grey" markerWidth="10" markerHeight="10" refX="9" refY="4"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 z" fill="#80828c"/>
+    </marker>
+  </defs>
+  <style>
+    .h{fill:#dbdfe6;font-size:15px;font-weight:600}
+    .s{fill:#80828c;font-size:13px}
+    .t{fill:#dbdfe6;font-size:14px}
+    .n{fill:#dbdfe6;font-size:14px;font-family:Consolas, Roboto Mono, monospace}
+    .pt{fill:#ff8a8a;font-size:13px;font-family:Consolas, Roboto Mono, monospace}
+    .c{fill:rgba(255,255,255,0.05);stroke:#3a3a40;stroke-width:1.5}
+    .new{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .p{fill:none;stroke:#ff8a8a;stroke-width:1.5}
+    .g{fill:none;stroke:#80828c;stroke-width:1.5}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="398" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- ось адресов -->
+  <text class="s" x="40" y="72">адреса</text>
+  <text class="s" x="40" y="90">больше</text>
+  <path class="g" d="M 66 104 L 66 250" marker-end="url(#grey)"/>
+  <text class="s" x="40" y="276">адреса</text>
+  <text class="s" x="40" y="294">меньше</text>
+
+  <!-- 1: до call -->
+  <text class="h" x="140" y="46">до call</text>
+  <rect class="c" x="140" y="64" width="200" height="90"/>
+  <text class="t" x="240" y="115" text-anchor="middle">кадр main</text>
+  <path class="p" d="M 360 154 L 344 154" marker-end="url(#red)"/>
+  <text class="pt" x="368" y="159">rsp</text>
+
+  <!-- 2: после call -->
+  <text class="h" x="450" y="46">после call</text>
+  <rect class="c" x="450" y="64" width="200" height="90"/>
+  <text class="t" x="550" y="115" text-anchor="middle">кадр main</text>
+  <rect class="new" x="450" y="154" width="200" height="38"/>
+  <text class="n" x="550" y="179" text-anchor="middle">адрес возврата</text>
+  <path class="p" d="M 670 192 L 654 192" marker-end="url(#red)"/>
+  <text class="pt" x="678" y="197">rsp</text>
+  <text class="s" x="450" y="222">call положил на стек адрес</text>
+  <text class="s" x="450" y="240">команды, стоящей за ним</text>
+
+  <!-- 3: после пролога -->
+  <text class="h" x="760" y="46">после пролога</text>
+  <rect class="c" x="760" y="64" width="200" height="90"/>
+  <text class="t" x="860" y="115" text-anchor="middle">кадр main</text>
+  <rect class="c" x="760" y="154" width="200" height="38"/>
+  <text class="n" x="860" y="179" text-anchor="middle">адрес возврата</text>
+  <rect class="new" x="760" y="192" width="200" height="34"/>
+  <text class="n" x="860" y="215" text-anchor="middle">сохранённый rbp</text>
+  <rect class="new" x="760" y="226" width="200" height="44"/>
+  <text class="t" x="860" y="253" text-anchor="middle">локальные</text>
+  <path class="p" d="M 980 226 L 964 226" marker-end="url(#red)"/>
+  <text class="pt" x="988" y="231">rbp</text>
+  <path class="p" d="M 980 270 L 964 270" marker-end="url(#red)"/>
+  <text class="pt" x="988" y="275">rsp</text>
+  <text class="s" x="760" y="300">кадр вызванной функции —</text>
+  <text class="s" x="760" y="318">от адреса возврата до rsp</text>
+
+  <!-- пояснение -->
+  <text class="t" x="140" y="300">Пролог: <tspan class="n">pushq %rbp</tspan> — сохранить чужой,</text>
+  <text class="t" x="140" y="324"><tspan class="n">movq %rsp, %rbp</tspan> — завести свой,</text>
+  <text class="t" x="140" y="348"><tspan class="n">subq $N, %rsp</tspan> — отрезать место под локальные.</text>
+  <text class="s" x="140" y="374">Эпилог делает обратное, а ret снимает со стека адрес возврата и передаёт туда управление</text>
+</svg>

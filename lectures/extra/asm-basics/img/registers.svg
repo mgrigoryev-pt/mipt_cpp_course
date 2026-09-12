@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 450" width="1060" height="450"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Шестнадцать регистров общего назначения x86-64 и их роли в соглашении System V: rdi, rsi, rdx, rcx, r8, r9 — аргументы в этом порядке; rax — результат, вместе с r10 и r11 это caller-saved регистры, которые вызванная функция вправе испортить; rbx, rbp, r12, r13, r14, r15 — callee-saved, их функция обязана вернуть прежними. Отдельно rsp — указатель стека и rip — адрес текущей команды. Ниже устройство одного регистра: rax занимает восемь байт, его младшие четыре байта называются eax, младшие два — ax, младший байт — al">
+  <style>
+    .h{fill:#dbdfe6;font-size:16px}
+    .s{fill:#80828c;font-size:14px}
+    .n{fill:#dbdfe6;font-size:16px;font-family:Consolas, Roboto Mono, monospace}
+    .c{fill:rgba(255,255,255,0.05);stroke:#3a3a40;stroke-width:1.5}
+    .k{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .p{fill:none;stroke:#ff8a8a;stroke-width:1.5}
+    .pt{fill:#ff8a8a;font-size:14px;font-family:Consolas, Roboto Mono, monospace}
+    .div{stroke:#26262b;stroke-width:1.5}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="448" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text class="h" x="40" y="40">Шестнадцать регистров общего назначения, каждый по 8 байт. Роли — по соглашению System V</text>
+
+  <!-- аргументы -->
+  <rect class="c" x="40"  y="62" width="96" height="42"/><text class="n" x="88"  y="89" text-anchor="middle">rdi</text>
+  <rect class="c" x="146" y="62" width="96" height="42"/><text class="n" x="194" y="89" text-anchor="middle">rsi</text>
+  <rect class="c" x="252" y="62" width="96" height="42"/><text class="n" x="300" y="89" text-anchor="middle">rdx</text>
+  <rect class="c" x="358" y="62" width="96" height="42"/><text class="n" x="406" y="89" text-anchor="middle">rcx</text>
+  <rect class="c" x="464" y="62" width="96" height="42"/><text class="n" x="512" y="89" text-anchor="middle">r8</text>
+  <rect class="c" x="570" y="62" width="96" height="42"/><text class="n" x="618" y="89" text-anchor="middle">r9</text>
+  <text class="s" x="690" y="88">аргументы — в этом порядке</text>
+
+  <!-- результат и временные -->
+  <rect class="c" x="40"  y="118" width="96" height="42"/><text class="n" x="88"  y="145" text-anchor="middle">rax</text>
+  <rect class="c" x="146" y="118" width="96" height="42"/><text class="n" x="194" y="145" text-anchor="middle">r10</text>
+  <rect class="c" x="252" y="118" width="96" height="42"/><text class="n" x="300" y="145" text-anchor="middle">r11</text>
+  <text class="s" x="370" y="137">результат — в rax; эти три и шесть верхних — caller-saved:</text>
+  <text class="s" x="370" y="157">вызванная функция вправе их испортить</text>
+
+  <!-- callee-saved -->
+  <rect class="c" x="40"  y="174" width="96" height="42"/><text class="n" x="88"  y="201" text-anchor="middle">rbx</text>
+  <rect class="c" x="146" y="174" width="96" height="42"/><text class="n" x="194" y="201" text-anchor="middle">rbp</text>
+  <rect class="c" x="252" y="174" width="96" height="42"/><text class="n" x="300" y="201" text-anchor="middle">r12</text>
+  <rect class="c" x="358" y="174" width="96" height="42"/><text class="n" x="406" y="201" text-anchor="middle">r13</text>
+  <rect class="c" x="464" y="174" width="96" height="42"/><text class="n" x="512" y="201" text-anchor="middle">r14</text>
+  <rect class="c" x="570" y="174" width="96" height="42"/><text class="n" x="618" y="201" text-anchor="middle">r15</text>
+  <text class="s" x="690" y="200">callee-saved — вернуть прежними</text>
+
+  <line class="div" x1="40" y1="242" x2="1020" y2="242"/>
+
+  <!-- служебные -->
+  <rect class="k" x="40" y="262" width="96" height="42"/><text class="n" x="88" y="289" text-anchor="middle">rsp</text>
+  <text class="s" x="152" y="289">указатель стека: вершина стека, растущего вниз</text>
+  <rect class="k" x="570" y="262" width="96" height="42"/><text class="n" x="618" y="289" text-anchor="middle">rip</text>
+  <text class="s" x="682" y="289">адрес текущей команды</text>
+
+  <line class="div" x1="40" y1="328" x2="1020" y2="328"/>
+
+  <!-- размеры -->
+  <text class="h" x="40" y="362">У каждого регистра четыре имени — по размеру той части, которую трогает команда</text>
+
+  <rect class="c" x="40" y="378" width="560" height="44"/>
+  <rect class="c" x="320" y="378" width="280" height="44"/>
+  <rect class="c" x="460" y="378" width="140" height="44"/>
+  <rect class="c" x="530" y="378" width="70"  height="44"/>
+  <text class="n" x="180" y="406" text-anchor="middle">rax — 8 байт</text>
+  <text class="n" x="390" y="406" text-anchor="middle">eax — 4</text>
+  <text class="n" x="495" y="406" text-anchor="middle">ax</text>
+  <text class="n" x="565" y="406" text-anchor="middle">al</text>
+  <text class="s" x="630" y="395">это один регистр: eax — младшие четыре байта rax.</text>
+  <text class="s" x="630" y="415">Поэтому в листинге рядом стоят <tspan class="pt">%rdi</tspan> и <tspan class="pt">%edi</tspan></text>
+</svg>
