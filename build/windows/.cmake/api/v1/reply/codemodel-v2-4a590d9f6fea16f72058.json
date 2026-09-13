@@ -1,0 +1,439 @@
+{
+	"configurations" : 
+	[
+		{
+			"abstractTargets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "edr::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-edr-Release-d534280d5f8ab17a57cd.json",
+					"name" : "edr",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "nano_edr_core::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-nano_edr_core-Release-7c0d0860019479dca3ab.json",
+					"name" : "nano_edr_core",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "nano_edr_warnings::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-nano_edr_warnings-Release-398ecbb23122c4d93793.json",
+					"name" : "nano_edr_warnings",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "os::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-os-Release-41da2dc589de1e3c7a95.json",
+					"name" : "os",
+					"projectIndex" : 0
+				}
+			],
+			"directories" : 
+			[
+				{
+					"abstractTargetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Release-b5805d5c08fd3d92def4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.21"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				},
+				{
+					"build" : "task1_1",
+					"jsonFile" : "directory-task1_1-Release-b76f0ecbe51adb13ad34.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.21"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "tasks/1.1/tests"
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"abstractTargetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "nano_edr_agent",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "format::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-format-Release-bdb54d27591172aa3ab0.json",
+					"name" : "format",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "format-check::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-format-check-Release-1b9d21181d2ff998c005.json",
+					"name" : "format-check",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "minimal_agent::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-minimal_agent-Release-5f11ecaaa46726cc6f3c.json",
+					"name" : "minimal_agent",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "nano-edr::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-nano-edr-Release-01e54797d4e7ccbe9f37.json",
+					"name" : "nano-edr",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "toolchain::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-toolchain-Release-f6a6704a27a3ae0b45e9.json",
+					"name" : "toolchain",
+					"projectIndex" : 0
+				}
+			]
+		},
+		{
+			"abstractTargets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "edr::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-edr-RelWithDebInfo-d534280d5f8ab17a57cd.json",
+					"name" : "edr",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "nano_edr_core::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-nano_edr_core-RelWithDebInfo-7c0d0860019479dca3ab.json",
+					"name" : "nano_edr_core",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "nano_edr_warnings::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-nano_edr_warnings-RelWithDebInfo-398ecbb23122c4d93793.json",
+					"name" : "nano_edr_warnings",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "os::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-os-RelWithDebInfo-41da2dc589de1e3c7a95.json",
+					"name" : "os",
+					"projectIndex" : 0
+				}
+			],
+			"directories" : 
+			[
+				{
+					"abstractTargetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-RelWithDebInfo-b5805d5c08fd3d92def4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.21"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				},
+				{
+					"build" : "task1_1",
+					"jsonFile" : "directory-task1_1-RelWithDebInfo-b76f0ecbe51adb13ad34.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.21"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "tasks/1.1/tests"
+				}
+			],
+			"name" : "RelWithDebInfo",
+			"projects" : 
+			[
+				{
+					"abstractTargetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "nano_edr_agent",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "format::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-format-RelWithDebInfo-38b433c47c6c34a4c701.json",
+					"name" : "format",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "format-check::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-format-check-RelWithDebInfo-2dfd1e416772feff65e9.json",
+					"name" : "format-check",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "minimal_agent::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-minimal_agent-RelWithDebInfo-a5f992c7628501744a28.json",
+					"name" : "minimal_agent",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "nano-edr::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-nano-edr-RelWithDebInfo-7e9f6531dcb063e003f9.json",
+					"name" : "nano-edr",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "toolchain::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-toolchain-RelWithDebInfo-08b39535cdbd72f0c3a0.json",
+					"name" : "toolchain",
+					"projectIndex" : 0
+				}
+			]
+		},
+		{
+			"abstractTargets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "edr::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-edr-Debug-d534280d5f8ab17a57cd.json",
+					"name" : "edr",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "nano_edr_core::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-nano_edr_core-Debug-7c0d0860019479dca3ab.json",
+					"name" : "nano_edr_core",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "nano_edr_warnings::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-nano_edr_warnings-Debug-398ecbb23122c4d93793.json",
+					"name" : "nano_edr_warnings",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "os::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-os-Debug-41da2dc589de1e3c7a95.json",
+					"name" : "os",
+					"projectIndex" : 0
+				}
+			],
+			"directories" : 
+			[
+				{
+					"abstractTargetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-b5805d5c08fd3d92def4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.21"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				},
+				{
+					"build" : "task1_1",
+					"jsonFile" : "directory-task1_1-Debug-b76f0ecbe51adb13ad34.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.21"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "tasks/1.1/tests"
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"abstractTargetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					],
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "nano_edr_agent",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "format::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-format-Debug-04a821ebba288c1f939b.json",
+					"name" : "format",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "format-check::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-format-check-Debug-f0e8f65f27583fb1ada3.json",
+					"name" : "format-check",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "minimal_agent::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-minimal_agent-Debug-b4102653447363a71ca1.json",
+					"name" : "minimal_agent",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "nano-edr::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-nano-edr-Debug-a83b0f8c14972df98aac.json",
+					"name" : "nano-edr",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "toolchain::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-toolchain-Debug-306f2cc4656aed4fbe52.json",
+					"name" : "toolchain",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/C++Projects/test/mipt_cpp_course-main/project/build/windows",
+		"source" : "D:/C++Projects/test/mipt_cpp_course-main/project"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 11
+	}
+}

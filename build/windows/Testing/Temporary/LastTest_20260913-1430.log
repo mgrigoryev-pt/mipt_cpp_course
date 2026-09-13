@@ -1,0 +1,18 @@
+Start testing: Sep 14 00:05 Russia TZ 2 Standard Time
+----------------------------------------------------------
+2/3 Testing: task1.1.ransomware
+2/3 Test: task1.1.ransomware
+Command: "D:/Programs/CMake/bin/cmake.exe" "-DEXE=D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/Release/nano-edr.exe" "-DLOG=D:/C++Projects/test/mipt_cpp_course-main/project/scenarios/ransomware.log" "-DEXPECTED=D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/expected/ransomware.out" "-P" "D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/run_case.cmake"
+Directory: D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/task1_1
+"task1.1.ransomware" start time: Sep 14 00:05 Russia TZ 2 Standard Time
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"task1.1.ransomware" end time: Sep 14 00:05 Russia TZ 2 Standard Time
+"task1.1.ransomware" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 14 00:05 Russia TZ 2 Standard Time

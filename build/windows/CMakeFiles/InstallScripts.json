@@ -1,0 +1,12 @@
+{
+	"Configs" : 
+	[
+		"Release"
+	],
+	"InstallScripts" : 
+	[
+		"D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/cmake_install.cmake",
+		"D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/task1_1/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

@@ -1,0 +1,11 @@
+D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/CMakeFiles/nano-edr.dir
+D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/CMakeFiles/minimal_agent.dir
+D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/CMakeFiles/toolchain.dir
+D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/CMakeFiles/format.dir
+D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/CMakeFiles/format-check.dir
+D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/CMakeFiles/test.dir
+D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/CMakeFiles/edit_cache.dir
+D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/CMakeFiles/rebuild_cache.dir
+D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/task1_1/CMakeFiles/test.dir
+D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/task1_1/CMakeFiles/edit_cache.dir
+D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/task1_1/CMakeFiles/rebuild_cache.dir
