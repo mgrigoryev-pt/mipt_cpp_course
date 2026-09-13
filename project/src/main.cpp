@@ -11,14 +11,25 @@
 //
 // Запуск:
 //   nano-edr <журнал.log>
+
+#include <cstddef>
 #include <cstdio>
 #include <fstream>
 #include <print>
 #include <string>
+#include <vector>
+#include <unordered_map>
 
 int main(int argc, char** argv) {
     // Аргументы разбираются грубо: путь к журналу и ничего больше. Остальное,
     // включая --quiet, добавляется по заданию.
+    bool quiet = 0;
+    for (int i = 0; i < argc; i++) {
+        if (!std::strcmp(argv[i], "--quiet")) quiet = 1;
+    }
+
+    std::vector<std::string> rules = {"wscript.exe", ".locked", "certutil.exe", "\\Startup\\"};
+    std::unordered_map<int, int> dc;
     if (argc < 2) {
         std::print(stderr, "использование: nano-edr <журнал.log>\n");
         return 2;
@@ -30,8 +41,7 @@ int main(int argc, char** argv) {
         return 2;
     }
 
-    long long lines = 0;
-    long long comments = 0;
+    int lines = 0, comments = 0;
     std::string line;
 
     while (std::getline(log, line)) {
@@ -46,13 +56,21 @@ int main(int argc, char** argv) {
             ++comments;
             continue;
         }
-
-        // >>> Здесь начинается занятие 1.1.
-        //
-        // Проверка признаков и печать детекта. Номер строки, который нужен
-        // в выводе, — это lines.
+        int rule_cnt = 0;
+        for (std::string rule : rules) {
+            if ((int)line.find(rule) != -1) {
+                std::printf("[DETECT] строка %d, признак %s: %s\n", lines, rule.c_str(), line.c_str());
+                dc[rule_cnt]++;
+            }
+            rule_cnt++;
+        }
     }
-
-    std::print("строк {}, из них комментариев {}\n", lines, comments);
+    
+    if (!quiet){
+        std::printf("Строк %d, из них комментариев %d\n", lines, comments);
+        for (int i = 0; (size_t)i < rules.size(); i++) {
+            std::printf("Признак %s встретился %d раз\n", rules[i].c_str(), dc[i]);
+        }
+    }
     return 0;
 }
