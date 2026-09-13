@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 420" width="1060" height="420"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Машинный код функции handle, собранной под Linux. Обычный путь: конструктор Label, вызов log_line, деструктор Label, возврат — ни одной команды для исключений. После возврата лежит landing pad: деструктор Label и _Unwind_Resume, туда попадают, только если log_line бросила. Рядом две таблицы: .eh_frame описывает, как снять кадр функции и вернуться в вызвавшую, .gcc_except_table — какой вызов ведёт на какой landing pad">
+  <defs>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+  <style>
+    .h{fill:#dbdfe6;font-size:14px;font-weight:600;letter-spacing:.05em}
+    .s{fill:#80828c;font-size:14px}
+    .t{fill:#dbdfe6;font-size:15px}
+    .code{fill:#dbdfe6;font-size:14px;font-family:Consolas, Roboto Mono, monospace}
+    .addr{fill:#80828c;font-size:14px;font-family:Consolas, Roboto Mono, monospace}
+    .main{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .pad{fill:none;stroke:#80828c;stroke-width:1.5;stroke-dasharray:7 6}
+    .tab{fill:rgba(255,255,255,0.03);stroke:#80828c;stroke-width:1.5}
+    .ln{stroke:#80828c;stroke-width:1.5;fill:none}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="418" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text class="t" x="40" y="36"><tspan font-family="Consolas, Roboto Mono, monospace">void handle(int pid) { Label label{pid}; log_line(label); }</tspan></text>
+
+  <!-- обычный путь -->
+  <rect class="main" x="40" y="54" width="520" height="190"/>
+  <text class="h" x="56" y="80">ОБЫЧНЫЙ ПУТЬ</text>
+  <text class="addr" x="56" y="110">0x0f</text><text class="code" x="120" y="110">call Label::Label(int)</text>
+  <text class="addr" x="56" y="136">0x17</text><text class="code" x="120" y="136">call log_line(Label const&amp;)</text>
+  <text class="addr" x="56" y="162">0x21</text><text class="code" x="120" y="162">call Label::~Label()</text>
+  <text class="addr" x="56" y="188">0x2b</text><text class="code" x="120" y="188">ret</text>
+  <text class="s" x="56" y="226">ни одной команды на случай исключения</text>
+
+  <!-- площадка -->
+  <rect class="pad" x="40" y="262" width="520" height="130"/>
+  <text class="h" x="56" y="288" fill="#80828c">ПОСАДОЧНАЯ ПЛОЩАДКА</text>
+  <text class="addr" x="56" y="318">0x34</text><text class="code" x="120" y="318">call Label::~Label()</text>
+  <text class="addr" x="56" y="344">0x3c</text><text class="code" x="120" y="344">call _Unwind_Resume</text>
+  <text class="s" x="56" y="376">выполняется, только если log_line бросила</text>
+
+  <!-- таблицы -->
+  <rect class="tab" x="640" y="54" width="380" height="120"/>
+  <text class="code" x="656" y="82">.eh_frame</text>
+  <text class="t" x="656" y="110">как снять кадр handle:</text>
+  <text class="t" x="656" y="132">сколько байт стека, какие регистры</text>
+  <text class="t" x="656" y="154">восстановить, куда вернуться</text>
+
+  <rect class="tab" x="640" y="194" width="380" height="120"/>
+  <text class="code" x="656" y="222">.gcc_except_table</text>
+  <text class="t" x="656" y="250">вызов по адресу 0x17 бросил —</text>
+  <text class="t" x="656" y="272">идти на landing pad 0x2c;</text>
+  <text class="t" x="656" y="294">catch в этой функции нет</text>
+
+  <text class="s" x="640" y="344">таблицы читает раскрутка,</text>
+  <text class="s" x="640" y="364">а не обычный путь</text>
+
+  <path class="ln" d="M 560 132 C 600 132, 600 250, 638 250" stroke-dasharray="5 4"/>
+  <path class="ln" d="M 638 272 C 600 272, 600 300, 564 300" stroke-dasharray="5 4" marker-end="url(#grey)"/>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Число 0x0A0B0C0D в четырёх байтах. Little endian, как на x86 и обычно на ARM: младший байт по младшему адресу — 0d 0c 0b 0a. Big endian, сетевой порядок: старший байт первым — 0a 0b 0c 0d. Ниже четыре байта из заголовка пакета 00 00 01 2c: прочитанные как big endian, это 300; скопированные в uint32_t на x86 как есть — 738 263 040">
+  <style>
+    .h{fill:#dbdfe6;font-size:16px}
+    .s{fill:#80828c;font-size:14px}
+    .c{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .v{fill:#ffffff;font-size:20px;font-family:Consolas, Roboto Mono, monospace;text-anchor:middle}
+    .a{fill:#80828c;font-size:13px;font-family:Consolas, Roboto Mono, monospace;text-anchor:middle}
+    .lab{fill:#dbdfe6;font-size:15px}
+    .res{fill:#ffffff;font-size:17px;font-family:Consolas, Roboto Mono, monospace}
+    .bad{fill:#ff2020;font-size:17px;font-family:Consolas, Roboto Mono, monospace}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text class="h" x="40" y="38">число <tspan font-family="Consolas, Roboto Mono, monospace">0x0A0B0C0D</tspan> в памяти</text>
+  <text class="a" x="433" y="62">+0</text><text class="a" x="503" y="62">+1</text>
+  <text class="a" x="573" y="62">+2</text><text class="a" x="643" y="62">+3</text>
+
+  <text class="lab" x="40" y="98">little endian</text>
+  <text class="s" x="40" y="118">x86, обычно ARM</text>
+  <rect class="c" x="398" y="72" width="70" height="44"/><text class="v" x="433" y="101">0d</text>
+  <rect class="c" x="468" y="72" width="70" height="44"/><text class="v" x="503" y="101">0c</text>
+  <rect class="c" x="538" y="72" width="70" height="44"/><text class="v" x="573" y="101">0b</text>
+  <rect class="c" x="608" y="72" width="70" height="44"/><text class="v" x="643" y="101">0a</text>
+  <text class="s" x="700" y="99">младший байт по младшему адресу</text>
+
+  <text class="lab" x="40" y="158">big endian</text>
+  <text class="s" x="40" y="178">сетевой порядок</text>
+  <rect class="c" x="398" y="132" width="70" height="44"/><text class="v" x="433" y="161">0a</text>
+  <rect class="c" x="468" y="132" width="70" height="44"/><text class="v" x="503" y="161">0b</text>
+  <rect class="c" x="538" y="132" width="70" height="44"/><text class="v" x="573" y="161">0c</text>
+  <rect class="c" x="608" y="132" width="70" height="44"/><text class="v" x="643" y="161">0d</text>
+  <text class="s" x="700" y="159">старший байт первым</text>
+
+  <line x1="40" y1="204" x2="1020" y2="204" stroke="#26262b" stroke-width="1.5"/>
+
+  <text class="h" x="40" y="236">длина записи в заголовке пакета, big endian</text>
+  <rect class="c" x="398" y="252" width="70" height="44"/><text class="v" x="433" y="281">00</text>
+  <rect class="c" x="468" y="252" width="70" height="44"/><text class="v" x="503" y="281">00</text>
+  <rect class="c" x="538" y="252" width="70" height="44"/><text class="v" x="573" y="281">01</text>
+  <rect class="c" x="608" y="252" width="70" height="44"/><text class="v" x="643" y="281">2c</text>
+  <text class="lab" x="700" y="270">прочитано как big endian: <tspan class="res">300</tspan></text>
+  <text class="lab" x="700" y="296"><tspan font-family="Consolas, Roboto Mono, monospace">memcpy</tspan> на x86: <tspan class="bad">738 263 040</tspan></text>
+</svg>

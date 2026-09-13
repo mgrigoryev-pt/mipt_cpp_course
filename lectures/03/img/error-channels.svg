@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 370" width="1060" height="370"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="light" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#dbdfe6"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="368" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="34" x2="530" y2="340" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- код возврата -->
+  <text x="40" y="54" font-size="19" fill="#dbdfe6">код возврата</text>
+
+  <rect x="100" y="90" width="390" height="48" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="114" y="120" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">main</text>
+  <text x="476" y="120" font-size="15" text-anchor="end" fill="#dbdfe6">обрабатывает</text>
+
+  <rect x="100" y="152" width="390" height="48" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="114" y="182" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">load_config</text>
+  <text x="476" y="182" font-size="15" text-anchor="end" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">if (rc) return rc;</text>
+
+  <rect x="100" y="214" width="390" height="48" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="114" y="244" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">parse</text>
+  <text x="476" y="244" font-size="15" text-anchor="end" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">if (rc) return rc;</text>
+
+  <rect x="100" y="276" width="390" height="48" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="114" y="306" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">read_file</text>
+  <text x="476" y="306" font-size="15" text-anchor="end" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">return -1;</text>
+
+  <line x1="76" y1="300" x2="76" y2="108" stroke="#dbdfe6" stroke-width="2.5"
+        marker-end="url(#light)"/>
+  <line x1="76" y1="176" x2="98" y2="176" stroke="#dbdfe6" stroke-width="2"/>
+  <line x1="76" y1="238" x2="98" y2="238" stroke="#dbdfe6" stroke-width="2"/>
+
+  <text x="40" y="352" font-size="16" fill="#80828c">каждый промежуточный уровень пишет проверку</text>
+
+  <!-- исключение -->
+  <text x="570" y="54" font-size="19" fill="#dbdfe6">исключение</text>
+
+  <rect x="630" y="90" width="390" height="48" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="644" y="120" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">main</text>
+  <text x="1006" y="120" font-size="15" text-anchor="end" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">catch</text>
+
+  <rect x="630" y="152" width="390" height="48" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="644" y="182" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">load_config</text>
+  <text x="1006" y="182" font-size="15" text-anchor="end" fill="#5c5e66">кода нет</text>
+
+  <rect x="630" y="214" width="390" height="48" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="644" y="244" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">parse</text>
+  <text x="1006" y="244" font-size="15" text-anchor="end" fill="#5c5e66">кода нет</text>
+
+  <rect x="630" y="276" width="390" height="48" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="644" y="306" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">read_file</text>
+  <text x="1006" y="306" font-size="15" text-anchor="end" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">throw</text>
+
+  <line x1="606" y1="300" x2="606" y2="108" stroke="#dbdfe6" stroke-width="2.5"
+        marker-end="url(#light)"/>
+
+  <text x="570" y="352" font-size="16" fill="#80828c">промежуточные уровни об ошибке не знают</text>
+</svg>

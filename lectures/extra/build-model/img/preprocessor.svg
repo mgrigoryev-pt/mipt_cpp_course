@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 475" width="1060" height="475" role="img" aria-label="Препроцессор вклеивает текст заголовка print и geom.h в main.cpp и выдаёт одну единицу трансляции примерно в 66 000 строк, где собственный код автора занимает нижнюю тонкую полоску">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="mk" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+  <style>
+    .t{fill:#dbdfe6;font-size:15px}
+    .t-s{fill:#80828c;font-size:13.5px}
+    .t-xs{fill:#5c5e66;font-size:12px}
+    .t-h{fill:#dbdfe6;font-size:14px;font-weight:600;letter-spacing:.07em}
+    .t-decl{fill:#dbdfe6;font-size:13.5px}
+    .bx{fill:rgba(255,255,255,0.045);stroke:#3a3a40;stroke-width:1.5}
+    .bx-plain{fill:none;stroke:#3a3a40;stroke-width:1.5}
+    .bx-decl{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .bx-lnk{fill:rgba(255,255,255,0.08);stroke:#80828c;stroke-width:1.5}
+    .ln{stroke:#80828c;stroke-width:1.5;fill:none}
+    .mk{fill:#80828c}
+    .mono{font-family:Consolas, Roboto Mono, monospace}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="473" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <g transform="translate(24,24) scale(1.124)" font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+    <rect class="bx" x="20" y="40" width="200" height="52" rx="2"/>
+    <text class="t mono" x="36" y="64">&lt;print&gt;</text>
+    <text class="t-s" x="36" y="82">≈ 66 000 строк</text>
+
+    <rect class="bx-decl" x="20" y="112" width="200" height="52" rx="2"/>
+    <text class="t mono" x="36" y="136">"geom.h"</text>
+    <text class="t-s" x="36" y="154">2 строки</text>
+
+    <rect class="bx" x="20" y="184" width="200" height="52" rx="2"/>
+    <text class="t mono" x="36" y="208">main.cpp</text>
+    <text class="t-s" x="36" y="226">3 строки вашего кода</text>
+
+    <line class="ln" x1="220" y1="66" x2="292" y2="122" marker-end="url(#ar)"/>
+    <line class="ln" x1="220" y1="138" x2="292" y2="150" marker-end="url(#ar)"/>
+    <line class="ln" x1="220" y1="210" x2="292" y2="178" marker-end="url(#ar)"/>
+
+    <rect class="bx-lnk" x="296" y="112" width="150" height="76" rx="2"/>
+    <text class="t" x="371" y="142" text-anchor="middle">ПРЕПРОЦЕССОР</text>
+    <text class="t-s" x="371" y="162" text-anchor="middle">ножницы и клей,</text>
+    <text class="t-s" x="371" y="178" text-anchor="middle">C++ не понимает</text>
+
+    <line class="ln" x1="446" y1="150" x2="524" y2="150" marker-end="url(#ar)"/>
+    <text class="t-xs" x="458" y="140">текст</text>
+
+    <rect class="bx-plain" x="528" y="24" width="330" height="320"/>
+    <text class="t-h" x="544" y="14">ОДНА ЕДИНИЦА ТРАНСЛЯЦИИ</text>
+    <rect class="bx" x="528" y="24" width="330" height="250"/>
+    <text class="t-s" x="693" y="145" text-anchor="middle">текст из <tspan class="mono">&lt;print&gt;</tspan></text>
+    <text class="t-xs" x="693" y="166" text-anchor="middle">вы его не писали, но компилятор разберёт его целиком</text>
+    <rect class="bx-decl" x="528" y="274" width="330" height="34"/>
+    <text class="t-decl" x="693" y="296" text-anchor="middle">объявления из geom.h</text>
+    <rect class="bx" x="528" y="308" width="330" height="36"/>
+    <text class="t mono" x="693" y="332" text-anchor="middle">ваш main()</text>
+    <text class="t-xs" x="693" y="366" text-anchor="middle">≈ 66 000 строк на 3 написанные — и так для каждого .cpp</text>
+  </g>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 300" width="1060" height="300"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="grey" markerWidth="10" markerHeight="10" refX="9" refY="4"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 z" fill="#dbdfe6"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="298" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="530" y="50" font-size="17" text-anchor="middle" fill="#80828c">каждая следующая умеет всё, что предыдущая, плюс своё</text>
+
+  <!-- 1. Input / Output -->
+  <rect x="36" y="72" width="173" height="132" rx="10" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="122" y="102" font-size="18" text-anchor="middle" fill="#ffffff">Input / Output</text>
+  <text x="122" y="136" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">*it  ++it</text>
+  <text x="122" y="160" font-size="15" text-anchor="middle" fill="#80828c">один проход</text>
+  <line x1="52" y1="174" x2="193" y2="174" stroke="#26262b" stroke-width="1.5"/>
+  <text x="122" y="194" font-size="14" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">istream_iterator</text>
+
+  <line x1="214" y1="138" x2="234" y2="138" stroke="#dbdfe6" stroke-width="2" marker-end="url(#grey)"/>
+
+  <!-- 2. Forward -->
+  <rect x="239" y="72" width="173" height="132" rx="10" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="325" y="102" font-size="18" text-anchor="middle" fill="#ffffff">Forward</text>
+  <text x="325" y="136" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">*it</text>
+  <text x="325" y="160" font-size="15" text-anchor="middle" fill="#80828c">можно перечитать</text>
+  <line x1="255" y1="174" x2="396" y2="174" stroke="#26262b" stroke-width="1.5"/>
+  <text x="325" y="194" font-size="14" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">forward_list</text>
+
+  <line x1="417" y1="138" x2="437" y2="138" stroke="#dbdfe6" stroke-width="2" marker-end="url(#grey)"/>
+
+  <!-- 3. Bidirectional -->
+  <rect x="442" y="72" width="173" height="132" rx="10" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="528" y="102" font-size="18" text-anchor="middle" fill="#ffffff">Bidirectional</text>
+  <text x="528" y="136" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">--it</text>
+  <text x="528" y="160" font-size="15" text-anchor="middle" fill="#80828c">шаг назад</text>
+  <line x1="458" y1="174" x2="599" y2="174" stroke="#26262b" stroke-width="1.5"/>
+  <text x="528" y="194" font-size="14" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">list, map, set</text>
+
+  <line x1="620" y1="138" x2="640" y2="138" stroke="#dbdfe6" stroke-width="2" marker-end="url(#grey)"/>
+
+  <!-- 4. Random access -->
+  <rect x="645" y="72" width="173" height="132" rx="10" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="731" y="102" font-size="18" text-anchor="middle" fill="#ffffff">Random access</text>
+  <text x="731" y="136" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">it + n  it[n]</text>
+  <text x="731" y="160" font-size="15" text-anchor="middle" fill="#80828c">прыжок за O(1)</text>
+  <line x1="661" y1="174" x2="802" y2="174" stroke="#26262b" stroke-width="1.5"/>
+  <text x="731" y="194" font-size="14" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">deque</text>
+
+  <line x1="823" y1="138" x2="843" y2="138" stroke="#dbdfe6" stroke-width="2" marker-end="url(#grey)"/>
+
+  <!-- 5. Contiguous -->
+  <rect x="848" y="72" width="173" height="132" rx="10" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="934" y="102" font-size="18" text-anchor="middle" fill="#ffffff">Contiguous</text>
+  <text x="934" y="136" font-size="17" text-anchor="middle" fill="#dbdfe6">данные подряд</text>
+  <text x="934" y="160" font-size="15" text-anchor="middle" fill="#80828c">C++20</text>
+  <line x1="864" y1="174" x2="1005" y2="174" stroke="#26262b" stroke-width="1.5"/>
+  <text x="934" y="194" font-size="14" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">vector, array</text>
+
+  <text x="530" y="244" font-size="17" text-anchor="middle" fill="#dbdfe6">Алгоритм требует минимальную категорию, а не конкретный контейнер</text>
+  <text x="530" y="272" font-size="16" text-anchor="middle" fill="#80828c">
+    <tspan font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">std::find</tspan> — Input,
+    <tspan font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">std::sort</tspan> — Random access,
+    поэтому у <tspan font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">list</tspan> есть свой
+    <tspan font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">list::sort()</tspan></text>
+</svg>

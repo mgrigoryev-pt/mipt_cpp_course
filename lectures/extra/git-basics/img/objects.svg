@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 440" width="1060" height="440" role="img" aria-label="Два соседних коммита. Каждый ссылается на своё дерево, и каждое дерево перечисляет оба файла проекта, а не только изменённый. У файла a.txt хэши в деревьях разные, и стрелки ведут к двум разным объектам с содержимым. У файла b.txt хэш в обоих деревьях один и тот же, и обе стрелки приходят в один объект">
+  <defs>
+    <marker id="pk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path fill="#ff8a8a" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+  <style>
+    .t{fill:#dbdfe6;font-size:17px}
+    .t-s{fill:#80828c;font-size:14.5px}
+    .t-xs{fill:#5c5e66;font-size:13px}
+    .t-eye{fill:#ffffff;font-size:15px}
+    .t-ref{fill:#ff8a8a;font-size:14.5px}
+    .bx{fill:rgba(255,255,255,0.045);stroke:#3a3a40;stroke-width:1.5}
+    .bx-eye{fill:rgba(255,255,255,0.10);stroke:#dbdfe6;stroke-width:1.5}
+    .ln-pk{stroke:#ff8a8a;stroke-width:1.8;fill:none}
+    .hair{stroke:#26262b;stroke-width:1;fill:none}
+    .mono{font-family:Consolas, Roboto Mono, monospace}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="438" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <g font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+    <rect class="bx" x="150" y="52" width="200" height="44" rx="2"/>
+    <text class="t" x="250" y="80" text-anchor="middle">коммит <tspan class="mono">9f2c1a</tspan></text>
+    <rect class="bx" x="710" y="52" width="200" height="44" rx="2"/>
+    <text class="t" x="810" y="80" text-anchor="middle">коммит <tspan class="mono">e05f19</tspan></text>
+
+    <line class="ln-pk" x1="250" y1="96" x2="250" y2="116" marker-end="url(#pk)"/>
+    <line class="ln-pk" x1="810" y1="96" x2="810" y2="116" marker-end="url(#pk)"/>
+
+    <rect class="bx" x="110" y="120" width="280" height="94" rx="2"/>
+    <text class="t-xs" x="126" y="144">дерево — весь список файлов</text>
+    <text class="t mono" x="126" y="172">a.txt</text>
+    <text class="t-ref mono" x="374" y="172" text-anchor="end">78981922…</text>
+    <text class="t mono" x="126" y="198">b.txt</text>
+    <text class="t-ref mono" x="374" y="198" text-anchor="end">61780798…</text>
+
+    <rect class="bx" x="670" y="120" width="280" height="94" rx="2"/>
+    <text class="t-xs" x="686" y="144">дерево — весь список файлов</text>
+    <text class="t mono" x="686" y="172">a.txt</text>
+    <text class="t-ref mono" x="934" y="172" text-anchor="end">02c75d5e…</text>
+    <text class="t mono" x="686" y="198">b.txt</text>
+    <text class="t-ref mono" x="934" y="198" text-anchor="end">61780798…</text>
+
+    <line class="ln-pk" x1="220" y1="218" x2="176" y2="262" marker-end="url(#pk)"/>
+    <line class="ln-pk" x1="290" y1="218" x2="500" y2="262" marker-end="url(#pk)"/>
+    <line class="ln-pk" x1="840" y1="218" x2="884" y2="262" marker-end="url(#pk)"/>
+    <line class="ln-pk" x1="770" y1="218" x2="560" y2="262" marker-end="url(#pk)"/>
+
+    <rect class="bx" x="40" y="268" width="280" height="66" rx="2"/>
+    <text class="t-s" x="180" y="294" text-anchor="middle">содержимое a.txt, было</text>
+    <text class="t-ref mono" x="180" y="318" text-anchor="middle">78981922…</text>
+
+    <rect class="bx-eye" x="390" y="268" width="280" height="66" rx="2"/>
+    <text class="t-eye" x="530" y="294" text-anchor="middle">содержимое b.txt — один объект</text>
+    <text class="t-ref mono" x="530" y="318" text-anchor="middle">61780798…</text>
+
+    <rect class="bx" x="740" y="268" width="280" height="66" rx="2"/>
+    <text class="t-s" x="880" y="294" text-anchor="middle">содержимое a.txt, стало</text>
+    <text class="t-ref mono" x="880" y="318" text-anchor="middle">02c75d5e…</text>
+
+    <line class="hair" x1="40" y1="362" x2="1020" y2="362"/>
+    <text class="t" x="40" y="390">Дерево перечисляет все файлы проекта, а не только изменённые: коммит описывает состояние целиком.</text>
+    <text class="t" x="40" y="418">У изменившегося файла хэши в деревьях разные, и объекта два. У неизменившегося хэш один — и объект один.</text>
+  </g>
+</svg>

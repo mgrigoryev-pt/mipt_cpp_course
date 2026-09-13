@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 300" width="1060" height="300"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="298" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="40" y="106" font-size="17" fill="#dbdfe6">consumer</text>
+  <text x="40" y="228" font-size="17" fill="#dbdfe6">producer</text>
+
+  <!-- consumer: захватил мьютекс -->
+  <rect x="150" y="72" width="150" height="58" fill="rgba(255,138,138,0.08)"
+        stroke="#ff8a8a" stroke-width="2"/>
+  <text x="225" y="98" font-size="15" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">unique_lock</text>
+  <text x="225" y="119" font-size="14" text-anchor="middle" fill="#80828c">мьютекс захвачен</text>
+
+  <!-- consumer: спит -->
+  <rect x="304" y="72" width="530" height="58" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="569" y="98" font-size="15" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">cv.wait(lock, pred)</text>
+  <text x="569" y="119" font-size="14" text-anchor="middle" fill="#5c5e66">поток спит, мьютекс отпущен</text>
+
+  <!-- consumer: проснулся -->
+  <rect x="838" y="72" width="182" height="58" fill="rgba(255,138,138,0.08)"
+        stroke="#ff8a8a" stroke-width="2"/>
+  <text x="929" y="96" font-size="14" text-anchor="middle" fill="#ffffff">мьютекс снова захвачен</text>
+  <text x="929" y="118" font-size="14" text-anchor="middle" fill="#80828c">предикат истинен</text>
+
+  <!-- ложное пробуждение -->
+  <text x="440" y="46" font-size="14" text-anchor="middle" fill="#80828c">предикат ложен — спит дальше</text>
+  <line x1="440" y1="186" x2="440" y2="136" stroke="#80828c" stroke-width="2"
+        marker-end="url(#grey)"/>
+  <text x="440" y="208" font-size="14" text-anchor="middle" fill="#80828c">ложное пробуждение</text>
+
+  <!-- producer -->
+  <rect x="600" y="186" width="210" height="58" fill="rgba(255,138,138,0.08)"
+        stroke="#ff8a8a" stroke-width="2"/>
+  <text x="705" y="212" font-size="15" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">lock(m); q.push(e)</text>
+  <text x="705" y="233" font-size="14" text-anchor="middle" fill="#80828c">мьютекс у producer</text>
+
+  <path d="M 824 186 C 856 168, 862 158, 878 138" fill="none" stroke="#ff8a8a"
+        stroke-width="2.5" marker-end="url(#pink)"/>
+  <text x="836" y="222" font-size="15" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">cv.notify_one()</text>
+
+  <text x="40" y="284" font-size="16" fill="#80828c">поэтому unique_lock, а не lock_guard: wait обязан отпустить мьютекс и захватить обратно</text>
+</svg>

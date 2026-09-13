@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="36" x2="530" y2="320" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- со std::move -->
+  <text x="40" y="50" font-size="18" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">return std::move(result);</text>
+
+  <rect x="40" y="72" width="450" height="84" rx="8" fill="none" stroke="#3a3a40" stroke-width="1.5"/>
+  <text x="56" y="94" font-size="15" fill="#80828c">кадр make()</text>
+  <rect x="230" y="96" width="180" height="48" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="320" y="127" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">result</text>
+
+  <line x1="320" y1="150" x2="320" y2="214" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <text x="336" y="188" font-size="15" fill="#ff8a8a">move</text>
+
+  <rect x="40" y="196" width="450" height="92" rx="8" fill="none" stroke="#3a3a40" stroke-width="1.5"/>
+  <text x="56" y="218" font-size="15" fill="#80828c">кадр вызывающего</text>
+  <rect x="230" y="220" width="180" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="320" y="254" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">s</text>
+
+  <text x="40" y="316" font-size="17" fill="#dbdfe6">объекта два, между ними лишнее перемещение</text>
+
+  <!-- без std::move -->
+  <text x="550" y="50" font-size="18" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">return result;</text>
+
+  <rect x="550" y="72" width="450" height="84" rx="8" fill="none" stroke="#3a3a40" stroke-width="1.5"/>
+  <text x="566" y="94" font-size="15" fill="#80828c">кадр make()</text>
+  <rect x="740" y="96" width="180" height="48" fill="none" stroke="#5c5e66" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="830" y="126" font-size="15" text-anchor="middle" fill="#5c5e66">своего объекта нет</text>
+
+  <line x1="830" y1="150" x2="830" y2="214" stroke="#80828c" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#grey)"/>
+  <text x="846" y="188" font-size="15" fill="#80828c">имя result</text>
+
+  <rect x="550" y="196" width="450" height="92" rx="8" fill="none" stroke="#3a3a40" stroke-width="1.5"/>
+  <text x="566" y="218" font-size="15" fill="#80828c">кадр вызывающего</text>
+  <rect x="740" y="220" width="180" height="56" fill="rgba(255,138,138,0.08)" stroke="#ff8a8a" stroke-width="2"/>
+  <text x="830" y="247" font-size="18" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">s</text>
+  <text x="830" y="267" font-size="14" text-anchor="middle" fill="#80828c">здесь же живёт result</text>
+
+  <text x="550" y="316" font-size="17" fill="#dbdfe6">объект один: NRVO строит его сразу на месте</text>
+</svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 380" width="1060" height="380"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="378" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="530" y="38" font-size="16" text-anchor="middle" fill="#80828c">код метода — один на класс, внутри объектов его нет</text>
+
+  <rect x="320" y="52" width="420" height="100" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="344" y="82" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">void Point::set_x(int x) {</text>
+  <text x="344" y="106" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">    this-&gt;x_ = x;</text>
+  <text x="344" y="130" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">}</text>
+
+  <line x1="530" y1="158" x2="530" y2="222" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+  <text x="500" y="196" font-size="17" text-anchor="end" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">p2.set_x(7)</text>
+  <text x="560" y="196" font-size="17" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">this</text>
+
+  <!-- объект p1 -->
+  <rect x="130" y="230" width="200" height="126" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="230" y="256" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">p1</text>
+  <rect x="146" y="268" width="80" height="44" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="234" y="268" width="80" height="44" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="186" y="298" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">0</text>
+  <text x="274" y="298" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">0</text>
+  <text x="186" y="336" font-size="15" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">x_</text>
+  <text x="274" y="336" font-size="15" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">y_</text>
+
+  <!-- объект p2 -->
+  <rect x="430" y="230" width="200" height="126" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="530" y="256" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">p2</text>
+  <rect x="446" y="268" width="80" height="44" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="534" y="268" width="80" height="44" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="486" y="298" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">7</text>
+  <text x="574" y="298" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">0</text>
+  <text x="486" y="336" font-size="15" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">x_</text>
+  <text x="574" y="336" font-size="15" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">y_</text>
+
+  <!-- объект p3 -->
+  <rect x="730" y="230" width="200" height="126" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="830" y="256" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">p3</text>
+  <rect x="746" y="268" width="80" height="44" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="834" y="268" width="80" height="44" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="786" y="298" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">5</text>
+  <text x="874" y="298" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">2</text>
+  <text x="786" y="336" font-size="15" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">x_</text>
+  <text x="874" y="336" font-size="15" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">y_</text>
+</svg>

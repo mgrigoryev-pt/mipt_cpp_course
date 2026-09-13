@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- C-библиотека -->
+  <rect x="34" y="64" width="296" height="212" rx="8" fill="none"
+        stroke="#26262b" stroke-width="1.5"/>
+  <text x="50" y="94" font-size="18" fill="#dbdfe6">C-библиотека</text>
+
+  <rect x="50" y="110" width="264" height="56" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="96" y="145" font-size="18" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">cb</text>
+  <text x="215" y="144" font-size="15" text-anchor="middle" fill="#80828c">адрес кода</text>
+
+  <rect x="50" y="182" width="264" height="56" fill="rgba(255,138,138,0.08)"
+        stroke="#ff8a8a" stroke-width="2"/>
+  <text x="96" y="217" font-size="18" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">ctx</text>
+  <text x="220" y="216" font-size="15" text-anchor="middle" fill="#ff8a8a">адрес объекта</text>
+
+  <text x="182" y="262" font-size="15" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">cb(&amp;e, ctx)</text>
+
+  <!-- трамплин -->
+  <rect x="430" y="110" width="230" height="128" rx="6"
+        fill="rgba(255,255,255,0.04)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="545" y="142" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">trampoline</text>
+  <text x="545" y="166" font-size="15" text-anchor="middle" fill="#80828c">static, без this</text>
+  <line x1="446" y1="182" x2="644" y2="182" stroke="#26262b" stroke-width="1.5"/>
+  <text x="545" y="206" font-size="14" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">static_cast&lt;Collector*&gt;</text>
+  <text x="545" y="228" font-size="14" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">(ctx)-&gt;on_event(*e)</text>
+
+  <line x1="322" y1="138" x2="422" y2="138" stroke="#80828c" stroke-width="2"
+        marker-end="url(#grey)"/>
+  <line x1="322" y1="210" x2="422" y2="210" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+
+  <!-- объект -->
+  <rect x="740" y="110" width="280" height="128" rx="6"
+        fill="rgba(255,255,255,0.04)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="880" y="142" font-size="18" text-anchor="middle" fill="#dbdfe6">объект Collector</text>
+  <text x="880" y="182" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">on_event(*e)</text>
+  <text x="880" y="208" font-size="15" text-anchor="middle" fill="#80828c">обычный C++-код:</text>
+  <text x="880" y="228" font-size="15" text-anchor="middle" fill="#80828c">поля, строки, исключения</text>
+
+  <line x1="664" y1="174" x2="732" y2="174" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+
+  <text x="530" y="312" font-size="16" text-anchor="middle" fill="#80828c">в C-API код и состояние едут раздельно; трамплин сводит их обратно</text>
+</svg>

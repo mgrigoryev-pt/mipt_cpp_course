@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- сам shared_ptr -->
+  <text x="60" y="58" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">shared_ptr&lt;T&gt;</text>
+  <rect x="60" y="70" width="240" height="112" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <line x1="60" y1="126" x2="300" y2="126" stroke="#dbdfe6" stroke-width="1"/>
+  <text x="92" y="106" font-size="20" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">T*</text>
+  <text x="92" y="162" font-size="20" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">ctrl*</text>
+
+  <!-- указатель на объект -->
+  <line x1="300" y1="98" x2="704" y2="98" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+  <rect x="716" y="62" width="256" height="72" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="844" y="106" font-size="20" text-anchor="middle" fill="#ffffff">объект T</text>
+
+  <!-- указатель на control block -->
+  <path d="M 300 154 L 420 154 L 420 248 L 548 248" fill="none" stroke="#ff8a8a"
+        stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <text x="560" y="170" font-size="16" fill="#80828c">control block</text>
+  <rect x="560" y="180" width="412" height="136" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <line x1="560" y1="214" x2="972" y2="214" stroke="#26262b" stroke-width="1.5"/>
+  <line x1="560" y1="248" x2="972" y2="248" stroke="#26262b" stroke-width="1.5"/>
+  <line x1="560" y1="282" x2="972" y2="282" stroke="#26262b" stroke-width="1.5"/>
+
+  <text x="580" y="204" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">strong</text>
+  <text x="700" y="204" font-size="15" fill="#80828c">сколько shared_ptr владеют</text>
+  <text x="580" y="238" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">weak</text>
+  <text x="700" y="238" font-size="15" fill="#80828c">сколько weak_ptr наблюдают</text>
+  <text x="580" y="272" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">deleter</text>
+  <text x="700" y="272" font-size="15" fill="#80828c">чем удалять объект</text>
+  <text x="580" y="306" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">allocator</text>
+  <text x="700" y="306" font-size="15" fill="#80828c">чем освобождать сам блок</text>
+
+  <!-- что из этого следует -->
+  <text x="60" y="218" font-size="17" fill="#dbdfe6">Два указателя вместо одного.</text>
+  <text x="60" y="250" font-size="16" fill="#80828c">Копия — два присваивания</text>
+  <text x="60" y="272" font-size="16" fill="#80828c">и атомарный инкремент strong.</text>
+  <text x="60" y="302" font-size="16" fill="#80828c">strong = 0 — умирает объект,</text>
+  <text x="60" y="324" font-size="16" fill="#80828c">strong и weak = 0 — умирает блок.</text>
+</svg>

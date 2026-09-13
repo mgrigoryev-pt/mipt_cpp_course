@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="36" x2="530" y2="304" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- ================= слева: чтение поля указателем ================= -->
+  <text x="280" y="60" font-size="19" text-anchor="middle" fill="#ff2020">указателем — UB</text>
+
+  <text x="214" y="80" font-size="16" text-anchor="middle" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">*p</text>
+
+  <g stroke="#80828c" stroke-width="1" fill="rgba(255,255,255,0.05)">
+    <rect x="58" y="96" width="52" height="58"/>
+    <rect x="110" y="96" width="52" height="58"/>
+    <rect x="162" y="96" width="52" height="58"/>
+    <rect x="214" y="96" width="52" height="58"/>
+    <rect x="266" y="96" width="52" height="58"/>
+    <rect x="318" y="96" width="52" height="58"/>
+    <rect x="370" y="96" width="52" height="58"/>
+    <rect x="422" y="96" width="52" height="58"/>
+  </g>
+
+  <rect x="110" y="90" width="208" height="70" fill="rgba(255,32,32,0.10)"
+        stroke="#ff2020" stroke-width="2.5"/>
+
+  <!-- границы машинных слов -->
+  <g stroke="#dbdfe6" stroke-width="3.5">
+    <line x1="58" y1="86" x2="58" y2="164"/>
+    <line x1="266" y1="86" x2="266" y2="164"/>
+    <line x1="474" y1="86" x2="474" y2="164"/>
+  </g>
+
+  <g font-size="13" text-anchor="middle" fill="#5c5e66">
+    <text x="84" y="174">0</text>
+    <text x="136" y="174">1</text>
+    <text x="188" y="174">2</text>
+    <text x="240" y="174">3</text>
+    <text x="292" y="174">4</text>
+    <text x="344" y="174">5</text>
+    <text x="396" y="174">6</text>
+    <text x="448" y="174">7</text>
+  </g>
+
+  <text x="266" y="200" font-size="14" text-anchor="middle" fill="#80828c">границы машинных слов</text>
+
+  <text x="280" y="232" font-size="14" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">alignas(8) unsigned char buffer[16]{};</text>
+  <text x="280" y="254" font-size="14" text-anchor="middle" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">int* p = reinterpret_cast&lt;int*&gt;(buffer + 1);</text>
+  <text x="280" y="280" font-size="15" text-anchor="middle" fill="#dbdfe6">смещение 1 не делится на alignof(int)</text>
+  <text x="280" y="302" font-size="15" text-anchor="middle" fill="#80828c">на x86 «работает», UBSan ловит</text>
+
+  <!-- ================= справа: чтение поля копированием ================= -->
+  <text x="780" y="60" font-size="19" text-anchor="middle" fill="#dbdfe6">копированием — законно</text>
+
+  <g stroke="#80828c" stroke-width="1" fill="rgba(255,255,255,0.05)">
+    <rect x="560" y="96" width="52" height="58"/>
+    <rect x="612" y="96" width="52" height="58"/>
+    <rect x="664" y="96" width="52" height="58"/>
+    <rect x="716" y="96" width="52" height="58"/>
+    <rect x="768" y="96" width="52" height="58"/>
+    <rect x="820" y="96" width="52" height="58"/>
+    <rect x="872" y="96" width="52" height="58"/>
+    <rect x="924" y="96" width="52" height="58"/>
+  </g>
+
+  <rect x="612" y="90" width="208" height="70" fill="rgba(255,138,138,0.08)"
+        stroke="#ff8a8a" stroke-width="2.5"/>
+
+  <g stroke="#dbdfe6" stroke-width="3.5">
+    <line x1="560" y1="86" x2="560" y2="164"/>
+    <line x1="768" y1="86" x2="768" y2="164"/>
+    <line x1="976" y1="86" x2="976" y2="164"/>
+  </g>
+
+  <g font-size="13" text-anchor="middle" fill="#5c5e66">
+    <text x="586" y="174">0</text>
+    <text x="638" y="174">1</text>
+    <text x="690" y="174">2</text>
+    <text x="742" y="174">3</text>
+    <text x="794" y="174">4</text>
+    <text x="846" y="174">5</text>
+    <text x="898" y="174">6</text>
+    <text x="950" y="174">7</text>
+  </g>
+
+  <line x1="716" y1="182" x2="716" y2="214" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <text x="736" y="204" font-size="15" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">std::memcpy</text>
+
+  <rect x="616" y="220" width="200" height="62" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="716" y="248" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">int pid</text>
+  <text x="716" y="270" font-size="14" text-anchor="middle" fill="#80828c">адрес выбрал компилятор</text>
+
+  <text x="780" y="310" font-size="15" text-anchor="middle" fill="#80828c">байты копируются по одному: выравнивание источника не нужно</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 470" width="1060" height="470"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Статья справочника о функции стандартной библиотеки, разделы сверху вниз и вопрос, на который отвечает каждый. Заголовок — какой include нужен. Объявления с пометками версий — какие перегрузки есть и с какого стандарта. Параметры и требования к типам — что можно передать. Возвращаемое значение. Сложность — сколько стоит. Исключения — что может бросить и в каком состоянии останется объект. Инвалидация — какие итераторы и ссылки перестанут работать. Примечания — подвохи. Пример и Смотрите также — как пользоваться и чем заменить">
+  <style>
+    .sec{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .key{fill:rgba(255,138,138,0.08);stroke:#ff8a8a;stroke-width:1.5}
+    .nm{fill:#dbdfe6;font-size:15px}
+    .m{fill:#ffffff;font-size:14px;font-family:Consolas, Roboto Mono, monospace}
+    .q{fill:#80828c;font-size:14px}
+    .h{fill:#dbdfe6;font-size:14px;font-weight:600;letter-spacing:.05em}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="468" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text class="h" x="40" y="36">РАЗДЕЛ СТАТЬИ</text>
+  <text class="h" x="560" y="36">НА КАКОЙ ВОПРОС ОТВЕЧАЕТ</text>
+
+  <rect class="sec" x="40" y="50" width="480" height="38"/>
+  <text class="nm" x="56" y="74">Defined in header <tspan class="m">&lt;vector&gt;</tspan></text>
+  <text class="q" x="560" y="74">какой <tspan font-family="Consolas, Roboto Mono, monospace">#include</tspan> нужен</text>
+
+  <rect class="sec" x="40" y="96" width="480" height="62"/>
+  <text class="m" x="56" y="120">void push_back(const T&amp; value);</text>
+  <text class="nm" x="56" y="144">пометки <tspan class="m">(since C++11)</tspan>, <tspan class="m">(constexpr since C++20)</tspan></text>
+  <text class="q" x="560" y="120">какие перегрузки есть,</text>
+  <text class="q" x="560" y="140">с какого стандарта и до какого</text>
+
+  <rect class="sec" x="40" y="166" width="480" height="38"/>
+  <text class="nm" x="56" y="190">Parameters, Type requirements</text>
+  <text class="q" x="560" y="190">что можно передать и что должен уметь тип</text>
+
+  <rect class="sec" x="40" y="212" width="480" height="38"/>
+  <text class="nm" x="56" y="236">Return value</text>
+  <text class="q" x="560" y="236">что вернётся — и не вставит ли функция что-нибудь сама</text>
+
+  <rect class="key" x="40" y="258" width="480" height="38"/>
+  <text class="nm" x="56" y="282">Complexity</text>
+  <text class="q" x="560" y="282">сколько стоит: обычно, в среднем, в худшем случае</text>
+
+  <rect class="key" x="40" y="304" width="480" height="38"/>
+  <text class="nm" x="56" y="328">Exceptions</text>
+  <text class="q" x="560" y="328">что бросает и в каком состоянии останется объект</text>
+
+  <rect class="key" x="40" y="350" width="480" height="38"/>
+  <text class="nm" x="56" y="374">Iterator invalidation</text>
+  <text class="q" x="560" y="374">какие итераторы, указатели и ссылки перестанут работать</text>
+
+  <rect class="sec" x="40" y="396" width="480" height="38"/>
+  <text class="nm" x="56" y="420">Notes, Example, See also</text>
+  <text class="q" x="560" y="420">подвохи, как пользоваться, чем заменить</text>
+
+  <text class="q" x="40" y="458">выделены разделы, которые чаще всего пропускают — и из-за которых чаще всего ошибаются</text>
+</svg>

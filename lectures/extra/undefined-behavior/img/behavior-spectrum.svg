@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 300" width="1060" height="300"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="298" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- шкала -->
+  <text x="40" y="48" font-size="16" fill="#80828c">стандарт обещает всё</text>
+  <text x="1020" y="48" font-size="16" fill="#80828c" text-anchor="end">стандарт не обещает ничего</text>
+  <line x1="40" y1="66" x2="1016" y2="66" stroke="#80828c" stroke-width="1.5"
+        marker-end="url(#grey)"/>
+
+  <!-- 1. определённое -->
+  <rect x="40" y="90" width="183" height="176" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="131.5" y="126" font-size="18" text-anchor="middle" fill="#dbdfe6">определённое</text>
+  <text x="131.5" y="192" font-size="15" text-anchor="middle" fill="#80828c">ровно один</text>
+  <text x="131.5" y="212" font-size="15" text-anchor="middle" fill="#80828c">результат</text>
+  <text x="131.5" y="246" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">0u - 1</text>
+
+  <!-- 2. определяемое реализацией -->
+  <rect x="239" y="90" width="183" height="176" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="330.5" y="126" font-size="18" text-anchor="middle" fill="#dbdfe6">определяемое</text>
+  <text x="330.5" y="148" font-size="18" text-anchor="middle" fill="#dbdfe6">реализацией</text>
+  <text x="330.5" y="192" font-size="15" text-anchor="middle" fill="#80828c">выбрано</text>
+  <text x="330.5" y="212" font-size="15" text-anchor="middle" fill="#80828c">и описано</text>
+  <text x="330.5" y="246" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">sizeof(long)</text>
+
+  <!-- 3. неуточнённое -->
+  <rect x="438" y="90" width="183" height="176" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="529.5" y="126" font-size="18" text-anchor="middle" fill="#dbdfe6">неуточнённое</text>
+  <text x="529.5" y="192" font-size="15" text-anchor="middle" fill="#80828c">один</text>
+  <text x="529.5" y="212" font-size="15" text-anchor="middle" fill="#80828c">из вариантов</text>
+  <text x="529.5" y="246" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">f(a(), b())</text>
+
+  <!-- 4. ошибочное, C++26 -->
+  <rect x="637" y="90" width="183" height="176" fill="rgba(255,255,255,0.03)"
+        stroke="#ff2020" stroke-width="1.5"/>
+  <text x="728.5" y="126" font-size="18" text-anchor="middle" fill="#ff2020">ошибочное</text>
+  <text x="728.5" y="148" font-size="15" text-anchor="middle" fill="#80828c">C++26</text>
+  <text x="728.5" y="192" font-size="15" text-anchor="middle" fill="#80828c">значение есть,</text>
+  <text x="728.5" y="212" font-size="15" text-anchor="middle" fill="#80828c">но неверное</text>
+  <text x="728.5" y="246" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">int x; f(x);</text>
+
+  <!-- 5. неопределённое -->
+  <rect x="836" y="90" width="183" height="176" fill="none"
+        stroke="#ff2020" stroke-width="2" stroke-dasharray="7 6"/>
+  <text x="927.5" y="126" font-size="18" text-anchor="middle" fill="#ff2020">неопределённое</text>
+  <text x="927.5" y="192" font-size="15" text-anchor="middle" fill="#80828c">не обещано</text>
+  <text x="927.5" y="212" font-size="15" text-anchor="middle" fill="#80828c">ничего</text>
+  <text x="927.5" y="246" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">INT_MAX + 1</text>
+</svg>

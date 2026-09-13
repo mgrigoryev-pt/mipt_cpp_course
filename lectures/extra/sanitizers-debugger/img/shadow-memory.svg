@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 440" width="1060" height="440"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="438" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- ===== после new ===== -->
+  <text x="40" y="52" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">после new EventNode{42, nullptr}</text>
+  <text x="1020" y="52" font-size="15" text-anchor="end" fill="#80828c">1 байт тени описывает 8 байт памяти</text>
+
+  <text x="550" y="52" font-size="17" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">head</text>
+  <line x1="550" y1="60" x2="550" y2="86" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+
+  <text x="40" y="122" font-size="16" fill="#80828c">память</text>
+  <rect x="230" y="90" width="120" height="52" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="290" y="121" font-size="14" text-anchor="middle" fill="#5c5e66">красная зона</text>
+  <rect x="360" y="90" width="120" height="52" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="420" y="121" font-size="14" text-anchor="middle" fill="#5c5e66">красная зона</text>
+  <rect x="490" y="90" width="120" height="52" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="550" y="122" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">pid = 42</text>
+  <rect x="620" y="90" width="120" height="52" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="680" y="122" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">next</text>
+  <rect x="750" y="90" width="120" height="52" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="810" y="121" font-size="14" text-anchor="middle" fill="#5c5e66">красная зона</text>
+  <rect x="880" y="90" width="120" height="52" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="940" y="121" font-size="14" text-anchor="middle" fill="#5c5e66">красная зона</text>
+
+  <text x="40" y="179" font-size="16" fill="#80828c">тень</text>
+  <g font-family="Consolas, Roboto Mono, monospace" font-size="20" text-anchor="middle">
+    <rect x="230" y="152" width="120" height="40" fill="none" stroke="#26262b"/>
+    <text x="290" y="179" fill="#80828c">fa</text>
+    <rect x="360" y="152" width="120" height="40" fill="none" stroke="#26262b"/>
+    <text x="420" y="179" fill="#80828c">fa</text>
+    <rect x="490" y="152" width="120" height="40" fill="none" stroke="#26262b"/>
+    <text x="550" y="179" fill="#ffffff">00</text>
+    <rect x="620" y="152" width="120" height="40" fill="none" stroke="#26262b"/>
+    <text x="680" y="179" fill="#ffffff">00</text>
+    <rect x="750" y="152" width="120" height="40" fill="none" stroke="#26262b"/>
+    <text x="810" y="179" fill="#80828c">fa</text>
+    <rect x="880" y="152" width="120" height="40" fill="none" stroke="#26262b"/>
+    <text x="940" y="179" fill="#80828c">fa</text>
+  </g>
+
+  <line x1="40" y1="216" x2="1020" y2="216" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- ===== после delete ===== -->
+  <text x="40" y="252" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">после delete head</text>
+
+  <text x="550" y="252" font-size="17" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">head</text>
+  <line x1="550" y1="260" x2="550" y2="286" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+
+  <text x="40" y="322" font-size="16" fill="#80828c">память</text>
+  <rect x="230" y="290" width="120" height="52" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="290" y="321" font-size="14" text-anchor="middle" fill="#5c5e66">красная зона</text>
+  <rect x="360" y="290" width="120" height="52" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="420" y="321" font-size="14" text-anchor="middle" fill="#5c5e66">красная зона</text>
+  <rect x="490" y="290" width="120" height="52" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="550" y="322" font-size="18" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">42</text>
+  <rect x="620" y="290" width="120" height="52" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="680" y="321" font-size="14" text-anchor="middle" fill="#5c5e66">освобождено</text>
+  <rect x="750" y="290" width="120" height="52" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="810" y="321" font-size="14" text-anchor="middle" fill="#5c5e66">красная зона</text>
+  <rect x="880" y="290" width="120" height="52" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="940" y="321" font-size="14" text-anchor="middle" fill="#5c5e66">красная зона</text>
+
+  <text x="40" y="379" font-size="16" fill="#80828c">тень</text>
+  <g font-family="Consolas, Roboto Mono, monospace" font-size="20" text-anchor="middle">
+    <rect x="230" y="352" width="120" height="40" fill="none" stroke="#26262b"/>
+    <text x="290" y="379" fill="#80828c">fa</text>
+    <rect x="360" y="352" width="120" height="40" fill="none" stroke="#26262b"/>
+    <text x="420" y="379" fill="#80828c">fa</text>
+    <rect x="490" y="352" width="120" height="40" fill="none" stroke="#ff2020"/>
+    <text x="550" y="379" fill="#ff2020">fd</text>
+    <rect x="620" y="352" width="120" height="40" fill="none" stroke="#ff2020"/>
+    <text x="680" y="379" fill="#ff2020">fd</text>
+    <rect x="750" y="352" width="120" height="40" fill="none" stroke="#26262b"/>
+    <text x="810" y="379" fill="#80828c">fa</text>
+    <rect x="880" y="352" width="120" height="40" fill="none" stroke="#26262b"/>
+    <text x="940" y="379" fill="#80828c">fa</text>
+  </g>
+
+  <text x="230" y="420" font-size="16" fill="#ff2020">head-&gt;pid читает байты с тенью fd — отчёт heap-use-after-free</text>
+</svg>

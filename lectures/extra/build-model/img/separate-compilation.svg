@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 419" width="1060" height="419" role="img" aria-label="Сравнение: если бы программа была одной единицей трансляции, правка одной строки требовала бы пересборки всех пятисот файлов и сорока минут; при раздельной компиляции пересобирается только изменённый файл, остальные объектные файлы берутся готовыми, и остаётся линковка за две секунды">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="mk" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+  <style>
+    .t{fill:#dbdfe6;font-size:15px}
+    .t-s{fill:#80828c;font-size:13.5px}
+    .t-xs{fill:#5c5e66;font-size:12px}
+    .t-h{fill:#dbdfe6;font-size:14px;font-weight:600;letter-spacing:.07em}
+    .t-eye{fill:#ffffff;font-size:12px}
+    .bx{fill:rgba(255,255,255,0.045);stroke:#3a3a40;stroke-width:1.5}
+    .bx-eye{fill:rgba(255,255,255,0.10);stroke:#dbdfe6;stroke-width:1.5}
+    .bx-lnk{fill:rgba(255,255,255,0.08);stroke:#80828c;stroke-width:1.5}
+    .ln{stroke:#80828c;stroke-width:1.5;fill:none}
+    .ln-dash{stroke:#3a3a40;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+    .hair{stroke:#2b2b31;stroke-width:1;fill:none}
+    .mk{fill:#80828c}
+    .mono{font-family:Consolas, Roboto Mono, monospace}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="417" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <g transform="translate(24,24) scale(1.124)" font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+    <text class="t-h" x="20" y="24">ЕСЛИ БЫ ВСЁ БЫЛО ОДНИМ ЦЕЛЫМ</text>
+    <line class="hair" x1="20" y1="34" x2="420" y2="34"/>
+    <rect class="bx" x="20" y="52" width="400" height="96" rx="2"/>
+    <text class="t-s" x="220" y="110" text-anchor="middle">вся программа — 500 файлов текста</text>
+    <rect class="bx-eye" x="36" y="66" width="140" height="24" rx="2"/>
+    <text class="t-eye" x="106" y="82" text-anchor="middle">правка в 1 строке</text>
+    <line class="ln" x1="220" y1="148" x2="220" y2="196" marker-end="url(#ar)"/>
+    <text class="t-s" x="232" y="176">пересобрать всё</text>
+    <rect class="bx-lnk" x="90" y="200" width="260" height="44" rx="2"/>
+    <text class="t" x="220" y="228" text-anchor="middle">компиляция: ~40 минут</text>
+    <text class="t-s" x="20" y="288">Один символ в одном файле — и вы ждёте, пока машина</text>
+    <text class="t-s" x="20" y="306">заново разберёт 499 файлов, которые не менялись.</text>
+
+    <line class="hair" x1="445" y1="10" x2="445" y2="310"/>
+
+    <text class="t-h" x="480" y="24">КАК СДЕЛАНО В C++</text>
+    <line class="hair" x1="480" y1="34" x2="880" y2="34"/>
+    <rect class="bx" x="480" y="52" width="56" height="48" rx="2"/>
+    <text class="t-xs mono" x="508" y="80" text-anchor="middle">.cpp</text>
+    <rect class="bx-eye" x="550" y="52" width="56" height="48" rx="2"/>
+    <text class="t-eye mono" x="578" y="74" text-anchor="middle">.cpp</text>
+    <text class="t-eye" x="578" y="90" text-anchor="middle">правка</text>
+    <rect class="bx" x="620" y="52" width="56" height="48" rx="2"/>
+    <text class="t-xs mono" x="648" y="80" text-anchor="middle">.cpp</text>
+    <rect class="bx" x="690" y="52" width="56" height="48" rx="2"/>
+    <text class="t-xs mono" x="718" y="80" text-anchor="middle">.cpp</text>
+    <rect class="bx" x="760" y="52" width="56" height="48" rx="2"/>
+    <text class="t-xs mono" x="788" y="80" text-anchor="middle">.cpp</text>
+
+    <line class="ln-dash" x1="508" y1="100" x2="508" y2="136" marker-end="url(#ar)"/>
+    <line class="ln" x1="578" y1="100" x2="578" y2="136" marker-end="url(#ar)"/>
+    <line class="ln-dash" x1="648" y1="100" x2="648" y2="136" marker-end="url(#ar)"/>
+    <line class="ln-dash" x1="718" y1="100" x2="718" y2="136" marker-end="url(#ar)"/>
+    <line class="ln-dash" x1="788" y1="100" x2="788" y2="136" marker-end="url(#ar)"/>
+
+    <rect class="bx" x="480" y="140" width="56" height="40" rx="2"/>
+    <text class="t-xs mono" x="508" y="164" text-anchor="middle">.o</text>
+    <rect class="bx-eye" x="550" y="140" width="56" height="40" rx="2"/>
+    <text class="t-eye mono" x="578" y="164" text-anchor="middle">.o</text>
+    <rect class="bx" x="620" y="140" width="56" height="40" rx="2"/>
+    <text class="t-xs mono" x="648" y="164" text-anchor="middle">.o</text>
+    <rect class="bx" x="690" y="140" width="56" height="40" rx="2"/>
+    <text class="t-xs mono" x="718" y="164" text-anchor="middle">.o</text>
+    <rect class="bx" x="760" y="140" width="56" height="40" rx="2"/>
+    <text class="t-xs mono" x="788" y="164" text-anchor="middle">.o</text>
+    <text class="t-xs" x="828" y="126">пунктир —</text>
+    <text class="t-xs" x="828" y="140">собран</text>
+    <text class="t-xs" x="828" y="154">раньше,</text>
+    <text class="t-xs" x="828" y="168">взят</text>
+    <text class="t-xs" x="828" y="182">готовым</text>
+
+    <polyline class="hair" points="508,180 508,192 788,192 788,180"/>
+    <line class="ln" x1="648" y1="192" x2="648" y2="200" marker-end="url(#ar)"/>
+    <rect class="bx-lnk" x="518" y="204" width="260" height="44" rx="2"/>
+    <text class="t" x="648" y="232" text-anchor="middle">линковка: ~2 секунды</text>
+    <text class="t-s" x="480" y="288">Заново компилируется один файл. Остальные 499 объектных</text>
+    <text class="t-s" x="480" y="306">файлов уже лежат готовыми — линкер просто сшивает их.</text>
+  </g>
+</svg>

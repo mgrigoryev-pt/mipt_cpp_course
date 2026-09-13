@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 360" width="1060" height="360"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="358" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="530" y="52" font-size="18" text-anchor="middle" fill="#dbdfe6">точки размножают образец — то, что стоит слева от них</text>
+
+  <!-- ряд 1 -->
+  <text x="60" y="128" font-size="22" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">args...</text>
+  <line x1="60" y1="140" x2="113" y2="140" stroke="#ff8a8a" stroke-width="2.5"/>
+  <text x="86" y="166" font-size="15" text-anchor="middle" fill="#ff8a8a">образец</text>
+
+  <line x1="440" y1="120" x2="500" y2="120" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <text x="520" y="128" font-size="20" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">arg0, arg1, arg2</text>
+
+  <line x1="48" y1="196" x2="1012" y2="196" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- ряд 2 -->
+  <text x="60" y="252" font-size="22" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">std::move(args)...</text>
+  <line x1="60" y1="264" x2="258" y2="264" stroke="#ff8a8a" stroke-width="2.5"/>
+  <text x="159" y="290" font-size="15" text-anchor="middle" fill="#ff8a8a">образец</text>
+
+  <line x1="440" y1="244" x2="500" y2="244" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <text x="520" y="252" font-size="17" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">std::move(arg0), std::move(arg1), std::move(arg2)</text>
+
+  <text x="530" y="332" font-size="16" text-anchor="middle" fill="#80828c">раскрывается образец целиком, а не имя пакета внутри него</text>
+</svg>

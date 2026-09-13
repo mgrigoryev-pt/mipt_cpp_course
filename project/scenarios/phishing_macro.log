@@ -1,0 +1,23 @@
+# Фишинговый макрос: документ из письма запускает командную оболочку,
+# та роняет скрипт в Temp, скриптовый хост его исполняет и уходит в сеть.
+# Время в миллисекундах. Процессы 4, 880 и 1300 описаны в [world].
+ts=1730000000500 type=file_write pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\History" size=204800
+ts=1730000001000 type=process_start pid=1042 ppid=880 image="C:\Windows\System32\cmd.exe" cmdline="cmd /c wscript %TEMP%\a.js" user=DESKTOP\max
+ts=1730000001400 type=file_create pid=1042 path="C:\Users\max\AppData\Local\Temp\a.js"
+ts=1730000001850 type=file_write pid=1042 path="C:\Users\max\AppData\Local\Temp\a.js" size=812
+ts=1730000002100 type=file_write pid=880 path="C:\Users\max\AppData\Roaming\Microsoft\Word\STARTUP\~$report.docx" size=162
+ts=1730000003000 type=process_start pid=1101 ppid=1042 image="C:\Windows\System32\wscript.exe" cmdline="wscript.exe C:\Users\max\AppData\Local\Temp\a.js" user=DESKTOP\max
+ts=1730000003600 type=process_end pid=1042 exit=0
+ts=1730000004200 type=net_connect pid=1101 raddr=185.12.3.4 rport=443 domain=evil.example
+ts=1730000004900 type=file_create pid=1101 path="C:\Users\max\AppData\Local\Temp\stage2.bin"
+ts=1730000005300 type=file_write pid=1101 path="C:\Users\max\AppData\Local\Temp\stage2.bin" size=48128
+ts=1730000006000 type=process_start pid=1156 ppid=1101 image="C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" cmdline="powershell -w hidden -enc SQBFAFgA" user=DESKTOP\max
+ts=1730000006800 type=net_connect pid=1156 raddr=185.12.3.4 rport=443 domain=evil.example
+ts=1730000007500 type=file_write pid=1156 path="C:\Users\max\Documents\quarterly.xlsx" size=40960
+ts=1730000008200 type=file_write pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cookies" size=131072
+ts=1730000009000 type=process_start pid=1180 ppid=1156 image="C:\Windows\System32\cmd.exe" cmdline="cmd /c del %TEMP%\a.js" user=DESKTOP\max
+ts=1730000009400 type=file_delete pid=1180 path="C:\Users\max\AppData\Local\Temp\a.js"
+ts=1730000009800 type=process_end pid=1180 exit=0
+ts=1730000010500 type=net_connect pid=1156 raddr=185.12.3.4 rport=8443 domain=evil.example
+ts=1730000011000 type=file_write pid=880 path="C:\Users\max\report.docx" size=21504
+ts=1730000012000 type=process_end pid=1300 exit=0

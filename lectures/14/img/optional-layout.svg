@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 300" width="1060" height="300"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+  <rect x="1" y="1" width="1058" height="298" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="36" x2="530" y2="246" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- есть значение -->
+  <text x="40" y="52" font-size="19" fill="#dbdfe6">значение есть</text>
+
+  <text x="160" y="88" font-size="15" text-anchor="middle" fill="#80828c">storage_</text>
+  <rect x="40" y="98" width="240" height="62" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="160" y="140" font-size="26" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">42</text>
+
+  <text x="375" y="88" font-size="15" text-anchor="middle" fill="#80828c">has_value_</text>
+  <rect x="300" y="98" width="150" height="62" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="375" y="138" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">true</text>
+
+  <text x="40" y="196" font-size="16" fill="#80828c">значение создано placement new прямо в буфере</text>
+
+  <!-- пусто -->
+  <text x="570" y="52" font-size="19" fill="#dbdfe6">пусто (nullopt)</text>
+
+  <text x="690" y="88" font-size="15" text-anchor="middle" fill="#80828c">storage_</text>
+  <rect x="570" y="98" width="240" height="62" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="690" y="136" font-size="16" text-anchor="middle" fill="#5c5e66">объект не создан</text>
+
+  <text x="905" y="88" font-size="15" text-anchor="middle" fill="#80828c">has_value_</text>
+  <rect x="830" y="98" width="150" height="62" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="905" y="138" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">false</text>
+
+  <text x="570" y="196" font-size="16" fill="#dbdfe6">value() бросает bad_optional_access</text>
+  <text x="570" y="224" font-size="17" fill="#ff2020">разыменование *x — UB</text>
+
+  <text x="530" y="276" font-size="17" text-anchor="middle" fill="#80828c">оба состояния — тот же объект на стеке: буфер под T плюс флаг, аллокаций в куче нет</text>
+</svg>

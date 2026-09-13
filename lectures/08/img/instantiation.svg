@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- исходник -->
+  <text x="190" y="56" font-size="18" text-anchor="middle" fill="#dbdfe6">в исходнике</text>
+
+  <rect x="48" y="76" width="284" height="86" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="68" y="106" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">template &lt;typename T&gt;</text>
+  <text x="68" y="134" font-size="17" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">T max_val(T a, T b)</text>
+  <text x="190" y="184" font-size="16" text-anchor="middle" fill="#80828c">один шаблон — кода ещё нет</text>
+
+  <!-- вызовы -->
+  <text x="190" y="238" font-size="16" text-anchor="middle" fill="#dbdfe6">вызовы в программе</text>
+  <text x="190" y="266" font-size="16" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">max_val(3, 5)</text>
+  <text x="190" y="290" font-size="16" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">max_val(3.0, 5.0)</text>
+  <text x="190" y="314" font-size="16" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">max_val(s1, s2)</text>
+
+  <!-- стрелки инстанцирования -->
+  <path d="M 340 118 C 420 118, 420 98, 500 98" fill="none" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <path d="M 340 126 C 420 126, 420 182, 500 182" fill="none" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <path d="M 340 134 C 420 134, 420 266, 500 266" fill="none" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <text x="420" y="70" font-size="16" text-anchor="middle" fill="#ff8a8a">инстанцирование</text>
+
+  <!-- бинарник -->
+  <text x="770" y="56" font-size="18" text-anchor="middle" fill="#dbdfe6">в бинарнике</text>
+
+  <rect x="516" y="72" width="500" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="766" y="104" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">int max_val(int, int)</text>
+
+  <rect x="516" y="156" width="500" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="766" y="188" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">double max_val(double, double)</text>
+
+  <rect x="516" y="240" width="500" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="766" y="272" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">string max_val(string, string)</text>
+
+  <text x="766" y="320" font-size="16" text-anchor="middle" fill="#80828c">три отдельные функции — у каждой свой машинный код</text>
+</svg>

@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 364" width="1060" height="364"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="362" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="36" x2="530" y2="330" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- ================= слева: указатель и ссылка смотрят ================= -->
+  <text x="280" y="60" font-size="19" text-anchor="middle" fill="#dbdfe6">указатель и ссылка — смотрят</text>
+
+  <text x="280" y="112" font-size="15" text-anchor="middle" fill="#80828c">объект b целиком</text>
+
+  <rect x="100" y="124" width="180" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="190" y="154" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">A::a</text>
+  <text x="190" y="176" font-size="14" text-anchor="middle" fill="#80828c">часть A</text>
+
+  <rect x="280" y="124" width="180" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="370" y="154" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">B::b</text>
+  <text x="370" y="176" font-size="14" text-anchor="middle" fill="#80828c">часть B</text>
+
+  <line x1="140" y1="240" x2="140" y2="194" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <text x="140" y="266" font-size="15" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">A* pa = &amp;b;</text>
+
+  <text x="280" y="302" font-size="15" text-anchor="middle" fill="#dbdfe6">pa смотрит на начало объекта</text>
+  <text x="280" y="324" font-size="15" text-anchor="middle" fill="#80828c">не копируется ничего, объект остаётся целым</text>
+
+  <!-- ================= справа: значение копирует свой размер ================= -->
+  <text x="780" y="60" font-size="19" text-anchor="middle" fill="#dbdfe6">значение — копирует свой размер</text>
+
+  <text x="740" y="112" font-size="15" text-anchor="middle" fill="#80828c">объект b целиком</text>
+
+  <rect x="560" y="124" width="180" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="650" y="154" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">A::a</text>
+  <text x="650" y="176" font-size="14" text-anchor="middle" fill="#80828c">часть A</text>
+
+  <rect x="740" y="124" width="180" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="830" y="154" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">B::b</text>
+  <text x="830" y="176" font-size="14" text-anchor="middle" fill="#80828c">часть B</text>
+
+  <line x1="650" y1="196" x2="650" y2="240" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <text x="628" y="228" font-size="15" text-anchor="end" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">A a = b;</text>
+  <text x="830" y="228" font-size="15" text-anchor="middle" fill="#ff2020">отрезано</text>
+
+  <rect x="560" y="248" width="180" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="650" y="278" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">A::a</text>
+  <text x="650" y="300" font-size="14" text-anchor="middle" fill="#80828c">весь объект a</text>
+
+  <rect x="740" y="248" width="180" height="64" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <line x1="750" y1="302" x2="910" y2="258" stroke="#ff2020" stroke-width="2"/>
+  <line x1="750" y1="258" x2="910" y2="302" stroke="#ff2020" stroke-width="2"/>
+
+  <text x="780" y="348" font-size="15" text-anchor="middle" fill="#80828c">тип результата — A, а не B: и это компилируется молча</text>
+</svg>

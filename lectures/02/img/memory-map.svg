@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 400" width="1060" height="400"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="mut" markerWidth="10" markerHeight="10" refX="9" refY="4"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 z" fill="#80828c"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="398" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="210" y="72" text-anchor="end" font-size="16" fill="#80828c">старшие адреса</text>
+  <text x="210" y="380" text-anchor="end" font-size="16" fill="#80828c">младшие адреса</text>
+
+  <!-- стек -->
+  <rect x="230" y="60" width="330" height="80" rx="6" fill="rgba(255,255,255,0.06)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="252" y="94" font-size="22" fill="#ffffff">Стек</text>
+  <text x="252" y="122" font-size="16" fill="#80828c">кадры вызовов, локальные переменные</text>
+  <line x1="590" y1="70" x2="590" y2="130" stroke="#80828c" stroke-width="2"
+        marker-end="url(#mut)"/>
+  <text x="620" y="90" font-size="17" fill="#dbdfe6">растёт вниз</text>
+  <text x="620" y="114" font-size="16" fill="#80828c">жизнь — до конца блока</text>
+
+  <!-- свободное пространство -->
+  <rect x="230" y="152" width="330" height="56" rx="6" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="395" y="186" font-size="16" text-anchor="middle" fill="#5c5e66">свободное адресное пространство</text>
+
+  <!-- куча -->
+  <rect x="230" y="220" width="330" height="76" rx="6" fill="rgba(255,138,138,0.08)"
+        stroke="#ff8a8a" stroke-width="2"/>
+  <text x="252" y="252" font-size="22" fill="#ffffff">Куча</text>
+  <text x="252" y="280" font-size="16" fill="#80828c">new и delete, умные указатели</text>
+  <line x1="590" y1="286" x2="590" y2="226" stroke="#80828c" stroke-width="2"
+        marker-end="url(#mut)"/>
+  <text x="620" y="250" font-size="17" fill="#dbdfe6">растёт вверх</text>
+  <text x="620" y="274" font-size="16" fill="#80828c">жизнь — пока не освободят</text>
+
+  <!-- статическая -->
+  <rect x="230" y="308" width="330" height="42" rx="6" fill="rgba(255,255,255,0.03)"
+        stroke="#6b6d75" stroke-width="2"/>
+  <text x="252" y="336" font-size="20" fill="#dbdfe6">Статическая память</text>
+  <text x="620" y="330" font-size="16" fill="#80828c">жизнь — вся программа</text>
+
+  <!-- код -->
+  <rect x="230" y="358" width="330" height="30" rx="6" fill="rgba(255,255,255,0.03)"
+        stroke="#3a3a40" stroke-width="1.5"/>
+  <text x="252" y="379" font-size="17" fill="#80828c">Код программы</text>
+</svg>

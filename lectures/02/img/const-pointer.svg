@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+    <g id="lock">
+      <rect x="-11" y="-2" width="22" height="17" rx="3" fill="#ff2020"/>
+      <path d="M -6 -2 v -5 a 6 6 0 0 1 12 0 v 5" fill="none" stroke="#ff2020" stroke-width="2.5"/>
+    </g>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <g font-family="Consolas, Roboto Mono, monospace" font-size="19" fill="#dbdfe6">
+    <text x="40" y="92">const int* p</text>
+    <text x="40" y="192">int* const p</text>
+    <text x="40" y="292">const int* const p</text>
+  </g>
+
+  <!-- строка 1: заперто значение -->
+  <rect x="290" y="60" width="110" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="345" y="94" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">p</text>
+  <line x1="400" y1="86" x2="482" y2="86" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <rect x="490" y="60" width="110" height="52" fill="rgba(255,138,138,0.08)" stroke="#ff8a8a" stroke-width="2"/>
+  <text x="545" y="96" font-size="22" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">42</text>
+  <use href="#lock" x="545" y="46"/>
+  <text x="640" y="80" font-size="17" fill="#80828c">заперто значение:</text>
+  <text x="640" y="104" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">*p = 10 <tspan fill="#ff2020">CE</tspan>, p = &amp;y <tspan fill="#80828c">ок</tspan></text>
+
+  <!-- строка 2: заперт сам указатель -->
+  <rect x="290" y="160" width="110" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="345" y="194" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">p</text>
+  <use href="#lock" x="345" y="146"/>
+  <line x1="400" y1="186" x2="482" y2="186" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <rect x="490" y="160" width="110" height="52" fill="rgba(255,138,138,0.08)" stroke="#ff8a8a" stroke-width="2"/>
+  <text x="545" y="196" font-size="22" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">42</text>
+  <text x="640" y="180" font-size="17" fill="#80828c">заперт указатель:</text>
+  <text x="640" y="204" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">p = &amp;y <tspan fill="#ff2020">CE</tspan>, *p = 10 <tspan fill="#80828c">ок</tspan></text>
+
+  <!-- строка 3: заперто всё -->
+  <rect x="290" y="260" width="110" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <use href="#lock" x="345" y="246"/>
+  <text x="345" y="294" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">p</text>
+  <line x1="400" y1="286" x2="482" y2="286" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <rect x="490" y="260" width="110" height="52" fill="rgba(255,138,138,0.08)" stroke="#ff8a8a" stroke-width="2"/>
+  <text x="545" y="296" font-size="22" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">42</text>
+  <use href="#lock" x="545" y="246"/>
+  <text x="640" y="292" font-size="17" fill="#80828c">заперто и то, и другое</text>
+</svg>

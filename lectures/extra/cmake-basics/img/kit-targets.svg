@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 450" width="1060" height="450"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Цели комплекта на занятии 2.3. Агент nano-edr и программы выданных тестов подключают nano_edr_core, собранную из src/. Она публично подключает готовые os и edr, поэтому их заголовки и определения доезжают до агента и тестов, и приватно — набор предупреждений nano_edr_warnings">
+  <defs>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+  <style>
+    .bx{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .bx-imp{fill:none;stroke:#80828c;stroke-width:1.5;stroke-dasharray:7 6}
+    .nm{fill:#ffffff;font-size:17px;font-family:Consolas, Roboto Mono, monospace}
+    .s{fill:#80828c;font-size:14px}
+    .t{fill:#dbdfe6;font-size:14px}
+    .tm{fill:#dbdfe6;font-size:14px;font-family:Consolas, Roboto Mono, monospace}
+    .lab{fill:#80828c;font-size:13px;font-family:Consolas, Roboto Mono, monospace}
+    .ln{stroke:#80828c;stroke-width:1.5;fill:none}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="448" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- исполняемые -->
+  <rect class="bx" x="60" y="40" width="280" height="84"/>
+  <text class="nm" x="76" y="68">nano-edr</text>
+  <text class="s" x="76" y="92">исполняемый файл</text>
+  <text class="tm" x="76" y="112">src/main.cpp</text>
+
+  <rect class="bx" x="720" y="40" width="280" height="84"/>
+  <text class="nm" x="736" y="68">task2_1_tests</text>
+  <text class="nm" x="736" y="90">task2_3_tests</text>
+  <text class="s" x="736" y="112">выданные тесты занятия</text>
+
+  <!-- ядро -->
+  <rect class="bx" x="310" y="196" width="440" height="92"/>
+  <text class="nm" x="326" y="224">nano_edr_core</text>
+  <text class="s" x="470" y="224">STATIC · все src/*.cpp, кроме main.cpp</text>
+  <text class="t" x="326" y="250">свои пути отдаёт наружу:</text>
+  <text class="tm" x="326" y="274">src/, kit/include/l2.3/</text>
+
+  <!-- нижний ряд -->
+  <rect class="bx" x="40" y="352" width="300" height="76"/>
+  <text class="nm" x="56" y="378">nano_edr_warnings</text>
+  <text class="s" x="56" y="400">INTERFACE · своих .cpp нет</text>
+  <text class="tm" x="56" y="420">-Wall -Wextra</text>
+
+  <rect class="bx-imp" x="380" y="352" width="300" height="76"/>
+  <text class="nm" x="396" y="378">os</text>
+  <text class="s" x="430" y="378">IMPORTED · os.dll, os.lib</text>
+  <text class="t" x="396" y="400">отдаёт наружу:</text>
+  <text class="tm" x="396" y="420">include/, OS_USE_SHARED</text>
+
+  <rect class="bx-imp" x="720" y="352" width="300" height="76"/>
+  <text class="nm" x="736" y="378">edr</text>
+  <text class="s" x="778" y="378">IMPORTED · edr.dll, edr.lib</text>
+  <text class="t" x="736" y="400">отдаёт наружу:</text>
+  <text class="tm" x="736" y="420">include/, EDR_USE_SHARED</text>
+
+  <!-- связи -->
+  <line class="ln" x1="260" y1="124" x2="398" y2="193" marker-end="url(#grey)"/>
+  <text class="lab" x="340" y="152">PRIVATE</text>
+  <line class="ln" x1="800" y1="124" x2="662" y2="193" marker-end="url(#grey)"/>
+  <text class="lab" x="656" y="152">PRIVATE</text>
+  <line class="ln" x1="100" y1="124" x2="100" y2="349" marker-end="url(#grey)"/>
+  <text class="lab" x="110" y="244">PRIVATE</text>
+
+  <line class="ln" x1="370" y1="288" x2="260" y2="349" marker-end="url(#grey)"/>
+  <text class="lab" x="230" y="318">PRIVATE</text>
+  <line class="ln" x1="530" y1="288" x2="530" y2="349" marker-end="url(#grey)"/>
+  <text class="lab" x="540" y="324">PUBLIC</text>
+  <line class="ln" x1="690" y1="288" x2="800" y2="349" marker-end="url(#grey)"/>
+  <text class="lab" x="760" y="318">PUBLIC</text>
+
+  <text class="s" x="1000" y="150" text-anchor="end">стрелка — «подключает»</text>
+  <text class="s" x="1000" y="170" text-anchor="end">пунктир — готовая библиотека</text>
+</svg>

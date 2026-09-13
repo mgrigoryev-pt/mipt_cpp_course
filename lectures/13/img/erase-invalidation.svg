@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 280" width="1060" height="280"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="10" markerHeight="10" refX="9" refY="4"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 z" fill="#ff8a8a"/>
+    </marker>
+    <marker id="red" markerWidth="10" markerHeight="10" refX="9" refY="4"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 z" fill="#ff2020"/>
+    </marker>
+    <marker id="dim" markerWidth="10" markerHeight="10" refX="9" refY="4"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 z" fill="#5c5e66"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="278" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <line x1="530" y1="30" x2="530" y2="250" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- ===== неверно ===== -->
+  <text x="265" y="54" font-size="18" text-anchor="middle" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">seen.erase(it); ++it;</text>
+
+  <text x="265" y="100" font-size="18" text-anchor="middle" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">it</text>
+  <line x1="265" y1="108" x2="265" y2="140" stroke="#ff2020" stroke-width="2.5"
+        stroke-dasharray="6 5" marker-end="url(#red)"/>
+
+  <rect x="80" y="144" width="110" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="135" y="179" font-size="18" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">k1</text>
+
+  <rect x="210" y="144" width="110" height="56" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <line x1="218" y1="192" x2="312" y2="152" stroke="#ff2020" stroke-width="2"/>
+  <line x1="218" y1="152" x2="312" y2="192" stroke="#ff2020" stroke-width="2"/>
+
+  <rect x="340" y="144" width="110" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="395" y="179" font-size="18" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">k3</text>
+
+  <text x="265" y="238" font-size="16" text-anchor="middle" fill="#ff2020">
+    <tspan font-family="Consolas, Roboto Mono, monospace">++it</tspan> читает уничтоженный узел — UB</text>
+
+  <!-- ===== верно ===== -->
+  <text x="795" y="54" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">it = seen.erase(it);</text>
+
+  <text x="740" y="100" font-size="16" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">it было</text>
+  <line x1="740" y1="108" x2="762" y2="140" stroke="#5c5e66" stroke-width="2"
+        stroke-dasharray="6 5" marker-end="url(#dim)"/>
+
+  <text x="925" y="100" font-size="18" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">it</text>
+  <line x1="925" y1="108" x2="925" y2="140" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+
+  <rect x="610" y="144" width="110" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="665" y="179" font-size="18" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">k1</text>
+
+  <rect x="740" y="144" width="110" height="56" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <line x1="748" y1="192" x2="842" y2="152" stroke="#ff2020" stroke-width="2"/>
+  <line x1="748" y1="152" x2="842" y2="192" stroke="#ff2020" stroke-width="2"/>
+
+  <rect x="870" y="144" width="110" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="925" y="179" font-size="18" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">k3</text>
+
+  <text x="795" y="238" font-size="16" text-anchor="middle" fill="#80828c">
+    <tspan font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">erase</tspan> вернул итератор на следующий — обход продолжается</text>
+</svg>

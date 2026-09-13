@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 344" width="1060" height="344"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="342" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="48" y="38" font-size="16" fill="#80828c">белым — <tspan fill="#ffffff" font-family="Consolas, Roboto Mono, monospace">first</tspan>, серым — <tspan font-family="Consolas, Roboto Mono, monospace">rest...</tspan>, который уходит в следующий вызов</text>
+
+  <!-- ступень 1 -->
+  <rect x="48" y="56" width="440" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="68" y="89" font-size="18" font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">print_all(<tspan fill="#ffffff">1</tspan><tspan fill="#80828c">, 2.5, "hello"</tspan>)</text>
+  <text x="508" y="89" font-size="16" fill="#dbdfe6">выводит <tspan fill="#ffffff" font-family="Consolas, Roboto Mono, monospace">1</tspan></text>
+
+  <path d="M 108 110 L 158 124" fill="none" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <!-- ступень 2 -->
+  <rect x="110" y="126" width="440" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="130" y="159" font-size="18" font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">print_all(<tspan fill="#ffffff">2.5</tspan><tspan fill="#80828c">, "hello"</tspan>)</text>
+  <text x="570" y="159" font-size="16" fill="#dbdfe6">выводит <tspan fill="#ffffff" font-family="Consolas, Roboto Mono, monospace">2.5</tspan></text>
+
+  <path d="M 170 180 L 220 194" fill="none" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <!-- ступень 3 -->
+  <rect x="172" y="196" width="440" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="192" y="229" font-size="18" font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">print_all(<tspan fill="#ffffff">"hello"</tspan>)</text>
+  <text x="632" y="229" font-size="16" fill="#dbdfe6">выводит <tspan fill="#ffffff" font-family="Consolas, Roboto Mono, monospace">"hello"</tspan></text>
+
+  <path d="M 232 250 L 282 264" fill="none" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <!-- ступень 4 -->
+  <rect x="234" y="266" width="440" height="52" fill="none" stroke="#5c5e66" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="254" y="299" font-size="18" font-family="Consolas, Roboto Mono, monospace" fill="#5c5e66">print_all()</text>
+  <text x="694" y="299" font-size="16" fill="#80828c">база рекурсии — пакет пуст</text>
+</svg>

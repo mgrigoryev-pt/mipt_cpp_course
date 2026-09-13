@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 356" width="1060" height="356"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="light" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#dbdfe6"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="354" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- ось времени -->
+  <line x1="48" y1="66" x2="1000" y2="66" stroke="#dbdfe6" stroke-width="2" marker-end="url(#light)"/>
+  <text x="1000" y="46" font-size="15" text-anchor="end" fill="#80828c">время компиляции</text>
+
+  <!-- фаза 1 -->
+  <circle cx="230" cy="66" r="6" fill="#dbdfe6"/>
+  <line x1="230" y1="72" x2="230" y2="100" stroke="#26262b" stroke-width="1.5"/>
+
+  <text x="230" y="122" font-size="19" text-anchor="middle" fill="#dbdfe6">Фаза 1: чтение определения</text>
+  <text x="230" y="146" font-size="15" text-anchor="middle" fill="#80828c">компилятор ещё не знает T</text>
+
+  <rect x="60" y="166" width="340" height="106" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="78" y="190" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">template &lt;typename T&gt;</text>
+  <text x="78" y="214" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">void f() {</text>
+  <text x="94" y="236" font-size="16" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">    syntax_error;</text>
+  <text x="94" y="258" font-size="16" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">    T::value;</text>
+
+  <text x="230" y="300" font-size="16" text-anchor="middle" fill="#ff2020">проверено: не зависит от T — CE здесь</text>
+  <text x="230" y="326" font-size="15" text-anchor="middle" fill="#5c5e66">зависит от T — отложено</text>
+
+  <!-- фаза 2 -->
+  <circle cx="800" cy="66" r="6" fill="#dbdfe6"/>
+  <line x1="800" y1="72" x2="800" y2="100" stroke="#26262b" stroke-width="1.5"/>
+
+  <text x="800" y="122" font-size="19" text-anchor="middle" fill="#dbdfe6">Фаза 2: инстанцирование</text>
+  <text x="800" y="146" font-size="15" text-anchor="middle" fill="#80828c">T известен: T = int</text>
+
+  <rect x="630" y="166" width="340" height="106" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="648" y="200" font-size="16" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">// main.cpp</text>
+  <text x="648" y="232" font-size="18" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">f&lt;int&gt;();</text>
+  <text x="648" y="258" font-size="16" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">// int::value — нет</text>
+
+  <text x="800" y="300" font-size="16" text-anchor="middle" fill="#ff2020">проверено: T::value — CE здесь</text>
+  <text x="800" y="326" font-size="15" text-anchor="middle" fill="#80828c">место использования, а не определения</text>
+
+  <!-- разделитель -->
+  <line x1="515" y1="110" x2="515" y2="330" stroke="#26262b" stroke-width="1.5"/>
+</svg>

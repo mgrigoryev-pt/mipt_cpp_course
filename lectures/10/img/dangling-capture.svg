@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 300" width="1060" height="300"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+    <marker id="red" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff2020"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="298" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="36" x2="530" y2="268" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- пока функция не вернулась -->
+  <text x="40" y="52" font-size="19" fill="#dbdfe6">пока make_lambda() не вернулась</text>
+
+  <text x="40" y="92" font-size="15" fill="#80828c">кадр функции</text>
+  <rect x="40" y="102" width="160" height="58" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="120" y="141" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">10</text>
+  <text x="120" y="182" font-size="15" text-anchor="middle" fill="#80828c">int x</text>
+
+  <rect x="278" y="94" width="222" height="82" rx="6"
+        fill="rgba(255,255,255,0.04)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="296" y="122" font-size="15" fill="#80828c">замыкание</text>
+  <text x="296" y="158" font-size="20" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">int&amp; x</text>
+
+  <line x1="272" y1="131" x2="208" y2="131" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+
+  <text x="40" y="238" font-size="16" fill="#80828c">ссылка ведёт на живую переменную</text>
+
+  <!-- после return -->
+  <text x="560" y="52" font-size="19" fill="#dbdfe6">после return</text>
+
+  <text x="560" y="92" font-size="15" fill="#5c5e66">кадр разрушен</text>
+  <rect x="560" y="102" width="160" height="58" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <line x1="568" y1="154" x2="712" y2="108" stroke="#ff2020" stroke-width="2"/>
+  <line x1="568" y1="108" x2="712" y2="154" stroke="#ff2020" stroke-width="2"/>
+
+  <rect x="798" y="94" width="222" height="82" rx="6"
+        fill="rgba(255,255,255,0.04)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="816" y="122" font-size="15" fill="#80828c">замыкание живёт в f</text>
+  <text x="816" y="158" font-size="20" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">int&amp; x</text>
+
+  <line x1="792" y1="131" x2="728" y2="131" stroke="#ff2020" stroke-width="2.5"
+        stroke-dasharray="7 5" marker-end="url(#red)"/>
+
+  <text x="560" y="238" font-size="16" fill="#ff2020">адрес прежний, переменной по нему больше нет: f() — UB</text>
+</svg>

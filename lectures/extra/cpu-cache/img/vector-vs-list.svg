@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 360" width="1060" height="360"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Сверху vector: элементы лежат подряд, обход идёт по соседним адресам, процессор подгружает следующие строки заранее — сумма десяти миллионов int за 5,8 мс. Снизу list: каждый узел выделен отдельно, и следующий узел становится известен, только когда прочитан указатель в текущем. Узлы подряд в памяти — 87,9 мс, узлы вразброс — 3508 мс">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+  <style>
+    .h{fill:#dbdfe6;font-size:18px}
+    .s{fill:#80828c;font-size:14px}
+    .ms{fill:#ffffff;font-size:17px;font-family:Consolas, Roboto Mono, monospace}
+    .cell{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .v{fill:#ffffff;font-size:16px;font-family:Consolas, Roboto Mono, monospace;text-anchor:middle}
+    .node{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .nx{fill:rgba(255,138,138,0.08);stroke:#ff8a8a;stroke-width:1.5}
+    .pl{stroke:#ff8a8a;stroke-width:2;fill:none}
+    .ln{stroke:#80828c;stroke-width:1.5;fill:none}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="358" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- vector -->
+  <text class="h" x="40" y="44">vector</text>
+  <text class="ms" x="1020" y="44" text-anchor="end">5,8 мс</text>
+  <rect class="cell" x="40" y="60" width="60" height="44"/><text class="v" x="70" y="88">0</text>
+  <rect class="cell" x="100" y="60" width="60" height="44"/><text class="v" x="130" y="88">1</text>
+  <rect class="cell" x="160" y="60" width="60" height="44"/><text class="v" x="190" y="88">2</text>
+  <rect class="cell" x="220" y="60" width="60" height="44"/><text class="v" x="250" y="88">3</text>
+  <rect class="cell" x="280" y="60" width="60" height="44"/><text class="v" x="310" y="88">4</text>
+  <rect class="cell" x="340" y="60" width="60" height="44"/><text class="v" x="370" y="88">5</text>
+  <rect class="cell" x="400" y="60" width="60" height="44"/><text class="v" x="430" y="88">6</text>
+  <rect class="cell" x="460" y="60" width="60" height="44"/><text class="v" x="490" y="88">7</text>
+  <line class="ln" x1="70" y1="120" x2="500" y2="120" marker-end="url(#grey)"/>
+  <text class="s" x="540" y="80">соседние адреса: следующие кэш-линии</text>
+  <text class="s" x="540" y="100">процессор подгружает заранее</text>
+
+  <line x1="40" y1="146" x2="1020" y2="146" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- list -->
+  <text class="h" x="40" y="184">list, узлы вразброс</text>
+  <text class="ms" x="1020" y="184" text-anchor="end">3508 мс</text>
+  <text class="s" x="1020" y="206" text-anchor="end">узлы подряд — 87,9 мс</text>
+
+  <!-- узел: значение + next -->
+  <rect class="node" x="40" y="220" width="50" height="40"/><text class="v" x="65" y="246">0</text>
+  <rect class="nx" x="90" y="220" width="30" height="40"/>
+
+  <rect class="node" x="600" y="290" width="50" height="40"/><text class="v" x="625" y="316">1</text>
+  <rect class="nx" x="650" y="290" width="30" height="40"/>
+
+  <rect class="node" x="300" y="300" width="50" height="40"/><text class="v" x="325" y="326">2</text>
+  <rect class="nx" x="350" y="300" width="30" height="40"/>
+
+  <rect class="node" x="820" y="230" width="50" height="40"/><text class="v" x="845" y="256">3</text>
+  <rect class="nx" x="870" y="230" width="30" height="40"/>
+
+  <rect class="node" x="470" y="226" width="50" height="40"/><text class="v" x="495" y="252">4</text>
+  <rect class="nx" x="520" y="226" width="30" height="40"/>
+
+  <path class="pl" d="M 105 240 C 300 240, 460 300, 596 306" marker-end="url(#pink)"/>
+  <path class="pl" d="M 665 318 C 560 350, 420 346, 384 328" marker-end="url(#pink)"/>
+  <path class="pl" d="M 365 312 C 520 280, 700 262, 816 252" marker-end="url(#pink)"/>
+  <path class="pl" d="M 885 240 C 760 214, 620 210, 524 232" marker-end="url(#pink)"/>
+
+  <text class="s" x="40" y="304">адрес следующего узла известен,</text>
+  <text class="s" x="40" y="322">только когда прочитан текущий</text>
+</svg>

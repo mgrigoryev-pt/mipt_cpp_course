@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 320" width="1060" height="320"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="10" markerHeight="10" refX="9" refY="4"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="318" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- ===== было ===== -->
+  <text x="40" y="80" font-size="17" fill="#dbdfe6">было</text>
+  <text x="40" y="102" font-size="15" fill="#80828c">удаляем все двойки</text>
+
+  <rect x="300" y="60" width="80" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="340" y="96" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">1</text>
+  <rect x="380" y="60" width="80" height="52" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="420" y="96" font-size="24" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">2</text>
+  <rect x="460" y="60" width="80" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="500" y="96" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">3</text>
+  <rect x="540" y="60" width="80" height="52" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="580" y="96" font-size="24" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">2</text>
+  <rect x="620" y="60" width="80" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="660" y="96" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">4</text>
+
+  <text x="732" y="94" font-size="16" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">size() == 5</text>
+
+  <!-- ===== после remove ===== -->
+  <text x="540" y="130" font-size="17" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">new_end</text>
+  <line x1="540" y1="134" x2="540" y2="150" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+
+  <text x="40" y="172" font-size="16" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">std::remove(b, e, 2)</text>
+  <text x="40" y="194" font-size="15" fill="#80828c">сдвинул выживших в начало</text>
+
+  <rect x="300" y="152" width="80" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="340" y="188" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">1</text>
+  <rect x="380" y="152" width="80" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="420" y="188" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">3</text>
+  <rect x="460" y="152" width="80" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="500" y="188" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">4</text>
+  <rect x="540" y="152" width="80" height="52" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="580" y="188" font-size="24" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">?</text>
+  <rect x="620" y="152" width="80" height="52" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="660" y="188" font-size="24" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">?</text>
+
+  <text x="732" y="186" font-size="16" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">size() == 5</text>
+  <text x="732" y="206" font-size="15" fill="#80828c">размер не изменился</text>
+
+  <text x="620" y="230" font-size="15" text-anchor="middle" fill="#80828c">хвост — valid but unspecified</text>
+
+  <!-- ===== после erase ===== -->
+  <text x="40" y="264" font-size="16" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">v.erase(new_end, v.end())</text>
+  <text x="40" y="286" font-size="15" fill="#80828c">поправил размер</text>
+
+  <rect x="300" y="244" width="80" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="340" y="280" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">1</text>
+  <rect x="380" y="244" width="80" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="420" y="280" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">3</text>
+  <rect x="460" y="244" width="80" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="500" y="280" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">4</text>
+
+  <text x="732" y="278" font-size="16" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">size() == 3</text>
+</svg>

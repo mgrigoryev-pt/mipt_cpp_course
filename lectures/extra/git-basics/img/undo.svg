@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 380" width="1060" height="380" role="img" aria-label="Три способа отменить, по одному на каждую зону. Если правка ещё не добавлена, git restore файл возвращает файл к виду из последнего коммита, и правка исчезает совсем — это единственный необратимый случай. Если сделан git add, команда git restore --staged файл убирает файл из индекса, а сама правка остаётся. Если коммит уже сделан, git commit --amend заменяет последний коммит новым, и это работает, только пока коммит не отправлен на сервер">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path fill="#80828c" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+  <style>
+    .t{fill:#dbdfe6;font-size:17px}
+    .t-s{fill:#80828c;font-size:14.5px}
+    .t-h{fill:#dbdfe6;font-size:16px;font-weight:600;letter-spacing:.07em}
+    .t-bad{fill:#ff2020;font-size:14.5px}
+    .t-cmd{fill:#dbdfe6;font-size:15px}
+    .bx{fill:rgba(255,255,255,0.045);stroke:#3a3a40;stroke-width:1.5}
+    .bx-plain{fill:none;stroke:#3a3a40;stroke-width:1.5}
+    .bx-cmd{fill:rgba(255,255,255,0.10);stroke:#dbdfe6;stroke-width:1.5}
+    .bx-bad{fill:rgba(255,32,32,0.10);stroke:#ff2020;stroke-width:1.5}
+    .ln{stroke:#80828c;stroke-width:1.8;fill:none}
+    .hair{stroke:#26262b;stroke-width:1;fill:none}
+    .mono{font-family:Consolas, Roboto Mono, monospace}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="378" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <g font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+    <text class="t-h" x="40" y="52">ЕЩЁ НЕ ДОБАВЛЕНО</text>
+    <line class="hair" x1="40" y1="62" x2="320" y2="62"/>
+    <rect class="bx-plain" x="40" y="80" width="280" height="64" rx="2"/>
+    <text class="t-s" x="56" y="106">Правка живёт только</text>
+    <text class="t-s" x="56" y="128">в рабочем каталоге.</text>
+    <line class="ln" x1="180" y1="146" x2="180" y2="164" marker-end="url(#ar)"/>
+    <rect class="bx-cmd" x="40" y="168" width="280" height="44" rx="2"/>
+    <text class="t-cmd mono" x="180" y="196" text-anchor="middle">git restore &lt;файл&gt;</text>
+    <line class="ln" x1="180" y1="212" x2="180" y2="230" marker-end="url(#ar)"/>
+    <rect class="bx-bad" x="40" y="234" width="280" height="64" rx="2"/>
+    <text class="t-s" x="56" y="260">Файл возвращается к коммиту.</text>
+    <text class="t-bad" x="56" y="282">Правка исчезает совсем.</text>
+
+    <text class="t-h" x="390" y="52">ДОБАВЛЕНО В ИНДЕКС</text>
+    <line class="hair" x1="390" y1="62" x2="670" y2="62"/>
+    <rect class="bx-plain" x="390" y="80" width="280" height="64" rx="2"/>
+    <text class="t-s" x="406" y="106">Сделан <tspan class="mono">git add</tspan>, но</text>
+    <text class="t-s" x="406" y="128">коммита ещё не было.</text>
+    <line class="ln" x1="530" y1="146" x2="530" y2="164" marker-end="url(#ar)"/>
+    <rect class="bx-cmd" x="390" y="168" width="280" height="44" rx="2"/>
+    <text class="t-cmd mono" x="530" y="196" text-anchor="middle">git restore --staged &lt;файл&gt;</text>
+    <line class="ln" x1="530" y1="212" x2="530" y2="230" marker-end="url(#ar)"/>
+    <rect class="bx" x="390" y="234" width="280" height="64" rx="2"/>
+    <text class="t-s" x="406" y="260">Файл уходит из индекса,</text>
+    <text class="t-s" x="406" y="282">правка остаётся в файле.</text>
+
+    <text class="t-h" x="740" y="52">УЖЕ В КОММИТЕ</text>
+    <line class="hair" x1="740" y1="62" x2="1020" y2="62"/>
+    <rect class="bx-plain" x="740" y="80" width="280" height="64" rx="2"/>
+    <text class="t-s" x="756" y="106">Забыли файл или</text>
+    <text class="t-s" x="756" y="128">опечатались в тексте.</text>
+    <line class="ln" x1="880" y1="146" x2="880" y2="164" marker-end="url(#ar)"/>
+    <rect class="bx-cmd" x="740" y="168" width="280" height="44" rx="2"/>
+    <text class="t-cmd mono" x="880" y="196" text-anchor="middle">git commit --amend</text>
+    <line class="ln" x1="880" y1="212" x2="880" y2="230" marker-end="url(#ar)"/>
+    <rect class="bx" x="740" y="234" width="280" height="64" rx="2"/>
+    <text class="t-s" x="756" y="260">Коммит заменяется новым.</text>
+    <text class="t-s" x="756" y="282">Только до <tspan class="mono">git push</tspan>.</text>
+
+    <line class="hair" x1="40" y1="324" x2="1020" y2="324"/>
+    <text class="t" x="40" y="352">Потерять можно только то, что ни разу не попало в коммит. Всё остальное git умеет вернуть.</text>
+  </g>
+</svg>

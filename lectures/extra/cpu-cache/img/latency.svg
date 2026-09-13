@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 400" width="1060" height="400"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Задержка одного обращения в зависимости от размера массива, логарифмическая шкала. 16 и 32 КБ помещаются в L1 — 2,1 и 2,2 нс. От 64 КБ до 512 КБ — L2, 5,4–6,2 нс, на 1 МБ — 10,3 нс. 2 и 4 МБ — L3, 27 и 50 нс. От 8 МБ и дальше — память, 121–161 нс">
+  <style>
+    .band{fill:rgba(255,255,255,0.025)}
+    .bl{fill:#dbdfe6;font-size:14px;font-weight:600}
+    .bs{fill:#80828c;font-size:13px}
+    .grid{stroke:#26262b;stroke-width:1}
+    .axis{stroke:#5c5e66;stroke-width:1}
+    .tick{fill:#80828c;font-size:13px;text-anchor:end}
+    .xl{fill:#80828c;font-size:12px;text-anchor:middle}
+    .bar{fill:#dbdfe6}
+    .val{fill:#dbdfe6;font-size:13px;text-anchor:middle;font-family:Consolas, Roboto Mono, monospace}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="398" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="40" y="30" font-size="15" fill="#dbdfe6">задержка одного обращения, нс — логарифмическая шкала</text>
+
+  <!-- полосы уровней -->
+  <rect class="band" x="110" y="40" width="120" height="280"/>
+  <rect class="band" x="530" y="40" width="240" height="280"/>
+  <text class="bl" x="170" y="58" text-anchor="middle">L1</text>
+  <text class="bs" x="170" y="74" text-anchor="middle">48 КБ</text>
+  <text class="bl" x="380" y="58" text-anchor="middle">L2</text>
+  <text class="bs" x="380" y="74" text-anchor="middle">1,25 МБ</text>
+  <text class="bl" x="650" y="58" text-anchor="middle">L3</text>
+  <text class="bs" x="650" y="74" text-anchor="middle">24 МБ</text>
+  <text class="bl" x="890" y="58" text-anchor="middle">память</text>
+
+  <!-- сетка -->
+  <line class="grid" x1="110" y1="215" x2="1010" y2="215"/>
+  <line class="grid" x1="110" y1="110" x2="1010" y2="110"/>
+  <line class="axis" x1="110" y1="320" x2="1010" y2="320"/>
+  <text class="tick" x="100" y="324">1</text>
+  <text class="tick" x="100" y="219">10</text>
+  <text class="tick" x="100" y="114">100</text>
+
+  <!-- столбцы: высота = log10(нс) × 105 -->
+  <rect class="bar" x="120" y="286.2" width="40" height="33.8" rx="3"/>
+  <rect class="bar" x="180" y="284.1" width="40" height="35.9" rx="3"/>
+  <rect class="bar" x="240" y="239.1" width="40" height="80.9" rx="3"/>
+  <rect class="bar" x="300" y="239.9" width="40" height="80.1" rx="3"/>
+  <rect class="bar" x="360" y="243.1" width="40" height="76.9" rx="3"/>
+  <rect class="bar" x="420" y="236.8" width="40" height="83.2" rx="3"/>
+  <rect class="bar" x="480" y="213.7" width="40" height="106.3" rx="3"/>
+  <rect class="bar" x="540" y="169.1" width="40" height="150.9" rx="3"/>
+  <rect class="bar" x="600" y="141.3" width="40" height="178.7" rx="3"/>
+  <rect class="bar" x="660" y="101.2" width="40" height="218.8" rx="3"/>
+  <rect class="bar" x="720" y="97.6" width="40" height="222.4" rx="3"/>
+  <rect class="bar" x="780" y="96.4" width="40" height="223.6" rx="3"/>
+  <rect class="bar" x="840" y="94.5" width="40" height="225.5" rx="3"/>
+  <rect class="bar" x="900" y="92.7" width="40" height="227.3" rx="3"/>
+  <rect class="bar" x="960" y="88.4" width="40" height="231.6" rx="3"/>
+
+  <!-- значения над частью столбцов -->
+  <text class="val" x="140" y="279">2,1</text>
+  <text class="val" x="260" y="232">5,9</text>
+  <text class="val" x="500" y="207">10</text>
+  <text class="val" x="560" y="162">27</text>
+  <text class="val" x="620" y="134">50</text>
+  <text class="val" x="680" y="94">122</text>
+  <text class="val" x="980" y="81">161</text>
+
+  <!-- ось x -->
+  <text class="xl" x="140" y="338">16 КБ</text>
+  <text class="xl" x="200" y="338">32 КБ</text>
+  <text class="xl" x="260" y="338">64 КБ</text>
+  <text class="xl" x="320" y="338">128 КБ</text>
+  <text class="xl" x="380" y="338">256 КБ</text>
+  <text class="xl" x="440" y="338">512 КБ</text>
+  <text class="xl" x="500" y="338">1 МБ</text>
+  <text class="xl" x="560" y="338">2 МБ</text>
+  <text class="xl" x="620" y="338">4 МБ</text>
+  <text class="xl" x="680" y="338">8 МБ</text>
+  <text class="xl" x="740" y="338">16 МБ</text>
+  <text class="xl" x="800" y="338">32 МБ</text>
+  <text class="xl" x="860" y="338">64 МБ</text>
+  <text class="xl" x="920" y="338">128 МБ</text>
+  <text class="xl" x="980" y="338">256 МБ</text>
+
+  <text x="560" y="372" font-size="14" fill="#80828c" text-anchor="middle">размер массива; обход в случайном порядке, один узел на кэш-линию, поток на производительном ядре i7-12700H</text>
+</svg>

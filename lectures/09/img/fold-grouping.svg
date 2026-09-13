@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 346" width="1060" height="346"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+  <rect x="1" y="1" width="1058" height="344" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <line x1="530" y1="30" x2="530" y2="300" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- ===== левая панель: унарный правый ===== -->
+  <text x="280" y="50" font-size="21" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">(args - ...)</text>
+  <text x="280" y="76" font-size="16" text-anchor="middle" fill="#80828c">унарный правый — группировка справа</text>
+
+  <!-- вложенные скобки: изнутри наружу -->
+  <path d="M 292 184 L 292 168 L 452 168 L 452 184" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <path d="M 198 158 L 198 142 L 459 142 L 459 158" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <path d="M 104 132 L 104 116 L 466 116 L 466 132" fill="none" stroke="#80828c" stroke-width="2"/>
+
+  <rect x="104" y="190" width="70" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="139" y="228" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">1</text>
+
+  <rect x="198" y="190" width="70" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="233" y="228" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">2</text>
+
+  <rect x="292" y="190" width="70" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="327" y="228" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">3</text>
+
+  <rect x="386" y="190" width="70" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="421" y="228" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">4</text>
+
+  <text x="280" y="288" font-size="19" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">1 - (2 - (3 - 4)) == <tspan fill="#ffffff">-2</tspan></text>
+
+  <!-- ===== правая панель: унарный левый ===== -->
+  <text x="780" y="50" font-size="21" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">(... - args)</text>
+  <text x="780" y="76" font-size="16" text-anchor="middle" fill="#80828c">унарный левый — группировка слева</text>
+
+  <path d="M 608 184 L 608 168 L 768 168 L 768 184" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <path d="M 601 158 L 601 142 L 862 142 L 862 158" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <path d="M 594 132 L 594 116 L 956 116 L 956 132" fill="none" stroke="#80828c" stroke-width="2"/>
+
+  <rect x="604" y="190" width="70" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="639" y="228" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">1</text>
+
+  <rect x="698" y="190" width="70" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="733" y="228" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">2</text>
+
+  <rect x="792" y="190" width="70" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="827" y="228" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">3</text>
+
+  <rect x="886" y="190" width="70" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="921" y="228" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">4</text>
+
+  <text x="780" y="288" font-size="19" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">((1 - 2) - 3) - 4 == <tspan fill="#ffffff">-8</tspan></text>
+
+  <text x="530" y="326" font-size="16" text-anchor="middle" fill="#80828c">белая скобка считается первой; для ассоциативных операций разницы нет, для <tspan font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">-</tspan> и <tspan font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">/</tspan> — есть</text>
+</svg>

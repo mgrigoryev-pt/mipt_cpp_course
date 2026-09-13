@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 350" width="1060" height="350"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Два шага сборки: конфигурация читает описание проекта и пишет каталог сборки, сборка отдаёт его Ninja, а та вызывает компилятор и линкер только для устаревшего">
+  <defs>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+  <style>
+    .bx{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .h{fill:#dbdfe6;font-size:14px;font-weight:600;letter-spacing:.06em}
+    .t{fill:#dbdfe6;font-size:16px}
+    .s{fill:#80828c;font-size:14px}
+    .m{fill:#ffffff;font-size:15px;font-family:Consolas, Roboto Mono, monospace}
+    .ln{stroke:#80828c;stroke-width:1.5;fill:none}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="348" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- описание -->
+  <rect class="bx" x="40" y="50" width="200" height="140"/>
+  <text class="h" x="56" y="78">ОПИСАНИЕ</text>
+  <text class="m" x="56" y="112">CMakeLists.txt</text>
+  <text class="m" x="56" y="136">CMakePresets.json</text>
+  <text class="s" x="56" y="174">пишет человек</text>
+
+  <!-- каталог сборки -->
+  <rect class="bx" x="300" y="50" width="200" height="140"/>
+  <text class="h" x="316" y="78">КАТАЛОГ СБОРКИ</text>
+  <text class="m" x="316" y="112">CMakeCache.txt</text>
+  <text class="m" x="316" y="136">build.ninja</text>
+  <text class="s" x="316" y="174">пишет CMake</text>
+
+  <!-- ninja -->
+  <rect class="bx" x="560" y="50" width="200" height="140"/>
+  <text class="h" x="576" y="78">NINJA</text>
+  <text class="t" x="576" y="112">что устарело?</text>
+  <text class="s" x="576" y="136">сверяет время файлов</text>
+  <text class="s" x="576" y="156">и списки заголовков,</text>
+  <text class="s" x="576" y="176">которые дал компилятор</text>
+
+  <!-- компилятор и линкер -->
+  <rect class="bx" x="820" y="50" width="200" height="140"/>
+  <text class="h" x="836" y="78">КОМПИЛЯТОР, ЛИНКЕР</text>
+  <text class="m" x="836" y="112">clang++ -c geom.cpp</text>
+  <text class="m" x="836" y="136">clang++ -c main.cpp</text>
+  <text class="m" x="836" y="160">lld-link → app.exe</text>
+  <text class="s" x="836" y="180">только устаревшее</text>
+
+  <line class="ln" x1="240" y1="120" x2="298" y2="120" marker-end="url(#grey)"/>
+  <line class="ln" x1="500" y1="120" x2="558" y2="120" marker-end="url(#grey)"/>
+  <line class="ln" x1="760" y1="120" x2="818" y2="120" marker-end="url(#grey)"/>
+
+  <!-- шаг 1 -->
+  <path class="ln" d="M 140 212 V 224 H 396 V 212"/>
+  <text x="268" y="254" font-size="17" text-anchor="middle" fill="#dbdfe6">шаг 1 · конфигурация</text>
+  <text class="m" x="268" y="280" text-anchor="middle">cmake --preset windows</text>
+  <text class="s" x="268" y="306" text-anchor="middle">когда меняется описание:</text>
+  <text class="s" x="268" y="326" text-anchor="middle">номер занятия, новый .cpp, пресет</text>
+
+  <!-- шаг 2 -->
+  <path class="ln" d="M 404 212 V 224 H 920 V 212"/>
+  <text x="662" y="254" font-size="17" text-anchor="middle" fill="#dbdfe6">шаг 2 · сборка</text>
+  <text class="m" x="662" y="280" text-anchor="middle">cmake --build --preset windows</text>
+  <text class="s" x="662" y="306" text-anchor="middle">после каждой правки кода;</text>
+  <text class="s" x="662" y="326" text-anchor="middle">правка CMakeLists.txt сама запускает шаг 1</text>
+</svg>

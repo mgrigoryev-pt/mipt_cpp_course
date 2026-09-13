@@ -1,0 +1,48 @@
+# clean_office: обычный рабочий день. Атаки нет ни одной, и детектов быть
+# не должно ни одного.
+#
+# Приманки расставлены намеренно: explorer запускает cmd, пользователь
+# двойным щелчком запускает корпоративный .vbs, chrome массово пишет кэш,
+# документ один раз переименовывается. Правило «любой wscript.exe — атака»
+# поймает две атаки из пяти и вдобавок провалится здесь.
+ts=1730500000000 type=file_write pid=1500 path=C:\Users\max\report.docx size=21504
+ts=1730500000400 type=file_write pid=1500 path="C:\Users\max\AppData\Roaming\Microsoft\Word\AutoRecovery save of report.asd" size=20480
+ts=1730500000750 type=file_write pid=1500 path="C:\Users\max\AppData\Roaming\Microsoft\Word\AutoRecovery save of report.asd" size=20992
+ts=1730500001100 type=file_write pid=1500 path="C:\Users\max\AppData\Roaming\Microsoft\Word\AutoRecovery save of report.asd" size=21504
+ts=1730500001450 type=file_write pid=1500 path="C:\Users\max\AppData\Roaming\Microsoft\Word\AutoRecovery save of report.asd" size=22016
+ts=1730500001800 type=file_write pid=1500 path="C:\Users\max\AppData\Roaming\Microsoft\Word\AutoRecovery save of report.asd" size=22528
+ts=1730500002150 type=file_write pid=1500 path="C:\Users\max\AppData\Roaming\Microsoft\Word\AutoRecovery save of report.asd" size=23040
+ts=1730500002500 type=file_write pid=1500 path="C:\Users\max\AppData\Roaming\Microsoft\Word\AutoRecovery save of report.asd" size=23552
+ts=1730500002850 type=file_write pid=1500 path="C:\Users\max\AppData\Roaming\Microsoft\Word\AutoRecovery save of report.asd" size=24064
+ts=1730500003400 type=file_create pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_0"
+ts=1730500003440 type=file_write pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_0" size=65536
+ts=1730500003520 type=file_create pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_1"
+ts=1730500003560 type=file_write pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_1" size=66560
+ts=1730500003640 type=file_create pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_2"
+ts=1730500003680 type=file_write pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_2" size=67584
+ts=1730500003760 type=file_create pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_3"
+ts=1730500003800 type=file_write pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_3" size=68608
+ts=1730500003880 type=file_create pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_4"
+ts=1730500003920 type=file_write pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_4" size=69632
+ts=1730500004000 type=file_create pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_5"
+ts=1730500004040 type=file_write pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_5" size=70656
+ts=1730500004120 type=file_create pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_6"
+ts=1730500004160 type=file_write pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_6" size=71680
+ts=1730500004240 type=file_create pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_7"
+ts=1730500004280 type=file_write pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_7" size=72704
+ts=1730500004360 type=file_create pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_8"
+ts=1730500004400 type=file_write pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_8" size=73728
+ts=1730500004480 type=file_create pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_9"
+ts=1730500004520 type=file_write pid=1300 path="C:\Users\max\AppData\Local\Google\Chrome\User Data\Default\Cache\data_9" size=74752
+ts=1730500005000 type=process_start pid=1820 ppid=880 image=C:\Windows\System32\cmd.exe cmdline="cmd /c dir C:\work" user=DESKTOP\max
+ts=1730500005700 type=process_end pid=1820 exit=0
+ts=1730500006400 type=process_start pid=1850 ppid=880 image=C:\Windows\System32\wscript.exe cmdline="wscript.exe C:\corp\tools\map_drives.vbs" user=DESKTOP\max
+ts=1730500006900 type=net_connect pid=1850 raddr=10.20.0.7 rport=445 domain=fs01.corp.local
+ts=1730500007600 type=process_end pid=1850 exit=0
+ts=1730500008200 type=file_create pid=1600 path=C:\Users\max\Documents\~$quarterly.xlsx
+ts=1730500008600 type=file_write pid=1600 path=C:\Users\max\Documents\quarterly.xlsx size=41984
+ts=1730500009000 type=file_delete pid=1600 path=C:\Users\max\Documents\~$quarterly.xlsx
+ts=1730500009800 type=file_move pid=880 from=C:\Users\max\report.docx to=C:\Users\max\report_final.docx
+ts=1730500010500 type=file_write pid=1700 path=C:\Users\max\AppData\Local\Microsoft\Outlook\max.ost size=2097152
+ts=1730500011300 type=process_start pid=1880 ppid=880 image=C:\Windows\System32\notepad.exe cmdline="notepad.exe C:\Users\max\notes.txt" user=DESKTOP\max
+ts=1730500012000 type=file_write pid=1880 path=C:\Users\max\notes.txt size=1400
