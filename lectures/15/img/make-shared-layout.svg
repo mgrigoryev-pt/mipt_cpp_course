@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 320" width="1060" height="320"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="1" y="1" width="1058" height="318" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="365" y1="34" x2="365" y2="288" stroke="#26262b" stroke-width="1.5"/>
+  <line x1="695" y1="34" x2="695" y2="288" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- две аллокации -->
+  <text x="40" y="58" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">shared_ptr&lt;T&gt;(new T(...))</text>
+  <rect x="60" y="84" width="200" height="56" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="160" y="119" font-size="18" text-anchor="middle" fill="#ffffff">объект T</text>
+  <rect x="60" y="150" width="200" height="34" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="160" y="173" font-size="14" text-anchor="middle" fill="#5c5e66">чужая память</text>
+  <rect x="60" y="194" width="200" height="56" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="160" y="229" font-size="17" text-anchor="middle" fill="#ffffff">control block</text>
+
+  <text x="40" y="278" font-size="16" fill="#80828c">две аллокации, освобождаются</text>
+  <text x="40" y="300" font-size="16" fill="#80828c">по отдельности</text>
+
+  <!-- одна аллокация -->
+  <text x="390" y="58" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">make_shared&lt;T&gt;(...)</text>
+  <rect x="410" y="84" width="230" height="166" fill="rgba(255,138,138,0.08)"
+        stroke="#ff8a8a" stroke-width="2"/>
+  <line x1="410" y1="167" x2="640" y2="167" stroke="#ff8a8a" stroke-width="1.5"/>
+  <text x="525" y="133" font-size="18" text-anchor="middle" fill="#ffffff">объект T</text>
+  <text x="525" y="216" font-size="17" text-anchor="middle" fill="#ffffff">control block</text>
+
+  <text x="390" y="278" font-size="16" fill="#80828c">одна аллокация: рядом в памяти,</text>
+  <text x="390" y="300" font-size="16" fill="#80828c">быстрее и без фрагментации</text>
+
+  <!-- цена одной аллокации -->
+  <text x="720" y="58" font-size="16" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">p.reset()</text>
+  <text x="822" y="58" font-size="15" fill="#80828c">при живом weak_ptr</text>
+  <rect x="740" y="84" width="230" height="166" fill="none"
+        stroke="#ff8a8a" stroke-width="2"/>
+  <line x1="740" y1="167" x2="970" y2="167" stroke="#ff8a8a" stroke-width="1.5"/>
+  <rect x="748" y="92" width="214" height="67" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <line x1="756" y1="151" x2="954" y2="100" stroke="#ff2020" stroke-width="2"/>
+  <line x1="756" y1="100" x2="954" y2="151" stroke="#ff2020" stroke-width="2"/>
+  <text x="855" y="216" font-size="17" text-anchor="middle" fill="#ffffff">control block</text>
+  <text x="855" y="240" font-size="15" text-anchor="middle" fill="#80828c">weak = 1, блок жив</text>
+
+  <text x="720" y="278" font-size="16" fill="#80828c">деструктор объекта вызван,</text>
+  <text x="720" y="300" font-size="16" fill="#80828c">но память не отдана</text>
+</svg>

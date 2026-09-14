@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 280" width="1060" height="280"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="1" y="1" width="1058" height="278" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- верх: обычная запись -->
+  <text x="60" y="58" font-size="16" fill="#ff2020">так нельзя</text>
+
+  <rect x="60" y="76" width="250" height="48" fill="none" stroke="#ff2020" stroke-width="2" stroke-dasharray="7 6"/>
+  <text x="185" y="108" font-size="22" text-anchor="middle" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">decltype(a + b)</text>
+  <text x="330" y="108" font-size="22" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">add(T a, U b);</text>
+
+  <text x="700" y="96" font-size="16" fill="#ff2020">
+    <tspan font-family="Consolas, Roboto Mono, monospace">a</tspan> и <tspan font-family="Consolas, Roboto Mono, monospace">b</tspan> ещё не объявлены</text>
+  <text x="700" y="120" font-size="15" fill="#80828c">тип пишется раньше параметров — CE</text>
+
+  <line x1="40" y1="150" x2="1020" y2="150" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- низ: trailing return type -->
+  <text x="60" y="186" font-size="16" fill="#dbdfe6">так можно</text>
+
+  <rect x="60" y="202" width="290" height="48" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="205" y="234" font-size="22" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">auto add(T a, U b)</text>
+
+  <rect x="366" y="202" width="280" height="48" fill="rgba(255,138,138,0.08)" stroke="#ff8a8a" stroke-width="2"/>
+  <text x="506" y="234" font-size="22" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">-&gt; decltype(a + b)</text>
+  <text x="656" y="234" font-size="22" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">;</text>
+
+  <text x="700" y="222" font-size="16" fill="#ff8a8a">параметры уже объявлены</text>
+  <text x="700" y="246" font-size="15" fill="#80828c">и на них можно ссылаться</text>
+</svg>

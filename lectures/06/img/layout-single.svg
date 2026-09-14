@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- ============ сам по себе объект базы ============ -->
+  <text x="60" y="112" font-size="20" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">A a;</text>
+  <text x="60" y="138" font-size="14" fill="#80828c">sizeof 4</text>
+
+  <rect x="270" y="76" width="320" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="430" y="108" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">A::a</text>
+  <text x="430" y="130" font-size="14" text-anchor="middle" fill="#80828c">поле базы</text>
+
+  <text x="430" y="164" font-size="15" text-anchor="middle" fill="#80828c">0–3</text>
+
+  <!-- ============ объект наследника: копия базы плюс своё ============ -->
+  <text x="60" y="272" font-size="20" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">B b;</text>
+  <text x="60" y="298" font-size="14" fill="#80828c">sizeof 8</text>
+
+  <rect x="270" y="236" width="320" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="430" y="268" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">A::a</text>
+  <text x="430" y="290" font-size="14" text-anchor="middle" fill="#80828c">база A</text>
+
+  <rect x="590" y="236" width="320" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="750" y="268" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">B::b</text>
+  <text x="750" y="290" font-size="14" text-anchor="middle" fill="#80828c">поле наследника</text>
+
+  <text x="430" y="326" font-size="15" text-anchor="middle" fill="#80828c">0–3</text>
+  <text x="750" y="326" font-size="15" text-anchor="middle" fill="#80828c">4–7</text>
+
+  <!-- та же самая база, целиком, и в начале -->
+  <line x1="262" y1="148" x2="262" y2="230" stroke="#3a3a40" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="250" y="194" font-size="15" text-anchor="end" fill="#80828c">та же A целиком</text>
+</svg>

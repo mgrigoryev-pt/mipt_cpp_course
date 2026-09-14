@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="150" y="52" font-size="16" text-anchor="middle" fill="#80828c">аргумент снаружи</text>
+  <text x="400" y="52" font-size="16" text-anchor="middle" fill="#80828c">выведенный Args</text>
+  <text x="650" y="52" font-size="16" text-anchor="middle" fill="#80828c">выражение args в теле</text>
+  <text x="910" y="52" font-size="15" text-anchor="middle" fill="#80828c" font-family="Consolas, Roboto Mono, monospace">std::forward&lt;Args&gt;(args)</text>
+
+  <!-- дорожка 1: lvalue -->
+  <rect x="50" y="76" width="200" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="150" y="106" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">named</text>
+  <text x="150" y="128" font-size="15" text-anchor="middle" fill="#80828c">lvalue</text>
+
+  <line x1="258" y1="108" x2="292" y2="108" stroke="#80828c" stroke-width="2" marker-end="url(#grey)"/>
+
+  <rect x="300" y="76" width="200" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="400" y="116" font-size="18" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">Pattern&amp;</text>
+
+  <line x1="508" y1="108" x2="542" y2="108" stroke="#80828c" stroke-width="2" marker-end="url(#grey)"/>
+
+  <rect x="550" y="76" width="200" height="64" fill="none" stroke="#5c5e66" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="650" y="106" font-size="18" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">args</text>
+  <text x="650" y="128" font-size="14" text-anchor="middle" fill="#80828c">lvalue: у имени есть адрес</text>
+
+  <line x1="758" y1="108" x2="802" y2="108" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <rect x="810" y="76" width="200" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="910" y="106" font-size="18" text-anchor="middle" fill="#dbdfe6">lvalue</text>
+  <text x="910" y="128" font-size="15" text-anchor="middle" fill="#80828c">копия</text>
+
+  <!-- дорожка 2: rvalue -->
+  <rect x="50" y="184" width="200" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="150" y="214" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Pattern(...)</text>
+  <text x="150" y="236" font-size="15" text-anchor="middle" fill="#80828c">rvalue</text>
+
+  <line x1="258" y1="216" x2="292" y2="216" stroke="#80828c" stroke-width="2" marker-end="url(#grey)"/>
+
+  <rect x="300" y="184" width="200" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="400" y="224" font-size="18" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">Pattern</text>
+
+  <line x1="508" y1="216" x2="542" y2="216" stroke="#80828c" stroke-width="2" marker-end="url(#grey)"/>
+
+  <rect x="550" y="184" width="200" height="64" fill="none" stroke="#5c5e66" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="650" y="214" font-size="18" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">args</text>
+  <text x="650" y="236" font-size="14" text-anchor="middle" fill="#80828c">lvalue: у имени есть адрес</text>
+
+  <line x1="758" y1="216" x2="802" y2="216" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <rect x="810" y="184" width="200" height="64" fill="rgba(255,138,138,0.08)" stroke="#ff8a8a" stroke-width="2"/>
+  <text x="910" y="214" font-size="18" text-anchor="middle" fill="#ff8a8a">rvalue</text>
+  <text x="910" y="236" font-size="15" text-anchor="middle" fill="#ff8a8a">перемещение</text>
+
+  <text x="530" y="300" font-size="16" text-anchor="middle" fill="#80828c">третья колонка у дорожек одинаковая: категория потеряна, и <tspan font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">std::forward</tspan> берёт её из <tspan font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">Args</tspan></text>
+</svg>

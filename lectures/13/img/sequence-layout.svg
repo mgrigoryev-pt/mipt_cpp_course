@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 320" width="1060" height="320"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="10" markerHeight="10" refX="9" refY="4"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="318" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <line x1="332" y1="30" x2="332" y2="290" stroke="#26262b" stroke-width="1.5"/>
+  <line x1="762" y1="30" x2="762" y2="290" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- ===== vector ===== -->
+  <text x="181" y="56" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">std::vector</text>
+
+  <rect x="56" y="132" width="50" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="106" y="132" width="50" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="156" y="132" width="50" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="206" y="132" width="50" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="256" y="132" width="50" height="56" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+
+  <path d="M 56 198 L 56 208 L 306 208 L 306 198" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="181" y="232" font-size="15" text-anchor="middle" fill="#80828c">один непрерывный блок</text>
+
+  <text x="181" y="268" font-size="16" text-anchor="middle" fill="#dbdfe6">элементы подряд, кэш доволен</text>
+  <text x="181" y="292" font-size="15" text-anchor="middle" fill="#80828c">рост — новый блок и переезд</text>
+
+  <!-- ===== deque ===== -->
+  <text x="547" y="56" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">std::deque</text>
+
+  <text x="452" y="102" font-size="15" text-anchor="end" fill="#80828c">карта</text>
+  <rect x="463" y="80" width="42" height="34" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="505" y="80" width="42" height="34" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="547" y="80" width="42" height="34" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="589" y="80" width="42" height="34" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+
+  <path d="M 484 116 C 484 140, 420 138, 420 158" fill="none" stroke="#ff8a8a"
+        stroke-width="2.5" marker-end="url(#pink)"/>
+  <path d="M 526 116 C 526 140, 547 138, 547 158" fill="none" stroke="#ff8a8a"
+        stroke-width="2.5" marker-end="url(#pink)"/>
+  <path d="M 568 116 C 568 140, 674 138, 674 158" fill="none" stroke="#ff8a8a"
+        stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <rect x="368" y="164" width="104" height="48" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <line x1="402" y1="164" x2="402" y2="212" stroke="#26262b" stroke-width="1.5"/>
+  <line x1="437" y1="164" x2="437" y2="212" stroke="#26262b" stroke-width="1.5"/>
+  <rect x="495" y="164" width="104" height="48" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <line x1="529" y1="164" x2="529" y2="212" stroke="#26262b" stroke-width="1.5"/>
+  <line x1="564" y1="164" x2="564" y2="212" stroke="#26262b" stroke-width="1.5"/>
+  <rect x="622" y="164" width="104" height="48" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <line x1="656" y1="164" x2="656" y2="212" stroke="#26262b" stroke-width="1.5"/>
+  <line x1="691" y1="164" x2="691" y2="212" stroke="#26262b" stroke-width="1.5"/>
+
+  <text x="547" y="234" font-size="15" text-anchor="middle" fill="#80828c">блоки: внутри подряд, между собой — нет</text>
+
+  <text x="547" y="268" font-size="16" text-anchor="middle" fill="#dbdfe6">массив указателей на блоки</text>
+  <text x="547" y="292" font-size="15" text-anchor="middle" fill="#80828c">оба конца дешёвые, доступ — через два шага</text>
+
+  <!-- ===== list ===== -->
+  <text x="911" y="56" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">std::list</text>
+
+  <rect x="790" y="78" width="100" height="44" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="910" y="134" width="100" height="44" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="790" y="196" width="100" height="44" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+
+  <path d="M 892,100 C 930,100 936,108 940,128" fill="none" stroke="#ff8a8a"
+        stroke-width="2.5" marker-end="url(#pink)"/>
+  <path d="M 946,180 C 930,206 916,214 896,216" fill="none" stroke="#ff8a8a"
+        stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <text x="900" y="268" font-size="16" text-anchor="middle" fill="#dbdfe6">узлы разбросаны по куче</text>
+  <text x="900" y="292" font-size="15" text-anchor="middle" fill="#80828c">кэш промахивается на каждом шаге</text>
+</svg>

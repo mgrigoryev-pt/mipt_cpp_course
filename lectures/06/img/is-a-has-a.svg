@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="light" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#dbdfe6"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="36" x2="530" y2="304" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- ================= слева: наследование ================= -->
+  <text x="275" y="62" font-size="19" text-anchor="middle" fill="#dbdfe6">наследование — «is-a»</text>
+
+  <rect x="125" y="96" width="300" height="100" fill="rgba(255,255,255,0.03)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="141" y="120" font-size="17" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Dog</text>
+  <rect x="175" y="128" width="230" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="290" y="160" font-size="15" text-anchor="middle" fill="#dbdfe6">часть Animal</text>
+
+  <line x1="275" y1="198" x2="275" y2="234" stroke="#dbdfe6" stroke-width="2.5" marker-end="url(#light)"/>
+
+  <rect x="125" y="238" width="300" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="275" y="270" font-size="16" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">void feed(Animal&amp;)</text>
+
+  <text x="275" y="318" font-size="15" text-anchor="middle" fill="#dbdfe6">Dog подставляется всюду, где ждут Animal</text>
+
+  <!-- ================= справа: композиция ================= -->
+  <text x="780" y="62" font-size="19" text-anchor="middle" fill="#dbdfe6">композиция — «has-a»</text>
+
+  <rect x="630" y="96" width="300" height="100" fill="rgba(255,255,255,0.03)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="646" y="120" font-size="17" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Car</text>
+  <rect x="680" y="128" width="230" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="795" y="160" font-size="15" text-anchor="middle" fill="#dbdfe6">поле Engine</text>
+
+  <line x1="780" y1="198" x2="780" y2="234" stroke="#ff2020" stroke-width="2"
+        stroke-dasharray="7 6"/>
+  <line x1="770" y1="206" x2="790" y2="226" stroke="#ff2020" stroke-width="2.5"/>
+  <line x1="770" y1="226" x2="790" y2="206" stroke="#ff2020" stroke-width="2.5"/>
+
+  <rect x="630" y="238" width="300" height="52" fill="rgba(255,32,32,0.06)" stroke="#ff2020" stroke-width="2"/>
+  <text x="780" y="270" font-size="16" text-anchor="middle" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">void start(Engine&amp;)</text>
+
+  <text x="780" y="318" font-size="15" text-anchor="middle" fill="#ff2020">Car вместо Engine не подставляется: CE</text>
+</svg>

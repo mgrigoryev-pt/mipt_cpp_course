@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- слой конфигурации -->
+  <rect x="40" y="44" width="980" height="70" fill="rgba(255,255,255,0.04)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="64" y="86" font-size="19" fill="#dbdfe6">Загрузка конфигурации</text>
+  <rect x="400" y="56" width="210" height="46" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="505" y="87" font-size="19" text-anchor="middle" fill="#ffffff">исключения</text>
+  <text x="660" y="73" font-size="15" fill="#80828c">один раз при старте; продолжать</text>
+  <text x="660" y="95" font-size="15" fill="#80828c">без конфигурации бессмысленно</text>
+
+  <!-- слой разбора событий -->
+  <rect x="40" y="134" width="980" height="70" fill="rgba(255,255,255,0.04)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="64" y="167" font-size="19" fill="#dbdfe6">Разбор события</text>
+  <text x="64" y="191" font-size="15" fill="#80828c">горячий путь (hot path)</text>
+  <rect x="400" y="146" width="210" height="46" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="505" y="177" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">expected</text>
+  <text x="660" y="163" font-size="15" fill="#80828c">битая строка в потоке — не авария,</text>
+  <text x="660" y="185" font-size="15" fill="#80828c">а данность: тысячи раз в сутки</text>
+
+  <!-- слой обращений к ОС -->
+  <rect x="40" y="224" width="980" height="70" fill="rgba(255,255,255,0.04)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="64" y="266" font-size="19" fill="#dbdfe6">Обращения к ОС</text>
+  <rect x="400" y="236" width="210" height="46" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="505" y="267" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">error_code</text>
+  <text x="660" y="253" font-size="15" fill="#80828c">коды возврата — и есть интерфейс</text>
+  <text x="660" y="275" font-size="15" fill="#80828c">системы, терять их незачем</text>
+
+  <text x="530" y="322" font-size="17" text-anchor="middle" fill="#dbdfe6">слои разошлись не по «где быстрее», а по тому, насколько ошибка ожидаема</text>
+</svg>

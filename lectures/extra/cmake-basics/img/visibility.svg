@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 380" width="1060" height="380"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Путь к заголовкам lib/ задан у цели geom с тремя разными словами. PRIVATE: geom.cpp путь видит, main.cpp цели app не видит, geom.h не найден. PUBLIC: видят оба. INTERFACE: сам geom путь не получает, app получает">
+  <defs>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+    <marker id="red" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff2020"/>
+    </marker>
+  </defs>
+  <style>
+    .bx{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .bx-bad{fill:none;stroke:#ff2020;stroke-width:1.5;stroke-dasharray:7 6}
+    .kw{fill:#ffffff;font-size:20px;font-family:Consolas, Roboto Mono, monospace;text-anchor:middle}
+    .sub{fill:#80828c;font-size:15px;text-anchor:middle}
+    .nm{fill:#dbdfe6;font-size:17px;font-family:Consolas, Roboto Mono, monospace}
+    .t{fill:#dbdfe6;font-size:15px}
+    .no{fill:#80828c;font-size:15px}
+    .bad{fill:#ff2020;font-size:15px}
+    .badm{fill:#ff2020;font-size:13px;font-family:Consolas, Roboto Mono, monospace}
+    .ok{fill:#dbdfe6;font-size:18px;text-anchor:end}
+    .dash{fill:#80828c;font-size:18px;text-anchor:end}
+    .x{fill:#ff2020;font-size:18px;text-anchor:end}
+    .note{fill:#80828c;font-size:14px;text-anchor:middle}
+    .ln{stroke:#80828c;stroke-width:1.5;fill:none}
+    .sep{stroke:#26262b;stroke-width:1.5}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="378" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="530" y="36" font-size="15" text-anchor="middle" fill="#80828c">target_include_directories(geom <tspan fill="#ffffff" font-family="Consolas, Roboto Mono, monospace">?</tspan> lib) · во всех трёх случаях app подключает geom одинаково</text>
+
+  <line class="sep" x1="360" y1="60" x2="360" y2="350"/>
+  <line class="sep" x1="700" y1="60" x2="700" y2="350"/>
+
+  <!-- PRIVATE -->
+  <text class="kw" x="190" y="84">PRIVATE</text>
+  <text class="sub" x="190" y="106">только себе</text>
+  <rect class="bx" x="70" y="124" width="240" height="66"/>
+  <text class="nm" x="86" y="150">geom</text>
+  <text class="t" x="86" y="176">geom.cpp видит lib/</text>
+  <text class="ok" x="296" y="176">✓</text>
+  <line x1="190" y1="190" x2="190" y2="236" stroke="#ff2020" stroke-width="1.5"
+        stroke-dasharray="6 5" marker-end="url(#red)"/>
+  <line x1="180" y1="204" x2="200" y2="222" stroke="#ff2020" stroke-width="1.5"/>
+  <line x1="180" y1="222" x2="200" y2="204" stroke="#ff2020" stroke-width="1.5"/>
+  <rect class="bx-bad" x="70" y="240" width="240" height="72"/>
+  <text class="nm" x="86" y="266">app</text>
+  <text class="bad" x="86" y="290">main.cpp не видит lib/</text>
+  <text class="x" x="296" y="290">✗</text>
+  <text class="badm" x="86" y="306">'geom.h' file not found</text>
+  <text class="note" x="190" y="340">нужно только внутри цели</text>
+
+  <!-- PUBLIC -->
+  <text class="kw" x="530" y="84">PUBLIC</text>
+  <text class="sub" x="530" y="106">себе и тем, кто подключил</text>
+  <rect class="bx" x="410" y="124" width="240" height="66"/>
+  <text class="nm" x="426" y="150">geom</text>
+  <text class="t" x="426" y="176">geom.cpp видит lib/</text>
+  <text class="ok" x="636" y="176">✓</text>
+  <line class="ln" x1="530" y1="190" x2="530" y2="236" marker-end="url(#grey)"/>
+  <rect class="bx" x="410" y="240" width="240" height="72"/>
+  <text class="nm" x="426" y="266">app</text>
+  <text class="t" x="426" y="290">main.cpp видит lib/</text>
+  <text class="ok" x="636" y="290">✓</text>
+  <text class="note" x="530" y="340">заголовки, которые включает потребитель</text>
+
+  <!-- INTERFACE -->
+  <text class="kw" x="870" y="84">INTERFACE</text>
+  <text class="sub" x="870" y="106">только тем, кто подключил</text>
+  <rect class="bx" x="750" y="124" width="240" height="66"/>
+  <text class="nm" x="766" y="150">geom</text>
+  <text class="no" x="766" y="176">сам путь не получает</text>
+  <text class="dash" x="976" y="176">—</text>
+  <line class="ln" x1="870" y1="190" x2="870" y2="236" marker-end="url(#grey)"/>
+  <rect class="bx" x="750" y="240" width="240" height="72"/>
+  <text class="nm" x="766" y="266">app</text>
+  <text class="t" x="766" y="290">main.cpp видит lib/</text>
+  <text class="ok" x="976" y="290">✓</text>
+  <text class="note" x="870" y="340">цели без своих .cpp: флаги, чужие библиотеки</text>
+</svg>

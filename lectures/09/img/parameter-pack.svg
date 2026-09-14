@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 310" width="1060" height="310"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+  <rect x="1" y="1" width="1058" height="308" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- вызов -->
+  <text x="420" y="52" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">f(1, 2.5, "x")</text>
+
+  <!-- строка типов -->
+  <text x="184" y="120" font-size="17" text-anchor="end" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">Ts...</text>
+
+  <rect x="200" y="84" width="180" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="290" y="120" font-size="18" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">int</text>
+
+  <rect x="400" y="84" width="180" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="490" y="120" font-size="18" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">double</text>
+
+  <rect x="600" y="84" width="180" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="690" y="120" font-size="18" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">const char*</text>
+
+  <!-- строка значений -->
+  <text x="184" y="200" font-size="17" text-anchor="end" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">args...</text>
+
+  <rect x="200" y="164" width="180" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="290" y="200" font-size="22" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">1</text>
+
+  <rect x="400" y="164" width="180" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="490" y="200" font-size="22" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">2.5</text>
+
+  <rect x="600" y="164" width="180" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="690" y="200" font-size="22" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">"x"</text>
+
+  <!-- скобка размера -->
+  <path d="M 200 238 L 200 248 L 484 248 L 490 258 L 496 248 L 780 248 L 780 238"
+        fill="none" stroke="#80828c" stroke-width="1.5"/>
+  <text x="490" y="286" font-size="18" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">sizeof...(args) == 3</text>
+
+  <!-- разделитель -->
+  <line x1="820" y1="44" x2="820" y2="270" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- чего с пакетом нельзя -->
+  <text x="940" y="118" font-size="17" text-anchor="middle" fill="#dbdfe6">достать элемент</text>
+  <text x="940" y="142" font-size="17" text-anchor="middle" fill="#dbdfe6">по индексу нельзя</text>
+
+  <rect x="856" y="170" width="168" height="58" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <line x1="864" y1="221" x2="1016" y2="177" stroke="#ff2020" stroke-width="2"/>
+  <line x1="864" y1="177" x2="1016" y2="221" stroke="#ff2020" stroke-width="2"/>
+  <text x="940" y="208" font-size="20" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace"
+        stroke="#0b0b0d" stroke-width="5" paint-order="stroke fill">args[0]</text>
+</svg>

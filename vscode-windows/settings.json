@@ -1,0 +1,23 @@
+{
+  // Окно открывается на корне репозитория курса, а проект лежит в project/.
+  // Этой строкой CMake Tools узнаёт, где CMakeLists.txt, и оттуда же читает
+  // CMakePresets.json: второй CMakeLists в корне для этого не нужен.
+  "cmake.sourceDirectory": "${workspaceFolder}/project",
+
+  // Агент берёт путь к сценарию относительно текущего каталога, и в постановках
+  // занятий команды даны от корня project/. Терминал открывается там же.
+  "terminal.integrated.cwd": "${workspaceFolder}/project",
+
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "cmake.options.statusBarVisibility": "visible",
+  // Рабочий каталог и сценарий для запусков через CMake Tools (Shift+F5
+  // и Ctrl+Shift+F5): launch.json они не читают. Ключей консоли два, потому
+  // что отладчики разные: console понимает только cppvsdbg на Windows,
+  // externalConsole — cppdbg на Linux.
+  "cmake.debugConfig": {
+    "cwd": "${workspaceFolder}/project",
+    "args": ["scenarios/phishing_macro.log"],
+    "console": "externalTerminal",
+    "externalConsole": true
+  }
+}

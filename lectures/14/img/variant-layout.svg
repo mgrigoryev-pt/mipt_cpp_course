@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 300" width="1060" height="300"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+  <rect x="1" y="1" width="1058" height="298" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="36" x2="530" y2="246" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- активна double -->
+  <text x="40" y="52" font-size="19" fill="#dbdfe6" font-family="Consolas, Roboto Mono, monospace">v = 3.14;</text>
+
+  <text x="40" y="88" font-size="15" fill="#80828c">буфер размером с самую большую альтернативу</text>
+  <rect x="40" y="98" width="340" height="62" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="42" y="100" width="110" height="58" fill="rgba(255,255,255,0.05)"/>
+  <text x="97" y="138" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">3.14</text>
+  <text x="268" y="136" font-size="15" text-anchor="middle" fill="#5c5e66">не используется</text>
+
+  <text x="437" y="88" font-size="15" text-anchor="middle" fill="#80828c">index()</text>
+  <rect x="404" y="98" width="66" height="62" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="437" y="140" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">1</text>
+
+  <text x="40" y="204" font-size="17" fill="#dbdfe6">жива альтернатива double</text>
+
+  <!-- активна string -->
+  <text x="570" y="52" font-size="19" fill="#dbdfe6" font-family="Consolas, Roboto Mono, monospace">v = std::string("hi");</text>
+
+  <text x="570" y="88" font-size="15" fill="#80828c">тот же буфер, другая альтернатива</text>
+  <rect x="570" y="98" width="340" height="62" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="572" y="100" width="250" height="58" fill="rgba(255,255,255,0.05)"/>
+  <text x="697" y="138" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">"hi"</text>
+  <text x="866" y="136" font-size="15" text-anchor="middle" fill="#5c5e66">не исп.</text>
+
+  <text x="967" y="88" font-size="15" text-anchor="middle" fill="#80828c">index()</text>
+  <rect x="934" y="98" width="66" height="62" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="967" y="140" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">2</text>
+
+  <text x="570" y="204" font-size="17" fill="#dbdfe6">жива альтернатива std::string</text>
+
+  <text x="530" y="272" font-size="17" text-anchor="middle" fill="#80828c">при присваивании прежняя альтернатива разрушается, новая конструируется в том же буфере</text>
+</svg>

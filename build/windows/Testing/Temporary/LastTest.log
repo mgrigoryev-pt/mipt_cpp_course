@@ -1,0 +1,99 @@
+Start testing: Sep 13 17:38 Russia TZ 2 Standard Time
+----------------------------------------------------------
+1/3 Testing: task1.1.phishing_macro
+1/3 Test: task1.1.phishing_macro
+Command: "D:/Programs/CMake/bin/cmake.exe" "-DEXE=D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/Release/nano-edr.exe" "-DLOG=D:/C++Projects/test/mipt_cpp_course-main/project/scenarios/phishing_macro.log" "-DEXPECTED=D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/expected/phishing_macro.out" "-P" "D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/run_case.cmake"
+Directory: D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/task1_1
+"task1.1.phishing_macro" start time: Sep 13 17:38 Russia TZ 2 Standard Time
+Output:
+----------------------------------------------------------
+CMake Error at D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/run_case.cmake:62 (message):
+  вывод не совпал с эталоном.
+
+  журнал:
+  D:/C++Projects/test/mipt_cpp_course-main/project/scenarios/phishing_macro.log
+
+  эталон:
+  D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/expected/phishing_macro.out
+
+  строк получено 2, ожидалось 2
+
+  строка вывода 1:
+
+    ожидалось: [DETECT] строка 9, признак wscript.exe: ts=1730000003000 type=process_start pid=1101 ppid=1042 image="C:\Windows\System32\wscript.exe" cmdline="wscript.exe C:\Users\max\AppData\Local\Temp\a.js" user=DESKTOP\max
+    получено:  строк 23, из них комментариев 3
+
+
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Failed.
+"task1.1.phishing_macro" end time: Sep 13 17:38 Russia TZ 2 Standard Time
+"task1.1.phishing_macro" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/3 Testing: task1.1.ransomware
+2/3 Test: task1.1.ransomware
+Command: "D:/Programs/CMake/bin/cmake.exe" "-DEXE=D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/Release/nano-edr.exe" "-DLOG=D:/C++Projects/test/mipt_cpp_course-main/project/scenarios/ransomware.log" "-DEXPECTED=D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/expected/ransomware.out" "-P" "D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/run_case.cmake"
+Directory: D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/task1_1
+"task1.1.ransomware" start time: Sep 13 17:38 Russia TZ 2 Standard Time
+Output:
+----------------------------------------------------------
+CMake Error at D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/run_case.cmake:62 (message):
+  вывод не совпал с эталоном.
+
+  журнал:
+  D:/C++Projects/test/mipt_cpp_course-main/project/scenarios/ransomware.log
+
+  эталон:
+  D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/expected/ransomware.out
+
+  строк получено 2, ожидалось 41
+
+  строка вывода 1:
+
+    ожидалось: [DETECT] строка 10, признак .locked: ts=1730100001060 type=file_move pid=2210 from=C:\Users\max\Documents\quarterly.xlsx to=C:\Users\max\Documents\quarterly.xlsx.locked
+    получено:  строк 93, из них комментариев 6
+
+
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Failed.
+"task1.1.ransomware" end time: Sep 13 17:38 Russia TZ 2 Standard Time
+"task1.1.ransomware" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/3 Testing: task1.1.clean_office
+3/3 Test: task1.1.clean_office
+Command: "D:/Programs/CMake/bin/cmake.exe" "-DEXE=D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/Release/nano-edr.exe" "-DLOG=D:/C++Projects/test/mipt_cpp_course-main/project/scenarios/clean_office.log" "-DEXPECTED=D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/expected/clean_office.out" "-P" "D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/run_case.cmake"
+Directory: D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/task1_1
+"task1.1.clean_office" start time: Sep 13 17:38 Russia TZ 2 Standard Time
+Output:
+----------------------------------------------------------
+CMake Error at D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/run_case.cmake:62 (message):
+  вывод не совпал с эталоном.
+
+  журнал:
+  D:/C++Projects/test/mipt_cpp_course-main/project/scenarios/clean_office.log
+
+  эталон:
+  D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/expected/clean_office.out
+
+  строк получено 2, ожидалось 2
+
+  строка вывода 1:
+
+    ожидалось: [DETECT] строка 39, признак wscript.exe: ts=1730500006400 type=process_start pid=1850 ppid=880 image=C:\Windows\System32\wscript.exe cmdline="wscript.exe C:\corp\tools\map_drives.vbs" user=DESKTOP\max
+    получено:  строк 48, из них комментариев 7
+
+
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Failed.
+"task1.1.clean_office" end time: Sep 13 17:38 Russia TZ 2 Standard Time
+"task1.1.clean_office" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 13 17:38 Russia TZ 2 Standard Time

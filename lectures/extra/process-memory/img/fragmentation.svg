@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 400" width="1060" height="400"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Фрагментация кучи в три шага. Миллион блоков по 64 байта: каждый занимает 80 байт вместе со служебной частью, процесс вырос с 11 до 91 МБ. Освобождён каждый второй: половина блоков свободна, но в каждой странице остались живые, и вернуть системе нечего — по-прежнему 91 МБ. Полмиллиона блоков по 128 байт: блок в 144 байта не помещается в дыру в 80 байт, память берётся новая — 162 МБ">
+  <style>
+    .lab{fill:#dbdfe6;font-size:16px}
+    .num{fill:#ffffff;font-size:16px;font-family:Consolas, Roboto Mono, monospace}
+    .s{fill:#80828c;font-size:14px}
+    .blk{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .hdr{fill:rgba(255,255,255,0.14);stroke:none}
+    .hole{fill:none;stroke:#5c5e66;stroke-width:1.5;stroke-dasharray:6 5}
+    .big{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .m{fill:#dbdfe6;font-size:13px;font-family:Consolas, Roboto Mono, monospace}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="398" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- строка 1: плотно -->
+  <text class="lab" x="40" y="42">миллион блоков по 64 байта</text>
+  <text class="num" x="1020" y="42" text-anchor="end">11 → 91 МБ</text>
+  <g>
+    <rect class="blk" x="40" y="56" width="80" height="44"/><rect class="hdr" x="41" y="57" width="16" height="42"/>
+    <rect class="blk" x="120" y="56" width="80" height="44"/><rect class="hdr" x="121" y="57" width="16" height="42"/>
+    <rect class="blk" x="200" y="56" width="80" height="44"/><rect class="hdr" x="201" y="57" width="16" height="42"/>
+    <rect class="blk" x="280" y="56" width="80" height="44"/><rect class="hdr" x="281" y="57" width="16" height="42"/>
+    <rect class="blk" x="360" y="56" width="80" height="44"/><rect class="hdr" x="361" y="57" width="16" height="42"/>
+    <rect class="blk" x="440" y="56" width="80" height="44"/><rect class="hdr" x="441" y="57" width="16" height="42"/>
+    <rect class="blk" x="520" y="56" width="80" height="44"/><rect class="hdr" x="521" y="57" width="16" height="42"/>
+    <rect class="blk" x="600" y="56" width="80" height="44"/><rect class="hdr" x="601" y="57" width="16" height="42"/>
+  </g>
+  <text class="s" x="700" y="76">светлая полоса — 16 байт служебного,</text>
+  <text class="s" x="700" y="94">блок 64 байта занимает 80</text>
+
+  <!-- строка 2: каждый второй -->
+  <text class="lab" x="40" y="146">освобождён каждый второй</text>
+  <text class="num" x="1020" y="146" text-anchor="end">91 МБ</text>
+  <rect class="blk" x="40" y="160" width="80" height="44"/><rect class="hdr" x="41" y="161" width="16" height="42"/>
+  <rect class="hole" x="120" y="160" width="80" height="44"/>
+  <rect class="blk" x="200" y="160" width="80" height="44"/><rect class="hdr" x="201" y="161" width="16" height="42"/>
+  <rect class="hole" x="280" y="160" width="80" height="44"/>
+  <rect class="blk" x="360" y="160" width="80" height="44"/><rect class="hdr" x="361" y="161" width="16" height="42"/>
+  <rect class="hole" x="440" y="160" width="80" height="44"/>
+  <rect class="blk" x="520" y="160" width="80" height="44"/><rect class="hdr" x="521" y="161" width="16" height="42"/>
+  <rect class="hole" x="600" y="160" width="80" height="44"/>
+  <text class="s" x="700" y="180">половина свободна, но живые блоки есть</text>
+  <text class="s" x="700" y="198">в каждой странице — вернуть нечего</text>
+
+  <!-- строка 3: 128 не влезает -->
+  <text class="lab" x="40" y="250">просим 128 байт: блок займёт 144</text>
+  <text class="num" x="1020" y="250" text-anchor="end">162 МБ</text>
+  <rect class="blk" x="40" y="264" width="80" height="44"/><rect class="hdr" x="41" y="265" width="16" height="42"/>
+  <rect class="hole" x="120" y="264" width="80" height="44"/>
+  <rect class="blk" x="200" y="264" width="80" height="44"/><rect class="hdr" x="201" y="265" width="16" height="42"/>
+  <rect class="hole" x="280" y="264" width="80" height="44"/>
+  <rect class="blk" x="360" y="264" width="80" height="44"/><rect class="hdr" x="361" y="265" width="16" height="42"/>
+  <rect class="hole" x="440" y="264" width="80" height="44"/>
+  <rect class="blk" x="520" y="264" width="80" height="44"/><rect class="hdr" x="521" y="265" width="16" height="42"/>
+  <rect class="hole" x="600" y="264" width="80" height="44"/>
+  <!-- попытка -->
+  <rect x="112" y="320" width="144" height="44" fill="none" stroke="#ff2020" stroke-width="1.5"
+        stroke-dasharray="6 5"/>
+  <line x1="120" y1="326" x2="248" y2="358" stroke="#ff2020" stroke-width="1.5"/>
+  <line x1="120" y1="358" x2="248" y2="326" stroke="#ff2020" stroke-width="1.5"/>
+  <!-- новая память -->
+  <rect class="big" x="700" y="264" width="144" height="44"/><rect class="hdr" x="701" y="265" width="16" height="42"/>
+  <rect class="big" x="844" y="264" width="144" height="44"/><rect class="hdr" x="845" y="265" width="16" height="42"/>
+  <text class="s" x="700" y="332">блоки по 144 ложатся</text>
+  <text class="s" x="700" y="350">в новую память</text>
+
+  <text class="s" x="276" y="338">144 байта в дыру</text>
+  <text class="s" x="276" y="356">из 80 не помещаются</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 350" width="1060" height="350"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="348" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="180" y="56" font-size="18" text-anchor="middle" fill="#dbdfe6">вызов</text>
+  <text x="700" y="56" font-size="18" text-anchor="middle" fill="#dbdfe6">кандидаты: выше — приоритетнее</text>
+
+  <!-- вызовы -->
+  <rect x="50" y="76" width="260" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="180" y="102" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">f(42)</text>
+  <text x="180" y="122" font-size="14" text-anchor="middle" fill="#80828c">аргумент int</text>
+
+  <rect x="50" y="160" width="260" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="180" y="186" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">f(p)</text>
+  <text x="180" y="206" font-size="14" text-anchor="middle" fill="#80828c">аргумент int*</text>
+
+  <rect x="50" y="244" width="260" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="180" y="270" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">f(42.0)</text>
+  <text x="180" y="290" font-size="14" text-anchor="middle" fill="#80828c">аргумент double</text>
+
+  <!-- стрелки выбора -->
+  <line x1="312" y1="104" x2="404" y2="104" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <line x1="312" y1="188" x2="404" y2="188" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <line x1="312" y1="272" x2="404" y2="272" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <!-- лесенка кандидатов -->
+  <rect x="412" y="76" width="570" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="432" y="100" font-size="17" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">void f(int)</text>
+  <text x="962" y="100" font-size="14" text-anchor="end" fill="#80828c">не-шаблон</text>
+  <text x="432" y="121" font-size="14" fill="#80828c">точное совпадение без шаблона — выигрывает у любого шаблона</text>
+
+  <rect x="412" y="160" width="570" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="432" y="184" font-size="17" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">template &lt;typename T&gt; void f(T*)</text>
+  <text x="962" y="184" font-size="14" text-anchor="end" fill="#80828c">более специализированный</text>
+  <text x="432" y="205" font-size="14" fill="#80828c">подходит не любому T, а только указателю — паттерн уже</text>
+
+  <rect x="412" y="244" width="570" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="432" y="268" font-size="17" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">template &lt;typename T&gt; void f(T)</text>
+  <text x="962" y="268" font-size="14" text-anchor="end" fill="#80828c">менее специализированный</text>
+  <text x="432" y="289" font-size="14" fill="#80828c">подходит любому T — берётся, когда не подошло ничего выше</text>
+
+  <!-- ось приоритета -->
+  <line x1="1012" y1="82" x2="1012" y2="294" stroke="#80828c" stroke-width="2" marker-end="url(#grey)"/>
+  <text x="1040" y="188" font-size="15" fill="#80828c" text-anchor="middle"
+        transform="rotate(-90 1040 188)">приоритет падает</text>
+
+  <text x="530" y="332" font-size="15" text-anchor="middle" fill="#ff2020">ничья на одном уровне — CE: неоднозначный вызов</text>
+</svg>

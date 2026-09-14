@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 320" width="1060" height="320"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="1" y="1" width="1058" height="318" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="40" x2="530" y2="288" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- без template -->
+  <text x="280" y="58" font-size="19" text-anchor="middle" fill="#ff2020">без <tspan font-family="Consolas, Roboto Mono, monospace">template</tspan></text>
+
+  <text x="100" y="112" font-size="22" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">t.foo <tspan fill="#ff2020">&lt;</tspan> int <tspan fill="#ff2020">&gt;</tspan> ()</text>
+
+  <path d="M 98 126 v 6 H 235 v -6" fill="none" stroke="#ff2020" stroke-width="1.5"/>
+  <text x="166" y="152" font-size="14" text-anchor="middle" fill="#ff2020">сравнение</text>
+
+  <path d="M 243 126 v 6 H 296 v -6" fill="none" stroke="#ff2020" stroke-width="1.5"/>
+  <text x="270" y="176" font-size="14" text-anchor="middle" fill="#ff2020">и ещё одно</text>
+
+  <text x="280" y="220" font-size="16" text-anchor="middle" fill="#dbdfe6">парсер видит два оператора сравнения</text>
+  <text x="280" y="248" font-size="15" text-anchor="middle" fill="#ff2020">CE: сравнивать <tspan font-family="Consolas, Roboto Mono, monospace">t.foo</tspan> с типом нельзя</text>
+
+  <!-- с template -->
+  <text x="780" y="58" font-size="19" text-anchor="middle" fill="#dbdfe6">с <tspan font-family="Consolas, Roboto Mono, monospace">template</tspan></text>
+
+  <text x="653" y="112" font-size="22" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">t.<tspan fill="#ffffff">template</tspan> foo&lt;int&gt;()</text>
+
+  <path d="M 675 126 v 6 H 776 v -6" fill="none" stroke="#80828c" stroke-width="1.5"/>
+  <text x="725" y="152" font-size="14" text-anchor="middle" fill="#80828c">подсказка парсеру</text>
+
+  <path d="M 784 126 v 6 H 909 v -6" fill="none" stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="846" y="176" font-size="14" text-anchor="middle" fill="#dbdfe6">шаблонный метод</text>
+
+  <text x="780" y="220" font-size="16" text-anchor="middle" fill="#dbdfe6">парсер видит вызов метода с аргументом</text>
+  <text x="780" y="248" font-size="15" text-anchor="middle" fill="#80828c">компилируется и делает то, что написано</text>
+
+  <text x="530" y="300" font-size="15" text-anchor="middle" fill="#80828c">одни и те же символы — два разных разбора; выбирает не компилятор, а вы</text>
+</svg>

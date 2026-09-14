@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 356" width="1060" height="356"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+  <rect x="1" y="1" width="1058" height="354" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- ============ раскладка, которой быть не может ============ -->
+  <text x="50" y="52" font-size="18" fill="#ff2020">так поле не ляжет</text>
+
+  <rect x="50" y="72" width="240" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="170" y="104" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">A::a</text>
+  <text x="170" y="126" font-size="14" text-anchor="middle" fill="#80828c">база A</text>
+
+  <rect x="290" y="72" width="480" height="64" fill="rgba(255,32,32,0.10)" stroke="#ff2020" stroke-width="2.5"/>
+  <text x="530" y="104" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">B::b</text>
+  <text x="530" y="126" font-size="14" text-anchor="middle" fill="#80828c">double</text>
+
+  <text x="170" y="160" font-size="15" text-anchor="middle" fill="#80828c">0–3</text>
+  <text x="530" y="160" font-size="15" text-anchor="middle" fill="#ff2020">4–11</text>
+
+  <text x="530" y="184" font-size="15" text-anchor="middle" fill="#ff2020">смещение 4 не делится на alignof(double) == 8</text>
+
+  <line x1="40" y1="208" x2="1020" y2="208" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- ============ раскладка, которую выбирает компилятор ============ -->
+  <text x="50" y="236" font-size="18" fill="#dbdfe6">что вставляет компилятор</text>
+  <text x="1010" y="236" font-size="18" text-anchor="end" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">sizeof(B) == 16</text>
+
+  <rect x="50" y="256" width="240" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="170" y="288" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">A::a</text>
+  <text x="170" y="310" font-size="14" text-anchor="middle" fill="#80828c">база A</text>
+
+  <rect x="290" y="256" width="240" height="64" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="410" y="288" font-size="16" text-anchor="middle" fill="#5c5e66">padding</text>
+  <text x="410" y="310" font-size="14" text-anchor="middle" fill="#5c5e66">4 байта</text>
+
+  <rect x="530" y="256" width="480" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="770" y="288" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">B::b</text>
+  <text x="770" y="310" font-size="14" text-anchor="middle" fill="#80828c">double, теперь по смещению 8</text>
+
+  <text x="170" y="344" font-size="15" text-anchor="middle" fill="#80828c">0–3</text>
+  <text x="410" y="344" font-size="15" text-anchor="middle" fill="#80828c">4–7</text>
+  <text x="770" y="344" font-size="15" text-anchor="middle" fill="#80828c">8–15</text>
+</svg>

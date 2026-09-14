@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 320" width="1060" height="320"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="318" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- над границей -->
+  <text x="40" y="50" font-size="18" fill="#dbdfe6">код над границей</text>
+  <rect x="40" y="66" width="420" height="62" fill="rgba(255,138,138,0.08)"
+        stroke="#ff8a8a" stroke-width="2"/>
+  <text x="250" y="105" font-size="19" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">expected&lt;Value, Error&gt;</text>
+  <text x="500" y="90" font-size="16" fill="#dbdfe6">результат и ошибка — одно значение</text>
+  <text x="500" y="116" font-size="16" fill="#80828c">status_t выше границы не встречается</text>
+
+  <!-- граница -->
+  <line x1="40" y1="168" x2="1020" y2="168" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="496" y="156" width="288" height="24" fill="#0b0b0d"/>
+  <text x="640" y="174" font-size="17" text-anchor="middle" fill="#ffffff">тонкая обёртка: switch по статусу</text>
+
+  <line x1="250" y1="220" x2="250" y2="136" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+
+  <!-- под границей -->
+  <text x="40" y="208" font-size="18" fill="#dbdfe6">C-библиотека</text>
+  <rect x="40" y="222" width="180" height="58" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="130" y="258" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">status_t</text>
+  <rect x="290" y="222" width="210" height="58" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="395" y="258" font-size="18" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">value_t* out</text>
+  <text x="540" y="246" font-size="16" fill="#80828c">out осмыслен только при LIB_OK,</text>
+  <text x="540" y="272" font-size="16" fill="#80828c">а сам статус легко потерять молча</text>
+</svg>

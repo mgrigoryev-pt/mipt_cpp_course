@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 360" width="1060" height="360"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="light" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#dbdfe6"/>
+    </marker>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="358" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="36" x2="530" y2="324" stroke="#26262b" stroke-width="1.5"/>
+
+  <text x="270" y="58" font-size="19" text-anchor="middle" fill="#dbdfe6">конструирование</text>
+  <text x="790" y="58" font-size="19" text-anchor="middle" fill="#dbdfe6">разрушение</text>
+
+  <!-- стрелка порядка слева: сверху вниз -->
+  <line x1="62" y1="82" x2="62" y2="306" stroke="#dbdfe6" stroke-width="2" marker-end="url(#light)"/>
+  <!-- стрелка порядка справа: снизу вверх -->
+  <line x1="998" y1="306" x2="998" y2="82" stroke="#dbdfe6" stroke-width="2" marker-end="url(#light)"/>
+
+  <!-- левый стек -->
+  <rect x="100" y="82" width="340" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="270" y="118" font-size="18" text-anchor="middle" fill="#ffffff">базовый класс</text>
+
+  <rect x="100" y="154" width="340" height="88" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="270" y="180" font-size="16" text-anchor="middle" fill="#dbdfe6">поля — в порядке объявления</text>
+  <rect x="126" y="192" width="100" height="36" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="176" y="217" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">i_</text>
+  <line x1="236" y1="210" x2="298" y2="210" stroke="#80828c" stroke-width="2" marker-end="url(#grey)"/>
+  <rect x="314" y="192" width="100" height="36" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="364" y="217" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">j_</text>
+
+  <rect x="100" y="258" width="340" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="270" y="294" font-size="18" text-anchor="middle" fill="#ffffff">тело конструктора</text>
+
+  <!-- правый стек -->
+  <rect x="620" y="82" width="340" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="790" y="118" font-size="18" text-anchor="middle" fill="#ffffff">базовый класс</text>
+
+  <rect x="620" y="154" width="340" height="88" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="790" y="180" font-size="16" text-anchor="middle" fill="#dbdfe6">поля — в обратном порядке</text>
+  <rect x="646" y="192" width="100" height="36" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="696" y="217" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">i_</text>
+  <line x1="818" y1="210" x2="756" y2="210" stroke="#80828c" stroke-width="2" marker-end="url(#grey)"/>
+  <rect x="834" y="192" width="100" height="36" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="884" y="217" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">j_</text>
+
+  <rect x="620" y="258" width="340" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="790" y="294" font-size="18" text-anchor="middle" fill="#ffffff">тело деструктора</text>
+
+  <text x="270" y="344" font-size="15" text-anchor="middle" fill="#80828c">сверху вниз: база → поля → тело</text>
+  <text x="790" y="344" font-size="15" text-anchor="middle" fill="#80828c">снизу вверх: тело → поля → база</text>
+</svg>

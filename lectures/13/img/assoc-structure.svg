@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 320" width="1060" height="320"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="10" markerHeight="10" refX="9" refY="4"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="318" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <line x1="357" y1="30" x2="357" y2="290" stroke="#26262b" stroke-width="1.5"/>
+  <line x1="717" y1="30" x2="717" y2="290" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- ===== map: красно-чёрное дерево ===== -->
+  <text x="192" y="56" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">std::map</text>
+
+  <line x1="192" y1="116" x2="130" y2="148" stroke="#80828c" stroke-width="2"/>
+  <line x1="192" y1="116" x2="254" y2="148" stroke="#80828c" stroke-width="2"/>
+  <line x1="130" y1="176" x2="100" y2="208" stroke="#80828c" stroke-width="2"/>
+  <line x1="254" y1="176" x2="222" y2="208" stroke="#80828c" stroke-width="2"/>
+  <line x1="254" y1="176" x2="290" y2="208" stroke="#80828c" stroke-width="2"/>
+
+  <rect x="164" y="84" width="56" height="32" rx="6" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="192" y="106" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">50</text>
+  <rect x="102" y="148" width="56" height="32" rx="6" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="130" y="170" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">20</text>
+  <rect x="226" y="148" width="56" height="32" rx="6" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="254" y="170" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">80</text>
+  <rect x="72" y="208" width="56" height="32" rx="6" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="100" y="230" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">10</text>
+  <rect x="194" y="208" width="56" height="32" rx="6" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="222" y="230" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">70</text>
+  <rect x="262" y="208" width="56" height="32" rx="6" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="290" y="230" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">90</text>
+
+  <text x="192" y="268" font-size="16" text-anchor="middle" fill="#dbdfe6">красно-чёрное дерево</text>
+  <text x="192" y="292" font-size="15" text-anchor="middle" fill="#80828c">O(log n), ключи всегда по порядку</text>
+
+  <!-- ===== unordered_map: корзины и цепочки ===== -->
+  <text x="537" y="56" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">std::unordered_map</text>
+
+  <rect x="400" y="84" width="48" height="26" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="400" y="114" width="48" height="26" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="400" y="144" width="48" height="26" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="400" y="174" width="48" height="26" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="400" y="204" width="48" height="26" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="424" y="76" font-size="14" text-anchor="middle" fill="#80828c">корзины</text>
+
+  <line x1="450" y1="97" x2="486" y2="97" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <rect x="490" y="84" width="64" height="26" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+
+  <line x1="450" y1="157" x2="486" y2="157" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <rect x="490" y="144" width="64" height="26" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <line x1="556" y1="157" x2="590" y2="157" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <rect x="594" y="144" width="64" height="26" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+
+  <line x1="450" y1="217" x2="486" y2="217" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <rect x="490" y="204" width="64" height="26" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+
+  <text x="537" y="268" font-size="16" text-anchor="middle" fill="#dbdfe6">хеш-таблица</text>
+  <text x="537" y="292" font-size="15" text-anchor="middle" fill="#80828c">O(1) в среднем, порядка нет</text>
+
+  <!-- ===== flat_map: сортированный массив ===== -->
+  <text x="875" y="56" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">std::flat_map</text>
+
+  <rect x="743" y="140" width="44" height="50" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="765" y="171" font-size="15" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">10</text>
+  <rect x="787" y="140" width="44" height="50" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="809" y="171" font-size="15" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">20</text>
+  <rect x="831" y="140" width="44" height="50" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="853" y="171" font-size="15" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">50</text>
+  <rect x="875" y="140" width="44" height="50" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="897" y="171" font-size="15" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">70</text>
+  <rect x="919" y="140" width="44" height="50" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="941" y="171" font-size="15" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">80</text>
+  <rect x="963" y="140" width="44" height="50" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="985" y="171" font-size="15" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">90</text>
+
+  <path d="M 743 198 L 743 208 L 1007 208 L 1007 198" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="875" y="232" font-size="15" text-anchor="middle" fill="#80828c">один блок, ключи по возрастанию</text>
+
+  <text x="875" y="268" font-size="16" text-anchor="middle" fill="#dbdfe6">сортированный массив пар (C++23)</text>
+  <text x="875" y="292" font-size="15" text-anchor="middle" fill="#80828c">бинарный поиск, вставка сдвигает хвост</text>
+</svg>

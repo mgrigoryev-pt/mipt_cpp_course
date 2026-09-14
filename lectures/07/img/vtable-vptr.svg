@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 318" width="1060" height="318"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="316" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="70" y="56" font-size="15" fill="#80828c">объект <tspan font-family="Consolas, Roboto Mono, monospace">Dog</tspan></text>
+  <rect x="70" y="66" width="260" height="32" fill="rgba(255,138,138,0.08)" stroke="#ff8a8a" stroke-width="2"/>
+  <rect x="70" y="98" width="260" height="32" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="1.5"/>
+  <rect x="70" y="130" width="260" height="32" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="1.5"/>
+  <g font-family="Consolas, Roboto Mono, monospace" font-size="15">
+    <text x="90" y="87" fill="#ff8a8a">vptr</text>
+    <text x="90" y="119" fill="#dbdfe6">name_</text>
+    <text x="90" y="151" fill="#dbdfe6">age_years_</text>
+  </g>
+
+  <line x1="330" y1="82" x2="466" y2="82" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <text x="470" y="56" font-size="15" fill="#80828c">vtable <tspan font-family="Consolas, Roboto Mono, monospace">Dog</tspan></text>
+  <rect x="470" y="66" width="440" height="32" fill="rgba(255,255,255,0.04)" stroke="#dbdfe6" stroke-width="1.5"/>
+  <rect x="470" y="98" width="440" height="32" fill="rgba(255,255,255,0.04)" stroke="#dbdfe6" stroke-width="1.5"/>
+  <rect x="470" y="130" width="440" height="32" fill="rgba(255,255,255,0.04)" stroke="#dbdfe6" stroke-width="1.5"/>
+  <g font-family="Consolas, Roboto Mono, monospace" font-size="16" fill="#dbdfe6">
+    <text x="492" y="88">&amp;Dog::~Dog</text>
+    <text x="492" y="120">&amp;Dog::sound</text>
+    <text x="492" y="152">&amp;Dog::human_age</text>
+  </g>
+  <g font-size="13" text-anchor="end" fill="#5c5e66">
+    <text x="894" y="88">слот 0</text>
+    <text x="894" y="120">слот 1</text>
+    <text x="894" y="152">слот 2</text>
+  </g>
+
+  <line x1="40" y1="196" x2="1020" y2="196" stroke="#26262b" stroke-width="1.5"/>
+
+  <text x="70" y="240" font-size="18" fill="#ffffff" font-family="Consolas, Roboto Mono, monospace">a.sound()</text>
+
+  <g stroke="#dbdfe6" stroke-width="2" fill="rgba(255,255,255,0.08)">
+    <circle cx="230" cy="234" r="14"/>
+    <circle cx="470" cy="234" r="14"/>
+    <circle cx="730" cy="234" r="14"/>
+  </g>
+  <g font-size="15" text-anchor="middle" fill="#ffffff">
+    <text x="230" y="240">1</text>
+    <text x="470" y="240">2</text>
+    <text x="730" y="240">3</text>
+  </g>
+  <g font-size="15" fill="#dbdfe6">
+    <text x="252" y="240"><tspan font-family="Consolas, Roboto Mono, monospace">vptr</tspan> из объекта</text>
+    <text x="492" y="240">адрес из слота <tspan font-family="Consolas, Roboto Mono, monospace">sound</tspan></text>
+    <text x="752" y="240">косвенный вызов</text>
+  </g>
+
+  <text x="70" y="288" font-size="15" fill="#80828c">компилируется примерно в</text>
+  <text x="300" y="288" font-size="17" fill="#80828c" font-family="Consolas, Roboto Mono, monospace">(*a.vptr)[slot_of_sound](&amp;a)</text>
+</svg>

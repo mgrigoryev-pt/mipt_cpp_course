@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 380" width="1060" height="380"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="light" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#dbdfe6"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="378" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="40" y="52" font-size="15" fill="#80828c">кадры вызовов</text>
+
+  <rect x="40" y="70" width="560" height="56" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="56" y="105" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">main()</text>
+  <text x="584" y="104" font-size="15" text-anchor="end" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">catch (const std::exception&amp;)</text>
+
+  <rect x="90" y="138" width="510" height="56" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="106" y="173" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">load_config()</text>
+  <text x="584" y="172" font-size="15" text-anchor="end" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">new int[1000] — delete[] не будет</text>
+
+  <rect x="140" y="206" width="460" height="56" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="156" y="241" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">parse()</text>
+  <text x="584" y="240" font-size="15" text-anchor="end" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">std::vector v — ~v() вызван</text>
+
+  <rect x="190" y="274" width="410" height="56" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="1.5"/>
+  <text x="206" y="309" font-size="17" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">inner()</text>
+  <text x="584" y="308" font-size="15" text-anchor="end" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">throw std::runtime_error</text>
+
+  <line x1="632" y1="300" x2="632" y2="118" stroke="#dbdfe6" stroke-width="2.5"
+        marker-end="url(#light)"/>
+  <text x="660" y="126" font-size="17" fill="#dbdfe6">управление уходит в catch</text>
+  <text x="660" y="212" font-size="17" fill="#dbdfe6">деструкторы локальных — вызываются</text>
+  <text x="660" y="244" font-size="17" fill="#ff2020">ручной delete[] — нет: утечка</text>
+  <text x="660" y="306" font-size="17" fill="#80828c">throw: дальше выполнять не можем</text>
+
+  <text x="40" y="360" font-size="17" fill="#dbdfe6">выход из каждого кадра аккуратный — поэтому ресурс обязан лежать в RAII-обёртке</text>
+</svg>

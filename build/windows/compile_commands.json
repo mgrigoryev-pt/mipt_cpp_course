@@ -1,0 +1,38 @@
+[
+{
+  "directory": "D:/C++Projects/test/mipt_cpp_course-main/project/build/windows",
+  "command": "\"D:\\Programs\\Microsoft Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang++.exe\" -DEDR_USE_SHARED -DOS_USE_SHARED -DCMAKE_INTDIR=\\\"Release\\\" -ID:/C++Projects/test/mipt_cpp_course-main/project/src -isystem D:/C++Projects/test/mipt_cpp_course-main/project/cmake/../include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -Wall -Wextra -o CMakeFiles\\nano-edr.dir\\Release\\src\\main.cpp.obj -c D:\\C++Projects\\test\\mipt_cpp_course-main\\project\\src\\main.cpp",
+  "file": "D:/C++Projects/test/mipt_cpp_course-main/project/src/main.cpp",
+  "output": "D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/CMakeFiles/nano-edr.dir/Release/src/main.cpp.obj"
+},
+{
+  "directory": "D:/C++Projects/test/mipt_cpp_course-main/project/build/windows",
+  "command": "\"D:\\Programs\\Microsoft Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang++.exe\" -DEDR_USE_SHARED -DOS_USE_SHARED -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\" -ID:/C++Projects/test/mipt_cpp_course-main/project/src -isystem D:/C++Projects/test/mipt_cpp_course-main/project/cmake/../include -O2 -DNDEBUG -g -Xclang -gcodeview -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -Wall -Wextra -o CMakeFiles\\nano-edr.dir\\RelWithDebInfo\\src\\main.cpp.obj -c D:\\C++Projects\\test\\mipt_cpp_course-main\\project\\src\\main.cpp",
+  "file": "D:/C++Projects/test/mipt_cpp_course-main/project/src/main.cpp",
+  "output": "D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/CMakeFiles/nano-edr.dir/RelWithDebInfo/src/main.cpp.obj"
+},
+{
+  "directory": "D:/C++Projects/test/mipt_cpp_course-main/project/build/windows",
+  "command": "\"D:\\Programs\\Microsoft Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang++.exe\" -DEDR_USE_SHARED -DOS_USE_SHARED -DCMAKE_INTDIR=\\\"Debug\\\" -ID:/C++Projects/test/mipt_cpp_course-main/project/src -isystem D:/C++Projects/test/mipt_cpp_course-main/project/cmake/../include -O0 -g -Xclang -gcodeview -std=c++23 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Wall -Wextra -o CMakeFiles\\nano-edr.dir\\Debug\\src\\main.cpp.obj -c D:\\C++Projects\\test\\mipt_cpp_course-main\\project\\src\\main.cpp",
+  "file": "D:/C++Projects/test/mipt_cpp_course-main/project/src/main.cpp",
+  "output": "D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/CMakeFiles/nano-edr.dir/Debug/src/main.cpp.obj"
+},
+{
+  "directory": "D:/C++Projects/test/mipt_cpp_course-main/project/build/windows",
+  "command": "\"D:\\Programs\\Microsoft Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang++.exe\" -DOS_USE_SHARED -DCMAKE_INTDIR=\\\"Release\\\" -isystem D:/C++Projects/test/mipt_cpp_course-main/project/cmake/../include -O3 -DNDEBUG -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -Wall -Wextra -o CMakeFiles\\minimal_agent.dir\\Release\\examples\\minimal_agent.cpp.obj -c D:\\C++Projects\\test\\mipt_cpp_course-main\\project\\examples\\minimal_agent.cpp",
+  "file": "D:/C++Projects/test/mipt_cpp_course-main/project/examples/minimal_agent.cpp",
+  "output": "D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/CMakeFiles/minimal_agent.dir/Release/examples/minimal_agent.cpp.obj"
+},
+{
+  "directory": "D:/C++Projects/test/mipt_cpp_course-main/project/build/windows",
+  "command": "\"D:\\Programs\\Microsoft Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang++.exe\" -DOS_USE_SHARED -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\" -isystem D:/C++Projects/test/mipt_cpp_course-main/project/cmake/../include -O2 -DNDEBUG -g -Xclang -gcodeview -std=c++23 -D_DLL -D_MT -Xclang --dependent-lib=msvcrt -Wall -Wextra -o CMakeFiles\\minimal_agent.dir\\RelWithDebInfo\\examples\\minimal_agent.cpp.obj -c D:\\C++Projects\\test\\mipt_cpp_course-main\\project\\examples\\minimal_agent.cpp",
+  "file": "D:/C++Projects/test/mipt_cpp_course-main/project/examples/minimal_agent.cpp",
+  "output": "D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/CMakeFiles/minimal_agent.dir/RelWithDebInfo/examples/minimal_agent.cpp.obj"
+},
+{
+  "directory": "D:/C++Projects/test/mipt_cpp_course-main/project/build/windows",
+  "command": "\"D:\\Programs\\Microsoft Visual Studio\\VC\\Tools\\Llvm\\x64\\bin\\clang++.exe\" -DOS_USE_SHARED -DCMAKE_INTDIR=\\\"Debug\\\" -isystem D:/C++Projects/test/mipt_cpp_course-main/project/cmake/../include -O0 -g -Xclang -gcodeview -std=c++23 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -Wall -Wextra -o CMakeFiles\\minimal_agent.dir\\Debug\\examples\\minimal_agent.cpp.obj -c D:\\C++Projects\\test\\mipt_cpp_course-main\\project\\examples\\minimal_agent.cpp",
+  "file": "D:/C++Projects/test/mipt_cpp_course-main/project/examples/minimal_agent.cpp",
+  "output": "D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/CMakeFiles/minimal_agent.dir/Debug/examples/minimal_agent.cpp.obj"
+}
+]

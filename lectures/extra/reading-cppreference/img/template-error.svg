@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 380" width="1060" height="380"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Как читать ошибку в шаблонном коде на примере std::sort для std::list. Сообщение идёт от места поломки внутри библиотеки к месту вызова: error в заголовке algorithm на строке 8404 — для итераторов списка нет оператора минус; note — это внутри std::sort с компаратором less; note — а это вызвал std::sort из cr/sort_list.cpp, строка 6, — это единственная строка из своего кода. Дальше идут кандидаты, которые не подошли, — их можно не читать. Порядок чтения: найти свою строку, затем первую строку error, и спросить, какое требование нарушено: вычитать итераторы умеют только итераторы произвольного доступа">
+  <defs>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+  <style>
+    .row{fill:rgba(255,255,255,0.04);stroke:#3a3a40;stroke-width:1.5}
+    .mine{fill:rgba(255,255,255,0.10);stroke:#ffffff;stroke-width:2}
+    .err{fill:rgba(255,32,32,0.06);stroke:#ff2020;stroke-width:1.5}
+    .dim{fill:none;stroke:#3a3a40;stroke-width:1.5;stroke-dasharray:6 5}
+    .m{fill:#dbdfe6;font-size:13px;font-family:Consolas, Roboto Mono, monospace}
+    .mw{fill:#ffffff;font-size:13px;font-family:Consolas, Roboto Mono, monospace}
+    .me{fill:#ff2020;font-size:13px;font-family:Consolas, Roboto Mono, monospace}
+    .md{fill:#5c5e66;font-size:13px;font-family:Consolas, Roboto Mono, monospace}
+    .n{fill:#80828c;font-size:14px}
+    .step{fill:#ffffff;font-size:15px;font-weight:600}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="378" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <rect class="err" x="40" y="30" width="700" height="52"/>
+  <text class="me" x="56" y="52">…\include\algorithm:8404:50: error: invalid operands to binary</text>
+  <text class="me" x="56" y="70">expression ('const _List_unchecked_iterator&lt;…&gt;' and '…')</text>
+  <text class="step" x="760" y="52">2</text>
+  <text class="n" x="780" y="52">что сломалось: итераторы</text>
+  <text class="n" x="780" y="70">списка нельзя вычитать</text>
+
+  <rect class="row" x="40" y="92" width="700" height="52"/>
+  <text class="m" x="56" y="114">…\include\algorithm:8409:10: note: in instantiation of function</text>
+  <text class="m" x="56" y="132">template specialization 'std::sort&lt;…_List_iterator…, std::less&lt;void&gt;&gt;'</text>
+  <text class="n" x="760" y="114">промежуточный кадр</text>
+  <text class="n" x="760" y="132">внутри библиотеки</text>
+
+  <rect class="mine" x="40" y="154" width="700" height="52"/>
+  <text class="mw" x="56" y="176">cr/sort_list.cpp:6:10: note: in instantiation of function template</text>
+  <text class="mw" x="56" y="194">specialization 'std::sort&lt;…_List_iterator…&gt;' requested here</text>
+  <text class="step" x="760" y="176">1</text>
+  <text class="n" x="780" y="176">своя строка: здесь</text>
+  <text class="n" x="780" y="194">вызван <tspan font-family="Consolas, Roboto Mono, monospace">std::sort(pids.begin(), …)</tspan></text>
+
+  <rect class="dim" x="40" y="216" width="700" height="52"/>
+  <text class="md" x="56" y="238">…\include\xutility:1977:30: note: candidate template ignored:</text>
+  <text class="md" x="56" y="256">could not match 'reverse_iterator' against '…' (и ещё один такой же)</text>
+  <text class="n" x="760" y="238">кандидаты, которые не подошли, —</text>
+  <text class="n" x="760" y="256">обычно можно не читать</text>
+
+  <line x1="40" y1="292" x2="1020" y2="292" stroke="#26262b" stroke-width="1.5"/>
+  <text class="step" x="40" y="324">3</text>
+  <text class="n" x="60" y="324">вопрос к справочнику: какое требование нарушено? У <tspan font-family="Consolas, Roboto Mono, monospace">std::sort</tspan> в объявлении — <tspan font-family="Consolas, Roboto Mono, monospace">RandomAccessIterator</tspan>,</text>
+  <text class="n" x="60" y="346">а итератор <tspan font-family="Consolas, Roboto Mono, monospace">std::list</tspan> двунаправленный. Ответ из справочника: у списка свой <tspan font-family="Consolas, Roboto Mono, monospace">pids.sort()</tspan></text>
+</svg>

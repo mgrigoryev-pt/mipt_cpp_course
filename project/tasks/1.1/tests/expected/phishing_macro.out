@@ -1,0 +1,1 @@
+[DETECT] строка 9, признак wscript.exe: ts=1730000003000 type=process_start pid=1101 ppid=1042 image="C:\Windows\System32\wscript.exe" cmdline="wscript.exe C:\Users\max\AppData\Local\Temp\a.js" user=DESKTOP\max

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 320" width="1060" height="320"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="318" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <line x1="520" y1="36" x2="520" y2="290" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- левая панель: что отбрасывается -->
+  <text x="270" y="52" font-size="17" text-anchor="middle" fill="#80828c">тип источника <tspan font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">r</tspan></text>
+
+  <rect x="84" y="72" width="128" height="56" fill="none" stroke="#5c5e66" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <line x1="92" y1="122" x2="204" y2="78" stroke="#ff2020" stroke-width="2"/>
+  <line x1="92" y1="78" x2="204" y2="122" stroke="#ff2020" stroke-width="2"/>
+  <rect x="118" y="87" width="60" height="26" fill="#0b0b0d"/>
+  <text x="148" y="108" font-size="20" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">const</text>
+
+  <rect x="224" y="72" width="100" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="274" y="110" font-size="24" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">int</text>
+
+  <rect x="336" y="72" width="120" height="56" fill="none" stroke="#5c5e66" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <line x1="344" y1="122" x2="448" y2="78" stroke="#ff2020" stroke-width="2"/>
+  <line x1="344" y1="78" x2="448" y2="122" stroke="#ff2020" stroke-width="2"/>
+  <rect x="385" y="87" width="22" height="26" fill="#0b0b0d"/>
+  <text x="396" y="108" font-size="20" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">&amp;</text>
+
+  <line x1="270" y1="138" x2="270" y2="176" stroke="#80828c" stroke-width="2" marker-end="url(#grey)"/>
+  <text x="330" y="164" font-size="15" fill="#80828c">auto</text>
+
+  <rect x="200" y="184" width="140" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="270" y="223" font-size="26" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">int</text>
+  <text x="270" y="270" font-size="16" text-anchor="middle" fill="#80828c">тип переменной <tspan font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">a</tspan></text>
+
+  <!-- правая панель: что получилось в памяти -->
+  <text x="780" y="52" font-size="17" text-anchor="middle" fill="#80828c">что получилось в памяти</text>
+
+  <rect x="576" y="76" width="170" height="62" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="661" y="118" font-size="26" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">5</text>
+  <text x="706" y="160" font-size="16" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">int i</text>
+
+  <line x1="752" y1="107" x2="828" y2="107" stroke="#80828c" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#grey)"/>
+  <text x="790" y="94" font-size="14" text-anchor="middle" fill="#80828c">копия</text>
+
+  <rect x="836" y="76" width="170" height="62" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="921" y="118" font-size="26" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">5</text>
+  <text x="921" y="160" font-size="16" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">int a</text>
+  <text x="921" y="226" font-size="16" text-anchor="middle" fill="#dbdfe6">своя копия</text>
+  <text x="921" y="252" font-size="15" text-anchor="middle" fill="#80828c">
+    <tspan font-family="Consolas, Roboto Mono, monospace">a = 100</tspan> не тронет <tspan font-family="Consolas, Roboto Mono, monospace">i</tspan></text>
+
+  <line x1="616" y1="206" x2="616" y2="146" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <rect x="560" y="210" width="200" height="48" fill="rgba(255,138,138,0.08)" stroke="#ff8a8a" stroke-width="2"/>
+  <text x="660" y="240" font-size="17" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">const int&amp; r</text>
+  <text x="660" y="280" font-size="15" text-anchor="middle" fill="#80828c">второе имя для <tspan font-family="Consolas, Roboto Mono, monospace">i</tspan></text>
+</svg>

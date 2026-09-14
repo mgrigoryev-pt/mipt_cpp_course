@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 386" width="1060" height="386"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+    <marker id="light" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#dbdfe6"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="384" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="40" x2="530" y2="356" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- без virtual -->
+  <text x="290" y="60" font-size="19" text-anchor="middle" fill="#dbdfe6">без <tspan font-family="Consolas, Roboto Mono, monospace">virtual</tspan></text>
+
+  <rect x="140" y="92" width="300" height="44" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="290" y="121" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Animal* a</text>
+
+  <line x1="290" y1="136" x2="290" y2="164" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <rect x="140" y="168" width="300" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="290" y="192" font-size="16" text-anchor="middle" fill="#dbdfe6">объект Dog</text>
+  <text x="290" y="213" font-size="13" text-anchor="middle" fill="#80828c">vptr нет — спрашивать нечего</text>
+
+  <path d="M 140 114 H 104 Q 92 114 92 126 V 270 Q 92 282 104 282 H 134"
+        fill="none" stroke="#dbdfe6" stroke-width="2.5" marker-end="url(#light)"/>
+
+  <rect x="140" y="256" width="300" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="290" y="280" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">Animal::sound()</text>
+  <text x="290" y="299" font-size="14" text-anchor="middle" fill="#80828c">печатает «???»</text>
+
+  <text x="290" y="344" font-size="16" text-anchor="middle" fill="#dbdfe6">выбор по типу указателя — на этапе компиляции</text>
+
+  <!-- с virtual -->
+  <text x="780" y="60" font-size="19" text-anchor="middle" fill="#dbdfe6">с <tspan font-family="Consolas, Roboto Mono, monospace">virtual</tspan></text>
+
+  <rect x="630" y="92" width="300" height="44" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="780" y="121" font-size="19" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Animal* a</text>
+
+  <line x1="780" y1="136" x2="780" y2="164" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <rect x="630" y="168" width="300" height="56" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="642" y="180" width="92" height="32" fill="rgba(255,138,138,0.08)" stroke="#ff8a8a" stroke-width="1.5"/>
+  <text x="688" y="201" font-size="14" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">vptr</text>
+  <text x="838" y="201" font-size="16" text-anchor="middle" fill="#dbdfe6">объект Dog</text>
+
+  <line x1="688" y1="224" x2="688" y2="252" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <text x="708" y="244" font-size="13" fill="#80828c">через таблицу</text>
+
+  <rect x="630" y="256" width="300" height="52" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="780" y="280" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">Dog::sound()</text>
+  <text x="780" y="299" font-size="14" text-anchor="middle" fill="#80828c">печатает «woof»</text>
+
+  <text x="780" y="344" font-size="16" text-anchor="middle" fill="#dbdfe6">выбор по реальному объекту — в рантайме</text>
+</svg>

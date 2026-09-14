@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 288" width="1060" height="288"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="light" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#dbdfe6"/>
+    </marker>
+    <marker id="red" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff2020"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="286" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="40" x2="530" y2="272" stroke="#26262b" stroke-width="1.5"/>
+
+  <text x="40" y="40" font-size="17" fill="#dbdfe6">беззнаковое — по модулю 2^32</text>
+  <text x="560" y="40" font-size="17" fill="#dbdfe6">знаковое — UB</text>
+
+  <!-- беззнаковый диапазон -->
+  <text x="265" y="62" font-size="14" text-anchor="middle" fill="#dbdfe6">0 − 1 = максимум</text>
+  <path d="M 104 94 V 74 H 426 V 90" fill="none" stroke="#dbdfe6" stroke-width="2"
+        marker-end="url(#light)"/>
+  <rect x="60" y="96" width="420" height="46" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <g font-family="Consolas, Roboto Mono, monospace" fill="#ffffff">
+    <text x="90" y="126" font-size="18" text-anchor="middle">0</text>
+    <text x="462" y="126" font-size="15" text-anchor="end">4294967295</text>
+  </g>
+  <text x="265" y="126" font-size="18" text-anchor="middle" fill="#5c5e66">…</text>
+  <path d="M 436 144 V 164 H 114 V 148" fill="none" stroke="#dbdfe6" stroke-width="2"
+        marker-end="url(#light)"/>
+  <text x="265" y="186" font-size="14" text-anchor="middle" fill="#dbdfe6">максимум + 1 = 0</text>
+  <text x="60" y="208" font-size="14" fill="#80828c">поведение определено стандартом</text>
+  <text x="60" y="240" font-size="15" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">for (size_t i = v.size() - 1; i &gt;= 0; --i)</text>
+  <text x="60" y="262" font-size="13" fill="#80828c">size() - 1 у пустого вектора — максимум, и i &gt;= 0 истинно всегда</text>
+
+  <!-- знаковый диапазон -->
+  <text x="940" y="66" font-size="14" text-anchor="end" fill="#ff2020">максимум + 1</text>
+  <path d="M 962 96 V 72" fill="none" stroke="#ff2020" stroke-width="2" marker-end="url(#red)"/>
+  <g stroke="#ff2020" stroke-width="2">
+    <line x1="952" y1="64" x2="972" y2="44"/>
+    <line x1="952" y1="44" x2="972" y2="64"/>
+  </g>
+  <rect x="580" y="96" width="420" height="46" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <g font-family="Consolas, Roboto Mono, monospace" fill="#ffffff" font-size="15">
+    <text x="596" y="126">-2147483648</text>
+    <text x="984" y="126" text-anchor="end">2147483647</text>
+  </g>
+  <text x="790" y="126" font-size="18" text-anchor="middle" fill="#5c5e66">…</text>
+  <text x="580" y="180" font-size="15" fill="#ff2020">UB — стандарт не определяет поведение</text>
+  <text x="580" y="208" font-size="14" fill="#80828c">компилятор вправе считать, что переполнения не бывает</text>
+  <text x="580" y="240" font-size="15" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">int32_t x = INT32_MAX; ++x;</text>
+  <text x="580" y="262" font-size="13" fill="#80828c">и оптимизировать в расчёте на это: проверка i + 1 &gt; i исчезнет</text>
+</svg>

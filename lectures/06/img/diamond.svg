@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 352" width="1060" height="352"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="light" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#dbdfe6"/>
+    </marker>
+    <marker id="red" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff2020"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="350" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="470" y1="36" x2="470" y2="316" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- ================= слева: иерархия ================= -->
+  <text x="250" y="50" font-size="17" text-anchor="middle" fill="#80828c">иерархия классов</text>
+
+  <rect x="175" y="70" width="160" height="52" rx="10" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="255" y="92" font-size="18" text-anchor="middle" fill="#ffffff">Animal</text>
+  <text x="255" y="110" font-size="14" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">int id</text>
+
+  <rect x="60" y="168" width="160" height="52" rx="10" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="140" y="200" font-size="18" text-anchor="middle" fill="#ffffff">Walker</text>
+
+  <rect x="290" y="168" width="160" height="52" rx="10" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="370" y="200" font-size="18" text-anchor="middle" fill="#ffffff">Swimmer</text>
+
+  <rect x="175" y="266" width="160" height="52" rx="10" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="255" y="298" font-size="18" text-anchor="middle" fill="#ffffff">Duck</text>
+
+  <g stroke="#dbdfe6" stroke-width="2">
+    <line x1="150" y1="166" x2="212" y2="126" marker-end="url(#light)"/>
+    <line x1="360" y1="166" x2="298" y2="126" marker-end="url(#light)"/>
+    <line x1="215" y1="264" x2="168" y2="224" marker-end="url(#light)"/>
+    <line x1="295" y1="264" x2="342" y2="224" marker-end="url(#light)"/>
+  </g>
+
+  <!-- ================= справа: объект ================= -->
+  <text x="715" y="50" font-size="17" text-anchor="middle" fill="#80828c">объект Duck в памяти</text>
+
+  <rect x="560" y="70" width="310" height="232" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+
+  <rect x="576" y="84" width="278" height="94" fill="rgba(255,255,255,0.04)" stroke="#26262b" stroke-width="1.5"/>
+  <text x="588" y="106" font-size="15" fill="#dbdfe6">часть Walker</text>
+  <rect x="610" y="116" width="210" height="50" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="715" y="139" font-size="16" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Animal::id</text>
+  <text x="715" y="158" font-size="13" text-anchor="middle" fill="#80828c">копия первая</text>
+
+  <rect x="576" y="194" width="278" height="94" fill="rgba(255,255,255,0.04)" stroke="#26262b" stroke-width="1.5"/>
+  <text x="588" y="216" font-size="15" fill="#dbdfe6">часть Swimmer</text>
+  <rect x="610" y="226" width="210" height="50" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="715" y="249" font-size="16" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Animal::id</text>
+  <text x="715" y="268" font-size="13" text-anchor="middle" fill="#80828c">копия вторая</text>
+
+  <g stroke="#ff2020" stroke-width="2">
+    <line x1="900" y1="170" x2="828" y2="146" marker-end="url(#red)"/>
+    <line x1="900" y1="212" x2="828" y2="248" marker-end="url(#red)"/>
+  </g>
+  <text x="955" y="186" font-size="18" text-anchor="middle" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">d.id</text>
+  <text x="955" y="208" font-size="14" text-anchor="middle" fill="#ff2020">ambiguous: CE</text>
+
+  <text x="530" y="338" font-size="15" text-anchor="middle" fill="#80828c">у одной утки два независимых id — почти всегда не то, что нужно</text>
+</svg>

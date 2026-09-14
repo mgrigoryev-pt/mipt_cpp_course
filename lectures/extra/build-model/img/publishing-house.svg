@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 576" width="1060" height="576" role="img" aria-label="Три автора в отдельных комнатах получают копию справочника имён, пишут главы с прочерками вместо ссылок и отдают их редактору-сборщику, который вписывает настоящие номера страниц и выпускает книгу">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="mk" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+  <style>
+    .t{fill:#dbdfe6;font-size:15px}
+    .t-s{fill:#80828c;font-size:13.5px}
+    .t-xs{fill:#5c5e66;font-size:12px}
+    .t-h{fill:#dbdfe6;font-size:14px;font-weight:600;letter-spacing:.07em}
+    .t-def{fill:#ff8a8a;font-size:12px}
+    .t-ref{fill:#dbdfe6;font-size:12px}
+    .bx{fill:rgba(255,255,255,0.045);stroke:#3a3a40;stroke-width:1.5}
+    .bx-plain{fill:none;stroke:#3a3a40;stroke-width:1.5}
+    .bx-decl{fill:rgba(255,255,255,0.05);stroke:#dbdfe6;stroke-width:1.5}
+    .bx-lnk{fill:rgba(255,255,255,0.08);stroke:#80828c;stroke-width:1.5}
+    .ln{stroke:#80828c;stroke-width:1.5;fill:none}
+    .ln-dash{stroke:#3a3a40;stroke-width:1.5;fill:none;stroke-dasharray:5 4}
+    .hair{stroke:#3a3a40;stroke-width:1;fill:none}
+    .mk{fill:#80828c}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="574" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <g transform="translate(24,24) scale(1.124)" font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+    <rect class="bx-decl" x="255" y="10" width="390" height="42" rx="2"/>
+    <text class="t" x="450" y="30" text-anchor="middle">Справочник имён</text>
+    <text class="t-s" x="450" y="45" text-anchor="middle">«такая сцена существует и называется вот так»</text>
+
+    <line class="ln-dash" x1="150" y1="52" x2="150" y2="106" marker-end="url(#ar)"/>
+    <line class="ln-dash" x1="450" y1="52" x2="450" y2="106" marker-end="url(#ar)"/>
+    <line class="ln-dash" x1="750" y1="52" x2="750" y2="106" marker-end="url(#ar)"/>
+    <text class="t-xs" x="462" y="82">у каждого своя копия</text>
+
+    <g>
+      <rect class="bx" x="25" y="110" width="250" height="152" rx="2"/>
+      <text class="t-h" x="41" y="132">КОМНАТА 1</text>
+      <text class="t-s" x="41" y="152">автор пишет главу 3</text>
+      <rect class="bx-plain" x="41" y="164" width="218" height="84"/>
+      <line class="hair" x1="53" y1="182" x2="247" y2="182"/>
+      <line class="hair" x1="53" y1="196" x2="247" y2="196"/>
+      <line class="hair" x1="53" y1="224" x2="200" y2="224"/>
+      <line class="hair" x1="53" y1="238" x2="247" y2="238"/>
+      <text class="t-ref" x="53" y="214">«…в сцене с пожаром, см. с. ??»</text>
+    </g>
+    <g>
+      <rect class="bx" x="325" y="110" width="250" height="152" rx="2"/>
+      <text class="t-h" x="341" y="132">КОМНАТА 2</text>
+      <text class="t-s" x="341" y="152">автор пишет главу 7</text>
+      <rect class="bx-plain" x="341" y="164" width="218" height="84"/>
+      <line class="hair" x1="353" y1="182" x2="547" y2="182"/>
+      <line class="hair" x1="353" y1="196" x2="547" y2="196"/>
+      <line class="hair" x1="353" y1="224" x2="500" y2="224"/>
+      <line class="hair" x1="353" y1="238" x2="547" y2="238"/>
+      <text class="t-def" x="353" y="214">здесь и написана сцена с пожаром</text>
+    </g>
+    <g>
+      <rect class="bx" x="625" y="110" width="250" height="152" rx="2"/>
+      <text class="t-h" x="641" y="132">КОМНАТА 3</text>
+      <text class="t-s" x="641" y="152">автор пишет главу 11</text>
+      <rect class="bx-plain" x="641" y="164" width="218" height="84"/>
+      <line class="hair" x1="653" y1="182" x2="847" y2="182"/>
+      <line class="hair" x1="653" y1="196" x2="847" y2="196"/>
+      <line class="hair" x1="653" y1="224" x2="800" y2="224"/>
+      <line class="hair" x1="653" y1="238" x2="847" y2="238"/>
+      <text class="t-ref" x="653" y="214">«…см. с. ??» и ещё три раза</text>
+    </g>
+
+    <line class="ln" x1="150" y1="262" x2="150" y2="322" marker-end="url(#ar)"/>
+    <line class="ln" x1="450" y1="262" x2="450" y2="322" marker-end="url(#ar)"/>
+    <line class="ln" x1="750" y1="262" x2="750" y2="322" marker-end="url(#ar)"/>
+    <text class="t-xs" x="160" y="288">готовая глава,</text>
+    <text class="t-xs" x="160" y="304">ссылки не заполнены</text>
+
+    <rect class="bx-lnk" x="235" y="326" width="430" height="56" rx="2"/>
+    <text class="t" x="450" y="348" text-anchor="middle">Редактор-сборщик</text>
+    <text class="t-s" x="450" y="368" text-anchor="middle">находит все «см. с. ??» и вписывает настоящие номера</text>
+
+    <line class="ln" x1="450" y1="382" x2="450" y2="410" marker-end="url(#ar)"/>
+    <rect class="bx" x="340" y="414" width="220" height="44" rx="2"/>
+    <text class="t" x="450" y="442" text-anchor="middle">Готовая книга</text>
+  </g>
+</svg>

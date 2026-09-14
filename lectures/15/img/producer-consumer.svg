@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 310" width="1060" height="310"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="308" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- источник и поток-читатель -->
+  <text x="40" y="106" font-size="15" fill="#80828c">события системы</text>
+  <line x1="44" y1="122" x2="108" y2="150" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+  <rect x="40" y="156" width="200" height="64" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="140" y="184" font-size="17" text-anchor="middle" fill="#ffffff">producer</text>
+  <text x="140" y="207" font-size="15" text-anchor="middle" fill="#80828c">один читатель</text>
+
+  <line x1="240" y1="188" x2="296" y2="188" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+
+  <!-- очередь -->
+  <text x="310" y="124" font-size="16" fill="#80828c">очередь событий под</text>
+  <text x="310" y="146" font-size="16" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">std::mutex m</text>
+  <rect x="310" y="158" width="70" height="60" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="345" y="195" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">e1</text>
+  <rect x="380" y="158" width="70" height="60" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="415" y="195" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">e2</text>
+  <rect x="450" y="158" width="70" height="60" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="485" y="195" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">e3</text>
+  <rect x="520" y="158" width="70" height="60" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <rect x="590" y="158" width="70" height="60" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+
+  <!-- рабочие потоки -->
+  <line x1="666" y1="182" x2="756" y2="80" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+  <line x1="666" y1="186" x2="756" y2="162" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+  <line x1="666" y1="192" x2="756" y2="242" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+
+  <text x="770" y="36" font-size="15" fill="#80828c">рабочих столько, сколько нужно</text>
+
+  <rect x="770" y="48" width="250" height="58" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="895" y="84" font-size="17" text-anchor="middle" fill="#ffffff">consumer</text>
+  <rect x="770" y="132" width="250" height="58" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="895" y="168" font-size="17" text-anchor="middle" fill="#ffffff">consumer</text>
+  <rect x="770" y="216" width="250" height="58" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="895" y="252" font-size="17" text-anchor="middle" fill="#ffffff">consumer</text>
+
+  <text x="40" y="294" font-size="16" fill="#80828c">очередь пуста — рабочие спят на condition_variable, а не крутятся в цикле</text>
+</svg>

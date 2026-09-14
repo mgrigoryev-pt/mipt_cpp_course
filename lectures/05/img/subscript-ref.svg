@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 340" width="1060" height="340"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="light" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#dbdfe6"/>
+    </marker>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="338" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+  <line x1="530" y1="36" x2="530" y2="300" stroke="#26262b" stroke-width="1.5"/>
+
+  <!-- возврат по значению -->
+  <text x="270" y="54" font-size="18" text-anchor="middle" fill="#ff2020"
+        font-family="Consolas, Roboto Mono, monospace">int operator[](size_t)</text>
+  <text x="270" y="88" font-size="18" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">v[0] = 10</text>
+
+  <text x="194" y="114" font-size="14" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">[0]</text>
+  <text x="270" y="114" font-size="14" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">[1]</text>
+  <text x="346" y="114" font-size="14" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">[2]</text>
+
+  <rect x="156" y="122" width="76" height="54" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="194" y="158" font-size="22" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">1</text>
+  <rect x="232" y="122" width="76" height="54" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="270" y="158" font-size="22" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">2</text>
+  <rect x="308" y="122" width="76" height="54" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="346" y="158" font-size="22" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">3</text>
+
+  <line x1="194" y1="180" x2="194" y2="214" stroke="#dbdfe6" stroke-width="2" marker-end="url(#light)"/>
+  <text x="214" y="202" font-size="14" fill="#80828c">копия</text>
+
+  <rect x="124" y="218" width="140" height="54" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="194" y="254" font-size="22" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">10</text>
+  <line x1="284" y1="262" x2="316" y2="230" stroke="#ff2020" stroke-width="2.5"/>
+  <line x1="284" y1="230" x2="316" y2="262" stroke="#ff2020" stroke-width="2.5"/>
+  <text x="334" y="252" font-size="15" fill="#80828c">временная копия умирает</text>
+
+  <text x="270" y="320" font-size="15" text-anchor="middle" fill="#ff2020">запись ушла в копию: v[0] всё ещё 1</text>
+
+  <!-- возврат по ссылке -->
+  <text x="790" y="54" font-size="18" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">int&amp; operator[](size_t)</text>
+  <text x="790" y="88" font-size="18" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">v[0] = 10</text>
+
+  <text x="714" y="114" font-size="14" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">[0]</text>
+  <text x="790" y="114" font-size="14" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">[1]</text>
+  <text x="866" y="114" font-size="14" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">[2]</text>
+
+  <rect x="676" y="122" width="76" height="54" fill="rgba(255,138,138,0.08)" stroke="#ff8a8a" stroke-width="2"/>
+  <text x="714" y="158" font-size="22" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">10</text>
+  <rect x="752" y="122" width="76" height="54" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="790" y="158" font-size="22" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">2</text>
+  <rect x="828" y="122" width="76" height="54" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="866" y="158" font-size="22" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">3</text>
+
+  <line x1="714" y1="214" x2="714" y2="180" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <text x="734" y="206" font-size="15" fill="#ff8a8a">ссылка на сам элемент</text>
+
+  <text x="790" y="320" font-size="15" text-anchor="middle" fill="#dbdfe6">запись попала в элемент: v[0] == 10</text>
+</svg>

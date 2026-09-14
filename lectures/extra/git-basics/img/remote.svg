@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 372" width="1060" height="372" role="img" aria-label="Два репозитория. Слева ваш компьютер: цепочка из четырёх коммитов, розовая метка main указывает на последний, розовая метка origin-slash-main — на предпоследний, то есть на тот, до которого дошёл сервер. Справа сервер origin: та же цепочка, но из трёх коммитов. Между ними стрелка git push вправо и стрелка git pull влево. Внизу сказано, что git clone забирает репозиторий целиком один раз, и что до git push работа существует только на вашей машине">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path fill="#80828c" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+    <marker id="pk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path fill="#ff8a8a" d="M0 0 L10 5 L0 10 z"/>
+    </marker>
+  </defs>
+  <style>
+    .t{fill:#dbdfe6;font-size:17px}
+    .t-s{fill:#80828c;font-size:14.5px}
+    .t-xs{fill:#5c5e66;font-size:13px}
+    .t-h{fill:#dbdfe6;font-size:16px;font-weight:600;letter-spacing:.07em}
+    .t-eye{fill:#ffffff;font-size:15px}
+    .t-ref{fill:#ff8a8a;font-size:15px}
+    .bx{fill:rgba(255,255,255,0.045);stroke:#3a3a40;stroke-width:1.5}
+    .bx-eye{fill:rgba(255,255,255,0.10);stroke:#dbdfe6;stroke-width:1.5}
+    .bx-ref{fill:rgba(255,138,138,0.08);stroke:#ff8a8a;stroke-width:1.5}
+    .bx-panel{fill:none;stroke:#26262b;stroke-width:1.5}
+    .ln{stroke:#80828c;stroke-width:1.8;fill:none}
+    .ln-pk{stroke:#ff8a8a;stroke-width:1.8;fill:none}
+    .hair{stroke:#26262b;stroke-width:1;fill:none}
+    .mono{font-family:Consolas, Roboto Mono, monospace}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="370" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <g font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+
+    <text class="t-h" x="40" y="52">ВАШ КОМПЬЮТЕР</text>
+    <line class="hair" x1="40" y1="62" x2="470" y2="62"/>
+    <rect class="bx-panel" x="40" y="76" width="430" height="190" rx="4"/>
+    <text class="t-s" x="60" y="102">все ваши коммиты, в том числе не отправленные</text>
+
+    <rect class="bx-ref" x="347" y="118" width="84" height="28" rx="2"/>
+    <text class="t-ref mono" x="389" y="138" text-anchor="middle">main</text>
+    <line class="ln-pk" x1="389" y1="146" x2="389" y2="162" marker-end="url(#pk)"/>
+
+    <rect class="bx" x="60" y="168" width="70" height="40" rx="2"/>
+    <text class="t-s mono" x="95" y="193" text-anchor="middle">9f2c1a</text>
+    <rect class="bx" x="158" y="168" width="70" height="40" rx="2"/>
+    <text class="t-s mono" x="193" y="193" text-anchor="middle">4d81e0</text>
+    <rect class="bx" x="256" y="168" width="70" height="40" rx="2"/>
+    <text class="t-s mono" x="291" y="193" text-anchor="middle">b7c3aa</text>
+    <rect class="bx-eye" x="354" y="168" width="70" height="40" rx="2"/>
+    <text class="t-eye mono" x="389" y="193" text-anchor="middle">e05f19</text>
+
+    <line class="ln-pk" x1="154" y1="188" x2="136" y2="188" marker-end="url(#pk)"/>
+    <line class="ln-pk" x1="252" y1="188" x2="234" y2="188" marker-end="url(#pk)"/>
+    <line class="ln-pk" x1="350" y1="188" x2="332" y2="188" marker-end="url(#pk)"/>
+
+    <line class="ln-pk" x1="291" y1="228" x2="291" y2="212" marker-end="url(#pk)"/>
+    <rect class="bx-ref" x="232" y="228" width="118" height="28" rx="2"/>
+    <text class="t-ref mono" x="291" y="248" text-anchor="middle">origin/main</text>
+
+    <text class="t-xs" x="60" y="248">коммит e05f19 сделан,</text>
+    <text class="t-xs" x="60" y="264">но на сервере его нет</text>
+
+    <text class="t-h" x="590" y="52">СЕРВЕР — origin</text>
+    <line class="hair" x1="590" y1="62" x2="1020" y2="62"/>
+    <rect class="bx-panel" x="590" y="76" width="430" height="190" rx="4"/>
+    <text class="t-s" x="610" y="102">общая история, её видят все участники</text>
+
+    <rect class="bx-ref" x="849" y="118" width="84" height="28" rx="2"/>
+    <text class="t-ref mono" x="891" y="138" text-anchor="middle">main</text>
+    <line class="ln-pk" x1="891" y1="146" x2="891" y2="162" marker-end="url(#pk)"/>
+
+    <rect class="bx" x="660" y="168" width="70" height="40" rx="2"/>
+    <text class="t-s mono" x="695" y="193" text-anchor="middle">9f2c1a</text>
+    <rect class="bx" x="758" y="168" width="70" height="40" rx="2"/>
+    <text class="t-s mono" x="793" y="193" text-anchor="middle">4d81e0</text>
+    <rect class="bx" x="856" y="168" width="70" height="40" rx="2"/>
+    <text class="t-s mono" x="891" y="193" text-anchor="middle">b7c3aa</text>
+
+    <line class="ln-pk" x1="754" y1="188" x2="736" y2="188" marker-end="url(#pk)"/>
+    <line class="ln-pk" x1="852" y1="188" x2="834" y2="188" marker-end="url(#pk)"/>
+
+    <text class="t-xs" x="610" y="248">последний общий коммит — b7c3aa</text>
+
+    <text class="t-s mono" x="530" y="136" text-anchor="middle">git push</text>
+    <line class="ln" x1="478" y1="152" x2="582" y2="152" marker-end="url(#ar)"/>
+    <line class="ln" x1="582" y1="204" x2="478" y2="204" marker-end="url(#ar)"/>
+    <text class="t-s mono" x="530" y="226" text-anchor="middle">git pull</text>
+
+    <line class="hair" x1="40" y1="292" x2="1020" y2="292"/>
+    <text class="t" x="40" y="320"><tspan class="mono">git clone &lt;адрес&gt;</tspan> — забрать чужой репозиторий целиком, один раз в самом начале.</text>
+    <text class="t" x="40" y="348">Пока не сделан <tspan class="mono">git push</tspan>, ваша работа существует ровно в одном экземпляре — на вашей машине.</text>
+  </g>
+</svg>

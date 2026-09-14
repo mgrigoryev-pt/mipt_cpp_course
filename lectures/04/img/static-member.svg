@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 270" width="1060" height="270"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="268" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="40" y="40" font-size="16" fill="#80828c">у каждого объекта — своё поле</text>
+
+  <rect x="40" y="52" width="600" height="146" fill="none" stroke="#26262b"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+
+  <!-- w1 -->
+  <rect x="62" y="72" width="170" height="92" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="147" y="98" font-size="16" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">w1</text>
+  <rect x="92" y="108" width="110" height="40" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="147" y="136" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">1</text>
+
+  <!-- w2 -->
+  <rect x="255" y="72" width="170" height="92" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="340" y="98" font-size="16" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">w2</text>
+  <rect x="285" y="108" width="110" height="40" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="340" y="136" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">2</text>
+
+  <!-- w3 -->
+  <rect x="448" y="72" width="170" height="92" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="533" y="98" font-size="16" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">w3</text>
+  <rect x="478" y="108" width="110" height="40" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="533" y="136" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">3</text>
+
+  <text x="340" y="224" font-size="15" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">id_</text>
+  <text x="340" y="248" font-size="15" text-anchor="middle" fill="#80828c">своё у каждого объекта</text>
+
+  <!-- общая для всех -->
+  <text x="713" y="112" font-size="15" text-anchor="middle" fill="#80828c">у всех одна</text>
+  <line x1="660" y1="128" x2="766" y2="128" stroke="#80828c" stroke-width="2" marker-end="url(#grey)"/>
+
+  <rect x="782" y="96" width="220" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="892" y="140" font-size="26" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">3</text>
+  <text x="892" y="80" font-size="16" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">Widget::total_count</text>
+  <text x="892" y="196" font-size="15" text-anchor="middle" fill="#80828c">вне объектов, одна</text>
+  <text x="892" y="216" font-size="15" text-anchor="middle" fill="#80828c">на всю программу</text>
+</svg>

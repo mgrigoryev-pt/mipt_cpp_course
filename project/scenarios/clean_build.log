@@ -1,0 +1,219 @@
+# clean_build: сборка проекта. Сорок объектных файлов за шесть секунд,
+# каждый пишется во временное имя и переименовывается — ровно тот профиль
+# по объёму и темпу, что у сценария ransomware.
+#
+# Это намеренная ловушка. Правило «сорок переименований за шесть секунд —
+# шифровальщик» ловит атаку и обязано промолчать здесь. Отличать надо не
+# по количеству: у сборки источник и цель лежат в каталоге сборки, набор
+# расширений закрытый (.tmp -> .obj), а родитель — известный инструмент.
+ts=1730600000000 type=process_start pid=5510 ppid=2500 image="C:\Program Files\CMake\bin\cmake.exe" cmdline="cmake --build build -j8" user=DESKTOP\max
+ts=1730600000300 type=process_start pid=5520 ppid=5510 image="C:\Program Files\Ninja\ninja.exe" cmdline="ninja -C build"
+ts=1730600000800 type=process_start pid=5600 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\api.cpp /FoC:\work\nano-edr\build\obj\api.obj.tmp"
+ts=1730600000840 type=file_create pid=5600 path=C:\work\nano-edr\build\obj\api.obj.tmp
+ts=1730600000880 type=file_write pid=5600 path=C:\work\nano-edr\build\obj\api.obj.tmp size=40960
+ts=1730600000910 type=file_move pid=5600 from=C:\work\nano-edr\build\obj\api.obj.tmp to=C:\work\nano-edr\build\obj\api.obj
+ts=1730600000930 type=process_end pid=5600 exit=0
+ts=1730600000950 type=process_start pid=5601 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\actions.cpp /FoC:\work\nano-edr\build\obj\actions.obj.tmp"
+ts=1730600000990 type=file_create pid=5601 path=C:\work\nano-edr\build\obj\actions.obj.tmp
+ts=1730600001030 type=file_write pid=5601 path=C:\work\nano-edr\build\obj\actions.obj.tmp size=41984
+ts=1730600001060 type=file_move pid=5601 from=C:\work\nano-edr\build\obj\actions.obj.tmp to=C:\work\nano-edr\build\obj\actions.obj
+ts=1730600001080 type=process_end pid=5601 exit=0
+ts=1730600001100 type=process_start pid=5602 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\config.cpp /FoC:\work\nano-edr\build\obj\config.obj.tmp"
+ts=1730600001140 type=file_create pid=5602 path=C:\work\nano-edr\build\obj\config.obj.tmp
+ts=1730600001180 type=file_write pid=5602 path=C:\work\nano-edr\build\obj\config.obj.tmp size=43008
+ts=1730600001210 type=file_move pid=5602 from=C:\work\nano-edr\build\obj\config.obj.tmp to=C:\work\nano-edr\build\obj\config.obj
+ts=1730600001230 type=process_end pid=5602 exit=0
+ts=1730600001250 type=process_start pid=5603 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\delivery.cpp /FoC:\work\nano-edr\build\obj\delivery.obj.tmp"
+ts=1730600001290 type=file_create pid=5603 path=C:\work\nano-edr\build\obj\delivery.obj.tmp
+ts=1730600001330 type=file_write pid=5603 path=C:\work\nano-edr\build\obj\delivery.obj.tmp size=44032
+ts=1730600001360 type=file_move pid=5603 from=C:\work\nano-edr\build\obj\delivery.obj.tmp to=C:\work\nano-edr\build\obj\delivery.obj
+ts=1730600001380 type=process_end pid=5603 exit=0
+ts=1730600001400 type=process_start pid=5604 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\event_log.cpp /FoC:\work\nano-edr\build\obj\event_log.obj.tmp"
+ts=1730600001440 type=file_create pid=5604 path=C:\work\nano-edr\build\obj\event_log.obj.tmp
+ts=1730600001480 type=file_write pid=5604 path=C:\work\nano-edr\build\obj\event_log.obj.tmp size=45056
+ts=1730600001510 type=file_move pid=5604 from=C:\work\nano-edr\build\obj\event_log.obj.tmp to=C:\work\nano-edr\build\obj\event_log.obj
+ts=1730600001530 type=process_end pid=5604 exit=0
+ts=1730600001550 type=process_start pid=5605 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\kv_parse.cpp /FoC:\work\nano-edr\build\obj\kv_parse.obj.tmp"
+ts=1730600001590 type=file_create pid=5605 path=C:\work\nano-edr\build\obj\kv_parse.obj.tmp
+ts=1730600001630 type=file_write pid=5605 path=C:\work\nano-edr\build\obj\kv_parse.obj.tmp size=46080
+ts=1730600001660 type=file_move pid=5605 from=C:\work\nano-edr\build\obj\kv_parse.obj.tmp to=C:\work\nano-edr\build\obj\kv_parse.obj
+ts=1730600001680 type=process_end pid=5605 exit=0
+ts=1730600001700 type=process_start pid=5606 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\report.cpp /FoC:\work\nano-edr\build\obj\report.obj.tmp"
+ts=1730600001740 type=file_create pid=5606 path=C:\work\nano-edr\build\obj\report.obj.tmp
+ts=1730600001780 type=file_write pid=5606 path=C:\work\nano-edr\build\obj\report.obj.tmp size=47104
+ts=1730600001810 type=file_move pid=5606 from=C:\work\nano-edr\build\obj\report.obj.tmp to=C:\work\nano-edr\build\obj\report.obj
+ts=1730600001830 type=process_end pid=5606 exit=0
+ts=1730600001850 type=process_start pid=5607 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\sim.cpp /FoC:\work\nano-edr\build\obj\sim.obj.tmp"
+ts=1730600001890 type=file_create pid=5607 path=C:\work\nano-edr\build\obj\sim.obj.tmp
+ts=1730600001930 type=file_write pid=5607 path=C:\work\nano-edr\build\obj\sim.obj.tmp size=48128
+ts=1730600001960 type=file_move pid=5607 from=C:\work\nano-edr\build\obj\sim.obj.tmp to=C:\work\nano-edr\build\obj\sim.obj
+ts=1730600001980 type=process_end pid=5607 exit=0
+ts=1730600002000 type=process_start pid=5608 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\world.cpp /FoC:\work\nano-edr\build\obj\world.obj.tmp"
+ts=1730600002040 type=file_create pid=5608 path=C:\work\nano-edr\build\obj\world.obj.tmp
+ts=1730600002080 type=file_write pid=5608 path=C:\work\nano-edr\build\obj\world.obj.tmp size=49152
+ts=1730600002110 type=file_move pid=5608 from=C:\work\nano-edr\build\obj\world.obj.tmp to=C:\work\nano-edr\build\obj\world.obj
+ts=1730600002130 type=process_end pid=5608 exit=0
+ts=1730600002150 type=process_start pid=5609 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\sink.cpp /FoC:\work\nano-edr\build\obj\sink.obj.tmp"
+ts=1730600002190 type=file_create pid=5609 path=C:\work\nano-edr\build\obj\sink.obj.tmp
+ts=1730600002230 type=file_write pid=5609 path=C:\work\nano-edr\build\obj\sink.obj.tmp size=50176
+ts=1730600002260 type=file_move pid=5609 from=C:\work\nano-edr\build\obj\sink.obj.tmp to=C:\work\nano-edr\build\obj\sink.obj
+ts=1730600002280 type=process_end pid=5609 exit=0
+ts=1730600002300 type=process_start pid=5610 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\status.cpp /FoC:\work\nano-edr\build\obj\status.obj.tmp"
+ts=1730600002340 type=file_create pid=5610 path=C:\work\nano-edr\build\obj\status.obj.tmp
+ts=1730600002380 type=file_write pid=5610 path=C:\work\nano-edr\build\obj\status.obj.tmp size=51200
+ts=1730600002410 type=file_move pid=5610 from=C:\work\nano-edr\build\obj\status.obj.tmp to=C:\work\nano-edr\build\obj\status.obj
+ts=1730600002430 type=process_end pid=5610 exit=0
+ts=1730600002450 type=process_start pid=5611 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\main.cpp /FoC:\work\nano-edr\build\obj\main.obj.tmp"
+ts=1730600002490 type=file_create pid=5611 path=C:\work\nano-edr\build\obj\main.obj.tmp
+ts=1730600002530 type=file_write pid=5611 path=C:\work\nano-edr\build\obj\main.obj.tmp size=52224
+ts=1730600002560 type=file_move pid=5611 from=C:\work\nano-edr\build\obj\main.obj.tmp to=C:\work\nano-edr\build\obj\main.obj
+ts=1730600002580 type=process_end pid=5611 exit=0
+ts=1730600002600 type=process_start pid=5612 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\engine.cpp /FoC:\work\nano-edr\build\obj\engine.obj.tmp"
+ts=1730600002640 type=file_create pid=5612 path=C:\work\nano-edr\build\obj\engine.obj.tmp
+ts=1730600002680 type=file_write pid=5612 path=C:\work\nano-edr\build\obj\engine.obj.tmp size=53248
+ts=1730600002710 type=file_move pid=5612 from=C:\work\nano-edr\build\obj\engine.obj.tmp to=C:\work\nano-edr\build\obj\engine.obj
+ts=1730600002730 type=process_end pid=5612 exit=0
+ts=1730600002750 type=process_start pid=5613 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\rules.cpp /FoC:\work\nano-edr\build\obj\rules.obj.tmp"
+ts=1730600002790 type=file_create pid=5613 path=C:\work\nano-edr\build\obj\rules.obj.tmp
+ts=1730600002830 type=file_write pid=5613 path=C:\work\nano-edr\build\obj\rules.obj.tmp size=54272
+ts=1730600002860 type=file_move pid=5613 from=C:\work\nano-edr\build\obj\rules.obj.tmp to=C:\work\nano-edr\build\obj\rules.obj
+ts=1730600002880 type=process_end pid=5613 exit=0
+ts=1730600002900 type=process_start pid=5614 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\model.cpp /FoC:\work\nano-edr\build\obj\model.obj.tmp"
+ts=1730600002940 type=file_create pid=5614 path=C:\work\nano-edr\build\obj\model.obj.tmp
+ts=1730600002980 type=file_write pid=5614 path=C:\work\nano-edr\build\obj\model.obj.tmp size=55296
+ts=1730600003010 type=file_move pid=5614 from=C:\work\nano-edr\build\obj\model.obj.tmp to=C:\work\nano-edr\build\obj\model.obj
+ts=1730600003030 type=process_end pid=5614 exit=0
+ts=1730600003050 type=process_start pid=5615 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\planner.cpp /FoC:\work\nano-edr\build\obj\planner.obj.tmp"
+ts=1730600003090 type=file_create pid=5615 path=C:\work\nano-edr\build\obj\planner.obj.tmp
+ts=1730600003130 type=file_write pid=5615 path=C:\work\nano-edr\build\obj\planner.obj.tmp size=56320
+ts=1730600003160 type=file_move pid=5615 from=C:\work\nano-edr\build\obj\planner.obj.tmp to=C:\work\nano-edr\build\obj\planner.obj
+ts=1730600003180 type=process_end pid=5615 exit=0
+ts=1730600003200 type=process_start pid=5616 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\loader.cpp /FoC:\work\nano-edr\build\obj\loader.obj.tmp"
+ts=1730600003240 type=file_create pid=5616 path=C:\work\nano-edr\build\obj\loader.obj.tmp
+ts=1730600003280 type=file_write pid=5616 path=C:\work\nano-edr\build\obj\loader.obj.tmp size=57344
+ts=1730600003310 type=file_move pid=5616 from=C:\work\nano-edr\build\obj\loader.obj.tmp to=C:\work\nano-edr\build\obj\loader.obj
+ts=1730600003330 type=process_end pid=5616 exit=0
+ts=1730600003350 type=process_start pid=5617 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\source.cpp /FoC:\work\nano-edr\build\obj\source.obj.tmp"
+ts=1730600003390 type=file_create pid=5617 path=C:\work\nano-edr\build\obj\source.obj.tmp
+ts=1730600003430 type=file_write pid=5617 path=C:\work\nano-edr\build\obj\source.obj.tmp size=58368
+ts=1730600003460 type=file_move pid=5617 from=C:\work\nano-edr\build\obj\source.obj.tmp to=C:\work\nano-edr\build\obj\source.obj
+ts=1730600003480 type=process_end pid=5617 exit=0
+ts=1730600003500 type=process_start pid=5618 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\queue.cpp /FoC:\work\nano-edr\build\obj\queue.obj.tmp"
+ts=1730600003540 type=file_create pid=5618 path=C:\work\nano-edr\build\obj\queue.obj.tmp
+ts=1730600003580 type=file_write pid=5618 path=C:\work\nano-edr\build\obj\queue.obj.tmp size=59392
+ts=1730600003610 type=file_move pid=5618 from=C:\work\nano-edr\build\obj\queue.obj.tmp to=C:\work\nano-edr\build\obj\queue.obj
+ts=1730600003630 type=process_end pid=5618 exit=0
+ts=1730600003650 type=process_start pid=5619 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\clock.cpp /FoC:\work\nano-edr\build\obj\clock.obj.tmp"
+ts=1730600003690 type=file_create pid=5619 path=C:\work\nano-edr\build\obj\clock.obj.tmp
+ts=1730600003730 type=file_write pid=5619 path=C:\work\nano-edr\build\obj\clock.obj.tmp size=60416
+ts=1730600003760 type=file_move pid=5619 from=C:\work\nano-edr\build\obj\clock.obj.tmp to=C:\work\nano-edr\build\obj\clock.obj
+ts=1730600003780 type=process_end pid=5619 exit=0
+ts=1730600003800 type=process_start pid=5620 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\format.cpp /FoC:\work\nano-edr\build\obj\format.obj.tmp"
+ts=1730600003840 type=file_create pid=5620 path=C:\work\nano-edr\build\obj\format.obj.tmp
+ts=1730600003880 type=file_write pid=5620 path=C:\work\nano-edr\build\obj\format.obj.tmp size=61440
+ts=1730600003910 type=file_move pid=5620 from=C:\work\nano-edr\build\obj\format.obj.tmp to=C:\work\nano-edr\build\obj\format.obj
+ts=1730600003930 type=process_end pid=5620 exit=0
+ts=1730600003950 type=process_start pid=5621 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\hash.cpp /FoC:\work\nano-edr\build\obj\hash.obj.tmp"
+ts=1730600003990 type=file_create pid=5621 path=C:\work\nano-edr\build\obj\hash.obj.tmp
+ts=1730600004030 type=file_write pid=5621 path=C:\work\nano-edr\build\obj\hash.obj.tmp size=62464
+ts=1730600004060 type=file_move pid=5621 from=C:\work\nano-edr\build\obj\hash.obj.tmp to=C:\work\nano-edr\build\obj\hash.obj
+ts=1730600004080 type=process_end pid=5621 exit=0
+ts=1730600004100 type=process_start pid=5622 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\log.cpp /FoC:\work\nano-edr\build\obj\log.obj.tmp"
+ts=1730600004140 type=file_create pid=5622 path=C:\work\nano-edr\build\obj\log.obj.tmp
+ts=1730600004180 type=file_write pid=5622 path=C:\work\nano-edr\build\obj\log.obj.tmp size=63488
+ts=1730600004210 type=file_move pid=5622 from=C:\work\nano-edr\build\obj\log.obj.tmp to=C:\work\nano-edr\build\obj\log.obj
+ts=1730600004230 type=process_end pid=5622 exit=0
+ts=1730600004250 type=process_start pid=5623 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\util.cpp /FoC:\work\nano-edr\build\obj\util.obj.tmp"
+ts=1730600004290 type=file_create pid=5623 path=C:\work\nano-edr\build\obj\util.obj.tmp
+ts=1730600004330 type=file_write pid=5623 path=C:\work\nano-edr\build\obj\util.obj.tmp size=64512
+ts=1730600004360 type=file_move pid=5623 from=C:\work\nano-edr\build\obj\util.obj.tmp to=C:\work\nano-edr\build\obj\util.obj
+ts=1730600004380 type=process_end pid=5623 exit=0
+ts=1730600004400 type=process_start pid=5624 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\detect.cpp /FoC:\work\nano-edr\build\obj\detect.obj.tmp"
+ts=1730600004440 type=file_create pid=5624 path=C:\work\nano-edr\build\obj\detect.obj.tmp
+ts=1730600004480 type=file_write pid=5624 path=C:\work\nano-edr\build\obj\detect.obj.tmp size=65536
+ts=1730600004510 type=file_move pid=5624 from=C:\work\nano-edr\build\obj\detect.obj.tmp to=C:\work\nano-edr\build\obj\detect.obj
+ts=1730600004530 type=process_end pid=5624 exit=0
+ts=1730600004550 type=process_start pid=5625 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\window.cpp /FoC:\work\nano-edr\build\obj\window.obj.tmp"
+ts=1730600004590 type=file_create pid=5625 path=C:\work\nano-edr\build\obj\window.obj.tmp
+ts=1730600004630 type=file_write pid=5625 path=C:\work\nano-edr\build\obj\window.obj.tmp size=66560
+ts=1730600004660 type=file_move pid=5625 from=C:\work\nano-edr\build\obj\window.obj.tmp to=C:\work\nano-edr\build\obj\window.obj
+ts=1730600004680 type=process_end pid=5625 exit=0
+ts=1730600004700 type=process_start pid=5626 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\threshold.cpp /FoC:\work\nano-edr\build\obj\threshold.obj.tmp"
+ts=1730600004740 type=file_create pid=5626 path=C:\work\nano-edr\build\obj\threshold.obj.tmp
+ts=1730600004780 type=file_write pid=5626 path=C:\work\nano-edr\build\obj\threshold.obj.tmp size=67584
+ts=1730600004810 type=file_move pid=5626 from=C:\work\nano-edr\build\obj\threshold.obj.tmp to=C:\work\nano-edr\build\obj\threshold.obj
+ts=1730600004830 type=process_end pid=5626 exit=0
+ts=1730600004850 type=process_start pid=5627 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\sequence.cpp /FoC:\work\nano-edr\build\obj\sequence.obj.tmp"
+ts=1730600004890 type=file_create pid=5627 path=C:\work\nano-edr\build\obj\sequence.obj.tmp
+ts=1730600004930 type=file_write pid=5627 path=C:\work\nano-edr\build\obj\sequence.obj.tmp size=68608
+ts=1730600004960 type=file_move pid=5627 from=C:\work\nano-edr\build\obj\sequence.obj.tmp to=C:\work\nano-edr\build\obj\sequence.obj
+ts=1730600004980 type=process_end pid=5627 exit=0
+ts=1730600005000 type=process_start pid=5628 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\match.cpp /FoC:\work\nano-edr\build\obj\match.obj.tmp"
+ts=1730600005040 type=file_create pid=5628 path=C:\work\nano-edr\build\obj\match.obj.tmp
+ts=1730600005080 type=file_write pid=5628 path=C:\work\nano-edr\build\obj\match.obj.tmp size=69632
+ts=1730600005110 type=file_move pid=5628 from=C:\work\nano-edr\build\obj\match.obj.tmp to=C:\work\nano-edr\build\obj\match.obj
+ts=1730600005130 type=process_end pid=5628 exit=0
+ts=1730600005150 type=process_start pid=5629 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\lambda.cpp /FoC:\work\nano-edr\build\obj\lambda.obj.tmp"
+ts=1730600005190 type=file_create pid=5629 path=C:\work\nano-edr\build\obj\lambda.obj.tmp
+ts=1730600005230 type=file_write pid=5629 path=C:\work\nano-edr\build\obj\lambda.obj.tmp size=70656
+ts=1730600005260 type=file_move pid=5629 from=C:\work\nano-edr\build\obj\lambda.obj.tmp to=C:\work\nano-edr\build\obj\lambda.obj
+ts=1730600005280 type=process_end pid=5629 exit=0
+ts=1730600005300 type=process_start pid=5630 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\tree.cpp /FoC:\work\nano-edr\build\obj\tree.obj.tmp"
+ts=1730600005340 type=file_create pid=5630 path=C:\work\nano-edr\build\obj\tree.obj.tmp
+ts=1730600005380 type=file_write pid=5630 path=C:\work\nano-edr\build\obj\tree.obj.tmp size=71680
+ts=1730600005410 type=file_move pid=5630 from=C:\work\nano-edr\build\obj\tree.obj.tmp to=C:\work\nano-edr\build\obj\tree.obj
+ts=1730600005430 type=process_end pid=5630 exit=0
+ts=1730600005450 type=process_start pid=5631 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\chain.cpp /FoC:\work\nano-edr\build\obj\chain.obj.tmp"
+ts=1730600005490 type=file_create pid=5631 path=C:\work\nano-edr\build\obj\chain.obj.tmp
+ts=1730600005530 type=file_write pid=5631 path=C:\work\nano-edr\build\obj\chain.obj.tmp size=72704
+ts=1730600005560 type=file_move pid=5631 from=C:\work\nano-edr\build\obj\chain.obj.tmp to=C:\work\nano-edr\build\obj\chain.obj
+ts=1730600005580 type=process_end pid=5631 exit=0
+ts=1730600005600 type=process_start pid=5632 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\filter.cpp /FoC:\work\nano-edr\build\obj\filter.obj.tmp"
+ts=1730600005640 type=file_create pid=5632 path=C:\work\nano-edr\build\obj\filter.obj.tmp
+ts=1730600005680 type=file_write pid=5632 path=C:\work\nano-edr\build\obj\filter.obj.tmp size=73728
+ts=1730600005710 type=file_move pid=5632 from=C:\work\nano-edr\build\obj\filter.obj.tmp to=C:\work\nano-edr\build\obj\filter.obj
+ts=1730600005730 type=process_end pid=5632 exit=0
+ts=1730600005750 type=process_start pid=5633 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\sink_file.cpp /FoC:\work\nano-edr\build\obj\sink_file.obj.tmp"
+ts=1730600005790 type=file_create pid=5633 path=C:\work\nano-edr\build\obj\sink_file.obj.tmp
+ts=1730600005830 type=file_write pid=5633 path=C:\work\nano-edr\build\obj\sink_file.obj.tmp size=74752
+ts=1730600005860 type=file_move pid=5633 from=C:\work\nano-edr\build\obj\sink_file.obj.tmp to=C:\work\nano-edr\build\obj\sink_file.obj
+ts=1730600005880 type=process_end pid=5633 exit=0
+ts=1730600005900 type=process_start pid=5634 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\sink_edr.cpp /FoC:\work\nano-edr\build\obj\sink_edr.obj.tmp"
+ts=1730600005940 type=file_create pid=5634 path=C:\work\nano-edr\build\obj\sink_edr.obj.tmp
+ts=1730600005980 type=file_write pid=5634 path=C:\work\nano-edr\build\obj\sink_edr.obj.tmp size=75776
+ts=1730600006010 type=file_move pid=5634 from=C:\work\nano-edr\build\obj\sink_edr.obj.tmp to=C:\work\nano-edr\build\obj\sink_edr.obj
+ts=1730600006030 type=process_end pid=5634 exit=0
+ts=1730600006050 type=process_start pid=5635 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\sink_console.cpp /FoC:\work\nano-edr\build\obj\sink_console.obj.tmp"
+ts=1730600006090 type=file_create pid=5635 path=C:\work\nano-edr\build\obj\sink_console.obj.tmp
+ts=1730600006130 type=file_write pid=5635 path=C:\work\nano-edr\build\obj\sink_console.obj.tmp size=76800
+ts=1730600006160 type=file_move pid=5635 from=C:\work\nano-edr\build\obj\sink_console.obj.tmp to=C:\work\nano-edr\build\obj\sink_console.obj
+ts=1730600006180 type=process_end pid=5635 exit=0
+ts=1730600006200 type=process_start pid=5636 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\args.cpp /FoC:\work\nano-edr\build\obj\args.obj.tmp"
+ts=1730600006240 type=file_create pid=5636 path=C:\work\nano-edr\build\obj\args.obj.tmp
+ts=1730600006280 type=file_write pid=5636 path=C:\work\nano-edr\build\obj\args.obj.tmp size=77824
+ts=1730600006310 type=file_move pid=5636 from=C:\work\nano-edr\build\obj\args.obj.tmp to=C:\work\nano-edr\build\obj\args.obj
+ts=1730600006330 type=process_end pid=5636 exit=0
+ts=1730600006350 type=process_start pid=5637 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\paths.cpp /FoC:\work\nano-edr\build\obj\paths.obj.tmp"
+ts=1730600006390 type=file_create pid=5637 path=C:\work\nano-edr\build\obj\paths.obj.tmp
+ts=1730600006430 type=file_write pid=5637 path=C:\work\nano-edr\build\obj\paths.obj.tmp size=78848
+ts=1730600006460 type=file_move pid=5637 from=C:\work\nano-edr\build\obj\paths.obj.tmp to=C:\work\nano-edr\build\obj\paths.obj
+ts=1730600006480 type=process_end pid=5637 exit=0
+ts=1730600006500 type=process_start pid=5638 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\bench.cpp /FoC:\work\nano-edr\build\obj\bench.obj.tmp"
+ts=1730600006540 type=file_create pid=5638 path=C:\work\nano-edr\build\obj\bench.obj.tmp
+ts=1730600006580 type=file_write pid=5638 path=C:\work\nano-edr\build\obj\bench.obj.tmp size=79872
+ts=1730600006610 type=file_move pid=5638 from=C:\work\nano-edr\build\obj\bench.obj.tmp to=C:\work\nano-edr\build\obj\bench.obj
+ts=1730600006630 type=process_end pid=5638 exit=0
+ts=1730600006650 type=process_start pid=5639 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\cl.exe" cmdline="cl.exe /c /std:c++latest src\stress.cpp /FoC:\work\nano-edr\build\obj\stress.obj.tmp"
+ts=1730600006690 type=file_create pid=5639 path=C:\work\nano-edr\build\obj\stress.obj.tmp
+ts=1730600006730 type=file_write pid=5639 path=C:\work\nano-edr\build\obj\stress.obj.tmp size=80896
+ts=1730600006760 type=file_move pid=5639 from=C:\work\nano-edr\build\obj\stress.obj.tmp to=C:\work\nano-edr\build\obj\stress.obj
+ts=1730600006780 type=process_end pid=5639 exit=0
+ts=1730600007000 type=process_start pid=5990 ppid=5520 image="C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44\bin\Hostx64\x64\link.exe" cmdline="link.exe /out:build\nano-edr.exe build\obj\*.obj"
+ts=1730600007200 type=file_create pid=5990 path=C:\work\nano-edr\build\nano-edr.exe.tmp
+ts=1730600007500 type=file_write pid=5990 path=C:\work\nano-edr\build\nano-edr.exe.tmp size=1048576
+ts=1730600007600 type=file_move pid=5990 from=C:\work\nano-edr\build\nano-edr.exe.tmp to=C:\work\nano-edr\build\nano-edr.exe
+ts=1730600007700 type=process_end pid=5990 exit=0
+ts=1730600008000 type=process_end pid=5520 exit=0
+ts=1730600008200 type=process_end pid=5510 exit=0
+ts=1730600008800 type=process_start pid=6100 ppid=2500 image=C:\work\nano-edr\build\nano-edr.exe cmdline="nano-edr.exe --selftest" user=DESKTOP\max
+ts=1730600009600 type=process_end pid=6100 exit=0

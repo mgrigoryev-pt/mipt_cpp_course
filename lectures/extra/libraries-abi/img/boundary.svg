@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 440" width="1060" height="440"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif"
+     role="img" aria-label="Граница os.h в три слоя. Сверху ваш код на C++23: RAII-хендл, std::expected, лямбда через трамплин. Посередине граница extern C: через неё проходят числа фиксированного размера, строки на время вызова, POD-структуры с буферами, непрозрачный хендл, указатель на функцию с void* ctx и код возврата; не проходят std::string и контейнеры, исключения, классы с виртуальными функциями и память, которую освобождает другая сторона. Снизу os.dll, внутри тоже C++23: она импортирует MSVCP140.dll и VCRUNTIME140.dll">
+  <style>
+    .band{fill:rgba(255,255,255,0.04);stroke:#dbdfe6;stroke-width:1.5}
+    .edge{fill:rgba(255,255,255,0.02);stroke:#dbdfe6;stroke-width:2}
+    .h{fill:#dbdfe6;font-size:14px;font-weight:600;letter-spacing:.06em}
+    .t{fill:#dbdfe6;font-size:15px}
+    .m{fill:#dbdfe6;font-size:14px;font-family:Consolas, Roboto Mono, monospace}
+    .s{fill:#80828c;font-size:14px}
+    .ok{fill:#dbdfe6;font-size:15px}
+    .bad{fill:#ff2020;font-size:15px}
+    .sep{stroke:#26262b;stroke-width:1.5}
+  </style>
+
+  <rect x="1" y="1" width="1058" height="438" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- ваш код -->
+  <rect class="band" x="40" y="30" width="980" height="86"/>
+  <text class="h" x="60" y="58">ВАШ КОД · C++23</text>
+  <text class="t" x="60" y="88">RAII-хендл вместо ручного <tspan class="m">os_free</tspan>, <tspan class="m">std::expected</tspan> вместо <tspan class="m">os_status</tspan>, лямбда через трамплин</text>
+  <text class="s" x="60" y="106">лекции 10 и 14: обёртка превращает C-интерфейс в нормальный C++</text>
+
+  <!-- граница -->
+  <rect class="edge" x="40" y="136" width="980" height="178"/>
+  <text class="h" x="60" y="164">ГРАНИЦА · os.h, extern "C"</text>
+  <line class="sep" x1="530" y1="178" x2="530" y2="302"/>
+
+  <text class="s" x="60" y="190">проходит</text>
+  <text class="ok" x="60" y="214">✓  числа фиксированного размера: <tspan class="m">uint32_t</tspan>, <tspan class="m">uint64_t</tspan></text>
+  <text class="ok" x="60" y="238">✓  <tspan class="m">const char*</tspan> — на время вызова</text>
+  <text class="ok" x="60" y="262">✓  POD-структуры с буферами фиксированного размера</text>
+  <text class="ok" x="60" y="286">✓  непрозрачный <tspan class="m">os_handle*</tspan> и код <tspan class="m">os_status</tspan></text>
+  <text class="ok" x="60" y="308">✓  указатель на функцию и <tspan class="m">void* ctx</tspan></text>
+
+  <text class="s" x="550" y="190">не проходит</text>
+  <text class="bad" x="550" y="214">✗  <tspan font-family="Consolas, Roboto Mono, monospace" font-size="14">std::string</tspan>, <tspan font-family="Consolas, Roboto Mono, monospace" font-size="14">std::vector</tspan> и прочее из <tspan font-family="Consolas, Roboto Mono, monospace" font-size="14">std</tspan></text>
+  <text class="bad" x="550" y="238">✗  исключения — ни туда, ни обратно</text>
+  <text class="bad" x="550" y="262">✗  классы с виртуальными функциями</text>
+  <text class="bad" x="550" y="286">✗  память, которую освобождает</text>
+  <text class="bad" x="574" y="308">не тот, кто её выделил</text>
+
+  <!-- библиотека -->
+  <rect class="band" x="40" y="334" width="980" height="86"/>
+  <text class="h" x="60" y="362">os.dll · ВНУТРИ ТОЖЕ C++23</text>
+  <text class="t" x="60" y="392">импортирует <tspan class="m">MSVCP140.dll</tspan> — стандартную библиотеку C++: потоки, файловые потоки, строки. Наружу из этого не выходит ничего</text>
+  <text class="s" x="60" y="410">таблица импорта снята llvm-readobj с os.dll из комплекта</text>
+</svg>

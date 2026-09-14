@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="(empty)"
+	BuildStamp="20260913-1430-Experimental"
+	Name="(empty)"
+	Generator="ctest-4.4.3"
+	CompilerName=""
+	CompilerVersion=""
+	OSName="Windows"
+	Hostname="Fedor"
+	OSRelease="10.0.26200"
+	OSVersion="Windows 10"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString="AuthenticAMD"
+	VendorID="Advanced Micro Devices"
+	FamilyID="15"
+	ModelID="4"
+	ModelName="AMD Ryzen 5 6600H with Radeon Graphics"
+	ProcessorCacheSize="64"
+	NumberOfLogicalCPU="12"
+	NumberOfPhysicalCPU="6"
+	TotalVirtualMemory="18432"
+	TotalPhysicalMemory="15556"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="3301.000000"
+	>
+	<Testing>
+		<StartDateTime>Sep 14 00:05 Russia TZ 2 Standard Time</StartDateTime>
+		<StartTestTime>1789333538</StartTestTime>
+		<TestList>
+			<Test>./task1_1/task1.1.ransomware</Test>
+		</TestList>
+		<Test Status="passed">
+			<Name>task1.1.ransomware</Name>
+			<Path>./task1_1</Path>
+			<FullName>./task1_1/task1.1.ransomware</FullName>
+			<FullCommandLine>D:\Programs\CMake\bin\cmake.exe "-DEXE=D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/Release/nano-edr.exe" "-DLOG=D:/C++Projects/test/mipt_cpp_course-main/project/scenarios/ransomware.log" "-DEXPECTED=D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/expected/ransomware.out" "-P" "D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/run_case.cmake"</FullCommandLine>
+			<StartTestTime>1789333538.669014</StartTestTime>
+			<Results>
+				<NamedMeasurement type="numeric/double" name="Execution Time">
+					<Value>0.047611</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="numeric/double" name="Processors">
+					<Value>1</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Completion Status">
+					<Value>Completed</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Command Line">
+					<Value>D:\Programs\CMake\bin\cmake.exe "-DEXE=D:/C++Projects/test/mipt_cpp_course-main/project/build/windows/Release/nano-edr.exe" "-DLOG=D:/C++Projects/test/mipt_cpp_course-main/project/scenarios/ransomware.log" "-DEXPECTED=D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/expected/ransomware.out" "-P" "D:/C++Projects/test/mipt_cpp_course-main/project/tasks/1.1/tests/run_case.cmake"</Value>
+				</NamedMeasurement>
+				<NamedMeasurement type="text/string" name="Environment">
+					<Value>#CTEST_RESOURCE_GROUP_COUNT=</Value>
+				</NamedMeasurement>
+				<Measurement>
+					<Value></Value>
+				</Measurement>
+			</Results>
+		</Test>
+		<EndDateTime>Sep 14 00:05 Russia TZ 2 Standard Time</EndDateTime>
+		<EndTestTime>1789333538</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>

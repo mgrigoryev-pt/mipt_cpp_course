@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 320" width="1060" height="320"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="10" markerHeight="10" refX="9" refY="4"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,4 L0,8 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="318" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="380" y="56" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">now − max_age</text>
+  <line x1="380" y1="68" x2="380" y2="204" stroke="#dbdfe6" stroke-width="1.5"
+        stroke-dasharray="7 6"/>
+
+  <!-- выброшенные -->
+  <rect x="140" y="120" width="80" height="64" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <rect x="220" y="120" width="80" height="64" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+  <rect x="300" y="120" width="80" height="64" fill="none" stroke="#5c5e66"
+        stroke-width="1.5" stroke-dasharray="7 6"/>
+
+  <!-- окно -->
+  <rect x="380" y="120" width="80" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="460" y="120" width="80" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="540" y="120" width="80" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="620" y="120" width="80" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="700" y="120" width="80" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="780" y="120" width="80" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <rect x="860" y="120" width="80" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+
+  <text x="240" y="160" font-size="16" fill="#5c5e66">старое</text>
+  <text x="884" y="160" font-size="16" fill="#dbdfe6">новое</text>
+
+  <!-- pop_front слева -->
+  <text x="92" y="106" font-size="16" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">pop_front()</text>
+  <line x1="136" y1="152" x2="54" y2="152" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+
+  <!-- push_back справа -->
+  <text x="978" y="106" font-size="16" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">push_back()</text>
+  <line x1="1022" y1="152" x2="946" y2="152" stroke="#ff8a8a" stroke-width="2.5"
+        marker-end="url(#pink)"/>
+
+  <path d="M 380 192 L 380 204 L 940 204 L 940 192" fill="none" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="660" y="230" font-size="16" text-anchor="middle" fill="#dbdfe6">окно: не старше
+    <tspan font-family="Consolas, Roboto Mono, monospace">max_age</tspan> и не длиннее
+    <tspan font-family="Consolas, Roboto Mono, monospace">max_count</tspan></text>
+  <text x="260" y="230" font-size="15" text-anchor="middle" fill="#80828c">уже выброшены</text>
+
+  <text x="530" y="272" font-size="16" text-anchor="middle" fill="#80828c">
+    <tspan font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">trim_by_age</tspan> — пока голова старше срока, снимать голову</text>
+  <text x="530" y="298" font-size="16" text-anchor="middle" fill="#80828c">
+    <tspan font-family="Consolas, Roboto Mono, monospace" fill="#dbdfe6">trim_by_size</tspan> — пока записей больше потолка, снимать голову</text>
+</svg>

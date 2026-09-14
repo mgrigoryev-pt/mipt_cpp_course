@@ -1,0 +1,4 @@
+task1.1.clean_office 5 0.0100429
+task1.1.phishing_macro 5 0.0101884
+task1.1.ransomware 5 0.00952222
+---

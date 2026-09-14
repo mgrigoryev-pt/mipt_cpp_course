@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 250" width="1060" height="250"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <rect x="1" y="1" width="1058" height="248" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <g font-family="Consolas, Roboto Mono, monospace" font-size="16" fill="#dbdfe6">
+    <rect x="40" y="32" width="360" height="38" rx="6" fill="rgba(255,255,255,0.05)" stroke="#3a3a40"/>
+    <text x="56" y="57">~unique_ptr, delete узел 1</text>
+    <rect x="90" y="80" width="360" height="38" rx="6" fill="rgba(255,255,255,0.05)" stroke="#3a3a40"/>
+    <text x="106" y="105">~unique_ptr, delete узел 2</text>
+    <rect x="140" y="128" width="360" height="38" rx="6" fill="rgba(255,255,255,0.05)" stroke="#3a3a40"/>
+    <text x="156" y="153">~unique_ptr, delete узел 3</text>
+    <text x="196" y="196" font-size="22" fill="#80828c">...</text>
+  </g>
+
+  <text x="560" y="72" font-size="18" fill="#dbdfe6">Каждый узел разрушает следующий</text>
+  <text x="560" y="102" font-size="18" fill="#dbdfe6">вложенным вызовом, а не по очереди.</text>
+  <text x="560" y="146" font-size="18" fill="#ff2020">Глубина вложенности равна длине списка,</text>
+  <text x="560" y="174" font-size="18" fill="#ff2020">и стек кончается в момент разрушения.</text>
+</svg>

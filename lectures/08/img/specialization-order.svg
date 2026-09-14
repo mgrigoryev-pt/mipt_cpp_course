@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 360" width="1060" height="360"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="358" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <text x="330" y="56" font-size="18" text-anchor="middle" fill="#dbdfe6">паттерны: сверху широкий, снизу узкий</text>
+  <text x="825" y="56" font-size="18" text-anchor="middle" fill="#dbdfe6">обращение</text>
+
+  <!-- основной шаблон -->
+  <rect x="70" y="86" width="520" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="330" y="112" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Encoder&lt;T, U&gt;</text>
+  <text x="330" y="132" font-size="14" text-anchor="middle" fill="#80828c">основной шаблон — любая пара типов</text>
+
+  <!-- частичная -->
+  <rect x="130" y="168" width="400" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="330" y="194" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Encoder&lt;T, std::string&gt;</text>
+  <text x="330" y="214" font-size="14" text-anchor="middle" fill="#80828c">частичная — U зафиксирован, T свободен</text>
+
+  <!-- полная -->
+  <rect x="190" y="250" width="280" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="330" y="276" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Encoder&lt;int, std::string&gt;</text>
+  <text x="330" y="296" font-size="14" text-anchor="middle" fill="#80828c">полная — зафиксированы оба</text>
+
+  <!-- обращения -->
+  <rect x="640" y="86" width="370" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="825" y="112" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Encoder&lt;int, int&gt;</text>
+  <text x="825" y="132" font-size="14" text-anchor="middle" fill="#80828c">уже не подходит — берётся основной</text>
+
+  <rect x="640" y="168" width="370" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="825" y="194" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Encoder&lt;double, std::string&gt;</text>
+  <text x="825" y="214" font-size="14" text-anchor="middle" fill="#80828c">подходит частичная, полная — нет</text>
+
+  <rect x="640" y="250" width="370" height="58" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="825" y="276" font-size="17" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Encoder&lt;int, std::string&gt;</text>
+  <text x="825" y="296" font-size="14" text-anchor="middle" fill="#80828c">подходят все три — берётся самая узкая</text>
+
+  <!-- стрелки выбора -->
+  <line x1="634" y1="115" x2="598" y2="115" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <line x1="634" y1="197" x2="538" y2="197" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+  <line x1="634" y1="279" x2="478" y2="279" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <text x="530" y="340" font-size="16" text-anchor="middle" fill="#dbdfe6">побеждает самый узкий подходящий паттерн</text>
+</svg>
