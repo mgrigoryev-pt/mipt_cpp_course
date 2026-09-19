@@ -1,7 +1,7 @@
 # Тесты, выдаваемые на занятии 1.3.
 #
-# Проверяют слой доступа к полям и механику таблицы правил: «таблица тестов
-# на каждую функцию» из задания. Подключение — см. постановку занятия.
+# Проверяют функции доступа к полям и механику таблицы правил.
+# Подключение — см. постановку занятия.
 #
 # Правьте этот файл, только если понимаете, зачем: он же прогоняется при сдаче.
 
@@ -22,7 +22,8 @@ get_filename_component(NANO_EDR_KIT_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../.." AB
 add_executable(task1_3_tests
     ${NANO_EDR_KIT_ROOT}/tests/doctest_main.cpp
     ${CMAKE_CURRENT_LIST_DIR}/fields_tests.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/rules_tests.cpp)
+    ${CMAKE_CURRENT_LIST_DIR}/rules_tests.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/scenario_tests.cpp)
 
 target_include_directories(task1_3_tests PRIVATE
     ${NANO_EDR_KIT_ROOT}/tests/third_party)
