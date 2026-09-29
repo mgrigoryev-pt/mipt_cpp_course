@@ -97,6 +97,42 @@ TEST_CASE("подписка, старт и ожидание доводят по�
     handle.Stop();
 }
 
+TEST_CASE("повторная подписка — исключение") {
+    // Подписчик у границы один, отписки нет: заменять подписчика нечем.
+    OsHandle handle(ScenarioPath("clean_office.log"));
+
+    handle.Subscribe(CountingCallback, nullptr);
+    CHECK_THROWS_AS(handle.Subscribe(CountingCallback, nullptr),
+                    std::runtime_error);
+}
+
+TEST_CASE("подписка после старта — исключение") {
+    // Запуск без подписки разрешён, а подписка после запуска — ошибка порядка
+    // вызовов, то есть ошибка в коде.
+    OsHandle handle(ScenarioPath("clean_office.log"));
+
+    handle.Start();
+    CHECK_THROWS_AS(handle.Subscribe(CountingCallback, nullptr),
+                    std::runtime_error);
+}
+
+TEST_CASE("повторный старт — исключение") {
+    OsHandle handle(ScenarioPath("clean_office.log"));
+
+    handle.Start();
+    CHECK_THROWS_AS(handle.Start(), std::runtime_error);
+}
+
+TEST_CASE("Wait возвращает код ошибки, а не бросает") {
+    // Решать, что делать с кодом, должен вызывающий. Wait до Start —
+    // OS_NOT_STARTED.
+    OsHandle handle(ScenarioPath("clean_office.log"));
+
+    os_status status = OS_OK;
+    CHECK_NOTHROW(status = handle.Wait(100));
+    CHECK(status == OS_NOT_STARTED);
+}
+
 TEST_CASE("Stop можно звать повторно") {
     // Остановка остановленного — нормальный ход событий, а не ошибка:
     // вызывающему всё равно нечем на неё ответить.
