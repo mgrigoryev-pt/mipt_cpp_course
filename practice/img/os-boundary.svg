@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 420" width="1060" height="420"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="flow" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#dbdfe6"/>
+    </marker>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+    <marker id="grey" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#80828c"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="418" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- стена границы -->
+  <rect x="336" y="66" width="8" height="300" fill="#26262b"/>
+  <text x="175" y="46" font-size="14" text-anchor="middle" fill="#5c5e66">система</text>
+  <text x="340" y="46" font-size="13" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">os.h</text>
+  <text x="710" y="46" font-size="14" text-anchor="middle" fill="#5c5e66">агент на C++</text>
+
+  <!-- симулятор -->
+  <rect x="60" y="110" width="250" height="110" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="185" y="152" font-size="18" text-anchor="middle" fill="#dbdfe6">библиотека os</text>
+  <text x="185" y="178" font-size="13" text-anchor="middle" fill="#80828c">выдана собранной,</text>
+  <text x="185" y="198" font-size="13" text-anchor="middle" fill="#80828c">зовёт колбэк на каждое событие</text>
+
+  <line x1="310" y1="165" x2="394" y2="165" stroke="#dbdfe6" stroke-width="2" marker-end="url(#flow)"/>
+  <text x="352" y="100" font-size="12" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">os_event*, ctx</text>
+
+  <!-- трамплин -->
+  <rect x="400" y="110" width="290" height="110" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="545" y="140" font-size="16" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Agent::OnEvent</text>
+  <text x="545" y="161" font-size="12" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">(const os_event*, void* ctx)</text>
+  <text x="545" y="183" font-size="12" text-anchor="middle" fill="#5c5e66">noexcept, тело в try / catch (...)</text>
+  <text x="545" y="206" font-size="13" text-anchor="middle" fill="#ff8a8a"
+        font-family="Consolas, Roboto Mono, monospace">static_cast&lt;Agent*&gt;(ctx)</text>
+  <text x="545" y="246" font-size="13" text-anchor="middle" fill="#80828c">трамплин: статический метод, без this</text>
+
+  <line x1="690" y1="165" x2="784" y2="165" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <!-- обычный метод -->
+  <rect x="790" y="110" width="230" height="110" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="905" y="152" font-size="15" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">agent.HandleEvent</text>
+  <text x="905" y="178" font-size="13" text-anchor="middle" fill="#80828c">правила, окно,</text>
+  <text x="905" y="198" font-size="13" text-anchor="middle" fill="#80828c">счётчики сводки</text>
+
+  <!-- время жизни строк -->
+  <text x="545" y="273" font-size="13" text-anchor="middle" fill="#ff2020">сохранённый const char* из события — use-after-free</text>
+
+  <rect x="400" y="290" width="290" height="80" fill="none" stroke="#3a3a40"
+        stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="545" y="322" font-size="15" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">os_event</text>
+  <text x="545" y="346" font-size="12" text-anchor="middle" fill="#5c5e66">строки живут до возврата из колбэка</text>
+
+  <line x1="690" y1="330" x2="784" y2="330" stroke="#80828c" stroke-width="2" marker-end="url(#grey)"/>
+  <text x="737" y="318" font-size="12" text-anchor="middle" fill="#80828c">копия</text>
+
+  <rect x="790" y="290" width="230" height="80" fill="rgba(255,255,255,0.05)"
+        stroke="#dbdfe6" stroke-width="2"/>
+  <text x="905" y="322" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Event</text>
+  <text x="905" y="346" font-size="12" text-anchor="middle" fill="#80828c">свои копии строк</text>
+</svg>
