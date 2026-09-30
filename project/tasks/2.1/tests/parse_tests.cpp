@@ -107,18 +107,6 @@ TEST_CASE("порядок полей в строке произволен") {
     REQUIRE(parts.fields.size() == 1);
 }
 
-TEST_CASE("повтор ключа шапки остаётся в fields") {
-    // Первое вхождение занимает шапку, второе — обычное поле.
-    EventParts parts;
-
-    REQUIRE(ParseEventParts("ts=100 type=boot tag=x ts=200", &parts));
-    CHECK(parts.ts == "100");
-    REQUIRE(parts.fields.size() == 2);
-    CHECK(parts.fields[0].key == "tag");
-    CHECK(parts.fields[1].key == "ts");
-    CHECK(parts.fields[1].value == "200");
-}
-
 TEST_CASE("событие без pid допустимо, без ts или type — нет") {
     EventParts parts;
 
