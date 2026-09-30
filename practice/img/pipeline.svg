@@ -14,7 +14,7 @@
   <rect x="1" y="1" width="1058" height="318" rx="16" fill="#0b0b0d" stroke="#26262b"/>
 
   <!-- ================= выдано комплектом ================= -->
-  <text x="40" y="38" font-size="16" fill="#5c5e66">выдано комплектом — менять нельзя</text>
+  <text x="40" y="38" font-size="16" fill="#5c5e66">выдано: комплект менять нельзя, заготовку — копируете себе</text>
 
   <rect x="420" y="52" width="240" height="46" fill="none" stroke="#80828c" stroke-width="1.5"/>
   <text x="540" y="81" font-size="18" text-anchor="middle" fill="#80828c"
@@ -31,7 +31,8 @@
 
   <!-- объявление над своей реализацией -->
   <line x1="540" y1="98" x2="540" y2="190" stroke="#3a3a40" stroke-width="1.5" stroke-dasharray="5 5"/>
-  <line x1="775" y1="98" x2="775" y2="190" stroke="#3a3a40" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <line x1="775" y1="98" x2="775" y2="184" stroke="#dbdfe6" stroke-width="2" marker-end="url(#flow)"/>
+  <text x="790" y="122" font-size="12" fill="#5c5e66">копируется в src/</text>
   <line x1="955" y1="98" x2="955" y2="190" stroke="#3a3a40" stroke-width="1.5" stroke-dasharray="5 5"/>
 
   <line x1="40" y1="140" x2="1020" y2="140" stroke="#26262b" stroke-width="1"/>
@@ -66,6 +67,8 @@
   <text x="775" y="238" font-size="13" text-anchor="middle" fill="#80828c">пять правил</text>
   <text x="775" y="272" font-size="14" text-anchor="middle" fill="#80828c"
         font-family="Consolas, Roboto Mono, monospace">agent_rules.cpp</text>
+  <text x="775" y="292" font-size="12" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">+ копия agent_rules.h</text>
 
   <line x1="850" y1="221" x2="884" y2="221" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
 
