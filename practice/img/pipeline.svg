@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 320" width="1060" height="320"
+     font-family="Golos Text, Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="flow" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#dbdfe6"/>
+    </marker>
+    <marker id="pink" markerWidth="11" markerHeight="11" refX="10" refY="4.5"
+            orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L11,4.5 L0,9 z" fill="#ff8a8a"/>
+    </marker>
+  </defs>
+
+  <rect x="1" y="1" width="1058" height="318" rx="16" fill="#0b0b0d" stroke="#26262b"/>
+
+  <!-- ================= выдано комплектом ================= -->
+  <text x="40" y="38" font-size="16" fill="#5c5e66">выдано комплектом — менять нельзя</text>
+
+  <rect x="420" y="52" width="240" height="46" fill="none" stroke="#80828c" stroke-width="1.5"/>
+  <text x="540" y="81" font-size="18" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">fields.h</text>
+
+  <rect x="700" y="52" width="150" height="46" fill="none" stroke="#80828c" stroke-width="1.5"/>
+  <text x="775" y="74" font-size="15" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">agent_rules.h</text>
+  <text x="775" y="91" font-size="12" text-anchor="middle" fill="#5c5e66">заготовка</text>
+
+  <rect x="890" y="52" width="130" height="46" fill="none" stroke="#80828c" stroke-width="1.5"/>
+  <text x="955" y="81" font-size="18" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">rules.h</text>
+
+  <!-- объявление над своей реализацией -->
+  <line x1="540" y1="98" x2="540" y2="190" stroke="#3a3a40" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <line x1="775" y1="98" x2="775" y2="190" stroke="#3a3a40" stroke-width="1.5" stroke-dasharray="5 5"/>
+  <line x1="955" y1="98" x2="955" y2="190" stroke="#3a3a40" stroke-width="1.5" stroke-dasharray="5 5"/>
+
+  <line x1="40" y1="140" x2="1020" y2="140" stroke="#26262b" stroke-width="1"/>
+  <text x="40" y="164" font-size="16" fill="#5c5e66">пишете вы — всё в src/</text>
+
+  <!-- ================= путь события ================= -->
+  <rect x="40" y="190" width="110" height="62" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="95" y="228" font-size="17" text-anchor="middle" fill="#dbdfe6">журнал</text>
+
+  <line x1="150" y1="221" x2="224" y2="221" stroke="#dbdfe6" stroke-width="2" marker-end="url(#flow)"/>
+
+  <rect x="230" y="190" width="130" height="62" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="295" y="228" font-size="20" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">Event</text>
+  <text x="295" y="272" font-size="13" text-anchor="middle" fill="#5c5e66"
+        font-family="Consolas, Roboto Mono, monospace">ParseEventLine</text>
+
+  <line x1="360" y1="221" x2="414" y2="221" stroke="#dbdfe6" stroke-width="2" marker-end="url(#flow)"/>
+
+  <rect x="420" y="190" width="240" height="62" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="540" y="218" font-size="18" text-anchor="middle" fill="#dbdfe6">функции доступа</text>
+  <text x="540" y="240" font-size="13" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">FindField, GetIntField, …</text>
+  <text x="540" y="272" font-size="14" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">fields.cpp</text>
+
+  <line x1="660" y1="221" x2="694" y2="221" stroke="#dbdfe6" stroke-width="2" marker-end="url(#flow)"/>
+
+  <rect x="700" y="190" width="150" height="62" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="775" y="216" font-size="18" text-anchor="middle" fill="#ffffff"
+        font-family="Consolas, Roboto Mono, monospace">kRules[]</text>
+  <text x="775" y="238" font-size="13" text-anchor="middle" fill="#80828c">пять правил</text>
+  <text x="775" y="272" font-size="14" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">agent_rules.cpp</text>
+
+  <line x1="850" y1="221" x2="884" y2="221" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
+
+  <rect x="890" y="190" width="130" height="62" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+  <text x="955" y="228" font-size="17" text-anchor="middle" fill="#dbdfe6"
+        font-family="Consolas, Roboto Mono, monospace">CheckRules</text>
+  <text x="955" y="272" font-size="14" text-anchor="middle" fill="#80828c"
+        font-family="Consolas, Roboto Mono, monospace">rules.cpp</text>
+  <text x="955" y="296" font-size="13" text-anchor="middle" fill="#80828c">[DETECT] → stdout</text>
+</svg>
