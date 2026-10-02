@@ -1,84 +1,91 @@
 // Тесты разбора строки журнала. Занятие 2.1.
 //
-// Поведение разбора не изменилось с занятия 1.2 — изменился результат.
-// Раньше разбор отдавал Event, теперь EventParts: у Event появился инвариант,
-// и собрать его из обрывка нельзя. Проверять инвариант здесь нечего, это дело
-// конструктора Event; здесь проверяется только разбор.
+// Разбор пар не изменился с занятия 1.2 — изменился результат. Раньше разбор
+// отдавал Event, теперь EventParts: у Event появился инвариант, и собрать его
+// из обрывка нельзя. Проверять инвариант здесь нечего, это дело конструктора
+// Event; здесь проверяется только разбор.
 
+#include <stdexcept>
 #include <string>
-#include <vector>
 
 #include "doctest.h"
 #include "event.h"
 #include "parse.h"
 
+using nano_edr::Event;
 using nano_edr::EventParts;
-using nano_edr::Field;
 using nano_edr::IsBlankOrComment;
 using nano_edr::ParseEventParts;
-using nano_edr::ParseFields;
+
+// Разбор пар проверяется на строке с минимальной шапкой ts и type: всё
+// остальное попадает в fields в порядке появления.
 
 TEST_CASE("пары разбираются в порядке появления") {
-    std::vector<Field> fields;
+    EventParts parts;
 
-    REQUIRE(ParseFields("a=1 b=2 c=3", &fields));
-    REQUIRE(fields.size() == 3);
-    CHECK(fields[0].key == "a");
-    CHECK(fields[0].value == "1");
-    CHECK(fields[2].key == "c");
+    REQUIRE(ParseEventParts("ts=100 type=boot a=1 b=2 c=3", &parts));
+    REQUIRE(parts.fields.size() == 3);
+    CHECK(parts.fields[0].key == "a");
+    CHECK(parts.fields[0].value == "1");
+    CHECK(parts.fields[2].key == "c");
 }
 
-TEST_CASE("пустой текст — успех и ноль пар") {
-    std::vector<Field> fields;
+TEST_CASE("строка из одной шапки — успех и ноль полей") {
+    EventParts parts;
 
-    CHECK(ParseFields("", &fields));
-    CHECK(fields.empty());
+    CHECK(ParseEventParts("ts=100 type=boot", &parts));
+    CHECK(parts.fields.empty());
 }
 
 TEST_CASE("значение в кавычках сохраняет пробелы") {
-    std::vector<Field> fields;
+    EventParts parts;
 
-    REQUIRE(
-        ParseFields("path=\"C:\\Program Files\\app.exe\" size=10", &fields));
-    REQUIRE(fields.size() == 2);
-    CHECK(fields[0].value == "C:\\Program Files\\app.exe");
-    CHECK(fields[1].value == "10");
+    REQUIRE(ParseEventParts(
+        "ts=100 type=file_write path=\"C:\\Program Files\\app.exe\" size=10",
+        &parts));
+    REQUIRE(parts.fields.size() == 2);
+    CHECK(parts.fields[0].value == "C:\\Program Files\\app.exe");
+    CHECK(parts.fields[1].value == "10");
 }
 
 TEST_CASE("обратный слеш внутри кавычек — обычный символ") {
     // Экранирования в формате нет намеренно: в путях Windows обратный слеш
     // на каждом шагу.
-    std::vector<Field> fields;
+    EventParts parts;
 
-    REQUIRE(ParseFields("path=\"C:\\temp\\new\\test.js\"", &fields));
-    REQUIRE(fields.size() == 1);
-    CHECK(fields[0].value == "C:\\temp\\new\\test.js");
+    REQUIRE(ParseEventParts(
+        "ts=100 type=file_write path=\"C:\\temp\\new\\test.js\"", &parts));
+    REQUIRE(parts.fields.size() == 1);
+    CHECK(parts.fields[0].value == "C:\\temp\\new\\test.js");
 }
 
 TEST_CASE("знак равенства внутри значения не делит пару второй раз") {
-    std::vector<Field> fields;
+    EventParts parts;
 
-    REQUIRE(ParseFields("cmdline=\"app.exe --key=value\" k=a=b", &fields));
-    REQUIRE(fields.size() == 2);
-    CHECK(fields[0].value == "app.exe --key=value");
-    CHECK(fields[1].value == "a=b");
+    REQUIRE(ParseEventParts(
+        "ts=100 type=boot cmdline=\"app.exe --key=value\" k=a=b", &parts));
+    REQUIRE(parts.fields.size() == 2);
+    CHECK(parts.fields[0].value == "app.exe --key=value");
+    CHECK(parts.fields[1].value == "a=b");
 }
 
 TEST_CASE("повторяющийся ключ сохраняется дважды") {
-    std::vector<Field> fields;
+    EventParts parts;
 
-    REQUIRE(ParseFields("tag=one tag=two", &fields));
-    REQUIRE(fields.size() == 2);
-    CHECK(fields[0].value == "one");
-    CHECK(fields[1].value == "two");
+    REQUIRE(ParseEventParts("ts=100 type=boot tag=one tag=two", &parts));
+    REQUIRE(parts.fields.size() == 2);
+    CHECK(parts.fields[0].value == "one");
+    CHECK(parts.fields[1].value == "two");
 }
 
 TEST_CASE("вырожденные входы — отказ") {
-    std::vector<Field> fields;
+    EventParts parts;
 
-    CHECK_FALSE(ParseFields("path=\"C:\\a b.js size=10", &fields));  // кавычка
-    CHECK_FALSE(ParseFields("=value", &fields));                     // пустой
-    CHECK_FALSE(ParseFields("a=1 broken b=2", &fields));             // без '='
+    // Незакрытая кавычка, пустой ключ, слово без '='.
+    CHECK_FALSE(
+        ParseEventParts("ts=100 type=boot path=\"C:\\a b.js size=10", &parts));
+    CHECK_FALSE(ParseEventParts("ts=100 type=boot =value", &parts));
+    CHECK_FALSE(ParseEventParts("ts=100 type=boot a=1 broken b=2", &parts));
 }
 
 TEST_CASE("строка журнала: шапка отдельно, остальное в fields") {
@@ -107,14 +114,23 @@ TEST_CASE("порядок полей в строке произволен") {
     REQUIRE(parts.fields.size() == 1);
 }
 
-TEST_CASE("событие без pid допустимо, без ts или type — нет") {
+TEST_CASE("повтор ключа шапки остаётся в fields") {
+    // Первое вхождение занимает шапку, второе — обычное поле.
+    EventParts parts;
+
+    REQUIRE(ParseEventParts("ts=100 type=boot tag=x ts=200", &parts));
+    CHECK(parts.ts == "100");
+    REQUIRE(parts.fields.size() == 2);
+    CHECK(parts.fields[0].key == "tag");
+    CHECK(parts.fields[1].key == "ts");
+    CHECK(parts.fields[1].value == "200");
+}
+
+TEST_CASE("событие без pid допустимо") {
     EventParts parts;
 
     CHECK(ParseEventParts("ts=100 type=boot", &parts));
     CHECK(parts.pid.empty());
-
-    CHECK_FALSE(ParseEventParts("type=file_write pid=1", &parts));
-    CHECK_FALSE(ParseEventParts("ts=100 pid=1", &parts));
 }
 
 TEST_CASE("разбор не проверяет, что ts — число") {
@@ -124,6 +140,17 @@ TEST_CASE("разбор не проверяет, что ts — число") {
 
     CHECK(ParseEventParts("ts=вчера type=file_write", &parts));
     CHECK(parts.ts == "вчера");
+}
+
+TEST_CASE("строку без ts или type отвергает конструктор Event") {
+    // Тест не требует, чтобы разбор принял такую строку: важно только, что
+    // события из неё не получится.
+    for (const char* line : {"type=file_write pid=1", "ts=100 pid=1"}) {
+        EventParts parts;
+        if (ParseEventParts(line, &parts)) {
+            CHECK_THROWS_AS(Event{parts}, std::invalid_argument);
+        }
+    }
 }
 
 TEST_CASE("пустые строки и комментарии распознаются отдельно") {

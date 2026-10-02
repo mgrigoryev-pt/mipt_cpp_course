@@ -97,6 +97,14 @@ set(NANO_EDR_SETS_4.3 2.1 2.3 3.1 3.2 3.3 4.1 4.2 4.3)
 #                       стал приватным, на его место встала фабрика Open
 #                       с std::expected. Тесты бросающего конструктора
 #                       приезжают заменой в наборе 4.2.
+#   эталоны детектов    из набора 2.1, с занятия 2.3: там появляется правило
+#                       на два шага, и в phishing_macro и pid_reuse
+#                       добавляется по строке. Сравнение двух источников
+#                       друг с другом при этом остаётся.
+#   запуски агента      из набора 2.1, с занятия 3.1: два источника
+#                       и их опцию --file требуют постановки 2.1–2.3,
+#                       дальше ни одна из них их не упоминает. Уходят
+#                       и сравнение источников, и коды завершения.
 #
 # Один файл ходит в обратную сторону — не выпадает, а появляется позже:
 #
@@ -111,6 +119,8 @@ set(NANO_EDR_DROP_CONTEXT_CASES_FROM      1.3)
 set(NANO_EDR_DROP_EVENT_LIST_FROM         4.1)
 set(NANO_EDR_DROP_OWN_FUNCTION_FROM       4.1)
 set(NANO_EDR_DROP_THROWING_OS_HANDLE_FROM 4.2)
+set(NANO_EDR_DROP_AGENT_GOLDEN_FROM       2.3)
+set(NANO_EDR_DROP_AGENT_RUNS_FROM         3.1)
 set(NANO_EDR_JOIN_CONDITIONS_FROM         2.2)
 
 # ---------------------------------------------------------------------------
@@ -172,6 +182,18 @@ macro(nano_edr_resolve_lesson lesson)
                              "${lesson}" "${NANO_EDR_DROP_THROWING_OS_HANDLE_FROM}")
     if(_nano_edr_drop_handle)
         set(NANO_EDR_NO_THROWING_OS_HANDLE ON)
+    endif()
+
+    nano_edr_lesson_at_least(_nano_edr_drop_golden
+                             "${lesson}" "${NANO_EDR_DROP_AGENT_GOLDEN_FROM}")
+    if(_nano_edr_drop_golden)
+        set(NANO_EDR_NO_AGENT_GOLDEN ON)
+    endif()
+
+    nano_edr_lesson_at_least(_nano_edr_drop_runs
+                             "${lesson}" "${NANO_EDR_DROP_AGENT_RUNS_FROM}")
+    if(_nano_edr_drop_runs)
+        set(NANO_EDR_NO_AGENT_RUNS ON)
     endif()
 
     # Условий на занятии 2.1 ещё нет: этот выключатель снимается, а не

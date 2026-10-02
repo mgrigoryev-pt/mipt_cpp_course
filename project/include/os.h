@@ -263,7 +263,7 @@ OS_EXPORT os_status   os_start(os_handle* h);
 OS_EXPORT os_status   os_wait(os_handle* h, uint32_t timeout_ms);
 OS_EXPORT os_status   os_stop(os_handle* h);
 
-/* --- состояние (снимок, дорого, гоночно) ------------------------------- */
+/* --- состояние --------------------------------------------------------- */
 OS_EXPORT os_status   os_process_list(os_handle* h, uint32_t* buf, size_t cap, size_t* out_n);
 OS_EXPORT os_status   os_process_get_info(os_handle* h, uint32_t pid, os_process_info* out);
 OS_EXPORT os_status   os_file_get_info(os_handle* h, const char* path, os_file_info* out);

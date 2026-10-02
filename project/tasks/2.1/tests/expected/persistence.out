@@ -1,0 +1,3 @@
+[DETECT] medium  hidden_powershell  ts=1730300000000 pid=4410
+[DETECT] high  autostart_write  ts=1730300001600 pid=4410
+[DETECT] high  autostart_write  ts=1730300001900 pid=4410

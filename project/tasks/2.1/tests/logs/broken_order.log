@@ -1,0 +1,5 @@
+# Время идёт назад: журнал обязан быть неубывающим по ts, и симулятор считает
+# такой журнал испорченным — os_wait возвращает OS_IO_ERROR. Агент, запущенный
+# на нём через os.h, обязан выйти из цикла ожидания и завершиться с кодом 1.
+ts=1730900001000 type=process_start pid=7001 ppid=880 image=C:\Windows\System32\cmd.exe cmdline="cmd /c dir"
+ts=1730900000000 type=process_start pid=7002 ppid=880 image=C:\Windows\System32\cmd.exe cmdline="cmd /c dir"

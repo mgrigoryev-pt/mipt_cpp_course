@@ -1,0 +1,17 @@
+# Испорченные события для файлового источника. Каждое из первых четырёх
+# бросает исключение — из правила или из конструктора Event, — и агент обязан
+# пропустить его и идти дальше. Детект даёт только последнее событие.
+#
+# Через os.h этот журнал не прогоняется: симулятор считает его испорченным
+# целиком и до агента такие события не доносит.
+
+# process_start без image: правило про образ бросает из GetRequiredField.
+ts=1730900000000 type=process_start pid=7001 ppid=880 cmdline="wscript.exe C:\Users\max\AppData\Local\Temp\a.js"
+# ts не число: событие отвергает конструктор Event.
+ts=вчера type=file_create pid=7001 path=C:\Users\max\Documents\a.locked
+# Нет ts: событие отвергает конструктор Event.
+type=file_create pid=7001 path=C:\Users\max\Documents\b.locked
+# Нет type: событие отвергает конструктор Event.
+ts=1730900000200 pid=7001 path=C:\Users\max\Documents\c.locked
+# Исправное событие после испорченных — детект.
+ts=1730900000300 type=file_create pid=7001 path=C:\Users\max\Documents\d.locked
