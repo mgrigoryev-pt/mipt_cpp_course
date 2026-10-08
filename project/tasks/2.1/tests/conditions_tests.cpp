@@ -1,8 +1,10 @@
-// Тесты условий-функторов. Занятие 2.1.
+// Тесты условий-функторов. Занятие 2.2; файл лежит в наборе 2.1 и подключается
+// с занятия 2.2.
 //
 // Условие — объект с operator(). Проверяется три вещи: что оно настраивается
 // (то, чего не умеет функция), что оно не смотрит на регистр, и что оно видит
-// шапку события так же, как остальные поля.
+// шапку события так же, как остальные поля. Отдельно — края: значение длиннее
+// поля и значение, совпадающее с полем целиком.
 
 #include <string>
 #include <vector>
@@ -99,6 +101,33 @@ TEST_CASE("пустой список ничему не соответствуе�
     const Event event = MakeProcessStart();
 
     CHECK_FALSE(FieldInList("type", {})(event));
+}
+
+TEST_CASE("FieldInList сравнивает значение целиком, а не ищет подстроку") {
+    const Event event = MakeProcessStart();
+
+    CHECK_FALSE(FieldInList("type", {"process", "start"})(event));
+}
+
+TEST_CASE("значение длиннее поля — false, а не выход за границу строки") {
+    // Самодельное сравнение без регистра часто считает сдвиг как
+    // value.size() - suffix.size(). Когда суффикс длиннее, беззнаковое
+    // вычитание даёт огромное число, и сравнение читает за концом строки.
+    // Наверняка это видно под санитайзером.
+    const Event event = MakeProcessStart();  // pid=1042
+
+    CHECK_FALSE(FieldEndsWith("pid", "91042")(event));
+    CHECK_FALSE(FieldContains("pid", "10421042")(event));
+    CHECK_FALSE(FieldEquals("pid", "10421")(event));
+}
+
+TEST_CASE("значение, совпадающее с полем целиком, подходит всем условиям") {
+    const Event event = MakeProcessStart();  // pid=1042
+
+    CHECK(FieldEquals("pid", "1042")(event));
+    CHECK(FieldContains("pid", "1042")(event));
+    CHECK(FieldEndsWith("pid", "1042")(event));
+    CHECK(FieldInList("pid", {"1042"})(event));
 }
 
 TEST_CASE("одно условие настраивается под разные значения") {
