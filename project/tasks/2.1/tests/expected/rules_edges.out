@@ -5,6 +5,8 @@
 [DETECT] medium  hidden_powershell  ts=1730900001000 pid=7011
 [DETECT] medium  hidden_powershell  ts=1730900001100 pid=7012
 [DETECT] high  autostart_write  ts=1730900001500 pid=7001
+[DETECT] high  autostart_write  ts=1730900001620 pid=7001
+[DETECT] high  autostart_write  ts=1730900001660 pid=7001
 [DETECT] critical  ransom_extension  ts=1730900001700 pid=7001
 [DETECT] critical  ransom_extension  ts=1730900002000 pid=7001
 [DETECT] critical  ransom_extension  ts=1730900002100 pid=

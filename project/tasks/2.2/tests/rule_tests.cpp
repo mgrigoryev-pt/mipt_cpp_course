@@ -211,7 +211,9 @@ TEST_CASE("правило без условий срабатывает на вс
     MatchRule rule("пустое", Severity::kLow);
 
     CHECK(rule.Check(MakeProcessStart()));
+    CHECK(rule.hits() == 1);
     CHECK(rule.Check(MakeFileWrite()));
+    CHECK(rule.hits() == 2);
 }
 
 TEST_CASE("счётчик считает только детекты") {
