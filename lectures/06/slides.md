@@ -125,40 +125,59 @@ d.breathe();                // ok
 
 ---
 
-## Пример: `protected` и `private`
+## Когда `private` лучше поля: пустая база
 
 ```cpp
-class Logger {
-public:
-    void write(const std::string& line) { std::print("{}\n", line); }
+struct Fnv1a {                      // хеш без состояния — пустой класс
+    std::uint64_t operator()(const std::string& s) const;
 };
 
-class Collector : protected Logger {    // пишет в журнал, но журналом не является
-public:
-    void collect() { write("collect"); }
+class IndexByBase : private Fnv1a {  // sizeof == 8
+    std::uint64_t* buckets_;
 };
 
-class ProcessCollector : public Collector {
-public:
-    void on_start() { write("process started"); }  // ok: наследнику Logger виден
+class IndexByField {                 // sizeof == 16
+    Fnv1a hash_;
+    std::uint64_t* buckets_;
 };
-ProcessCollector c;
-c.collect();             // ok
-// c.write("x");         // CE: снаружи Logger не виден
-// Logger& log = c;      // CE: и upcast снаружи запрещён
 ```
 
-Замените `protected` на `private` — и CE получит уже `on_start()`.
+- Поле пустого класса занимает байт, выравнивание (alignment) раздувает его до восьми. Пустая база не занимает ничего (раздел 3)
+- Так реализации стандартной библиотеки хранят deleter `unique_ptr`, аллокатор (allocator) `vector`, компаратор `map`
+
+---
+
+## Когда `private` лучше поля: скрытый интерфейс
+
+```cpp
+class IEventListener {               // интерфейс подписчика
+public:
+    virtual void on_event(const Event& e) = 0;
+};
+
+class Agent : private IEventListener {
+public:
+    void start() { subscribe(*this); }   // внутри Agent upcast разрешён
+private:
+    void on_event(const Event& e) override;
+};
+
+Agent agent;
+agent.start();
+// subscribe(agent);                 // CE: снаружи Agent — не IEventListener
+```
+
+Снаружи никто не вызовет `on_event` и не подпишет агента второй раз. Полем пришлось бы заводить вложенный класс-слушатель с пересылкой. `virtual` и `override` — лекция 7.
 
 ---
 
 ## Какой когда
 
 - **`public`** — почти всегда. «`Dog` — это `Animal`», подставляется всюду, где ждут `Animal`
-- **`protected`** — реализация, общая для всей ветки наследников и скрытая от пользователей: журнал у `Collector` и всех его наследников
-- **`private`** — реализация одного класса: журнал только у `Collector`
+- **`private`** — база как реализация, когда полем хуже: пустая база, скрытый интерфейс
+- **`protected`** — то же, но база видна и наследникам. Встречается редко
 
-Непубличное наследование встречается редко: то же самое обычно делают полем (раздел 8).
+Во всех остальных случаях вместо непубличного наследования пишут поле (раздел 8).
 
 ---
 
@@ -228,7 +247,7 @@ static_assert(sizeof(Event) == 24);  // полезных — 13
 
 ## Порядок полей
 
-![width:900px](img/padding-order.svg)
+![width:830px](img/padding-order.svg)
 
 Компилятор поля не переставляет: порядок объявления гарантирован.
 
@@ -530,7 +549,7 @@ class Truck : public Engine { /* ... */ };  // наследование: Truck i
 1. **Подтипизация (subtyping).** Где работает `Base&`, должен работать `Derived&` — на этом построен полиморфизм (лекция 7)
 2. **Расширение интерфейса.** Наследник добавляет методы к базовым
 
-Непубличное наследование почти всегда заменяется полем. Его берут, когда полем не обойтись: пустая база не занимает места (раздел 3), нужны protected-члены базы, нужно переопределить (overriding) её виртуальную функцию (virtual function) — лекция 7.
+Непубличное наследование почти всегда заменяется полем. Где оно лучше поля — пустая база и скрытый интерфейс, раздел 2.
 
 **Правило: «is-a» — наследование, «has-a» — композиция.** В сомнении — композиция.
 
