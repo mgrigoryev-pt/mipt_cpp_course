@@ -14,9 +14,10 @@
 //   2. Запустить и сверить.
 //   3. Объяснить каждое расхождение. Расхождения будут — это и есть смысл.
 //
-// Сборка:
-//   g++ -std=c++23 -Wall -Wextra -o inheritance inheritance.cpp
-//   cl /std:c++latest /W4 /EHsc inheritance.cpp
+// Сборка — из корня проекта, сконфигурированного на занятие 2.2:
+//   cmake --build --preset windows --target inheritance
+//   ./build/windows/Release/inheritance
+// На Linux — --preset linux и ./build/linux/inheritance.
 
 #include <cstddef>
 #include <print>

@@ -1,8 +1,8 @@
 // Тесты условия-в-векторе и классов правил. Занятие 2.2.
 //
-// Тесты занятия 2.1 остаются подключёнными и проходят: событие, разбор, окно,
-// обёртка над границей и четыре условия-функтора не изменились. Здесь только
-// то, что добавилось.
+// Тесты занятия 2.1 остаются подключёнными и проходят: событие, разбор, окно
+// и обёртка над os.h не изменились. Четыре условия-функтора проверяет
+// conditions_tests.cpp из набора 2.1. Здесь — Condition и классы правил.
 
 #include <cstddef>
 #include <string>
@@ -94,9 +94,51 @@ TEST_CASE("пустой список значений не выполняетс�
     CHECK_FALSE(Condition::EndsWith("image", {})(event));
 }
 
+TEST_CASE("три сравнения Condition различаются") {
+    // В случаях выше подходящее значение одновременно равно полю, содержится
+    // в нём и стоит в конце. Перепутанные ветви switch или одно сравнение
+    // на все три вида они бы не заметили.
+    const Event event = MakeProcessStart();
+
+    // Equals — только целиком.
+    CHECK_FALSE(Condition::Equals("type", {"process"})(event));
+    CHECK_FALSE(Condition::Equals("image", {"wscript.exe"})(event));
+
+    // Contains — где угодно.
+    CHECK(Condition::Contains("image", {"system32"})(event));
+    CHECK(Condition::Contains("cmdline", {"wscript.exe"})(event));
+
+    // EndsWith — только в конце.
+    CHECK_FALSE(Condition::EndsWith("image", {"system32"})(event));
+    CHECK_FALSE(Condition::EndsWith("cmdline", {"wscript.exe"})(event));
+}
+
+TEST_CASE("поле есть, но ни одно значение не подошло") {
+    const Event event = MakeProcessStart();
+
+    CHECK_FALSE(Condition::Contains("cmdline", {"powershell", "-enc"})(event));
+    CHECK_FALSE(Condition::EndsWith("image", {"cmd.exe", "pwsh.exe"})(event));
+}
+
+TEST_CASE("подошло не первое значение списка") {
+    const Event event = MakeProcessStart();
+
+    CHECK(Condition::Contains("cmdline", {"powershell", "\\temp\\"})(event));
+    CHECK(Condition::EndsWith("image", {"cscript.exe", "wscript.exe"})(event));
+}
+
+TEST_CASE("значение длиннее поля — false, а не выход за границу строки") {
+    const Event event = MakeProcessStart();  // pid=1042
+
+    CHECK_FALSE(Condition::Equals("pid", {"10421"})(event));
+    CHECK_FALSE(Condition::Contains("pid", {"10421042"})(event));
+    CHECK_FALSE(Condition::EndsWith("pid", {"91042"})(event));
+    CHECK(Condition::EndsWith("pid", {"1042"})(event));
+}
+
 TEST_CASE("Condition можно положить в вектор") {
-    // Ровно то, ради чего он существует: четыре функтора занятия 2.1 —
-    // разные типы, и вектора из них не собрать.
+    // Ровно то, ради чего он существует: четыре функтора — разные типы,
+    // и вектора из них не собрать.
     std::vector<Condition> conditions;
     conditions.push_back(Condition::Equals("type", {"process_start"}));
     conditions.push_back(Condition::EndsWith("image", {"wscript.exe"}));
@@ -135,6 +177,16 @@ TEST_CASE("действия накапливаются в порядке доб�
     CHECK(rule.actions()[1] == "quarantine_file");
 }
 
+TEST_CASE("условия хранятся в порядке добавления") {
+    MatchRule rule("script_host", Severity::kHigh);
+    rule.AddCondition(Condition::Equals("type", {"process_start"}));
+    rule.AddCondition(Condition::EndsWith("image", {"wscript.exe"}));
+
+    REQUIRE(rule.conditions().size() == 2);
+    CHECK(rule.conditions()[0].key() == "type");
+    CHECK(rule.conditions()[1].match() == Condition::Match::kEndsWith);
+}
+
 TEST_CASE("все условия должны выполниться") {
     MatchRule rule("script_host_from_temp", Severity::kHigh);
     rule.AddCondition(Condition::Equals("type", {"process_start"}));
@@ -159,7 +211,9 @@ TEST_CASE("правило без условий срабатывает на вс
     MatchRule rule("пустое", Severity::kLow);
 
     CHECK(rule.Check(MakeProcessStart()));
+    CHECK(rule.hits() == 1);
     CHECK(rule.Check(MakeFileWrite()));
+    CHECK(rule.hits() == 2);
 }
 
 TEST_CASE("счётчик считает только детекты") {

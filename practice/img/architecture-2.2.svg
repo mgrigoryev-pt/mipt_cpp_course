@@ -158,12 +158,12 @@
   <text x="895" y="328" font-size="15" text-anchor="middle" fill="#ffffff"
         font-family="Consolas, Roboto Mono, monospace">FindField(event, key)</text>
   <text x="895" y="350" font-size="13" text-anchor="middle" fill="#dbdfe6">и сравнение без регистра</text>
-  <text x="895" y="370" font-size="12" text-anchor="middle" fill="#80828c">где оно лежит, решаете вы</text>
+  <text x="895" y="370" font-size="12" text-anchor="middle" fill="#80828c">выносится в text.h и text.cpp</text>
   <g font-family="Consolas, Roboto Mono, monospace" font-size="13">
     <rect x="788" y="392" width="96" height="28" fill="none" stroke="#80828c" stroke-width="1.5"/>
     <text x="836" y="411" text-anchor="middle" fill="#80828c">fields.h</text>
-    <rect x="894" y="392" width="108" height="28" fill="none" stroke="#3a3a40" stroke-width="1.5"/>
-    <text x="948" y="411" text-anchor="middle" fill="#5c5e66">fields.cpp</text>
+    <rect x="894" y="392" width="108" height="28" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+    <text x="948" y="411" text-anchor="middle" fill="#dbdfe6">fields.cpp</text>
   </g>
 
   <!-- Condition → FindField -->
