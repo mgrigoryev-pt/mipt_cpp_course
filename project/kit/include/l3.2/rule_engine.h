@@ -53,8 +53,18 @@ class RuleEngine {
  public:
     RuleEngine() = default;
 
+    // Копирования нет: движок с правилами не копируется осмысленно.
+    // Перемещение есть: правила переходят к новому владельцу вместе
+    // с вектором, и указатели на них, полученные через fired или rule(i),
+    // остаются действительными. Поэтому набор правил агента возвращает
+    // движок по значению.
+    //
+    // Что значит && и как устроено перемещение — лекция 11, занятие 3.3.
+    // До него эти две строки просто выданы.
     RuleEngine(const RuleEngine&) = delete;
     RuleEngine& operator=(const RuleEngine&) = delete;
+    RuleEngine(RuleEngine&&) = default;
+    RuleEngine& operator=(RuleEngine&&) = default;
 
     void AddRule(std::unique_ptr<IRule> rule);
 
