@@ -151,9 +151,8 @@ enum class EventType {
     kOther,
 };
 
-// Разбор и печать. Неизвестная строка даёт kOther, а не отказ.
+// Разбор. Неизвестная строка даёт kOther, а не отказ.
 EventType EventTypeFromString(std::string_view type);
-const char* EventTypeName(EventType type);
 
 // Части события, как их дал разбор строки. Агрегат без обещаний.
 struct EventParts {

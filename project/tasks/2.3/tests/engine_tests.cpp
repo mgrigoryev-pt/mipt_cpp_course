@@ -51,6 +51,13 @@ Event MakeEvent(const std::string& type, const std::string& pid,
     return Event(parts);
 }
 
+void SetStartThenConnect(SequenceRule& rule) {
+    rule.SetFirst(std::make_unique<EventTypeIs>(
+        std::vector<EventType>{EventType::kProcessStart}));
+    rule.SetSecond(std::make_unique<EventTypeIs>(
+        std::vector<EventType>{EventType::kNetConnect}));
+}
+
 }  // namespace
 
 // ---------------------------------------------------------------------------
@@ -287,6 +294,138 @@ TEST_CASE("связку по процессу можно отключить") {
 
     rule.Check(MakeEvent("process_start", "42", 1000));
     CHECK(rule.Check(MakeEvent("net_connect", "77", 2000)));
+}
+
+TEST_CASE("без обоих шагов правило не срабатывает и ничего не запоминает") {
+    SequenceRule none("two_step", Severity::kHigh, 5000);
+    CHECK_FALSE(none.Check(MakeEvent("process_start", "42", 1000)));
+    CHECK_FALSE(none.Check(MakeEvent("net_connect", "42", 2000)));
+    CHECK(none.pending() == 0);
+    CHECK(none.hits() == 0);
+
+    SequenceRule only_first("two_step", Severity::kHigh, 5000);
+    only_first.SetFirst(std::make_unique<EventTypeIs>(
+        std::vector<EventType>{EventType::kProcessStart}));
+    CHECK_FALSE(only_first.Check(MakeEvent("process_start", "42", 1000)));
+    CHECK(only_first.pending() == 0);
+
+    SequenceRule only_second("two_step", Severity::kHigh, 5000);
+    only_second.SetSecond(std::make_unique<EventTypeIs>(
+        std::vector<EventType>{EventType::kNetConnect}));
+    CHECK_FALSE(only_second.Check(MakeEvent("net_connect", "42", 1000)));
+    CHECK(only_second.hits() == 0);
+}
+
+TEST_CASE("второй шаг чужого процесса не трогает запись") {
+    SequenceRule rule("two_step", Severity::kHigh, 5000);
+    SetStartThenConnect(rule);
+
+    rule.Check(MakeEvent("process_start", "42", 1000));
+    CHECK_FALSE(rule.Check(MakeEvent("net_connect", "77", 2000)));
+    CHECK(rule.pending() == 1);
+    CHECK(rule.Check(MakeEvent("net_connect", "42", 3000)));
+}
+
+TEST_CASE("граница окна: ровно window_ms — ещё пара, на 1 мс позже — уже нет") {
+    SequenceRule on_edge("two_step", Severity::kHigh, 1000);
+    SetStartThenConnect(on_edge);
+    on_edge.Check(MakeEvent("process_start", "42", 1000));
+    CHECK(on_edge.Check(MakeEvent("net_connect", "42", 2000)));
+
+    SequenceRule late("two_step", Severity::kHigh, 1000);
+    SetStartThenConnect(late);
+    late.Check(MakeEvent("process_start", "42", 1000));
+    CHECK_FALSE(late.Check(MakeEvent("net_connect", "42", 2001)));
+    CHECK(late.hits() == 0);
+}
+
+TEST_CASE("устаревшие записи удаляются на любом событии, свежие остаются") {
+    SequenceRule rule("two_step", Severity::kHigh, 1000);
+    SetStartThenConnect(rule);
+
+    rule.Check(MakeEvent("process_start", "1", 1000));
+    rule.Check(MakeEvent("process_start", "2", 1800));
+    REQUIRE(rule.pending() == 2);
+
+    CHECK_FALSE(rule.Check(MakeEvent("file_write", "3", 2500)));
+    CHECK(rule.pending() == 1);
+
+    CHECK_FALSE(rule.Check(MakeEvent("file_write", "3", 2801)));
+    CHECK(rule.pending() == 0);
+}
+
+TEST_CASE("одна пара — один детект") {
+    SequenceRule rule("two_step", Severity::kHigh, 5000);
+    SetStartThenConnect(rule);
+
+    CHECK_FALSE(rule.Check(MakeEvent("process_start", "42", 1000)));
+    CHECK(rule.hits() == 0);
+    CHECK(rule.Check(MakeEvent("net_connect", "42", 2000)));
+    CHECK(rule.pending() == 0);
+    CHECK_FALSE(rule.Check(MakeEvent("net_connect", "42", 3000)));
+    CHECK(rule.hits() == 1);
+}
+
+TEST_CASE("каждый первый шаг даёт ровно одну пару") {
+    SequenceRule rule("two_step", Severity::kHigh, 5000);
+    SetStartThenConnect(rule);
+
+    rule.Check(MakeEvent("process_start", "42", 1000));
+    rule.Check(MakeEvent("process_start", "42", 1500));
+    REQUIRE(rule.pending() == 2);
+
+    CHECK(rule.Check(MakeEvent("net_connect", "42", 2000)));
+    CHECK(rule.pending() == 1);
+    CHECK(rule.Check(MakeEvent("net_connect", "42", 2500)));
+    CHECK_FALSE(rule.Check(MakeEvent("net_connect", "42", 3000)));
+    CHECK(rule.hits() == 2);
+}
+
+TEST_CASE("событие под оба шага закрывает старую запись, а не добавляет новую") {
+    SequenceRule rule("two_step", Severity::kHigh, 5000);
+    rule.SetFirst(std::make_unique<EventTypeIs>(
+        std::vector<EventType>{EventType::kNetConnect}));
+    rule.SetSecond(std::make_unique<EventTypeIs>(
+        std::vector<EventType>{EventType::kNetConnect}));
+
+    CHECK_FALSE(rule.Check(MakeEvent("net_connect", "42", 1000)));
+    CHECK(rule.pending() == 1);
+    CHECK(rule.Check(MakeEvent("net_connect", "42", 2000)));
+    CHECK(rule.pending() == 0);
+}
+
+TEST_CASE("без связки второй шаг без первого — не детект") {
+    SequenceRule rule("two_step", Severity::kLow, 5000);
+    SetStartThenConnect(rule);
+    rule.set_same_pid(false);
+
+    CHECK_FALSE(rule.Check(MakeEvent("net_connect", "77", 1000)));
+    CHECK(rule.hits() == 0);
+}
+
+TEST_CASE("без связки пара считается в hits и удаляет запись") {
+    SequenceRule rule("two_step", Severity::kLow, 5000);
+    SetStartThenConnect(rule);
+    rule.set_same_pid(false);
+
+    rule.Check(MakeEvent("process_start", "42", 1000));
+    CHECK(rule.Check(MakeEvent("net_connect", "77", 2000)));
+    CHECK(rule.hits() == 1);
+    CHECK(rule.pending() == 0);
+}
+
+TEST_CASE("без связки каждая запись даёт ровно одну пару") {
+    SequenceRule rule("two_step", Severity::kLow, 5000);
+    SetStartThenConnect(rule);
+    rule.set_same_pid(false);
+
+    rule.Check(MakeEvent("process_start", "1", 1000));
+    rule.Check(MakeEvent("process_start", "2", 1100));
+
+    CHECK(rule.Check(MakeEvent("net_connect", "3", 2000)));
+    CHECK(rule.Check(MakeEvent("net_connect", "4", 2100)));
+    CHECK_FALSE(rule.Check(MakeEvent("net_connect", "5", 2200)));
+    CHECK(rule.hits() == 2);
 }
 
 // ---------------------------------------------------------------------------
