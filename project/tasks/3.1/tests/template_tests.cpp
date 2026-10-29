@@ -34,12 +34,14 @@ using nano_edr::EventTypeIs;
 using nano_edr::Field;
 using nano_edr::FieldEndsWith;
 using nano_edr::FieldEquals;
+using nano_edr::FieldTraits;
 using nano_edr::GetField;
 using nano_edr::GetFieldOr;
 using nano_edr::MakeCondition;
 using nano_edr::MakeRule;
 using nano_edr::MatchRule;
 using nano_edr::RingBuffer;
+using nano_edr::SequenceRule;
 using nano_edr::Severity;
 using nano_edr::ThresholdRule;
 using nano_edr::Timestamp;
@@ -74,7 +76,9 @@ TEST_CASE("пустой буфер") {
 
 TEST_CASE("размер попадает в тип") {
     // N — non-type параметр, значит буферы разной вместимости это разные типы,
-    // и перепутать их нельзя. Проверка компиляторная.
+    // и перепутать их нельзя. Проверка компиляторная: capacity() объявлена
+    // constexpr, и если она не известна при компиляции, файл не соберётся.
+    static_assert(RingBuffer<int, 4>::capacity() == 4);
     CHECK(RingBuffer<int, 4>::capacity() == 4);
     CHECK(RingBuffer<int, 64>::capacity() == 64);
     CHECK_FALSE(std::is_same_v<RingBuffer<int, 4>, RingBuffer<int, 64>>);
@@ -149,6 +153,98 @@ TEST_CASE("очистка возвращает буфер в исходное с
     ring.PushBack(42);
     CHECK(ring.size() == 1);
     CHECK(ring[0] == 42);
+}
+
+TEST_CASE("частично заполненный буфер обходится только по записанному") {
+    RingBuffer<int, 4> ring;
+    ring.PushBack(1);
+    ring.PushBack(2);
+
+    REQUIRE(ring.size() == 2);
+    CHECK_FALSE(ring.full());
+    CHECK(ring[1] == 2);
+    CHECK(ring.back() == 2);
+
+    std::vector<int> seen;
+    for (const int value : ring) {
+        seen.push_back(value);
+    }
+    CHECK(seen == std::vector<int>{1, 2});
+}
+
+TEST_CASE("после многих оборотов остаются последние N по порядку") {
+    // Шесть вставок в буфер на четыре места сдвигают начало на два, и ошибка
+    // в переходе через конец массива может не проявиться. Сто три вставки —
+    // это двадцать пять полных оборотов.
+    RingBuffer<int, 4> ring;
+    for (int i = 1; i <= 103; ++i) {
+        ring.PushBack(i);
+    }
+
+    REQUIRE(ring.size() == 4);
+    CHECK(ring[0] == 100);
+    CHECK(ring[3] == 103);
+    CHECK(ring.back() == 103);
+
+    std::vector<int> seen;
+    for (const int value : ring) {
+        seen.push_back(value);
+    }
+    CHECK(seen == std::vector<int>{100, 101, 102, 103});
+}
+
+TEST_CASE("очистка после затирания, затем снова больше N вставок") {
+    RingBuffer<int, 4> ring;
+    for (int i = 1; i <= 6; ++i) {
+        ring.PushBack(i);
+    }
+    ring.Clear();
+    for (int i = 7; i <= 12; ++i) {
+        ring.PushBack(i);
+    }
+
+    std::vector<int> seen;
+    for (const int value : ring) {
+        seen.push_back(value);
+    }
+    CHECK(seen == std::vector<int>{9, 10, 11, 12});
+}
+
+TEST_CASE("буфер на одно место") {
+    RingBuffer<int, 1> ring;
+    ring.PushBack(1);
+    REQUIRE(ring.full());
+    CHECK(ring[0] == 1);
+
+    ring.PushBack(2);
+    CHECK(ring.size() == 1);
+    CHECK(ring[0] == 2);
+    CHECK(ring.back() == 2);
+
+    int visits = 0;
+    for (const int value : ring) {
+        CHECK(value == 2);
+        ++visits;
+    }
+    CHECK(visits == 1);
+}
+
+TEST_CASE("буфер хранит не только числа") {
+    // Окно агента кладёт в буфер записи со строками. Затирание строки —
+    // присваивание объекта, а не перезапись байтов.
+    RingBuffer<std::string, 2> ring;
+    ring.PushBack("первая");
+    ring.PushBack("вторая");
+    ring.PushBack("третья");
+
+    REQUIRE(ring.size() == 2);
+    CHECK(ring[0] == "вторая");
+    CHECK(ring.back() == "третья");
+
+    ring.Clear();
+    ring.PushBack("четвёртая");
+    CHECK(ring.size() == 1);
+    CHECK(ring[0] == "четвёртая");
 }
 
 // ---------------------------------------------------------------------------
@@ -424,6 +520,23 @@ TEST_CASE("фабрика создаёт правило нужного типа"
     CHECK(threshold->severity() == Severity::kHigh);
 }
 
+TEST_CASE("фабрика передаёт конструктору все аргументы") {
+    // Аргументы без явных типов, как в постановке. Что count и окно дошли
+    // до правила, видно по поведению: порог три — третье событие детект.
+    auto rule = MakeRule<ThresholdRule<8>>("t", Severity::kHigh, 3, 10000,
+                                           "pid");
+    rule->SetCondition(std::make_unique<EventTypeIs>(
+        std::vector<EventType>{EventType::kFileWrite}));
+
+    CHECK_FALSE(rule->Check(MakeWrite("42", 1000, "a")));
+    CHECK_FALSE(rule->Check(MakeWrite("42", 1100, "a")));
+    CHECK(rule->Check(MakeWrite("42", 1200, "a")));
+
+    auto beacon = MakeRule<SequenceRule>("beacon", Severity::kCritical, 10000);
+    CHECK(beacon->id() == "beacon");
+    CHECK(beacon->severity() == Severity::kCritical);
+}
+
 // ---------------------------------------------------------------------------
 // FieldTraits
 // ---------------------------------------------------------------------------
@@ -497,4 +610,79 @@ TEST_CASE("значение по умолчанию") {
 
     CHECK(GetFieldOr<std::uint64_t>(event, "size", 7) == 4096);
     CHECK(GetFieldOr<std::uint64_t>(event, "rport", 7) == 7);
+}
+
+// Дальше — Parse напрямую, строка за строкой из таблицы постановки.
+
+TEST_CASE("строка берётся как есть, в том числе пустая") {
+    std::string value = "прежнее";
+    CHECK(FieldTraits<std::string>::Parse("", &value));
+    CHECK(value.empty());
+    CHECK(FieldTraits<std::string>::Parse(" 42 ", &value));
+    CHECK(value == " 42 ");
+}
+
+TEST_CASE("число: ноль и границы uint64_t") {
+    std::uint64_t value = 7;
+    REQUIRE(FieldTraits<uint64_t>::Parse("0", &value));
+    CHECK(value == 0);
+
+    REQUIRE(FieldTraits<uint64_t>::Parse("18446744073709551615", &value));
+    CHECK(value == UINT64_MAX);
+
+    // На единицу больше максимума. И число, у которого переполнение
+    // при умножении на 10 даёт результат больше прежнего: проверка
+    // «новое меньше старого» его не замечает.
+    CHECK_FALSE(FieldTraits<uint64_t>::Parse("18446744073709551616", &value));
+    CHECK_FALSE(FieldTraits<uint64_t>::Parse("20000000000000000000", &value));
+}
+
+TEST_CASE("число: только десятичные цифры") {
+    // std::stoull принимает пробел и знак в начале и мусор в конце, а "-1"
+    // превращает в 18446744073709551615. Здесь всё это — false.
+    std::uint64_t value = 0;
+    CHECK_FALSE(FieldTraits<uint64_t>::Parse("", &value));
+    CHECK_FALSE(FieldTraits<uint64_t>::Parse("+42", &value));
+    CHECK_FALSE(FieldTraits<uint64_t>::Parse("-1", &value));
+    CHECK_FALSE(FieldTraits<uint64_t>::Parse(" 42", &value));
+    CHECK_FALSE(FieldTraits<uint64_t>::Parse("42 ", &value));
+    CHECK_FALSE(FieldTraits<uint64_t>::Parse("12ab", &value));
+    CHECK_FALSE(FieldTraits<uint64_t>::Parse("0x10", &value));
+}
+
+TEST_CASE("флаги: все шесть слов и регистр") {
+    bool value = false;
+    REQUIRE(FieldTraits<bool>::Parse("yes", &value));
+    CHECK(value);
+    REQUIRE(FieldTraits<bool>::Parse("false", &value));
+    CHECK_FALSE(value);
+    REQUIRE(FieldTraits<bool>::Parse("Yes", &value));
+    CHECK(value);
+    REQUIRE(FieldTraits<bool>::Parse("FALSE", &value));
+    CHECK_FALSE(value);
+    REQUIRE(FieldTraits<bool>::Parse("True", &value));
+    CHECK(value);
+    REQUIRE(FieldTraits<bool>::Parse("No", &value));
+    CHECK_FALSE(value);
+
+    CHECK_FALSE(FieldTraits<bool>::Parse("", &value));
+    CHECK_FALSE(FieldTraits<bool>::Parse("y", &value));
+    CHECK_FALSE(FieldTraits<bool>::Parse("2", &value));
+}
+
+TEST_CASE("при отказе значение по указателю не меняется") {
+    // Отказ — «поля нет или оно не разбирается», и вызывающий вправе
+    // рассчитывать, что прежнее значение на месте. Разбор, который копит
+    // число прямо в *out, ломается на "12ab" после первых двух цифр.
+    std::uint64_t number = 7;
+    CHECK_FALSE(FieldTraits<uint64_t>::Parse("12ab", &number));
+    CHECK(number == 7);
+    CHECK_FALSE(FieldTraits<uint64_t>::Parse("18446744073709551616", &number));
+    CHECK(number == 7);
+    CHECK_FALSE(FieldTraits<uint64_t>::Parse("", &number));
+    CHECK(number == 7);
+
+    bool flag = true;
+    CHECK_FALSE(FieldTraits<bool>::Parse("может быть", &flag));
+    CHECK(flag);
 }
