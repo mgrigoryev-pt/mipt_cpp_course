@@ -320,14 +320,14 @@ auto p = my_make_unique<Point>(3, 4);   // Point(3, 4)
 
 Компилятор **выводит** `T` из аргумента (template argument deduction). Три шаблона `template <typename T> void f(...)` отличаются только параметром — он в заголовке столбца. Строка — вызов, ячейка — выведенный `T`:
 
-| Вызов | `f(T x)` | `f(T& x)` | `f(const T& x)` |
-|---|---|---|---|
-| `int i = 5;  f(i);` | `int` | `int` | `int` |
-| `const int ci = 10;  f(ci);` | `int` | `const int` | `int` |
-| `const int& r = i;  f(r);` | `int` | `const int` | `int` |
-| `f(5);` | `int` | CE | `int` |
-| `const int* p = &i;  f(p);` | `const int*` | `const int*` | `const int*` |
-| `f("abc");` | `const char*` | `const char[4]` | `char[4]` |
+| Аргумент | Вызов | `f(T x)` | `f(T& x)` | `f(const T& x)` |
+|---|---|---|---|---|
+| `int i = 5;` | `f(i)` | `int` | `int` | `int` |
+| `const int ci = 10;` | `f(ci)` | `int` | `const int` | `int` |
+| `const int& r = i;` | `f(r)` | `int` | `const int` | `int` |
+| литерал | `f(5)` | `int` | CE | `int` |
+| `const int* p = &i;` | `f(p)` | `const int*` | `const int*` | `const int*` |
+| литерал | `f("abc")` | `const char*` | `const char[4]` | `char[4]` |
 
 Например, `f(ci)` для `f(T& x)`: `T = const int`, и параметр `x` — `const int&`.
 

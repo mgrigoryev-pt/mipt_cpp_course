@@ -308,16 +308,16 @@ void print(std::format_string<Args...> fmt, Args&&... args);
 
 ## 6. Правила вывода типов
 
-В шаблонной функции компилятор **выводит** значение `T` из аргумента вызова — это [вывод типов](../glossary.md#deduction) (template argument deduction). Результат зависит от того, как записан параметр: `T`, `T&` или `const T&`. В таблице три шаблона `template <typename T> void f(...)`, которые отличаются только параметром, — он в заголовке столбца. Строка — вызов вместе с объявлением аргумента, ячейка — `T`, который выведет компилятор:
+В шаблонной функции компилятор **выводит** значение `T` из аргумента вызова — это [вывод типов](../glossary.md#deduction) (template argument deduction). Результат зависит от того, как записан параметр: `T`, `T&` или `const T&`. В таблице три шаблона `template <typename T> void f(...)`, которые отличаются только параметром, — он в заголовке столбца. Строка — объявление аргумента и вызов с ним, ячейка — `T`, который выведет компилятор:
 
-| Вызов | `f(T x)` | `f(T& x)` | `f(const T& x)` |
-|---|---|---|---|
-| `int i = 5;  f(i);` | `int` | `int` | `int` |
-| `const int ci = 10;  f(ci);` | `int` | `const int` | `int` |
-| `const int& r = i;  f(r);` | `int` | `const int` | `int` |
-| `f(5);` | `int` | CE | `int` |
-| `const int* p = &i;  f(p);` | `const int*` | `const int*` | `const int*` |
-| `f("abc");` | `const char*` | `const char[4]` | `char[4]` |
+| Аргумент | Вызов | `f(T x)` | `f(T& x)` | `f(const T& x)` |
+|---|---|---|---|---|
+| `int i = 5;` | `f(i)` | `int` | `int` | `int` |
+| `const int ci = 10;` | `f(ci)` | `int` | `const int` | `int` |
+| `const int& r = i;` | `f(r)` | `int` | `const int` | `int` |
+| литерал | `f(5)` | `int` | CE | `int` |
+| `const int* p = &i;` | `f(p)` | `const int*` | `const int*` | `const int*` |
+| литерал | `f("abc")` | `const char*` | `const char[4]` | `char[4]` |
 
 Тип самого параметра `x` получается подстановкой выведенного `T`: вызов `f(ci)` для `f(T& x)` даёт `T = const int`, и параметр `x` — `const int&`.
 
