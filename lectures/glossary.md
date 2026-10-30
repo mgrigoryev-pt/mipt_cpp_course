@@ -303,9 +303,9 @@
 
 <a id="constant-folding"></a>**Свёртка констант** (constant folding) — оптимизация, при которой компилятор вычисляет выражения из констант сам. Лекция 7.
 
-<a id="forwarding-reference"></a>**Forwarding reference** — параметр вида `T&&`, где `T` выводится: принимает и lvalue, и rvalue. У Скотта Мейерса — universal reference. Лекции 9 и 11.
+<a id="forwarding-reference"></a>**Forwarding reference** — параметр вида `T&&`, где `T` выводится: принимает и lvalue, и rvalue. У Скотта Мейерса — universal reference. Лекции 11 и 12.
 
-<a id="reference-collapsing"></a>**Reference collapsing** (по-русски — схлопывание ссылок) — правило, по которому ссылка на ссылку превращается в одну: `& &&` даёт `&`, `&& &&` даёт `&&`. Лекция 9.
+<a id="reference-collapsing"></a>**Reference collapsing** (по-русски — схлопывание ссылок) — правило, по которому ссылка на ссылку превращается в одну: `& &&` даёт `&`, `&& &&` даёт `&&`. Лекция 11.
 
 <a id="perfect-forwarding"></a>**Идеальная передача** (perfect forwarding) — передача аргумента дальше с сохранением его категории значения через `std::forward`. Лекция 11.
 

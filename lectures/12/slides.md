@@ -24,9 +24,8 @@ section {
 
 1. `auto` — передаём работу компилятору
 2. Что `auto` теряет по дороге
-3. `auto` за пределами переменных
-4. `decltype` — когда нужен точный тип
-5. `decltype(auto)` — синтез
+3. `decltype` — когда нужен точный тип
+4. `decltype(auto)` — синтез
 
 ---
 <!-- header: 1. auto -->
@@ -134,6 +133,21 @@ for (auto item : c)        { /* нужна своя копия */ }
 
 ---
 
+## `auto&&` — ссылка на что угодно
+
+Тот же forwarding reference, что `T&&` в шаблоне (лекция 11): к lvalue — `&`, к rvalue — `&&`.
+
+```cpp
+std::vector<bool> flags(8);
+
+for (auto& f : flags) { f = true; }    // CE: элемент — временный прокси
+for (auto&& f : flags) { f = true; }   // ok: присваивание через прокси
+```
+
+`vector<bool>` хранит биты, и элемент у него — прокси-объект по значению. Неконстантная ссылка к временному не привязывается, `auto&&` — привязывается. Поэтому в обобщённом коде цикл, меняющий элементы, пишут через `auto&&`.
+
+---
+
 ## Второй сюрприз: фигурные скобки
 
 ```cpp
@@ -156,68 +170,9 @@ auto w = {1, 2, 3};      // std::initializer_list<int>  ← не то, что ж
 Ничем: список хранит указатель и размер, а элементы лежат в массиве, который создал компилятор. Пока `w` рядом с ним — всё честно.
 
 ---
-<!-- header: 3. auto для функций -->
+<!-- header: 3. decltype -->
 
-# 3. `auto` за пределами переменных
-
-Возвращаемый тип тоже можно доверить компилятору (C++14):
-
-```cpp
-auto sum(int a, int b) {
-    return a + b;                 // компилятор видит: int
-}
-
-template <typename T, typename U>
-auto add(T a, U b) {
-    return a + b;                 // тип зависит от T и U
-}
-```
-
-Цена: тело функции должно быть **видно в точке вызова**. На практике — определение в заголовке. Поэтому `auto`-возврат живёт у `inline` и шаблонных функций.
-
----
-
-## Trailing return type
-
-Тип можно написать **после** параметров — и тогда он видит их имена:
-
-```cpp
-auto sum(int a, int b) -> int { return a + b; }
-
-template <typename T, typename U>
-auto add(T a, U b) -> decltype(a + b);     // выражаем тип через a и b
-```
-
-![width:900px](img/trailing-return.svg)
-
----
-
-## `auto` в параметрах (C++20)
-
-```cpp
-auto add(auto a, auto b) { return a + b; }
-```
-
-Это **сокращённая запись шаблона** — компилятор разворачивает в:
-
-```cpp
-template <typename T, typename U>
-auto add(T a, U b) { return a + b; }
-```
-
-С концептами (concepts) получается компактное ограничение:
-
-```cpp
-auto sum(std::integral auto a, std::integral auto b) { return a + b; }
-sum(2.0, 3.0);       // CE: double не integral
-```
-
-Концепты подробно в курсе не разбираются.
-
----
-<!-- header: 4. decltype -->
-
-# 4. `decltype` — когда нужен точный тип
+# 3. `decltype` — когда нужен точный тип
 
 Вернёмся к проблеме из раздела 2: `auto` **упрощает** тип. Иногда это ровно то, чего мы не хотим.
 
@@ -250,6 +205,21 @@ std::priority_queue<int, std::vector<int>, decltype(cmp)> q(cmp);
 
 ---
 
+## Trailing return type
+
+Тип можно написать **после** параметров — и тогда он видит их имена:
+
+```cpp
+auto sum(int a, int b) -> int { return a + b; }
+
+template <typename T, typename U>
+auto add(T a, U b) -> decltype(a + b);     // выражаем тип через a и b
+```
+
+![width:900px](img/trailing-return.svg)
+
+---
+
 ## Задача 2: тип из выражения в шаблоне
 
 ```cpp
@@ -279,9 +249,9 @@ decltype((x)) b = x;  // int&  — «тип выражения (x)»
 На практике этим не пользуются, но знать стоит: иначе однажды упрётесь в необъяснимую ошибку.
 
 ---
-<!-- header: 5. decltype(auto) -->
+<!-- header: 4. decltype(auto) -->
 
-# 5. `decltype(auto)` — синтез
+# 4. `decltype(auto)` — синтез
 
 Сложилась неудобная ситуация:
 
@@ -338,6 +308,7 @@ decltype(auto) call(F&& f, Args&&... args) {
 | Значение, тип очевиден справа | `auto` |
 | Читать, не копируя | `const auto&` |
 | Менять на месте | `auto&` |
+| Элемент может быть временным (обобщённый код) | `auto&&` |
 | Точный тип выражения (назвать лямбду) | `decltype(expr)` |
 | Вернуть ровно то, что вернул вызов | `decltype(auto)` |
 
