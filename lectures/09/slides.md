@@ -318,37 +318,18 @@ auto p = my_make_unique<Point>(3, 4);   // Point(3, 4)
 
 # 6. Правила вывода типов
 
-Компилятор **выводит** `T` из аргумента (template argument deduction), и результат зависит от вида параметра. Три функции и аргументы к ним:
+Компилятор **выводит** `T` из аргумента (template argument deduction), и результат зависит от вида параметра. В ячейке — `T` при вызове `f(аргумент)`:
 
-```cpp
-template <typename T> void by_value(T x);
-template <typename T> void by_ref(T& x);
-template <typename T> void by_cref(const T& x);
-
-int i = 5;
-const int ci = 10;
-const int& r = i;
-const int* p = &i;
-
-by_value(ci);   // T = int
-by_ref(ci);     // T = const int,  x — const int&
-by_cref(ci);    // T = int,        x — const int&
-```
-
----
-
-## Таблица вывода
-
-Строка — аргумент, столбец — функция, в ячейке — выведенный `T`. Строка `ci` — те три вызова с прошлого слайда.
-
-| Аргумент | `by_value(T x)` | `by_ref(T& x)` | `by_cref(const T& x)` |
+| Аргумент объявлен как | `f(T x)` | `f(T& x)` | `f(const T& x)` |
 |---|---|---|---|
-| `i` — `int` | `int` | `int` | `int` |
-| `ci` — `const int` | `int` | `const int` | `int` |
-| `r` — `const int&` | `int` | `const int` | `int` |
-| `5` — литерал | `int` | CE | `int` |
-| `p` — `const int*` | `const int*` | `const int*` | `const int*` |
-| `"abc"` — `const char[4]` | `const char*` | `const char[4]` | `char[4]` |
+| `int i` | `int` | `int` | `int` |
+| `const int ci` | `int` | `const int` | `int` |
+| `const int& r = i` | `int` | `const int` | `int` |
+| литерал `5` | `int` | CE | `int` |
+| `const int* p` | `const int*` | `const int*` | `const int*` |
+| литерал `"abc"`, `const char[4]` | `const char*` | `const char[4]` | `char[4]` |
+
+Например, `f(ci)` для `f(T& x)`: `T = const int`, и параметр `x` — `const int&`.
 
 ---
 

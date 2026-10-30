@@ -308,37 +308,18 @@ void print(std::format_string<Args...> fmt, Args&&... args);
 
 ## 6. Правила вывода типов
 
-В шаблонной функции компилятор **выводит** значение `T` из аргумента вызова — это [вывод типов](../glossary.md#deduction) (template argument deduction). Результат зависит от того, как записан параметр: `T`, `T&` или `const T&`. Три функции и шесть аргументов:
+В шаблонной функции компилятор **выводит** значение `T` из аргумента вызова — это [вывод типов](../glossary.md#deduction) (template argument deduction). Результат зависит от того, как записан параметр: `T`, `T&` или `const T&`. В таблице строка — объявление аргумента, столбец — объявление шаблона `template <typename T> void f(...)` с одной из трёх форм параметра, а в ячейке — `T`, который компилятор выведет при вызове `f(аргумент)`:
 
-```cpp
-template <typename T> void by_value(T x);
-template <typename T> void by_ref(T& x);
-template <typename T> void by_cref(const T& x);
-
-int i = 5;
-const int ci = 10;
-const int& r = i;
-const int* p = &i;
-```
-
-| Аргумент | `by_value(T x)` | `by_ref(T& x)` | `by_cref(const T& x)` |
+| Аргумент объявлен как | `f(T x)` | `f(T& x)` | `f(const T& x)` |
 |---|---|---|---|
-| `i` — `int` | `int` | `int` | `int` |
-| `ci` — `const int` | `int` | `const int` | `int` |
-| `r` — `const int&` | `int` | `const int` | `int` |
-| `5` — литерал | `int` | CE | `int` |
-| `p` — `const int*` | `const int*` | `const int*` | `const int*` |
-| `"abc"` — `const char[4]` | `const char*` | `const char[4]` | `char[4]` |
+| `int i` | `int` | `int` | `int` |
+| `const int ci` | `int` | `const int` | `int` |
+| `const int& r = i` | `int` | `const int` | `int` |
+| литерал `5` | `int` | CE | `int` |
+| `const int* p` | `const int*` | `const int*` | `const int*` |
+| литерал `"abc"`, `const char[4]` | `const char*` | `const char[4]` | `char[4]` |
 
-Строка таблицы — один аргумент, столбец — функция, в ячейке — выведенный `T`. Строка `ci`, например, — это три вызова:
-
-```cpp
-by_value(ci);   // T = int
-by_ref(ci);     // T = const int,  x — const int&
-by_cref(ci);    // T = int,        x — const int&
-```
-
-Тип самого параметра `x` получается подстановкой выведенного `T` в объявление функции.
+Тип самого параметра `x` получается подстановкой выведенного `T`: вызов `f(ci)` для `f(T& x)` даёт `T = const int`, и параметр `x` — `const int&`.
 
 ### Что читается из таблицы
 
