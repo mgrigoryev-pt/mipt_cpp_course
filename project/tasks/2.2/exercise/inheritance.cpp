@@ -32,7 +32,7 @@ struct Member {
     }
     ~Member() { std::print("  - поле {}\n", name_); }
 
-    const char* name_;
+    const char* name_ = nullptr;
 };
 
 struct First {
@@ -67,21 +67,21 @@ struct Derived : First, Second {
 // ---------------------------------------------------------------------------
 
 struct Padded {
-    char c_;    // 1 байт
-    double d_;  // 8 байт, выравнивание 8
-    char e_;    // 1 байт
+    char c_ = 0;    // 1 байт
+    double d_ = 0;  // 8 байт, выравнивание 8
+    char e_ = 0;    // 1 байт
 };
 
 struct Packed {
-    double d_;
-    char c_;
-    char e_;
+    double d_ = 0;
+    char c_ = 0;
+    char e_ = 0;
 };
 
 struct Empty {};
 
 struct EmptyDerived : Empty {
-    int value_;
+    int value_ = 0;
 };
 
 // ---------------------------------------------------------------------------

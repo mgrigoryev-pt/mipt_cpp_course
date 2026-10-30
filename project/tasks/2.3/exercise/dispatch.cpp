@@ -105,7 +105,7 @@ class Square : public Shape {
     const char* Name() const override { return "квадрат"; }
 
  private:
-    int side_;
+    int side_ = 0;
 };
 
 class Rect : public Shape {
@@ -115,8 +115,8 @@ class Rect : public Shape {
     const char* Name() const override { return "прямоугольник"; }
 
  private:
-    int width_;
-    int height_;
+    int width_ = 0;
+    int height_ = 0;
 };
 
 // ---------------------------------------------------------------------------

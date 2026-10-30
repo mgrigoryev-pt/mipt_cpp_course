@@ -80,7 +80,7 @@ class RuleBase : public IRule {
 
  private:
     std::string id_;
-    Severity severity_;
+    Severity severity_ = Severity::kLow;
     std::vector<std::string> actions_;
     std::size_t hits_ = 0;
 };
@@ -139,7 +139,7 @@ class SequenceRule : public RuleBase {
 
     std::unique_ptr<ICondition> first_;
     std::unique_ptr<ICondition> second_;
-    uint64_t window_ms_;
+    uint64_t window_ms_ = 0;
     bool same_pid_ = true;
     std::vector<Pending> pending_;
 };
@@ -239,8 +239,8 @@ class ThresholdRule : public RuleBase {
     }
 
     std::unique_ptr<ICondition> condition_;
-    std::size_t count_;
-    uint64_t window_ms_;
+    std::size_t count_ = 0;
+    uint64_t window_ms_ = 0;
     std::string key_;
     std::vector<Bucket> buckets_;
 };

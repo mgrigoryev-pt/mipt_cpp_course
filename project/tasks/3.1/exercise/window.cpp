@@ -135,7 +135,7 @@ class SimpleList {
     std::unique_ptr<Node> head_;
     Node* tail_ = nullptr;
     std::size_t size_ = 0;
-    std::size_t capacity_;
+    std::size_t capacity_ = 0;
 };
 
 // ---------------------------------------------------------------------------

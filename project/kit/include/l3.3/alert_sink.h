@@ -110,7 +110,7 @@ class CountingSink {
     void operator()(const Detection& detection) const;
 
  private:
-    AlertCounter* counter_;  // не владеет
+    AlertCounter* counter_ = nullptr;  // не владеет
 };
 
 // --- получатель, раздающий нескольким -------------------------------------

@@ -151,7 +151,7 @@ class Condition {
               const std::vector<std::string>& values)
         : match_(match), key_(key), values_(values) {}
 
-    Match match_;
+    Match match_ = Match::kEquals;
     std::string key_;
     std::vector<std::string> values_;
 };
