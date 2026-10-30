@@ -311,16 +311,37 @@ auto p = my_make_unique<Point>(3, 4);   // Point(3, 4)
 
 `args...` раскрывается в список аргументов для конструктора `T`. Один шаблон обслуживает любые типы и любое число аргументов.
 
-`Args&&` в объявлениях выше — не rvalue-ссылка, а forwarding reference: в настоящем `std::make_unique` она вместе с `std::forward` даёт идеальную передачу (perfect forwarding). Обе разбираются на лекции 11, раздел 8.
+Настоящий `std::make_unique` объявлен как `make_unique(Args&&... args)`. `&&` там — не rvalue-ссылка, а forwarding reference: вместе с `std::forward` она даёт идеальную передачу (perfect forwarding). Обе разбираются на лекции 11, раздел 8.
 
 ---
 <!-- header: 6. Вывод типов -->
 
 # 6. Правила вывода типов
 
-Компилятор **выводит** `T` из аргумента (template argument deduction), и результат зависит от вида параметра. В ячейках — выведенный `T`:
+Компилятор **выводит** `T` из аргумента (template argument deduction), и результат зависит от вида параметра. Три функции и аргументы к ним:
 
-| Аргумент | `T x` | `T& x` | `const T& x` |
+```cpp
+template <typename T> void by_value(T x);
+template <typename T> void by_ref(T& x);
+template <typename T> void by_cref(const T& x);
+
+int i = 5;
+const int ci = 10;
+const int& r = i;
+const int* p = &i;
+
+by_value(ci);   // T = int
+by_ref(ci);     // T = const int,  x — const int&
+by_cref(ci);    // T = int,        x — const int&
+```
+
+---
+
+## Таблица вывода
+
+Строка — аргумент, столбец — функция, в ячейке — выведенный `T`. Строка `ci` — те три вызова с прошлого слайда.
+
+| Аргумент | `by_value(T x)` | `by_ref(T& x)` | `by_cref(const T& x)` |
 |---|---|---|---|
 | `i` — `int` | `int` | `int` | `int` |
 | `ci` — `const int` | `int` | `const int` | `int` |
