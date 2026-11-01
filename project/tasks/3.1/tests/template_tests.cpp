@@ -66,7 +66,7 @@ Event MakeWrite(const std::string& pid, std::uint64_t ts_ms,
 // ---------------------------------------------------------------------------
 
 TEST_CASE("пустой буфер") {
-    const RingBuffer<int, 4> ring;
+    const RingBuffer<int, 4> ring{};
 
     CHECK(ring.empty());
     CHECK(ring.size() == 0);
@@ -95,6 +95,12 @@ TEST_CASE("заполнение до предела") {
     CHECK(ring[0] == 1);
     CHECK(ring[3] == 4);
     CHECK(ring.back() == 4);
+
+    std::vector<int> seen;
+    for (const int value : ring) {
+        seen.push_back(value);
+    }
+    CHECK(seen == std::vector<int>{1, 2, 3, 4});
 }
 
 TEST_CASE("новое затирает самое старое") {
@@ -130,7 +136,7 @@ TEST_CASE("обход в логическом порядке, от старог�
 }
 
 TEST_CASE("обход пустого буфера не делает ничего") {
-    const RingBuffer<int, 4> ring;
+    const RingBuffer<int, 4> ring{};
 
     int visits = 0;
     for (const int value : ring) {
