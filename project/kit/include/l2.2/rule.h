@@ -65,7 +65,7 @@ class RuleBase {
 
  private:
     std::string id_;
-    Severity severity_;
+    Severity severity_ = Severity::kLow;
     std::vector<std::string> actions_;
     std::size_t hits_ = 0;
 };

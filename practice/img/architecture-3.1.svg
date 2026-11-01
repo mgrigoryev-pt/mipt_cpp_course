@@ -218,8 +218,8 @@
   <g font-family="Consolas, Roboto Mono, monospace" font-size="13">
     <rect x="56" y="680" width="124" height="28" fill="none" stroke="#80828c" stroke-width="1.5"/>
     <text x="118" y="699" text-anchor="middle" fill="#80828c">field_traits.h</text>
-    <rect x="56" y="716" width="140" height="28" fill="#dbdfe6"/>
-    <text x="126" y="735" text-anchor="middle" fill="#0b0b0d" font-weight="bold">field_traits.cpp</text>
+    <rect x="56" y="716" width="140" height="28" fill="none" stroke="#80828c" stroke-width="1.5"/>
+    <text x="126" y="735" text-anchor="middle" fill="#ffffff">field_traits.cpp</text>
   </g>
 
 </svg>

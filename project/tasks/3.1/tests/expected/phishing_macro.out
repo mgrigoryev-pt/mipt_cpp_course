@@ -1,0 +1,9 @@
+[CTX] -2: 1730000001850 file_write pid=1042
+[CTX] -1: 1730000002100 file_write pid=880
+[DETECT] high  script_host_from_temp  ts=1730000003000 pid=1101
+[CTX] -2: 1730000003000 process_start pid=1101
+[CTX] -1: 1730000003600 process_end pid=1042
+[DETECT] critical  script_host_beacon  ts=1730000004200 pid=1101
+[CTX] -2: 1730000004900 file_create pid=1101
+[CTX] -1: 1730000005300 file_write pid=1101
+[DETECT] medium  hidden_powershell  ts=1730000006000 pid=1156

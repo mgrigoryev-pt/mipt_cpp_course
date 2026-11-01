@@ -74,7 +74,7 @@ class EdrSink {
     void operator()(const Detection& detection) const;
 
  private:
-    EdrHandle* edr_;  // не владеет: канал живёт дольше получателя
+    EdrHandle* edr_ = nullptr;  // не владеет: канал живёт дольше получателя
 };
 
 }  // namespace nano_edr

@@ -158,7 +158,7 @@ class ResponsePlanner {
                                const std::string& pid) const;
 
  private:
-    const EntityModel* model_;
+    const EntityModel* model_ = nullptr;
     std::string quarantine_dir_;
 };
 
@@ -245,8 +245,8 @@ class Responder {
     void MoveToQuarantine(const Action& action);
     void Delete(const Action& action);
 
-    OsHandle* os_;
-    bool dry_run_;
+    OsHandle* os_ = nullptr;
+    bool dry_run_ = false;
     std::string self_pid_;  // узнаётся из поля actor
 
     // ЗАНЯТИЕ 4.1. Два множества вместо двух векторов.
