@@ -501,7 +501,7 @@ std::move_only_function<void(int)> g = FileWriter{"a.log"};  // C++23, ок
 
 `std::move_only_function` этого не требует, но её `operator()` — **без `const`**: через `const&` не вызвать.
 
-**Правило:** все цели копируются → `std::function`; есть владеющая ресурсом (ownership) → `std::move_only_function`.
+**Правило:** все цели копируются → `std::function`; есть владеющая ресурсом (ownership) → `std::move_only_function` или ресурс под `shared_ptr`, и снова `std::function`.
 
 ---
 
