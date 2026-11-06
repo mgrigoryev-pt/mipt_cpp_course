@@ -1,0 +1,6 @@
+[CTX] -2: 1730100000400 net_connect pid=2210
+[CTX] -1: 1730100001000 file_write pid=2210
+[DETECT] critical  ransom_extension  ts=1730100001060 pid=2210 chain=2210(svchost.exe)
+[CTX] -2: 1730100002260 file_move pid=2210
+[CTX] -1: 1730100002350 file_write pid=2210
+[DETECT] critical  ransomware_mass_write  ts=1730100002410 pid=2210 chain=2210(svchost.exe)
