@@ -34,7 +34,7 @@ class Function<R(Args...)> {
     // не копируется, например FileSink с std::ofstream внутри.
     template <typename F>
     Function(F callable)  // NOLINT
-        : impl_(std::make_unique<CallableModel<F>>(std::move(callable))) {}
+        : impl_(std::make_unique<CallableHolder<F>>(std::move(callable))) {}
 
     R operator()(Args... args) const {
         // TODO: вызвать Call через impl_ с теми же аргументами
@@ -45,16 +45,16 @@ class Function<R(Args...)> {
     }
 
  private:
-    class CallableBase {
+    class ICallable {
      public:
-        virtual ~CallableBase() = default;
+        virtual ~ICallable() = default;
         // TODO: чисто виртуальный Call — та же сигнатура, что у operator()
     };
 
     template <typename F>
-    class CallableModel : public CallableBase {
+    class CallableHolder : public ICallable {
      public:
-        explicit CallableModel(F f) : f_(std::move(f)) {}
+        explicit CallableHolder(F f) : f_(std::move(f)) {}
 
         // TODO: Call с override — вызвать f_ с теми же аргументами
 
@@ -62,7 +62,7 @@ class Function<R(Args...)> {
         F f_;
     };
 
-    std::unique_ptr<CallableBase> impl_;
+    std::unique_ptr<ICallable> impl_;
 };
 
 }  // namespace nano_edr

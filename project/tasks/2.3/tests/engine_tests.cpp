@@ -381,7 +381,8 @@ TEST_CASE("каждый первый шаг даёт ровно одну пар�
     CHECK(rule.hits() == 2);
 }
 
-TEST_CASE("событие под оба шага закрывает старую запись, а не добавляет новую") {
+TEST_CASE("событие под оба шага закрывает старую запись, "
+          "а не добавляет новую") {
     SequenceRule rule("two_step", Severity::kHigh, 5000);
     rule.SetFirst(std::make_unique<EventTypeIs>(
         std::vector<EventType>{EventType::kNetConnect}));
