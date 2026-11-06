@@ -314,6 +314,28 @@ auto p = my_make_unique<Point>(3, 4);   // Point(3, 4)
 Настоящий `std::make_unique` объявлен как `make_unique(Args&&... args)`. `&&` там — не rvalue-ссылка, а forwarding reference: вместе с `std::forward` она даёт идеальную передачу (perfect forwarding). Обе разбираются на лекции 11, раздел 8.
 
 ---
+
+## Пакет в частичной специализации
+
+`bool(const std::string&, int)` — тип: сигнатура (signature) функции. Её разбирает паттерн частичной специализации (partial specialization):
+
+```cpp
+template <typename Signature>
+struct SignatureInfo;                     // объявлен, не определён
+
+template <typename R, typename... Args>
+struct SignatureInfo<R(Args...)> {        // R = bool, Args = {const std::string&, int}
+    using Result = R;
+    static constexpr std::size_t kArity = sizeof...(Args);
+};
+
+static_assert(SignatureInfo<bool(const std::string&, int)>::kArity == 2);
+// SignatureInfo<int> broken;             // CE: incomplete type
+```
+
+Так объявлен `std::function<int(int, int)>` (лекция 10): специализация `function<R(Args...)>` достаёт из сигнатуры типы для `operator()`.
+
+---
 <!-- header: 6. Вывод типов -->
 
 # 6. Правила вывода типов
@@ -399,7 +421,7 @@ auto sum(std::integral auto a, std::integral auto b) { return a + b; }
 - **`if constexpr` (C++17)** — невыбранная ветка не инстанцируется; рекурсия без второй функции. Вне шаблона ветка проверяется целиком
 - **Fold expressions (C++17)** — четыре формы, бинарные для пустых пакетов; в C++26 рядом встаёт `template for`
 - **Fold по `,`** — стандартная идиома «сделай что-то для каждого»
-- **Применения:** `make_unique`, `tuple`, `format`, ваши собственные factory-функции
+- **Применения:** `make_unique`, `tuple`, `format`, ваши собственные factory-функции; `R(Args...)` в частичной специализации разбирает сигнатуру
 - **Вывод типов:** для `T` отбрасываются `&` и `const` самого аргумента, массив распадается; для `T&` const сохраняется; `auto` в возврате и в параметрах — по тем же правилам
 
 ---
