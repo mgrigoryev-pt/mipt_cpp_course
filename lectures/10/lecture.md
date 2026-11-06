@@ -442,20 +442,20 @@ std::cout << op(4, 6) << '\n';        // 48
 **Шаг 1. Интерфейс.** Хранить объекты разных типов в одной переменной умеет полиморфизм: указатель на базу и [виртуальная функция](../glossary.md#virtual-function) (virtual function). Базе нужна ровно одна — «вызови меня»:
 
 ```cpp
-class CallableBase {
+class ICallable {
 public:
-    virtual ~CallableBase() = default;
+    virtual ~ICallable() = default;
     virtual int call(int a, int b) = 0;
 };
 ```
 
-**Шаг 2. Наследник под каждый тип.** Лямбда от `CallableBase` не унаследована и унаследоваться не может: её класс пишет компилятор. Значит наследника для неё заводим мы — шаблоном, который хранит цель полем и в `call` вызывает её:
+**Шаг 2. Наследник под каждый тип.** Лямбда от `ICallable` не унаследована и унаследоваться не может: её класс пишет компилятор. Значит наследника для неё заводим мы — шаблоном, который хранит цель полем и в `call` вызывает её:
 
 ```cpp
 template <typename F>
-class CallableModel : public CallableBase {
+class CallableHolder : public ICallable {
 public:
-    explicit CallableModel(F f) : f_(f) {}
+    explicit CallableHolder(F f) : f_(f) {}
     int call(int a, int b) override { return f_(a, b); }
 
 private:
@@ -463,7 +463,7 @@ private:
 };
 ```
 
-`CallableModel<F>` — не один класс, а по классу на каждый тип цели: для лямбды компилятор инстанцирует свой, для `Multiplier` — свой. От цели требуется одно — чтобы выражение `f_(a, b)` компилировалось. Наследовать что-либо ей не нужно.
+`CallableHolder<F>` — не один класс, а по классу на каждый тип цели: для лямбды компилятор инстанцирует свой, для `Multiplier` — свой. От цели требуется одно — чтобы выражение `f_(a, b)` компилировалось. Наследовать что-либо ей не нужно.
 
 **Шаг 3. Обёртка.** Снаружи остаётся класс без шаблонного параметра; шаблонный у него только конструктор:
 
@@ -471,18 +471,18 @@ private:
 class BinaryOp {
 public:
     template <typename F>
-    BinaryOp(F f) : impl_(std::make_unique<CallableModel<F>>(f)) {}
+    BinaryOp(F f) : impl_(std::make_unique<CallableHolder<F>>(f)) {}
 
     int operator()(int a, int b) const { return impl_->call(a, b); }
 
 private:
-    std::unique_ptr<CallableBase> impl_{};
+    std::unique_ptr<ICallable> impl_{};
 };
 ```
 
-Тип цели известен ровно в одной точке — в конструкторе. Там из него получается наследник `CallableModel<F>`, наследник уходит в [кучу](../glossary.md#heap) (heap), а в обёртке остаётся указатель на базу. Дальше `BinaryOp` тип цели не помнит: тип **стёрт**, и от него осталась только [vtable](../glossary.md#vtable) наследника.
+Тип цели известен ровно в одной точке — в конструкторе. Там из него получается наследник `CallableHolder<F>`, наследник уходит в [кучу](../glossary.md#heap) (heap), а в обёртке остаётся указатель на базу. Дальше `BinaryOp` тип цели не помнит: тип **стёрт**, и от него осталась только [vtable](../glossary.md#vtable) наследника.
 
-![Слева два объекта BinaryOp одинакового размера, add и scale; в каждом одна розовая ячейка impl_. Розовые стрелки ведут вправо, в кучу, к двум наследникам разного размера: CallableModel от лямбды без захватов и CallableModel от лямбды с двумя захватами. Внутри каждого наследника рамка базы CallableBase с ячейкой vptr и поле f_ с самой лямбдой. Подпись снизу: тип цели известен только в шаблонном конструкторе, дальше вызов идёт через vptr](img/type-erasure.svg)
+![Слева два объекта BinaryOp одинакового размера, add и scale; в каждом одна розовая ячейка impl_. Розовые стрелки ведут вправо, в кучу, к двум наследникам разного размера: CallableHolder от лямбды без захватов и CallableHolder от лямбды с двумя захватами. Внутри каждого наследника рамка базы ICallable с ячейкой vptr и поле f_ с самой лямбдой. Подпись снизу: тип цели известен только в шаблонном конструкторе, дальше вызов идёт через vptr](img/type-erasure.svg)
 
 ```cpp
 int sub(int a, int b) { return a - b; }

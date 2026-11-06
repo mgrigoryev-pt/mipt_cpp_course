@@ -410,16 +410,16 @@ std::cout << op(4, 6) << '\n';             // 24
 **Type erasure** собирается из виртуальной функции (virtual function; лекция 7) и шаблона (лекция 8). Для сигнатуры (signature) `int(int, int)`:
 
 ```cpp
-class CallableBase {                     // шаг 1: «вызови меня»
+class ICallable {                        // шаг 1: «вызови меня»
 public:
-    virtual ~CallableBase() = default;
+    virtual ~ICallable() = default;
     virtual int call(int a, int b) = 0;
 };
 
 template <typename F>                    // шаг 2: наследник под тип цели
-class CallableModel : public CallableBase {
+class CallableHolder : public ICallable {
 public:
-    explicit CallableModel(F f) : f_(f) {}
+    explicit CallableHolder(F f) : f_(f) {}
     int call(int a, int b) override { return f_(a, b); }
 private:
     F f_{};
@@ -436,11 +436,11 @@ private:
 class BinaryOp {                         // шаг 3: снаружи один тип
 public:
     template <typename F>
-    BinaryOp(F f) : impl_(std::make_unique<CallableModel<F>>(f)) {}
+    BinaryOp(F f) : impl_(std::make_unique<CallableHolder<F>>(f)) {}
 
     int operator()(int a, int b) const { return impl_->call(a, b); }
 private:
-    std::unique_ptr<CallableBase> impl_{};
+    std::unique_ptr<ICallable> impl_{};
 };
 
 std::vector<BinaryOp> ops;
