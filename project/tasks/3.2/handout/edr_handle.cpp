@@ -58,9 +58,9 @@ std::string JoinActions(const std::vector<std::string>& actions) {
 EdrHandle::EdrHandle(const std::string& config_path) {
     const edr_status status = edr_init(config_path.c_str(), &handle_);
     if (status != EDR_OK) {
-        // Причина в сообщении обязательна: «канал не открылся» без причины
+        // Причина в сообщении обязательна: «edr_init не прошёл» без причины
         // не даёт сделать ни одного следующего шага.
-        throw std::runtime_error("канал до сервера не открылся (" +
+        throw std::runtime_error("edr_init не прошёл (" +
                                  std::string(edr_status_str(status)) + "): " +
                                  config_path);
     }
@@ -92,7 +92,7 @@ std::string EdrHandle::Config(const std::string& key,
     }
     if (status != EDR_BUFFER_TOO_SMALL || needed == 0) {
         // Сюда попадает всё остальное: EDR_INVALID_ARG на пустом ключе,
-        // отказ канала. Работать с умолчанием честнее, чем падать из-за
+        // сервер недоступен. Работать с умолчанием честнее, чем падать из-за
         // недоступной конфигурации.
         return fallback;
     }
@@ -144,7 +144,7 @@ void EdrSink::operator()(const Detection& detection) const {
     if (status != EDR_OK) {
         // Симулятор всегда отвечает EDR_OK, так что в этом курсе ветвь
         // не срабатывает ни разу. Она здесь потому, что агент, молча
-        // теряющий детект при отказе канала, — сломанный агент, и увидеть
+        // теряющий детект при отказе отправки, — сломанный агент, и увидеть
         // это словами дешевле, чем потом на живой сети.
         std::print(stderr, "[WARN] детект не ушёл наверх: {} ({})\n",
                    detection.rule, edr_status_str(status));

@@ -48,7 +48,8 @@ class Function<R(Args...)> {
     class ICallable {
      public:
         virtual ~ICallable() = default;
-        // TODO: чисто виртуальный Call — та же сигнатура, что у operator()
+        // TODO: чисто виртуальный Call — те же параметры и результат, что
+        // у operator(), но без const
     };
 
     template <typename F>
