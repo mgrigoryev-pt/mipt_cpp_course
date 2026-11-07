@@ -26,9 +26,9 @@ namespace nano_edr {
 
 class DedupSink {
  public:
-    // inner — куда пропускать; window_ms — на сколько замолкать; suppressed —
+    // inner — куда пропускать; period_ms — на сколько замолкать; suppressed —
     // куда считать подавленные, может быть nullptr.
-    DedupSink(AlertSink inner, uint64_t window_ms, std::size_t* suppressed);
+    DedupSink(AlertSink inner, uint64_t period_ms, std::size_t* suppressed);
 
     void operator()(const Detection& detection);
 };
