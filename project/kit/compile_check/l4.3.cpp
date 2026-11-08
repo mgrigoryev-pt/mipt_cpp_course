@@ -14,6 +14,7 @@
 #include "event_source.h"
 #include "field_traits.h"
 #include "fields.h"
+#include "file_stream.h"
 #include "os_error.h"
 #include "os_handle.h"
 #include "parse.h"

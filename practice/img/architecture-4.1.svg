@@ -235,57 +235,40 @@
   <!-- ================= нижний ряд: под новые типы комплекта ================= -->
   <line x1="40" y1="722" x2="1040" y2="722" stroke="#26262b" stroke-width="1"/>
 
-  <!-- FanOutSink -->
-  <rect x="40" y="740" width="300" height="130" fill="rgba(255,255,255,0.04)" stroke="#3a3a40" stroke-width="1.5"/>
-  <text x="56" y="766" font-size="16" fill="#ffffff"
-        font-family="Consolas, Roboto Mono, monospace">FanOutSink</text>
-  <text x="56" y="790" font-size="12" fill="#ffffff"
-        font-family="Consolas, Roboto Mono, monospace">AlertSink = move_only_function</text>
-  <text x="56" y="810" font-size="12" fill="#80828c">раздача теряет const</text>
-  <g font-family="Consolas, Roboto Mono, monospace" font-size="13">
-    <rect x="56" y="828" width="112" height="28" fill="none" stroke="#80828c" stroke-width="1.5"/>
-    <text x="112" y="847" text-anchor="middle" fill="#80828c">alert_sink.h</text>
-    <rect x="176" y="828" width="96" height="28" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
-    <text x="224" y="847" text-anchor="middle" fill="#dbdfe6">sinks.cpp</text>
-  </g>
-
   <!-- Responder -->
-  <rect x="356" y="740" width="250" height="130" fill="rgba(255,255,255,0.04)" stroke="#3a3a40" stroke-width="1.5"/>
-  <text x="372" y="766" font-size="16" fill="#ffffff"
+  <rect x="40" y="740" width="330" height="130" fill="rgba(255,255,255,0.04)" stroke="#3a3a40" stroke-width="1.5"/>
+  <text x="56" y="766" font-size="16" fill="#ffffff"
         font-family="Consolas, Roboto Mono, monospace">Responder</text>
-  <text x="372" y="790" font-size="12" fill="#ffffff"
+  <text x="56" y="790" font-size="12" fill="#ffffff"
         font-family="Consolas, Roboto Mono, monospace">done_, touched_ :</text>
-  <text x="386" y="806" font-size="12" fill="#ffffff"
+  <text x="70" y="806" font-size="12" fill="#ffffff"
         font-family="Consolas, Roboto Mono, monospace">unordered_set&lt;string&gt;</text>
   <g font-family="Consolas, Roboto Mono, monospace" font-size="13">
-    <rect x="372" y="828" width="96" height="28" fill="none" stroke="#80828c" stroke-width="1.5"/>
-    <text x="420" y="847" text-anchor="middle" fill="#80828c">response.h</text>
-    <rect x="476" y="828" width="112" height="28" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
-    <text x="532" y="847" text-anchor="middle" fill="#dbdfe6">response.cpp</text>
+    <rect x="56" y="828" width="96" height="28" fill="none" stroke="#80828c" stroke-width="1.5"/>
+    <text x="104" y="847" text-anchor="middle" fill="#80828c">response.h</text>
+    <rect x="160" y="828" width="112" height="28" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+    <text x="216" y="847" text-anchor="middle" fill="#dbdfe6">response.cpp</text>
   </g>
 
   <!-- строки -->
-  <rect x="622" y="740" width="170" height="130" fill="rgba(255,255,255,0.04)" stroke="#3a3a40" stroke-width="1.5"/>
-  <text x="638" y="766" font-size="15" fill="#ffffff">сравнение строк</text>
-  <text x="638" y="790" font-size="12" fill="#80828c">пять функций, четыре</text>
-  <text x="638" y="806" font-size="12" fill="#80828c">без циклов</text>
+  <rect x="386" y="740" width="250" height="130" fill="rgba(255,255,255,0.04)" stroke="#3a3a40" stroke-width="1.5"/>
+  <text x="402" y="766" font-size="15" fill="#ffffff">сравнение строк</text>
+  <text x="402" y="790" font-size="12" fill="#80828c">пять функций, четыре</text>
+  <text x="402" y="806" font-size="12" fill="#80828c">без циклов</text>
   <g font-family="Consolas, Roboto Mono, monospace" font-size="13">
-    <rect x="638" y="828" width="84" height="28" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
-    <text x="680" y="847" text-anchor="middle" fill="#dbdfe6">text.cpp</text>
+    <rect x="402" y="828" width="84" height="28" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+    <text x="444" y="847" text-anchor="middle" fill="#dbdfe6">text.cpp</text>
   </g>
 
   <!-- удаляются -->
-  <rect x="808" y="740" width="232" height="130" fill="none" stroke="#5c5e66" stroke-width="1.5" stroke-dasharray="7 6"/>
-  <text x="824" y="766" font-size="15" fill="#80828c">уходят из проекта</text>
+  <rect x="652" y="740" width="388" height="130" fill="none" stroke="#5c5e66" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="668" y="766" font-size="15" fill="#80828c">уходит из проекта</text>
   <g font-family="Consolas, Roboto Mono, monospace" font-size="13">
-    <rect x="824" y="780" width="128" height="28" fill="none" stroke="#5c5e66" stroke-width="1.5" stroke-dasharray="6 5"/>
-    <text x="888" y="799" text-anchor="middle" fill="#80828c">event_list.cpp</text>
-    <line x1="828" y1="805" x2="948" y2="783" stroke="#ff2020" stroke-width="1.5"/>
-    <rect x="824" y="828" width="100" height="28" fill="none" stroke="#5c5e66" stroke-width="1.5" stroke-dasharray="6 5"/>
-    <text x="874" y="847" text-anchor="middle" fill="#80828c">function.h</text>
-    <line x1="828" y1="853" x2="920" y2="831" stroke="#ff2020" stroke-width="1.5"/>
+    <rect x="668" y="780" width="128" height="28" fill="none" stroke="#5c5e66" stroke-width="1.5" stroke-dasharray="6 5"/>
+    <text x="732" y="799" text-anchor="middle" fill="#80828c">event_list.cpp</text>
+    <line x1="672" y1="805" x2="792" y2="783" stroke="#ff2020" stroke-width="1.5"/>
   </g>
-  <text x="936" y="840" font-size="12" fill="#5c5e66">их тесты</text>
-  <text x="936" y="856" font-size="12" fill="#5c5e66">выпадают сами</text>
+  <text x="812" y="792" font-size="12" fill="#5c5e66">его тесты</text>
+  <text x="812" y="808" font-size="12" fill="#5c5e66">выпадают сами</text>
 
 </svg>

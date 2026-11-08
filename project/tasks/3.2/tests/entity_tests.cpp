@@ -380,6 +380,22 @@ TEST_CASE("child_of_prev без модели молчит") {
     CHECK(rule->hits() == 0);
 }
 
+TEST_CASE("child_of_prev без модели молчит и на одном процессе") {
+    // Без модели связка не выполняется, даже если оба шага в одном процессе:
+    // child_of_prev отменяет same_pid, а не откатывается к нему.
+    auto rule = std::make_unique<SequenceRule>("self", Severity::kLow, 30000);
+    rule->SetFirst(std::make_unique<EventTypeIs>(
+        std::vector<EventType>{EventType::kProcessStart}));
+    rule->SetSecond(std::make_unique<EventTypeIs>(
+        std::vector<EventType>{EventType::kFileWrite}));
+    rule->set_child_of_prev(true);
+
+    rule->Check(Start("1042", "880", "cmd.exe", "cmd", 1000));
+
+    CHECK_FALSE(rule->Check(Write("1042", "C:\\Temp\\a.js", 1100)));
+    CHECK(rule->hits() == 0);
+}
+
 TEST_CASE("child_of_prev не срабатывает на одном и том же процессе") {
     // Связка «его потомок» отменяет same_pid, и это не косметика: событие
     // в том же процессе потомком не является.

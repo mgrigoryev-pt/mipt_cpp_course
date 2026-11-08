@@ -1,8 +1,8 @@
 # Тесты, выдаваемые на занятии 3.2.
 #
-# Свой Function, четыре получателя детектов, подавление дубликатов, модель
-# сущностей, связка child_of_prev и правило из предиката. Подключение —
-# см. постановку занятия.
+# Четыре получателя детектов, подавление дубликатов, модель сущностей,
+# связка child_of_prev и правило из предиката. Подключение — см. постановку
+# занятия.
 #
 # Правьте этот файл, только если понимаете, зачем: он же прогоняется при сдаче.
 
@@ -22,19 +22,8 @@ get_filename_component(NANO_EDR_KIT_ROOT "${CMAKE_CURRENT_LIST_DIR}/../../.." AB
 
 set(task3_2_sources
     ${NANO_EDR_KIT_ROOT}/tests/doctest_main.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/entity_tests.cpp)
-
-# Тесты своего Function выпадают с занятия 4.1: на нём псевдонимы комплекта
-# переходят на std::move_only_function, а src/function.h удаляется. Проверять
-# удалённый тип нечем — ровно та же история, что у односвязного списка
-# в наборе 2.1, и та же цена своего примитива: пока он есть, его надо
-# проверять; когда его не стало, из набора приходится вынимать файл.
-#
-# Остальное в наборе — получатели, подавление дубликатов и модель
-# сущностей — нужно на 4.1 ровно так же, как на 3.2.
-if(NOT NANO_EDR_NO_OWN_FUNCTION)
-    list(APPEND task3_2_sources ${CMAKE_CURRENT_LIST_DIR}/function_tests.cpp)
-endif()
+    ${CMAKE_CURRENT_LIST_DIR}/entity_tests.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/sink_tests.cpp)
 
 add_executable(task3_2_tests ${task3_2_sources})
 

@@ -82,12 +82,6 @@ set(NANO_EDR_SETS_4.3 2.1 2.3 3.1 3.2 3.3 4.1 4.2 4.3)
 #   list_tests.cpp      из набора 2.1, с занятия 4.1: односвязный список
 #                       удалён, окно живёт на кольцевом буфере. Удалённый
 #                       тип нельзя проверять.
-#   function_tests.cpp  из набора 3.2, с занятия 4.1: своё стирание типа
-#                       уступило место std::move_only_function. Причина
-#                       та же, что у списка, и то же правило курса: свой
-#                       примитив живёт до занятия, где появляется
-#                       стандартный аналог. Остальное в наборе 3.2 —
-#                       получатели и модель сущностей — нужно как прежде.
 #   случаи контекста из набора 1.2, с занятия 1.3: они сверяют строки [CTX]
 #                       с эталоном, а эталон снят с детектов-подстрок. На 1.3
 #                       детект — сработавшее правило, и контекст печатается
@@ -117,7 +111,6 @@ set(NANO_EDR_SETS_4.3 2.1 2.3 3.1 3.2 3.3 4.1 4.2 4.3)
 
 set(NANO_EDR_DROP_CONTEXT_CASES_FROM      1.3)
 set(NANO_EDR_DROP_EVENT_LIST_FROM         4.1)
-set(NANO_EDR_DROP_OWN_FUNCTION_FROM       4.1)
 set(NANO_EDR_DROP_THROWING_OS_HANDLE_FROM 4.2)
 set(NANO_EDR_DROP_AGENT_GOLDEN_FROM       2.3)
 set(NANO_EDR_DROP_AGENT_RUNS_FROM         3.1)
@@ -170,12 +163,6 @@ macro(nano_edr_resolve_lesson lesson)
                              "${lesson}" "${NANO_EDR_DROP_EVENT_LIST_FROM}")
     if(_nano_edr_drop_list)
         set(NANO_EDR_NO_EVENT_LIST ON)
-    endif()
-
-    nano_edr_lesson_at_least(_nano_edr_drop_function
-                             "${lesson}" "${NANO_EDR_DROP_OWN_FUNCTION_FROM}")
-    if(_nano_edr_drop_function)
-        set(NANO_EDR_NO_OWN_FUNCTION ON)
     endif()
 
     nano_edr_lesson_at_least(_nano_edr_drop_handle
