@@ -37,11 +37,11 @@
   <rect x="470" y="70" width="406" height="110" fill="rgba(255,255,255,0.04)"
         stroke="#3a3a40" stroke-width="1.5"/>
   <text x="486" y="94" font-size="16" fill="#ffffff"
-        font-family="Consolas, Roboto Mono, monospace">CallableModel&lt;F&gt;</text>
+        font-family="Consolas, Roboto Mono, monospace">CallableHolder&lt;F&gt;</text>
   <rect x="486" y="104" width="180" height="64" fill="none"
         stroke="#80828c" stroke-width="1.5"/>
   <text x="576" y="122" font-size="13" text-anchor="middle" fill="#80828c"
-        font-family="Consolas, Roboto Mono, monospace">CallableBase</text>
+        font-family="Consolas, Roboto Mono, monospace">ICallable</text>
   <text x="576" y="153" font-size="17" text-anchor="middle" fill="#dbdfe6"
         font-family="Consolas, Roboto Mono, monospace">vptr</text>
   <rect x="680" y="104" width="180" height="64" fill="rgba(255,255,255,0.05)"
@@ -53,11 +53,11 @@
   <rect x="470" y="210" width="530" height="110" fill="rgba(255,255,255,0.04)"
         stroke="#3a3a40" stroke-width="1.5"/>
   <text x="486" y="234" font-size="16" fill="#ffffff"
-        font-family="Consolas, Roboto Mono, monospace">CallableModel&lt;G&gt;</text>
+        font-family="Consolas, Roboto Mono, monospace">CallableHolder&lt;G&gt;</text>
   <rect x="486" y="244" width="180" height="64" fill="none"
         stroke="#80828c" stroke-width="1.5"/>
   <text x="576" y="262" font-size="13" text-anchor="middle" fill="#80828c"
-        font-family="Consolas, Roboto Mono, monospace">CallableBase</text>
+        font-family="Consolas, Roboto Mono, monospace">ICallable</text>
   <text x="576" y="293" font-size="17" text-anchor="middle" fill="#dbdfe6"
         font-family="Consolas, Roboto Mono, monospace">vptr</text>
   <rect x="680" y="244" width="304" height="64" fill="rgba(255,255,255,0.05)"

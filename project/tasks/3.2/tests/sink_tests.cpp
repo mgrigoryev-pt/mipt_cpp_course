@@ -1,4 +1,4 @@
-// Тесты своего Function и получателей детектов. Занятие 3.2.
+// Тесты получателей детектов. Занятие 3.2.
 //
 // Тесты занятий 2.1, 2.3 и 3.1 остаются подключёнными: событие, разбор,
 // обёртка, условия, движок, три вида правил, кольцевой буфер и комбинаторы
@@ -8,7 +8,6 @@
 #include <cstdint>
 #include <memory>
 #include <string>
-#include <type_traits>
 #include <utility>
 #include <vector>
 
@@ -17,7 +16,6 @@
 #include "detection.h"
 #include "doctest.h"
 #include "event.h"
-#include "function.h"
 #include "rule.h"
 #include "rule_engine.h"
 #include "rules.h"
@@ -33,7 +31,6 @@ using nano_edr::EventType;
 using nano_edr::EventTypeIs;
 using nano_edr::FanOutSink;
 using nano_edr::Field;
-using nano_edr::Function;
 using nano_edr::LambdaRule;
 using nano_edr::MatchRule;
 using nano_edr::RuleEngine;
@@ -62,115 +59,7 @@ Detection MakeDetection(const std::string& rule, const std::string& pid,
     return detection;
 }
 
-// Свободная функция — тоже callable, и Function обязан её принять.
-int Doubled(int x) { return x * 2; }
-
-// Объект с operator() — третий вид callable.
-struct AddN {
-    int n;
-    int operator()(int x) const { return x + n; }
-};
-
-// Получатель с состоянием: operator() НЕконстантный, состояние снаружи.
-// Именно такой и есть DedupSink, и именно на нём проверяется, что
-// константный Function умеет звать неконстантный callable.
-struct Ticker {
-    std::size_t* calls;
-    void operator()() { ++*calls; }
-};
-
 }  // namespace
-
-// ---------------------------------------------------------------------------
-// Function: что он обязан принимать
-// ---------------------------------------------------------------------------
-
-TEST_CASE("свободная функция") {
-    const Function<int(int)> fn(&Doubled);
-
-    REQUIRE(static_cast<bool>(fn));
-    CHECK(fn(21) == 42);
-}
-
-TEST_CASE("лямбда без захвата") {
-    const Function<int(int)> fn([](int x) { return x + 1; });
-
-    CHECK(fn(41) == 42);
-}
-
-TEST_CASE("лямбда с захватом") {
-    // То, чего не может интерфейс с занятия 2.3: лямбда не наследует ничего,
-    // и всё-таки ложится в переменную одного типа с остальными.
-    const int base = 40;
-    const Function<int(int)> fn([base](int x) { return base + x; });
-
-    CHECK(fn(2) == 42);
-}
-
-TEST_CASE("объект с operator()") {
-    const Function<int(int)> fn(AddN{40});
-
-    CHECK(fn(2) == 42);
-}
-
-TEST_CASE("пустой Function приводится к false") {
-    const Function<int(int)> fn;
-
-    CHECK_FALSE(static_cast<bool>(fn));
-}
-
-TEST_CASE("размер не зависит от того, что внутри") {
-    // Ради этого приём и нужен: тип перестал зависеть от содержимого.
-    // Проверка компиляторная — обе величины считаются на этапе компиляции.
-    struct Big {
-        std::uint64_t pad[16];
-    };
-    const std::size_t small = sizeof(Function<int(int)>);
-    Big big{};
-    big.pad[0] = 1;
-    const Function<int(int)> fn([big](int x) {
-        return x + static_cast<int>(big.pad[0]);
-    });
-
-    CHECK(fn(41) == 42);
-    CHECK(sizeof(fn) == small);
-}
-
-TEST_CASE("разные callable ложатся в один вектор") {
-    // Ровно то, чего не умел AllOfStatic с занятия 3.1: там каждый набор
-    // давал свой тип, и в один вектор их было не сложить.
-    std::vector<Function<int(int)>> all;
-    all.push_back(Function<int(int)>(&Doubled));
-    all.push_back(Function<int(int)>([](int x) { return x + 1; }));
-    all.push_back(Function<int(int)>(AddN{10}));
-
-    REQUIRE(all.size() == 3);
-    CHECK(all[0](21) == 42);
-    CHECK(all[1](41) == 42);
-    CHECK(all[2](32) == 42);
-}
-
-TEST_CASE("Function не копируется") {
-    // Внутри unique_ptr, значит копии нет — и это осознанная разница
-    // с std::function. Проверка компиляторная.
-    CHECK_FALSE(std::is_copy_constructible_v<Function<int(int)>>);
-    CHECK(std::is_move_constructible_v<Function<int(int)>>);
-}
-
-TEST_CASE("константный Function зовёт неконстантный callable") {
-    // Так же устроен std::function, и по той же причине: const у Function
-    // говорит «я не меняю сам Function», а не «я не меняю то, что внутри».
-    // Получателю с состоянием — тому, что подавляет дубликаты, — это и нужно.
-    //
-    // Тест доказывает и то, что это КОМПИЛИРУЕТСЯ, и то, что вызов доходит.
-    std::size_t calls = 0;
-    const Function<void()> fn(Ticker{&calls});
-
-    fn();
-    fn();
-
-    CHECK(calls == 2);
-}
 
 // ---------------------------------------------------------------------------
 // Detection
@@ -216,7 +105,7 @@ TEST_CASE("счётчик считает и запоминает") {
 }
 
 TEST_CASE("счётчик пишет наружу, а не в свою копию") {
-    // Получатель хранится внутри Function по значению, то есть отданная копия
+    // Получатель хранится внутри AlertSink по значению, то есть отданная копия
     // тесту больше не видна. Именно поэтому наблюдаемое состояние живёт
     // снаружи, а получатель только указывает на него.
     AlertCounter counter;
@@ -262,7 +151,7 @@ TEST_CASE("получатель из получателя") {
 // Подавление дубликатов
 // ---------------------------------------------------------------------------
 
-TEST_CASE("повтор в пределах окна подавлен") {
+TEST_CASE("повтор до истечения срока подавлен") {
     AlertCounter counter;
     std::size_t suppressed = 0;
     DedupSink dedup(CountingSink(&counter), 10000, &suppressed);
@@ -275,8 +164,8 @@ TEST_CASE("повтор в пределах окна подавлен") {
     CHECK(suppressed == 2);
 }
 
-TEST_CASE("после окна детект проходит снова") {
-    // Окно считается от ПЕРВОГО детекта. Иначе непрерывный поток одинаковых
+TEST_CASE("после срока детект проходит снова") {
+    // Срок отсчитывается от ПЕРВОГО детекта. Иначе непрерывный поток одинаковых
     // детектов молчал бы вечно, и про длящуюся атаку агент перестал бы
     // докладывать.
     AlertCounter counter;
@@ -289,6 +178,23 @@ TEST_CASE("после окна детект проходит снова") {
 
     CHECK(counter.total == 2);
     CHECK(suppressed == 1);
+}
+
+TEST_CASE("на границе срока повтор подавлен, после срока отсчёт заново") {
+    AlertCounter counter;
+    std::size_t suppressed = 0;
+    DedupSink dedup(CountingSink(&counter), 10000, &suppressed);
+
+    dedup(MakeDetection("mass_write", "42", 1000));
+    dedup(MakeDetection("mass_write", "42", 11000));
+    dedup(MakeDetection("mass_write", "42", 11001));
+    dedup(MakeDetection("mass_write", "42", 21001));
+    dedup(MakeDetection("mass_write", "42", 21002));
+
+    REQUIRE(counter.total == 3);
+    CHECK(suppressed == 2);
+    CHECK(counter.seen[1].ts.ms == 11001);
+    CHECK(counter.seen[2].ts.ms == 21002);
 }
 
 TEST_CASE("разные процессы не подавляют друг друга") {
@@ -315,7 +221,7 @@ TEST_CASE("разные правила не подавляют друг друг
     CHECK(suppressed == 0);
 }
 
-TEST_CASE("нулевое окно выключает подавление") {
+TEST_CASE("нулевой срок выключает подавление") {
     AlertCounter counter;
     std::size_t suppressed = 0;
     DedupSink dedup(CountingSink(&counter), 0, &suppressed);
@@ -325,6 +231,16 @@ TEST_CASE("нулевое окно выключает подавление") {
 
     CHECK(counter.total == 2);
     CHECK(suppressed == 0);
+}
+
+TEST_CASE("счётчик подавленных может быть nullptr") {
+    AlertCounter counter;
+    DedupSink dedup(CountingSink(&counter), 10000, nullptr);
+
+    dedup(MakeDetection("mass_write", "42", 1000));
+    dedup(MakeDetection("mass_write", "42", 2000));
+
+    CHECK(counter.total == 1);
 }
 
 // ---------------------------------------------------------------------------
