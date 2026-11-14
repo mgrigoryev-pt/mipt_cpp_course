@@ -240,6 +240,55 @@ TEST_CASE("без каталога карантина изоляции не бу
     CHECK(plan.empty());
 }
 
+TEST_CASE("системный источник запуска не изолируется") {
+    EntityModel model;
+    model.Observe(Start("1042", "880", "C:\\Windows\\System32\\cmd.exe",
+                        "cmd /c wscript", 1000));
+    model.Observe(Make("file_create", "1042", 1400,
+                       {Field{"path", "C:\\Program Files\\Tool\\a.js"}}));
+    model.Observe(Start("1101", "1042", "C:\\Windows\\System32\\wscript.exe",
+                        "wscript.exe C:\\Program Files\\Tool\\a.js", 2000));
+
+    ResponsePlanner planner(&model, "C:\\quarantine");
+    // Предохранитель один на все действия с файлами: источник запуска
+    // из системного каталога в карантин не уходит, как и системный образ.
+    const ResponsePlan plan =
+        planner.Plan(MakeDetection("test", "1101", {"quarantine_source"}));
+
+    CHECK(plan.empty());
+}
+
+TEST_CASE("без каталога карантина источник запуска не изолируется") {
+    EntityModel model;
+    model.Observe(Start("1042", "880", "C:\\Windows\\System32\\cmd.exe",
+                        "cmd /c wscript", 1000));
+    model.Observe(Make("file_create", "1042", 1400,
+                       {Field{"path", "C:\\Users\\max\\Temp\\a.js"}}));
+    model.Observe(Start("1101", "1042", "C:\\Windows\\System32\\wscript.exe",
+                        "wscript.exe C:\\Users\\max\\Temp\\a.js", 2000));
+
+    ResponsePlanner planner(&model, "");
+    const ResponsePlan plan =
+        planner.Plan(MakeDetection("test", "1101", {"quarantine_source"}));
+
+    // Действие с пустым `to` перенесло бы файл в никуда.
+    CHECK(plan.empty());
+}
+
+TEST_CASE("системный путь узнаётся без учёта регистра") {
+    EntityModel model;
+    model.Observe(Start("1156", "880",
+                        "c:\\WINDOWS\\system32\\powershell.exe",
+                        "powershell -w hidden -enc AAA", 1000));
+
+    ResponsePlanner planner(&model, "C:\\quarantine");
+    // Windows регистр в путях не различает, и журнал пишет их как придётся.
+    const ResponsePlan plan =
+        planner.Plan(MakeDetection("test", "1156", {"quarantine_image"}));
+
+    CHECK(plan.empty());
+}
+
 TEST_CASE("номер процесса входит в имя в карантине") {
     EntityModel model;
     ResponsePlanner planner(&model, "C:\\quarantine");
@@ -305,6 +354,25 @@ TEST_CASE("удаляется принесённое всем поддерево
     CHECK(plan.size() == 2);
     CHECK(plan.Has("C:\\Temp\\a.js"));
     CHECK(plan.Has("C:\\Temp\\stage2.bin"));
+}
+
+TEST_CASE("системный файл не удаляется") {
+    EntityModel model;
+    model.Observe(Start("1042", "880", "cmd.exe", "cmd", 1000));
+    model.Observe(Make("file_create", "1042", 1100,
+                       {Field{"path", "C:\\Windows\\Temp\\helper.dll"}}));
+    model.Observe(Make("file_create", "1042", 1200,
+                       {Field{"path", "C:\\Users\\max\\Temp\\a.js"}}));
+
+    ResponsePlanner planner(&model, "C:\\quarantine");
+    const ResponsePlan plan =
+        planner.Plan(MakeDetection("test", "1042", {"delete_dropped"}));
+
+    // Процесс создал оба файла, но удалять из системного каталога нельзя:
+    // правило могло ошибиться, а удалённое не вернуть.
+    REQUIRE(plan.size() == 1);
+    CHECK(plan.actions()[0].path == "C:\\Users\\max\\Temp\\a.js");
+    CHECK(!plan.Has("C:\\Windows\\Temp\\helper.dll"));
 }
 
 TEST_CASE("удаляется файл из самого детекта") {
