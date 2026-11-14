@@ -1,0 +1,8 @@
+[DETECT] high  script_host_from_temp  ts=1730000003000 pid=1101 chain=880>1042(cmd.exe)>1101(wscript.exe)
+[PLAN] kill pid=1101 start=1730000003000  (script_host_from_temp)
+[PLAN] quarantine C:\Users\max\AppData\Local\Temp\a.js -> C:\quarantine\1101-a.js  (script_host_from_temp, источник запуска)
+[DETECT] high  shell_spawns_script_host  ts=1730000003000 pid=1101 chain=880>1042(cmd.exe)>1101(wscript.exe)
+[DETECT] high  spawned_from_dropped_file  ts=1730000003000 pid=1101 chain=880>1042(cmd.exe)>1101(wscript.exe)
+[DETECT] critical  script_host_beacon  ts=1730000004200 pid=1101 chain=880>1042(cmd.exe)>1101(wscript.exe)
+[DETECT] medium  hidden_powershell  ts=1730000006000 pid=1156 chain=880>1042(cmd.exe)>1101(wscript.exe)>1156(powershell.exe)
+[PLAN] kill pid=1156 start=1730000006000  (hidden_powershell)

@@ -124,10 +124,10 @@
   <text x="378" y="402" font-size="12" fill="#80828c"
         font-family="Consolas, Roboto Mono, monospace">kNoSuchProcess, kPidReused, …</text>
   <g font-family="Consolas, Roboto Mono, monospace" font-size="13">
-    <rect x="378" y="436" width="92" height="28" fill="none" stroke="#80828c" stroke-width="1.5"/>
-    <text x="424" y="455" text-anchor="middle" fill="#80828c">response.h</text>
-    <rect x="478" y="436" width="108" height="28" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
-    <text x="532" y="455" text-anchor="middle" fill="#dbdfe6">response.cpp</text>
+    <rect x="378" y="414" width="92" height="26" fill="none" stroke="#80828c" stroke-width="1.5"/>
+    <text x="424" y="432" text-anchor="middle" fill="#80828c">response.h</text>
+    <rect x="378" y="446" width="178" height="26" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
+    <text x="467" y="464" text-anchor="middle" fill="#dbdfe6">response_actions.cpp</text>
   </g>
 
   <!-- ================= RuleLoader ================= -->

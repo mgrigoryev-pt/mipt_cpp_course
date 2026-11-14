@@ -1,0 +1,5 @@
+[DETECT] high  script_host_from_temp  ts=1730400000000 pid=1042 chain=1042(wscript.exe)
+[ACT] kill pid=1042 start=1730400000000 OS_OK
+[DETECT] medium  hidden_powershell  ts=1730400000600 pid=1180 chain=1042(wscript.exe)>1180(powershell.exe)
+[ACT] kill pid=1180 start=1730400000600 OS_OK
+[DETECT] critical  script_host_beacon  ts=1730400001100 pid=1042 chain=1042(wscript.exe)

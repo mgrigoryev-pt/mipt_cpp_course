@@ -76,7 +76,7 @@ TEST_CASE("Event следует правилу нуля") {
     // Ни одна из пяти функций у Event не написана, и все пять есть.
     // Компилятор сгенерировал их по полям — и сгенерировал правильно.
     static_assert(std::is_copy_constructible_v<Event>,
-                  "событие обязано копироваться: без этого не собрать улику");
+                  "событие копируется: иначе его не положить в детект");
     static_assert(std::is_move_constructible_v<Event>);
     static_assert(std::is_move_assignable_v<Event>);
 
@@ -105,7 +105,7 @@ TEST_CASE("Detection следует правилу пяти") {
     static_assert(std::is_default_constructible_v<Detection>);
 }
 
-TEST_CASE("детект перемещается вместе с уликами") {
+TEST_CASE("детект перемещается вместе с копиями событий") {
     Detection first;
     first.rule = "test_rule";
     first.pid = "1042";
@@ -118,7 +118,7 @@ TEST_CASE("детект перемещается вместе с уликами"
 
     REQUIRE(second.evidence.size() == 1);
     CHECK(second.rule == "test_rule");
-    // Улика не пересоздавалась: перемещение вектора указателей переносит
+    // Копия не пересоздавалась: перемещение вектора указателей переносит
     // указатели, а не то, на что они указывают.
     CHECK(second.evidence[0].get() == address);
 }
@@ -192,7 +192,7 @@ TEST_CASE("битая строка не портит части до прове�
 // Окно: две перегрузки PushBack
 // ---------------------------------------------------------------------------
 
-TEST_CASE("запись окна копируется, если её не переместить") {
+TEST_CASE("WindowEntry копируется, если её не переместить") {
     ResetCopyStats();
 
     RingBuffer<WindowEntry, 4> window;
@@ -208,7 +208,7 @@ TEST_CASE("запись окна копируется, если её не пер
     CHECK(entry.type == "process_start");  // источник цел
 }
 
-TEST_CASE("запись окна перемещается по std::move") {
+TEST_CASE("WindowEntry перемещается по std::move") {
     ResetCopyStats();
 
     RingBuffer<WindowEntry, 4> window;

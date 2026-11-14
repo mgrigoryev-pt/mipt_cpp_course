@@ -88,7 +88,7 @@
   <g font-size="12" fill="#5c5e66">
     <text x="814" y="177">→ разбор, Event из view</text>
     <text x="814" y="213">→ Reporter</text>
-    <text x="814" y="249">→ счётчик, родитель, без улик</text>
+    <text x="814" y="249">→ счётчик, родитель, без событий</text>
     <text x="924" y="268">→ два режима</text>
   </g>
 
@@ -221,7 +221,7 @@
 
   <!-- ================= Detection ================= -->
   <rect x="784" y="600" width="256" height="86" fill="rgba(255,255,255,0.04)" stroke="#3a3a40" stroke-width="1.5"/>
-  <text x="800" y="622" font-size="12" fill="#80828c">копия детекта без улик</text>
+  <text x="800" y="622" font-size="12" fill="#80828c">копия детекта без событий</text>
   <g font-family="Consolas, Roboto Mono, monospace" font-size="13">
     <rect x="800" y="640" width="104" height="28" fill="none" stroke="#80828c" stroke-width="1.5"/>
     <text x="852" y="659" text-anchor="middle" fill="#80828c">detection.h</text>

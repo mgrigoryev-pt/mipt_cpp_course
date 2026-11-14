@@ -26,11 +26,8 @@
 
     <rect x="340" y="28" width="112" height="24" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
     <text x="396" y="45" text-anchor="middle" fill="#dbdfe6">меняете</text>
-
-    <rect x="464" y="28" width="132" height="24" fill="#dbdfe6"/>
-    <text x="530" y="45" text-anchor="middle" fill="#0b0b0d" font-weight="bold">пишете с нуля</text>
   </g>
-  <text x="616" y="45" font-size="13" fill="#5c5e66">комплект менять нельзя; остальное — ваш src/</text>
+  <text x="476" y="45" font-size="13" fill="#5c5e66">комплект менять нельзя; остальное — ваш src/</text>
 
   <text x="40" y="78" font-size="13" fill="#5c5e66">связи:</text>
   <line x1="100" y1="73" x2="150" y2="73" stroke="#ff8a8a" stroke-width="2.5" marker-end="url(#pink)"/>
@@ -124,7 +121,7 @@
   <rect x="360" y="340" width="320" height="170" fill="rgba(255,255,255,0.04)" stroke="#3a3a40" stroke-width="1.5"/>
   <text x="520" y="368" font-size="17" text-anchor="middle" fill="#ffffff"
         font-family="Consolas, Roboto Mono, monospace">RuleEngine</text>
-  <text x="520" y="396" font-size="12" text-anchor="middle" fill="#80828c">в детект кладёт копию события-улики:</text>
+  <text x="520" y="396" font-size="12" text-anchor="middle" fill="#80828c">в детект кладёт копию события:</text>
   <text x="520" y="414" font-size="12" text-anchor="middle" fill="#80828c">одна копия на детект, а не на событие</text>
   <g font-family="Consolas, Roboto Mono, monospace" font-size="13">
     <rect x="376" y="440" width="116" height="26" fill="none" stroke="#80828c" stroke-width="1.5"/>
@@ -141,7 +138,7 @@
   <text x="910" y="368" font-size="17" text-anchor="middle" fill="#ffffff"
         font-family="Consolas, Roboto Mono, monospace">Detection</text>
   <text x="796" y="392" font-size="12" fill="#ffffff"
-        font-family="Consolas, Roboto Mono, monospace">evidence — улики</text>
+        font-family="Consolas, Roboto Mono, monospace">evidence — события</text>
   <text x="796" y="411" font-size="12" fill="#80828c">копирование запрещено; получатель</text>
   <text x="796" y="429" font-size="12" fill="#80828c">хранит снимок SeenAlert</text>
   <g font-family="Consolas, Roboto Mono, monospace" font-size="13">
@@ -186,10 +183,12 @@
   <text x="376" y="640" font-size="12" fill="#80828c">в --dry-run только печать [PLAN]</text>
   <text x="376" y="658" font-size="12" fill="#80828c">Recognize: своё ли это событие</text>
   <g font-family="Consolas, Roboto Mono, monospace" font-size="13">
-    <rect x="376" y="676" width="96" height="26" fill="none" stroke="#80828c" stroke-width="1.5"/>
-    <text x="424" y="694" text-anchor="middle" fill="#80828c">response.h</text>
-    <rect x="482" y="676" width="116" height="26" fill="#dbdfe6"/>
-    <text x="540" y="694" text-anchor="middle" fill="#0b0b0d" font-weight="bold">response.cpp</text>
+    <rect x="376" y="670" width="96" height="26" fill="none" stroke="#80828c" stroke-width="1.5"/>
+    <text x="424" y="688" text-anchor="middle" fill="#80828c">response.h</text>
+    <rect x="482" y="670" width="116" height="26" fill="none" stroke="#80828c" stroke-width="1.5"/>
+    <text x="540" y="688" text-anchor="middle" fill="#ffffff">response.cpp</text>
+    <rect x="376" y="703" width="178" height="26" fill="none" stroke="#80828c" stroke-width="1.5"/>
+    <text x="465" y="721" text-anchor="middle" fill="#ffffff">response_actions.cpp</text>
   </g>
 
   <rect x="780" y="568" width="260" height="170" fill="rgba(255,255,255,0.04)" stroke="#3a3a40" stroke-width="1.5"/>
@@ -200,8 +199,8 @@
   <g font-family="Consolas, Roboto Mono, monospace" font-size="13">
     <rect x="796" y="668" width="96" height="26" fill="none" stroke="#80828c" stroke-width="1.5"/>
     <text x="844" y="686" text-anchor="middle" fill="#80828c">response.h</text>
-    <rect x="900" y="668" width="116" height="26" fill="#dbdfe6"/>
-    <text x="958" y="686" text-anchor="middle" fill="#0b0b0d" font-weight="bold">response.cpp</text>
+    <rect x="900" y="668" width="116" height="26" fill="none" stroke="#80828c" stroke-width="1.5"/>
+    <text x="958" y="686" text-anchor="middle" fill="#ffffff">response.cpp</text>
   </g>
 
   <!-- планировщик читает детект -->
@@ -258,8 +257,8 @@
   <g font-family="Consolas, Roboto Mono, monospace" font-size="13">
     <rect x="796" y="896" width="124" height="26" fill="none" stroke="#80828c" stroke-width="1.5"/>
     <text x="858" y="914" text-anchor="middle" fill="#80828c">entity_model.h</text>
-    <rect x="796" y="930" width="140" height="26" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
-    <text x="866" y="948" text-anchor="middle" fill="#dbdfe6">entity_model.cpp</text>
+    <rect x="796" y="930" width="140" height="26" fill="none" stroke="#80828c" stroke-width="1.5"/>
+    <text x="866" y="948" text-anchor="middle" fill="#ffffff">entity_model.cpp</text>
   </g>
 
   <!-- ================= ряд E: CopyStats, окно, Event ================= -->
