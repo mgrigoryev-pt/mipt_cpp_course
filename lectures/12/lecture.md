@@ -102,7 +102,7 @@ for (auto item : container)        { /* нужна независимая коп
 
 ### `auto&&` — ссылка на что угодно
 
-Четвёртая форма — `auto&&`. Это не rvalue-ссылка, а тот же [forwarding reference](../glossary.md#forwarding-reference), что `T&&` в шаблоне (лекция 11, раздел 8): к [lvalue](../glossary.md#lvalue) он становится `&`, к rvalue — `&&`.
+Четвёртая форма — `auto&&`. Это не [rvalue-ссылка](../glossary.md#rvalue-reference) (rvalue reference), а тот же [forwarding reference](../glossary.md#forwarding-reference), что `T&&` в шаблоне (лекция 11, раздел 8): к [lvalue](../glossary.md#lvalue) он становится `&`, к rvalue — `&&`.
 
 ```cpp
 int i = 5;

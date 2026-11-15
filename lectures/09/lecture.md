@@ -280,7 +280,7 @@ std::unique_ptr<T> my_make_unique(Args... args) {
 auto p = my_make_unique<Point>(3, 4);   // Point(3, 4)
 ```
 
-Один шаблон обслуживает любые типы и любое число аргументов. В настоящем `std::make_unique` вместо `Args...` используется `Args&&...` плюс `std::forward<Args>(args)...` — [идеальная передача](../glossary.md#perfect-forwarding) (perfect forwarding). Это нужно, чтобы корректно передавать [rvalue](../glossary.md#lvalue) и сохранять `const`. `&&` в таком объявлении — не rvalue-ссылка, а [forwarding reference](../glossary.md#forwarding-reference), параметр, который принимает что угодно; как он выводится и зачем нужен, разбирается на лекции 11, когда появится [move-семантика](../glossary.md#move-semantics) (move semantics).
+Один шаблон обслуживает любые типы и любое число аргументов. В настоящем `std::make_unique` вместо `Args...` используется `Args&&...` плюс `std::forward<Args>(args)...` — [идеальная передача](../glossary.md#perfect-forwarding) (perfect forwarding). Это нужно, чтобы корректно передавать [rvalue](../glossary.md#lvalue) и сохранять `const`. `&&` в таком объявлении — не [rvalue-ссылка](../glossary.md#rvalue-reference) (rvalue reference), а [forwarding reference](../glossary.md#forwarding-reference), параметр, который принимает что угодно; как он выводится и зачем нужен, разбирается на лекции 11, когда появится [move-семантика](../glossary.md#move-semantics) (move semantics).
 
 ### `std::tuple`
 

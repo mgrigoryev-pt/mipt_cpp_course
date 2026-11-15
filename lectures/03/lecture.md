@@ -325,7 +325,7 @@ std::print("{}\n", make().size());
 // разрушается в точке с запятой
 ```
 
-Если временный привязывается к **`const&` или к rvalue-ссылке `&&`** — его жизнь **продлевается** до жизни самой ссылки ([продление времени жизни временного объекта](../glossary.md#lifetime-extension), lifetime extension):
+Если временный привязывается к **`const&` или к [rvalue-ссылке](../glossary.md#rvalue-reference) (rvalue reference) `&&`** — его жизнь **продлевается** до жизни самой ссылки ([продление времени жизни временного объекта](../glossary.md#lifetime-extension), lifetime extension):
 
 ```cpp
 const std::string& s = make();    // временный продлён до конца блока

@@ -21,14 +21,14 @@
   <!-- дорожка 1: lvalue -->
   <rect x="50" y="76" width="200" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
   <text x="150" y="106" font-size="20" text-anchor="middle" fill="#ffffff"
-        font-family="Consolas, Roboto Mono, monospace">named</text>
+        font-family="Consolas, Roboto Mono, monospace">name</text>
   <text x="150" y="128" font-size="15" text-anchor="middle" fill="#80828c">lvalue</text>
 
   <line x1="258" y1="108" x2="292" y2="108" stroke="#80828c" stroke-width="2" marker-end="url(#grey)"/>
 
   <rect x="300" y="76" width="200" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
   <text x="400" y="116" font-size="18" text-anchor="middle" fill="#ff8a8a"
-        font-family="Consolas, Roboto Mono, monospace">Pattern&amp;</text>
+        font-family="Consolas, Roboto Mono, monospace">std::string&amp;</text>
 
   <line x1="508" y1="108" x2="542" y2="108" stroke="#80828c" stroke-width="2" marker-end="url(#grey)"/>
 
@@ -46,14 +46,14 @@
   <!-- дорожка 2: rvalue -->
   <rect x="50" y="184" width="200" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
   <text x="150" y="214" font-size="20" text-anchor="middle" fill="#ffffff"
-        font-family="Consolas, Roboto Mono, monospace">Pattern(...)</text>
+        font-family="Consolas, Roboto Mono, monospace">name + ".log"</text>
   <text x="150" y="236" font-size="15" text-anchor="middle" fill="#80828c">rvalue</text>
 
   <line x1="258" y1="216" x2="292" y2="216" stroke="#80828c" stroke-width="2" marker-end="url(#grey)"/>
 
   <rect x="300" y="184" width="200" height="64" fill="rgba(255,255,255,0.05)" stroke="#dbdfe6" stroke-width="2"/>
   <text x="400" y="224" font-size="18" text-anchor="middle" fill="#dbdfe6"
-        font-family="Consolas, Roboto Mono, monospace">Pattern</text>
+        font-family="Consolas, Roboto Mono, monospace">std::string</text>
 
   <line x1="508" y1="216" x2="542" y2="216" stroke="#80828c" stroke-width="2" marker-end="url(#grey)"/>
 

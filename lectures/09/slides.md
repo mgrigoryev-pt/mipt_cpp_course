@@ -311,7 +311,7 @@ auto p = my_make_unique<Point>(3, 4);   // Point(3, 4)
 
 `args...` раскрывается в список аргументов для конструктора `T`. Один шаблон обслуживает любые типы и любое число аргументов.
 
-Настоящий `std::make_unique` объявлен как `make_unique(Args&&... args)`. `&&` там — не rvalue-ссылка, а forwarding reference: вместе с `std::forward` она даёт идеальную передачу (perfect forwarding). Обе разбираются на лекции 11, раздел 8.
+Настоящий `std::make_unique` объявлен как `make_unique(Args&&... args)`. `&&` там — не rvalue-ссылка (rvalue reference), а forwarding reference: вместе с `std::forward` она даёт идеальную передачу (perfect forwarding). Обе разбираются на лекции 11, раздел 8.
 
 ---
 

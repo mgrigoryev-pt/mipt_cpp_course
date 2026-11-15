@@ -22,7 +22,7 @@ section {
 
 1. Проблема: лишнее копирование
 2. `std::move` как инструмент
-3. Категории значения (lvalue / rvalue)
+3. Категории значения и rvalue-ссылка
 4. Move-конструктор
 5. Move-`operator=`
 6. Правило пяти и специальные функции-члены
@@ -96,9 +96,7 @@ void swap(T& a, T& b) {
 
 ---
 
-## Что делает `std::move`
-
-`std::move` **не двигает ничего сам**. Он просто **разрешает компилятору** относиться к выражению как к «временному, которое сейчас умрёт». То есть как к **rvalue**.
+## Что остаётся в источнике
 
 ```cpp
 std::string s = "hello";
@@ -114,7 +112,7 @@ s = "new value";                 // ok, можно присваивать
 ---
 <!-- header: 3. Категории значения -->
 
-# 3. Категории значения (lvalue / rvalue)
+# 3. Категории значения и rvalue-ссылка
 
 Выражения делятся на две основные категории значения (value categories):
 
@@ -127,7 +125,27 @@ int y = x + 1;         // y — lvalue, x+1 — rvalue
 foo();                 // вызов функции — rvalue (если не возвращает T&)
 ```
 
-**Rvalue → потенциально умрёт прямо сейчас → можно переиспользовать.**
+**Rvalue → потенциально умрёт прямо сейчас → можно переиспользовать.** Узнать, что пришло rvalue, позволяет rvalue-ссылка (rvalue reference).
+
+---
+
+## Rvalue-ссылка `T&&`
+
+Новый вид ссылки (rvalue reference, C++11) — привязывается **только к rvalue**:
+
+```cpp
+int x = 5;
+int&& a = 5;        // ok: литерал — rvalue
+int&& b = x + 1;    // ok: результат арифметики — rvalue
+int&& c = x;        // CE: x — lvalue
+```
+
+Зачем: перегрузка (overloading) различает аргумент по категории значения.
+
+```cpp
+void take(const std::string& s);   // чужое: только читать или копировать
+void take(std::string&& s);        // временное: можно забрать содержимое
+```
 
 ---
 
@@ -135,7 +153,37 @@ foo();                 // вызов функции — rvalue (если не в
 
 ![width:900px](img/ref-binding.svg)
 
-`const T&` принимает что угодно — поэтому им и пишут параметры «только почитать». Выбор между copy- и move-перегрузкой (overloading) делает третья колонка.
+`const T&` принимает что угодно — поэтому им и пишут параметры «только почитать». Выбор между copy- и move-перегрузкой делает третья колонка.
+
+---
+
+## `std::move` — просто каст
+
+`std::move` **не двигает ничего сам**. Это каст (cast) к rvalue-ссылке:
+
+```cpp
+std::string t = std::move(s);
+// ровно то же самое:
+// std::string t = static_cast<std::string&&>(s);
+```
+
+Выражение по-прежнему обозначает объект `s`, но стало rvalue — и перегрузка выбирает `std::string(std::string&&)`.
+
+Перемещает **move-конструктор** (move constructor), а `std::move` только разрешает ему это сделать.
+
+---
+
+## Имя rvalue-ссылки — lvalue
+
+```cpp
+int&& r = 5;
+int&& r2 = r;      // CE: выражение r — lvalue
+int& r3 = r;       // ok
+```
+
+**Подвох:** у `r` есть имя и адрес — значит, выражение `r` уже lvalue. `&&` в объявлении говорит только о том, к чему ссылку можно было привязать.
+
+Это правило вернётся в разделе 8.
 
 ---
 <!-- header: 4. Move-конструктор -->
@@ -173,12 +221,14 @@ public:
 
 ```cpp
 String a("hello");
-String b = a;             // копирующий (a — lvalue)
-String c = std::move(a);  // move-конструктор (std::move делает a rvalue)
-String d = String("hi");  // move-конструктор (литерал — rvalue)
+String b = a;               // копирующий (a — lvalue)
+String c = std::move(a);    // move-конструктор (std::move делает a rvalue)
+
+std::vector<String> v;
+v.push_back(String("hi"));  // move-конструктор (временный объект — rvalue)
 ```
 
-Компилятор выбирает между `String(const String&)` и `String(String&&)` по тому, что **справа** от `=`: lvalue или rvalue.
+Компилятор выбирает между `String(const String&)` и `String(String&&)` по тому, из чего создаётся объект: из lvalue или из rvalue.
 
 ---
 
@@ -311,15 +361,30 @@ v.emplace_back("hello");       // создание string прямо в вект
 # 8. `std::forward` — отдать дальше тем же, чем получили
 
 ```cpp
-template <typename... Args>
-void emplace_back(Args&&... args) {
-    new (next_slot) T(args...);   // всегда copy
+template <typename T, typename... Args>
+std::unique_ptr<T> my_make_unique(Args... args) {   // лекция 9
+    return std::unique_ptr<T>(new T(args...));
+}
+
+auto p = my_make_unique<std::string>(name + ".log");
+```
+
+`args` — имя, значит lvalue (раздел 3), и `new T(args...)` всегда копирует. Временную строку копировать незачем — она сейчас умрёт. Именованная копируется дважды: в параметр и в `T`.
+
+---
+
+## Forwarding reference
+
+```cpp
+template <typename T, typename... Args>
+std::unique_ptr<T> my_make_unique(Args&&... args) {
+    return std::unique_ptr<T>(new T(args...));   // всё ещё copy
 }
 ```
 
-`Args&&` здесь — не rvalue-ссылка: `Args` выводится из этого же параметра, и такой `T&&` называется **forwarding reference** (у Мейерса — universal reference).
+Ссылка убирает копию на входе. `Args&&` здесь — не rvalue-ссылка: `Args` выводится из этого же параметра, и такой `T&&` называется **forwarding reference** (у Мейерса — universal reference).
 
-Информация о том, чем был аргумент, записана в `Args`. Теряется она в теле: `args` — имя, у имени есть адрес, значит lvalue.
+Информация о том, чем был аргумент, записана в `Args`. Теряется она в теле: имя ссылки — lvalue.
 
 ---
 
@@ -334,14 +399,14 @@ void emplace_back(Args&&... args) {
 ## `std::move` здесь неверен
 
 ```cpp
-new (next_slot) T(std::move(args)...);   // ПЛОХО
+return std::unique_ptr<T>(new T(std::move(args)...));   // ПЛОХО
 ```
 
 `std::move` безусловен: он сделает rvalue и из именованного объекта вызывающего.
 
 ```cpp
-Pattern named("\\Documents\\");
-rules.emplace_back(id, named);   // named опустошён
+std::string name = "agent";
+auto p = my_make_unique<std::string>(name);   // name опустошён
 ```
 
 Вызывающий не писал `std::move` и отдавать ресурс не собирался.
@@ -351,7 +416,7 @@ rules.emplace_back(id, named);   // named опустошён
 ## Условный каст (cast)
 
 ```cpp
-new (next_slot) T(std::forward<Args>(args)...);
+return std::unique_ptr<T>(new T(std::forward<Args>(args)...));
 ```
 
 ![width:900px](img/forward-restores.svg)
@@ -360,15 +425,16 @@ new (next_slot) T(std::forward<Args>(args)...);
 
 ---
 
-## Замер: где разница есть
+## Замер: что дал `std::forward`
 
-| что и куда | по значению + `move` | `forward` |
+`T = std::string`, счётчики в копирующем конструкторе и move-конструкторе:
+
+| аргумент | `Args...` (лекция 9) | `Args&&` + `std::forward` |
 |---|---|---|
-| цель по значению, rvalue | 0 копий, 2 перем. | то же |
-| цель по значению, lvalue | 1 копия, 2 перем. | 1 копия, **1** |
-| цель по `const&`, lvalue | **2 копии** | **1 копия** |
+| временный: `name + ".log"` | 1 копия | 0 копий, 1 перемещение |
+| именованный: `name` | 2 копии | 1 копия |
 
-**Подвох:** на временном объекте выигрыша нет — copy elision из C++17 строит его прямо в параметре. Разница только на именованных аргументах.
+Временный объект больше не копируется, именованный копируется один раз. Так и объявлен настоящий `std::make_unique`.
 
 ---
 
@@ -383,7 +449,8 @@ sink(std::forward<T>(x));   // второй раз — уже опустошён
 ```
 
 ```cpp
-template <typename T> class Holder {
+template <typename T>
+class Holder {
     void set(T&& value);    // НЕ forwarding reference
 };
 ```
@@ -397,7 +464,7 @@ template <typename T> class Holder {
 
 ![width:900px](img/nrvo.svg)
 
-**NRVO** (named return value optimization): возвращаемый объект строится сразу в памяти вызывающей стороны. С C++17 для prvalue это гарантия стандарта — mandatory copy elision.
+**NRVO** (named return value optimization): возвращаемый объект строится сразу в памяти вызывающей стороны. Для временного (`return std::string("hi")`) с C++17 это гарантия стандарта, для именованной переменной — разрешённая оптимизация, которую делают все основные компиляторы.
 
 ---
 
@@ -413,7 +480,6 @@ template <typename T> class Holder {
 
 - `return local_var;` — компилятор сделает RVO
 - `return expression;` — это уже rvalue
-- При `noexcept` move-конструкторе STL и так выберет move (см. `noexcept` выше)
 
 **Привычка:** не пишите `std::move` на `return` локальной переменной. Если сомневаетесь — компилятор подскажет warning'ом (`-Wpessimizing-move`).
 
@@ -423,7 +489,7 @@ template <typename T> class Holder {
 # Итоги лекции
 
 - **Move-семантика** даёт **переместить ресурс** вместо копирования. Для `vector` — `O(1)` вместо `O(n)`.
-- **`std::move(x)`** не двигает, а **разрешает** забрать ресурс: превращает **lvalue** (имя и адрес) в **rvalue** (временное, которое сейчас умрёт).
+- **`std::move(x)`** — каст к rvalue-ссылке `T&&`: не двигает, а превращает **lvalue** в **rvalue** и тем **разрешает** забрать ресурс.
 - **Move-функции** забирают ресурс и **зануляют** источник. Без `noexcept` STL копирует.
 - **Правило пяти:** написали один — подумайте про остальные. **Правило нуля:** обычно не пишите ничего.
 - **`emplace_back`** конструирует на месте — экономит один move/copy.
