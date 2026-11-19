@@ -54,8 +54,8 @@ npx @marp-team/marp-cli lectures/01/slides.md --pdf
 | 9 | Variadic templates, fold expressions, правила вывода типов |
 | 10 | Лямбды, захваты, `std::function`, трамплин для C-API |
 | 11 | Move-семантика: `std::move`, value categories, правило пяти и нуля, RVO |
-| 12 | `auto` и `decltype`: правила вывода, `decltype(auto)` |
-| 13 | Итераторы, стандартные контейнеры, structured bindings, алгоритмы |
+| 12 | `auto` и `decltype`: правила вывода, structured bindings, `decltype(auto)` |
+| 13 | Итераторы, стандартные контейнеры, алгоритмы |
 | 14 | `string_view`, `span`, `optional`, `variant`, `expected`, обработка ошибок |
 | 15 | Умные указатели изнутри, `weak_ptr`, основы многопоточности |
 

@@ -379,7 +379,7 @@
 
 <a id="adl"></a>**ADL, argument-dependent lookup** — поиск имени функции в пространствах имён её аргументов; поэтому `swap(a, b)` находит `std::swap` для типов из `std`. Лекция 13.
 
-<a id="structured-bindings"></a>**Structured bindings** (по-русски — структурное связывание) — C++17: разбор пары, кортежа или структуры на именованные переменные, `auto [key, value] = *it`. Лекция 13.
+<a id="structured-bindings"></a>**Structured bindings** (по-русски — структурное связывание) — C++17: разбор пары, кортежа или структуры на именованные переменные, `auto [key, value] = *it`. Лекция 12.
 
 <a id="range-for"></a>**Range-based for** — цикл `for (auto& x : container)`. Лекция 1.
 

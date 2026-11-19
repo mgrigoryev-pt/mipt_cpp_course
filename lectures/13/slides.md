@@ -278,7 +278,7 @@ for (const auto& [name, score] : scores) {     // упорядочено по na
 
 ---
 
-## Structured bindings (C++17)
+## Structured bindings при обходе `map`
 
 Элемент `map` — это `pair<const K, V>`. Обращаться через `.first` / `.second` неудобно:
 
@@ -296,32 +296,7 @@ for (const auto& [name, score] : scores) {
 }
 ```
 
-Это и есть **structured bindings** — то, что мы уже видели выше.
-
----
-
-## Structured bindings — где работают
-
-Работают со всем, что устроено как кортеж (tuple-like):
-
-```cpp
-std::pair<int, std::string> p{42, "hello"};
-auto [n, s] = p;                       // pair / tuple
-
-struct Point { int x, y; };
-auto [x, y] = Point{3, 4};             // агрегат с публичными полями
-
-int arr[3] = {1, 2, 3};
-auto [a, b, c] = arr;                  // массив фиксированной длины
-```
-
-Модификаторы те же, что у `auto`:
-
-```cpp
-auto [k, v]        = p;    // копия
-auto& [k, v]       = p;    // ссылки на поля — можно менять
-const auto& [k, v] = p;    // const-ссылки
-```
+Это **structured bindings** с лекции 12 — то, что мы уже видели выше.
 
 ---
 
