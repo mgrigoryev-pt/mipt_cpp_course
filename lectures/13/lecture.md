@@ -694,8 +694,7 @@ for (int x : evens) std::cout << x << ' ';
 Следующая лекция — **[утилитарные типы](../glossary.md#vocabulary-types) (vocabulary types) и обработка ошибок**:
 
 - `std::string_view`, `std::span` — [view](../glossary.md#view): ссылаются на чужие данные, не копируя их
-- `std::optional`, `std::variant`, `std::expected`
+- `std::optional`, `std::expected`
 - Третий подход к ошибкам и сравнение всех трёх — возвращаемся к теме лекции 3
 - Ошибки на границе с C-API: коды возврата в `std::expected`
-- Exception safety guarantees (basic / strong / nothrow)
 - Краткое упоминание `std::error_code`

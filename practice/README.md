@@ -59,7 +59,7 @@ $ nano-edr scenarios/phishing_macro.cfg
 | 12 | [12. `auto`, `decltype`](../lectures/12/lecture.md) | [**К3**](checkpoints.md) |
 | 13 | [13. Контейнеры](../lectures/13/lecture.md) | [4.1 Замена примитивов и вытеснение](4.1.md) |
 | 14 | [14. `expected`, `string_view`](../lectures/14/lecture.md) | [4.2 Ошибки на границе и конфигурация](4.2.md) |
-| 15 | [15. Умные указатели, потоки](../lectures/15/lecture.md) | [4.3 Асинхронный источник](4.3.md) |
+| 15 | Повторение пройденного | Задачи на повторение |
 
 ## Как устроено занятие
 

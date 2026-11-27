@@ -137,7 +137,7 @@ at: std::out_of_range: invalid map<K, T> key
 
 > If an exception is thrown while inserting a single element at the end and `T` is *Cpp17CopyInsertable* or `is_nothrow_move_constructible_v<T>` is true, there are no effects.
 
-«No effects» — это строгая гарантия из лекции 14, раздел 9: исключение при `push_back` оставит вектор таким, каким он был. И условие при ней — ровно то, что объясняет выбор между копированием и перемещением при росте вектора (лекция 11, раздел 4; материал [«Как устроены исключения»](../exceptions-inside/notes.md), раздел 4).
+«No effects» — это strong guarantee, одна из гарантий [exception safety](../../glossary.md#exception-safety) (по-русски — безопасность исключений): исключение при `push_back` оставит вектор таким, каким он был. И условие при ней — ровно то, что объясняет выбор между копированием и перемещением при росте вектора (лекция 11, раздел 4; материал [«Как устроены исключения»](../exceptions-inside/notes.md), раздел 4).
 
 ### Инвалидация
 

@@ -584,8 +584,7 @@ auto evens = v | std::views::filter([](int x) { return x % 2 == 0; });
 Следующая лекция — **утилитарные типы (vocabulary types) и обработка ошибок**:
 
 - `std::string_view`, `std::span` — view на чужие данные
-- `std::optional`, `std::variant`, `std::expected`
+- `std::optional`, `std::expected`
 - Третий подход к ошибкам и сравнение всех трёх (после лекции 3)
 - Ошибки на границе с C-API: коды возврата в `std::expected`
-- Exception safety guarantees
 - `std::error_code` (упоминание)

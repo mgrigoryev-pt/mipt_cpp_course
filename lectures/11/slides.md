@@ -238,7 +238,7 @@ v.push_back(String("hi"));  // move-конструктор (временный �
 String(String&& other) noexcept { /*...*/ }
 ```
 
-Без `noexcept` `std::vector` при перевыделении будет **копировать** элементы вместо move. Причина — strong exception safety (разберём на лекции 14).
+Без `noexcept` `std::vector` при перевыделении будет **копировать** элементы вместо move. Причина — strong exception safety: если move бросит на середине, откатиться будет некуда.
 
 **Правило:** **всегда** помечайте move-конструктор `noexcept`, если он реально не бросает.
 
